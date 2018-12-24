@@ -1,0 +1,5 @@
+{
+    "cachedir": "/d/build/create_db/data/imposm3_cache",
+    "connection": "postgis://postgres:password@localhost/osm",
+    "mapping": "/d/build/create_db/data/mapping.yml"
+}

@@ -1,0 +1,752 @@
+generalized_tables:
+  aerialway_linestring_gen1: {source: aerialway_linestring, sql_filter: ST_IsValid(geometry),
+    tolerance: 19.10925707129407}
+  aeroway_linestring_gen1: {source: aeroway_linestring, sql_filter: ST_IsValid(geometry),
+    tolerance: 19.10925707129407}
+  aeroway_linestring_gen2: {source: aeroway_linestring_gen1, tolerance: 38.21851414258814}
+  aeroway_linestring_gen3: {source: aeroway_linestring_gen2, tolerance: 76.43702828517628}
+  aeroway_polygon_gen1: {source: aeroway_polygon, sql_filter: 'area>power(38.21851414258814,2)
+      AND ST_IsValid(geometry)', tolerance: 19.10925707129407}
+  aeroway_polygon_gen2: {source: aeroway_polygon_gen1, sql_filter: 'area>power(76.43702828517628,2)',
+    tolerance: 38.21851414258814}
+  aeroway_polygon_gen3: {source: aeroway_polygon_gen2, sql_filter: 'area>power(152.87405657035256,2)',
+    tolerance: 76.43702828517628}
+  building_polygon_gen1: {source: building_polygon, sql_filter: 'area>power(38.21851414258814,2)
+      AND ST_IsValid(geometry)', tolerance: 9.554628535647035}
+  highway_linestring_gen1: {source: highway_linestring, sql_filter: 'highway IN (''motorway'',
+      ''trunk'', ''primary'', ''secondary'', ''tertiary'', ''motorway_link'', ''trunk_link'',
+      ''primary_link'', ''secondary_link'', ''tertiary_link'') AND NOT is_area AND
+      ST_IsValid(geometry)', tolerance: 38.21851414258814}
+  highway_linestring_gen2: {source: highway_linestring_gen1, sql_filter: 'highway
+      IN (''motorway'', ''trunk'', ''primary'', ''secondary'', ''motorway_link'',
+      ''trunk_link'', ''primary_link'', ''secondary_link'') AND NOT is_area', tolerance: 76.43702828517628}
+  landcover_polygon_gen1: {source: landcover_polygon, sql_filter: 'area>power(152.87405657035256,2)
+      AND ST_IsValid(geometry)', tolerance: 19.10925707129407}
+  landcover_polygon_gen2: {source: landcover_polygon_gen1, sql_filter: 'area>power(305.74811314070513,2)',
+    tolerance: 38.21851414258814}
+  landcover_polygon_gen3: {source: landcover_polygon_gen2, sql_filter: 'area>power(611.4962262814103,2)',
+    tolerance: 76.43702828517628}
+  landcover_polygon_gen4: {source: landcover_polygon_gen3, sql_filter: 'area>power(611.4962262814103,2)',
+    tolerance: 152.87405657035256}
+  landcover_polygon_gen5: {source: landcover_polygon_gen4, sql_filter: 'area>power(1222.9924525628205,2)',
+    tolerance: 305.74811314070513}
+  landcover_polygon_gen6: {source: landcover_polygon_gen5, sql_filter: 'area>power(2445.984905125641,2)',
+    tolerance: 611.4962262814103}
+  landcover_polygon_gen7: {source: landcover_polygon_gen6, sql_filter: 'area>power(4891.969810251282,2)',
+    tolerance: 1222.9924525628205}
+  landuse_polygon_gen1: {source: landuse_polygon, sql_filter: 'area>power(76.43702828517628,2)
+      AND ST_IsValid(geometry)', tolerance: 19.10925707129407}
+  landuse_polygon_gen2: {source: landuse_polygon_gen1, sql_filter: 'area>power(152.87405657035256,2)',
+    tolerance: 38.21851414258814}
+  landuse_polygon_gen3: {source: landuse_polygon_gen2, sql_filter: 'area>power(305.74811314070513,2)',
+    tolerance: 76.43702828517628}
+  landuse_polygon_gen4: {source: landuse_polygon_gen3, sql_filter: 'area>power(611.4962262814103,2)',
+    tolerance: 152.87405657035256}
+  landuse_polygon_gen5: {source: landuse_polygon_gen4, sql_filter: 'area>power(1222.9924525628205,2)',
+    tolerance: 305.74811314070513}
+  park_polygon_gen1: {source: park_polygon, sql_filter: 'area>power(38.21851414258814,2)
+      AND ST_IsValid(geometry)', tolerance: 19.10925707129407}
+  park_polygon_gen2: {source: park_polygon_gen1, sql_filter: 'area>power(76.43702828517628,2)',
+    tolerance: 38.21851414258814}
+  park_polygon_gen3: {source: park_polygon_gen2, sql_filter: 'area>power(152.87405657035256,2)',
+    tolerance: 76.43702828517628}
+  park_polygon_gen4: {source: park_polygon_gen3, sql_filter: 'area>power(305.74811314070513,2)',
+    tolerance: 76.43702828517628}
+  park_polygon_gen5: {source: park_polygon_gen4, sql_filter: 'area>power(611.4962262814103,2)',
+    tolerance: 152.87405657035256}
+  park_polygon_gen6: {source: park_polygon_gen5, sql_filter: 'area>power(1222.9924525628205,2)',
+    tolerance: 305.74811314070513}
+  park_polygon_gen7: {source: park_polygon_gen6, sql_filter: 'area>power(2445.984905125641,2)',
+    tolerance: 611.4962262814103}
+  park_polygon_gen8: {source: park_polygon_gen7, sql_filter: 'area>power(4891.969810251282,2)',
+    tolerance: 611.4962262814103}
+  railway_linestring_gen1: {source: railway_linestring, sql_filter: 'railway IN (''rail'',
+      ''narrow_gauge'', ''light_rail'') AND service='''' AND ST_IsValid(geometry)',
+    tolerance: 19.10925707129407}
+  railway_linestring_gen2: {source: railway_linestring_gen1, tolerance: 38.21851414258814}
+  railway_linestring_gen3: {source: railway_linestring_gen2, tolerance: 76.43702828517628}
+  railway_linestring_gen4: {source: railway_linestring_gen3, tolerance: 152.87405657035256}
+  railway_linestring_gen5: {source: railway_linestring_gen4, tolerance: 305.74811314070513}
+  shipway_linestring_gen1: {source: shipway_linestring, sql_filter: ST_IsValid(geometry),
+    tolerance: 19.10925707129407}
+  shipway_linestring_gen2: {source: shipway_linestring_gen1, tolerance: 38.21851414258814}
+  water_polygon_gen1: {source: water_polygon, sql_filter: 'area>power(152.87405657035256,2)
+      AND ST_IsValid(geometry)', tolerance: 38.21851414258814}
+  water_polygon_gen2: {source: water_polygon_gen1, sql_filter: 'area>power(305.74811314070513,2)',
+    tolerance: 76.43702828517628}
+  water_polygon_gen3: {source: water_polygon_gen2, sql_filter: 'area>power(611.4962262814103,2)',
+    tolerance: 152.87405657035256}
+  water_polygon_gen4: {source: water_polygon_gen3, sql_filter: 'area>power(1222.9924525628205,2)',
+    tolerance: 305.74811314070513}
+  water_polygon_gen5: {source: water_polygon_gen4, sql_filter: 'area>power(2445.984905125641,2)',
+    tolerance: 611.4962262814103}
+  water_polygon_gen6: {source: water_polygon_gen5, sql_filter: 'area>power(4891.969810251282,2)',
+    tolerance: 1222.9924525628205}
+  waterway_linestring_gen1: {source: waterway_linestring, sql_filter: waterway IN
+      ('river') AND ST_IsValid(geometry), tolerance: 76.43702828517628}
+  waterway_linestring_gen2: {source: waterway_linestring_gen1, sql_filter: waterway
+      IN ('river'), tolerance: 152.87405657035256}
+  waterway_linestring_gen3: {source: waterway_linestring_gen2, sql_filter: waterway
+      IN ('river'), tolerance: 305.74811314070513}
+tables:
+  aerialway_linestring:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: aerialway, name: aerialway, type: string}
+    - &id007 {name: z_order, type: wayzorder}
+    - &id008 {key: layer, name: layer, type: integer}
+    - &id009 {key: name, name: name, type: string}
+    - &id010 {key: 'name:en', name: name_en, type: string}
+    - &id011 {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - &id012 {key: short_name, name: short_name, type: string}
+    - &id013 {key: tunnel, name: is_tunnel, type: bool}
+    - &id014 {key: bridge, name: is_bridge, type: bool}
+    - &id015 {key: ramp, name: is_ramp, type: bool}
+    - &id016 {key: ford, name: is_ford, type: bool}
+    - &id017 {key: oneway, name: is_oneway, type: direction}
+    - &id018 {key: area, name: is_area, type: bool}
+    - &id019 {key: service, name: service, type: string}
+    - &id020 {key: usage, name: usage, type: string}
+    mapping:
+      aerialway: [cable_car]
+    type: linestring
+  aerodrome_label_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: 'aerodrome:type', name: aerodrome_type, type: string}
+    - {key: aerodrome, name: aerodrome, type: string}
+    - {key: military, name: military, type: string}
+    - {key: iata, name: iata, type: string}
+    - {key: icao, name: icao, type: string}
+    - {key: ele, name: ele, type: string}
+    type: geometry
+    type_mappings:
+      points:
+        aeroway: [aerodrome]
+      polygons:
+        aeroway: [aerodrome]
+  aeroway_linestring:
+    fields:
+    - &id001 {key: ref, name: ref, type: string}
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: aeroway, name: aeroway, type: string}
+    mapping:
+      aeroway: [runway, taxiway]
+    type: linestring
+  aeroway_polygon:
+    fields:
+    - *id001
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {name: aeroway, type: mapping_value}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    mapping:
+      aeroway: &id002 [aerodrome, heliport, runway, helipad, taxiway, apron]
+      area:aeroway: *id002
+    type: polygon
+  building_associatedstreet:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {from_member: true, key: building, name: building, type: string}
+    - {from_member: true, key: 'building:part', name: buildingpart, type: string}
+    - {from_member: true, key: 'building:height', name: buildingheight, type: string}
+    - {from_member: true, key: height, name: height, type: string}
+    - {from_member: true, key: 'building:min_height', name: buildingmin_height, type: string}
+    - {from_member: true, key: min_height, name: min_height, type: string}
+    - {from_member: true, key: 'building:levels', name: buildinglevels, type: string}
+    - {from_member: true, key: levels, name: levels, type: string}
+    - {from_member: true, key: 'building:min_level', name: buildingmin_level, type: string}
+    - {from_member: true, key: min_level, name: min_level, type: string}
+    - {key: 'building:height', name: relbuildingheight, type: string}
+    - {key: height, name: relheight, type: string}
+    - {key: 'building:min_height', name: relbuildingmin_height, type: string}
+    - {key: min_height, name: relmin_height, type: string}
+    - {key: 'building:levels', name: relbuildinglevels, type: string}
+    - {key: levels, name: rellevels, type: string}
+    - {key: 'building:min_level', name: relbuildingmin_level, type: string}
+    - {key: min_level, name: relmin_level, type: string}
+    - {name: member, type: member_id}
+    - {name: index, type: member_index}
+    - {from_member: true, name: role, type: member_role}
+    - {name: type, type: member_type}
+    mapping:
+      type: [associatedStreet]
+    type: relation_member
+  building_multipolygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {from_member: true, key: building, name: building, type: string}
+    - {from_member: true, key: 'building:part', name: buildingpart, type: string}
+    - {from_member: true, key: 'building:height', name: buildingheight, type: string}
+    - {from_member: true, key: height, name: height, type: string}
+    - {from_member: true, key: 'building:min_height', name: buildingmin_height, type: string}
+    - {from_member: true, key: min_height, name: min_height, type: string}
+    - {from_member: true, key: 'building:levels', name: buildinglevels, type: string}
+    - {from_member: true, key: levels, name: levels, type: string}
+    - {from_member: true, key: 'building:min_level', name: buildingmin_level, type: string}
+    - {from_member: true, key: min_level, name: min_level, type: string}
+    - {name: member, type: member_id}
+    - {name: index, type: member_index}
+    - {from_member: true, name: role, type: member_role}
+    - {name: type, type: member_type}
+    filters:
+      reject:
+        building: ['no', none, 'No']
+        building:part: ['no', none, 'No']
+        man_made: [bridge]
+    mapping:
+      type: [multipolygon]
+    type: relation_member
+  building_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {key: building, name: building, type: string}
+    - {key: 'building:part', name: buildingpart, type: string}
+    - {key: 'building:height', name: buildingheight, type: string}
+    - {key: 'building:min_height', name: buildingmin_height, type: string}
+    - {key: 'building:levels', name: buildinglevels, type: string}
+    - {key: 'building:min_level', name: buildingmin_level, type: string}
+    - {key: height, name: height, type: string}
+    - {key: min_height, name: min_height, type: string}
+    - {key: levels, name: levels, type: string}
+    - {key: min_level, name: min_level, type: string}
+    filters:
+      reject:
+        building: ['no', none, 'No']
+        building:part: ['no', none, 'No']
+        man_made: [bridge]
+    mapping:
+      aeroway: [terminal, hangar]
+      building: [__any__]
+      building:part: [__any__]
+    type: polygon
+  building_relation:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {from_member: true, key: building, name: building, type: string}
+    - {from_member: true, key: 'building:part', name: buildingpart, type: string}
+    - {from_member: true, key: 'building:height', name: buildingheight, type: string}
+    - {from_member: true, key: height, name: height, type: string}
+    - {from_member: true, key: 'building:min_height', name: buildingmin_height, type: string}
+    - {from_member: true, key: min_height, name: min_height, type: string}
+    - {from_member: true, key: 'building:levels', name: buildinglevels, type: string}
+    - {from_member: true, key: levels, name: levels, type: string}
+    - {from_member: true, key: 'building:min_level', name: buildingmin_level, type: string}
+    - {from_member: true, key: min_level, name: min_level, type: string}
+    - {key: 'building:height', name: relbuildingheight, type: string}
+    - {key: height, name: relheight, type: string}
+    - {key: 'building:min_height', name: relbuildingmin_height, type: string}
+    - {key: min_height, name: relmin_height, type: string}
+    - {key: 'building:levels', name: relbuildinglevels, type: string}
+    - {key: levels, name: rellevels, type: string}
+    - {key: 'building:min_level', name: relbuildingmin_level, type: string}
+    - {key: min_level, name: relmin_level, type: string}
+    - {name: member, type: member_id}
+    - {name: index, type: member_index}
+    - {from_member: true, name: role, type: member_role}
+    - {name: type, type: member_type}
+    mapping:
+      type: [building]
+    type: relation_member
+  building_street:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {from_member: true, key: building, name: building, type: string}
+    - {from_member: true, key: 'building:part', name: buildingpart, type: string}
+    - {from_member: true, key: 'building:height', name: buildingheight, type: string}
+    - {from_member: true, key: height, name: height, type: string}
+    - {from_member: true, key: 'building:min_height', name: buildingmin_height, type: string}
+    - {from_member: true, key: min_height, name: min_height, type: string}
+    - {from_member: true, key: 'building:levels', name: buildinglevels, type: string}
+    - {from_member: true, key: levels, name: levels, type: string}
+    - {from_member: true, key: 'building:min_level', name: buildingmin_level, type: string}
+    - {from_member: true, key: min_level, name: min_level, type: string}
+    - {key: 'building:height', name: relbuildingheight, type: string}
+    - {key: height, name: relheight, type: string}
+    - {key: 'building:min_height', name: relbuildingmin_height, type: string}
+    - {key: min_height, name: relmin_height, type: string}
+    - {key: 'building:levels', name: relbuildinglevels, type: string}
+    - {key: levels, name: rellevels, type: string}
+    - {key: 'building:min_level', name: relbuildingmin_level, type: string}
+    - {key: min_level, name: relmin_level, type: string}
+    - {name: member, type: member_id}
+    - {name: index, type: member_index}
+    - {from_member: true, name: role, type: member_role}
+    - {name: type, type: member_type}
+    mapping:
+      type: [street]
+    type: relation_member
+  city_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - &id003 {key: name, name: name, type: string}
+    - &id004 {key: 'name:en', name: name_en, type: string}
+    - &id005 {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: place, name: place, type: string}
+    - {key: population, name: population, type: integer}
+    - {key: capital, name: capital, type: string}
+    - &id006 {key: rank, name: rank, type: integer}
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [city, town, village, hamlet, suburb, neighbourhood, isolated_dwelling]
+    type: point
+  continent_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - *id003
+    - *id004
+    - *id005
+    - {name: tags, type: hstore_tags}
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [continent]
+    type: point
+  country_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - *id003
+    - *id004
+    - *id005
+    - *id006
+    - {key: country_code_iso3166_1_alpha_2, name: country_code_iso3166_1_alpha_2,
+      type: string}
+    - {key: 'ISO3166-1:alpha2', name: iso3166_1_alpha_2, type: string}
+    - {key: ISO3166-1, name: iso3166_1, type: string}
+    - {name: tags, type: hstore_tags}
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [country]
+    type: point
+  highway_linestring:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: highway, name: highway, type: string}
+    - &id037 {key: ref, name: ref, type: string}
+    - &id038 {key: network, name: network, type: string}
+    - *id007
+    - *id008
+    - &id021 {key: level, name: level, type: integer}
+    - &id022 {key: indoor, name: indoor, type: bool}
+    - *id009
+    - *id010
+    - *id011
+    - {name: tags, type: hstore_tags}
+    - *id012
+    - *id013
+    - *id014
+    - *id015
+    - *id016
+    - *id017
+    - *id018
+    - *id019
+    - *id020
+    - &id023 {key: public_transport, name: public_transport, type: string}
+    - &id024 {key: man_made, name: man_made, type: string}
+    mapping:
+      highway: [motorway, motorway_link, trunk, trunk_link, primary, primary_link,
+        secondary, secondary_link, tertiary, tertiary_link, unclassified, residential,
+        road, living_street, raceway, track, service, path, cycleway, bridleway, footway,
+        corridor, pedestrian, steps]
+      man_made: [pier]
+      public_transport: [platform]
+    type: linestring
+  highway_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: highway, name: highway, type: string}
+    - {name: z_order, type: wayzorder}
+    - *id008
+    - *id021
+    - *id022
+    - {key: area, name: is_area, type: bool}
+    - *id023
+    - *id024
+    mapping:
+      highway: [path, cycleway, bridleway, footway, corridor, pedestrian, steps]
+      man_made: [bridge, pier]
+      public_transport: [platform]
+    type: polygon
+  housenumber_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: 'addr:housenumber', name: housenumber, type: string}
+    type: geometry
+    type_mappings:
+      points:
+        addr:housenumber: [__any__]
+      polygons:
+        addr:housenumber: [__any__]
+  island_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - *id003
+    - *id004
+    - *id005
+    - {name: tags, type: hstore_tags}
+    - *id006
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [island]
+    type: point
+  island_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - *id003
+    - *id004
+    - *id005
+    - {name: tags, type: hstore_tags}
+    - *id006
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [island]
+    type: polygon
+  landcover_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {key: landuse, name: landuse, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: wetland, name: wetland, type: string}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    mapping:
+      landuse: [allotments, farm, farmland, orchard, plant_nursery, vineyard, grass,
+        grassland, meadow, forest, village_green, recreation_ground, park]
+      leisure: [park, garden]
+      natural: [wood, wetland, grassland, glacier, bare_rock, scree, beach, sand]
+      wetland: [bog, swamp, wet_meadow, marsh, reedbed, saltern, tidalflat, saltmarsh,
+        mangrove]
+    type: polygon
+  landuse_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {key: landuse, name: landuse, type: string}
+    - {key: amenity, name: amenity, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: tourism, name: tourism, type: string}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    mapping:
+      amenity: [bus_station, school, university, kindergarten, college, library, hospital]
+      landuse: [railway, cemetery, military, residential, commercial, industrial,
+        retail]
+      leisure: [stadium, pitch, playground]
+      tourism: [theme_park, zoo]
+    type: polygon
+  marine_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: place, name: place, type: string}
+    - {key: rank, name: rank, type: integer}
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [ocean, sea]
+    type: point
+  park_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: landuse, name: landuse, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: boundary, name: boundary, type: string}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    mapping:
+      boundary: [national_park]
+      leisure: [nature_reserve]
+    type: polygon
+  peak_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: ele, name: ele, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    mapping:
+      natural: [peak]
+    type: point
+  poi_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {name: subclass, type: mapping_value}
+    - {name: mapping_key, type: mapping_key}
+    - {key: station, name: station, type: string}
+    - {key: funicular, name: funicular, type: string}
+    - {key: information, name: information, type: string}
+    - {key: uic_ref, name: uic_ref, type: string}
+    - {key: religion, name: religion, type: string}
+    - {key: level, name: level, type: integer}
+    - {key: indoor, name: indoor, type: bool}
+    - {key: layer, name: layer, type: integer}
+    - {key: sport, name: sport, type: string}
+    mapping:
+      aerialway: &id025 [station]
+      amenity: &id026 [arts_centre, bank, bar, bbq, bicycle_rental, biergarten, bus_station,
+        cafe, cinema, clinic, college, community_centre, courthouse, dentist, doctors,
+        embassy, fast_food, ferry_terminal, fire_station, food_court, fuel, grave_yard,
+        hospital, ice_cream, kindergarten, library, marketplace, nightclub, nursing_home,
+        pharmacy, place_of_worship, police, post_box, post_office, prison, pub, public_building,
+        recycling, restaurant, school, shelter, swimming_pool, taxi, telephone, theatre,
+        toilets, townhall, university, veterinary, waste_basket]
+      barrier: &id027 [bollard, border_control, cycle_barrier, gate, lift_gate, sally_port,
+        stile, toll_booth]
+      highway: &id028 [bus_stop]
+      historic: &id029 [monument, castle, ruins]
+      landuse: &id030 [basin, brownfield, cemetery, reservoir]
+      leisure: &id031 [dog_park, escape_game, garden, golf_course, ice_rink, hackerspace,
+        marina, miniature_golf, park, pitch, playground, sports_centre, stadium, swimming_area,
+        swimming_pool, water_park]
+      railway: &id032 [halt, station, subway_entrance, train_station_entrance, tram_stop]
+      shop: &id033 [accessories, alcohol, antiques, art, bag, bakery, beauty, bed,
+        beverages, bicycle, books, boutique, butcher, camera, car, car_repair, carpet,
+        charity, chemist, chocolate, clothes, coffee, computer, confectionery, convenience,
+        copyshop, cosmetics, deli, delicatessen, department_store, doityourself, dry_cleaning,
+        electronics, erotic, fabric, florist, frozen_food, furniture, garden_centre,
+        general, gift, greengrocer, hairdresser, hardware, hearing_aids, hifi, ice_cream,
+        interior_decoration, jewelry, kiosk, lamps, laundry, mall, massage, mobile_phone,
+        motorcycle, music, musical_instrument, newsagent, optician, outdoor, perfume,
+        perfumery, pet, photo, second_hand, shoes, sports, stationery, supermarket,
+        tailor, tattoo, ticket, tobacco, toys, travel_agency, video, video_games,
+        watches, weapons, wholesale, wine]
+      sport: &id034 [american_football, archery, athletics, australian_football, badminton,
+        baseball, basketball, beachvolleyball, billiards, bmx, boules, bowls, boxing,
+        canadian_football, canoe, chess, climbing, climbing_adventure, cricket, cricket_nets,
+        croquet, curling, cycling, disc_golf, diving, dog_racing, equestrian, fatsal,
+        field_hockey, free_flying, gaelic_games, golf, gymnastics, handball, hockey,
+        horse_racing, horseshoes, ice_hockey, ice_stock, judo, karting, korfball,
+        long_jump, model_aerodrome, motocross, motor, multi, netball, orienteering,
+        paddle_tennis, paintball, paragliding, pelota, racquet, rc_car, rowing, rugby,
+        rugby_league, rugby_union, running, sailing, scuba_diving, shooting, shooting_range,
+        skateboard, skating, skiing, soccer, surfing, swimming, table_soccer, table_tennis,
+        team_handball, tennis, toboggan, volleyball, water_ski, yoga]
+      tourism: &id035 [alpine_hut, aquarium, artwork, attraction, bed_and_breakfast,
+        camp_site, caravan_site, chalet, gallery, guest_house, hostel, hotel, information,
+        motel, museum, picnic_site, theme_park, viewpoint, zoo]
+      waterway: &id036 [dock]
+    type: point
+  poi_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {name: subclass, type: mapping_value}
+    - {name: mapping_key, type: mapping_key}
+    - {key: station, name: station, type: string}
+    - {key: funicular, name: funicular, type: string}
+    - {key: information, name: information, type: string}
+    - {key: uic_ref, name: uic_ref, type: string}
+    - {key: religion, name: religion, type: string}
+    - {key: level, name: level, type: integer}
+    - {key: indoor, name: indoor, type: bool}
+    - {key: layer, name: layer, type: integer}
+    - {key: sport, name: sport, type: string}
+    mapping:
+      aerialway: *id025
+      amenity: *id026
+      barrier: *id027
+      highway: *id028
+      historic: *id029
+      landuse: *id030
+      leisure: *id031
+      railway: *id032
+      shop: *id033
+      sport: *id034
+      tourism: *id035
+      waterway: *id036
+    type: polygon
+  railway_linestring:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: railway, name: railway, type: string}
+    - *id037
+    - *id038
+    - *id007
+    - *id008
+    - *id021
+    - *id022
+    - *id009
+    - *id010
+    - *id011
+    - {name: tags, type: hstore_tags}
+    - *id012
+    - *id013
+    - *id014
+    - *id015
+    - *id016
+    - *id017
+    - *id018
+    - *id019
+    - *id020
+    mapping:
+      railway: [rail, narrow_gauge, preserved, funicular, subway, light_rail, monorail,
+        tram]
+    type: linestring
+  route_member:
+    columns:
+    - {name: osm_id, type: id}
+    - {name: member, type: member_id}
+    - {name: role, type: member_role}
+    - {name: type, type: member_type}
+    - *id037
+    - *id038
+    - *id009
+    mapping:
+      route: [road]
+    type: relation_member
+  shipway_linestring:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: route, name: shipway, type: string}
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+    - *id011
+    - {name: tags, type: hstore_tags}
+    - *id012
+    - *id013
+    - *id014
+    - *id015
+    - *id016
+    - *id017
+    - *id018
+    - *id019
+    - *id020
+    mapping:
+      route: [ferry]
+    type: linestring
+  state_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - *id003
+    - *id004
+    - *id005
+    - {name: tags, type: hstore_tags}
+    - {key: 'is_in:country', name: is_in_country, type: string}
+    - {key: 'is_in:country_code', name: is_in_country_code, type: string}
+    - {key: ref, name: ref, type: string}
+    - *id006
+    filters:
+      require:
+        name: [__any__]
+    mapping:
+      place: [state]
+    type: point
+  water_polygon:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: validated_geometry}
+    - {name: area, type: area}
+    - {name: webmerc_area, type: webmerc_area}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: natural, name: natural, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: waterway, name: waterway, type: string}
+    filters:
+      reject:
+        covered: ['yes']
+    mapping:
+      landuse: [reservoir]
+      natural: [water, bay]
+      waterway: [river, riverbank, stream, canal, drain, ditch, dock]
+    type: polygon
+  waterway_linestring:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: geometry, type: geometry}
+    - {key: waterway, name: waterway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: 'name:en', name: name_en, type: string}
+    - {key: 'name:de', name: name_de, type: string}
+    - {name: tags, type: hstore_tags}
+    - {key: tunnel, name: is_tunnel, type: bool}
+    - {key: bridge, name: is_bridge, type: bool}
+    mapping:
+      waterway: [stream, river, canal, drain, ditch]
+    type: linestring
+tags:
+  include: ['name:ar', 'name:az', 'name:be', 'name:bg', 'name:br', 'name:bs', 'name:ca',
+    'name:cs', 'name:cy', 'name:da', 'name:de', 'name:el', 'name:en', 'name:eo', 'name:es',
+    'name:et', 'name:fi', 'name:fr', 'name:fy', 'name:ga', 'name:gd', 'name:he', 'name:hr',
+    'name:hu', 'name:hy', 'name:is', 'name:it', 'name:ja', 'name:ja_kana', 'name:ja_rm',
+    'name:ka', 'name:kk', 'name:kn', 'name:ko', 'name:ko_rm', 'name:la', 'name:lb',
+    'name:lt', 'name:lv', 'name:mk', 'name:mt', 'name:ml', 'name:nl', 'name:no', 'name:pl',
+    'name:pt', 'name:rm', 'name:ro', 'name:ru', 'name:sk', 'name:sl', 'name:sq', 'name:sr',
+    'name:sr-Latn', 'name:sv', 'name:th', 'name:tr', 'name:uk', 'name:zh', int_name,
+    loc_name, name, wikidata, wikipedia]
+
