@@ -1,5 +1,0 @@
-{
-    "cachedir": "/d/build/wdb-map-gen/data/imposm3_cache",
-    "connection": "postgis://osm:osm@localhost/osm",
-    "mapping": "/d/build/wdb-map-gen/config/mapping.yml"
-}
