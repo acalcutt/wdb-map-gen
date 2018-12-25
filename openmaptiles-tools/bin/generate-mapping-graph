@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+"""
+Usage:
+  generate-mapping-graph <layer-definition> <filename>
+  generate-mapping-graph --help
+  generate-mapping-graph --version
+Options:
+  --help               Show this screen.
+  --version            Show version.
+"""
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
+from docopt import docopt
+
+import openmaptiles
+
+from openmaptiles.tileset import Layer
+from openmaptiles.diagram import generate_table_mapping_diagram
+
+
+if __name__ == '__main__':
+    args = docopt(__doc__, version=openmaptiles.__version__)
+    layer = Layer.parse(args['<layer-definition>'])
+    mapping_config = layer.imposm_mappings[0]
+    graph = generate_table_mapping_diagram(mapping_config)
+    graph.render(filename=args['<filename>'])
