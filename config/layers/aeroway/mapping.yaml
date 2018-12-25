@@ -1,0 +1,84 @@
+generalized_tables:
+  # etldoc: imposm3 -> osm_aeroway_linestring_gen3
+  aeroway_linestring_gen3:
+    source: aeroway_linestring_gen2
+    tolerance: ZRES11
+
+  # etldoc: imposm3 -> osm_aeroway_linestring_gen2
+  aeroway_linestring_gen2:
+    source: aeroway_linestring_gen1
+    tolerance: ZRES12
+
+  # etldoc: imposm3 -> osm_aeroway_linestring_gen1
+  aeroway_linestring_gen1:
+    source: aeroway_linestring
+    sql_filter: ST_IsValid(geometry)
+    tolerance: ZRES13
+
+  # etldoc: imposm3 -> osm_aeroway_polygon_gen3
+  aeroway_polygon_gen3:
+    source: aeroway_polygon_gen2
+    sql_filter: area>power(ZRES10,2)
+    tolerance: ZRES11
+
+  # etldoc: imposm3 -> osm_aeroway_polygon_gen2
+  aeroway_polygon_gen2:
+    source: aeroway_polygon_gen1
+    sql_filter: area>power(ZRES11,2)
+    tolerance: ZRES12
+
+  # etldoc: imposm3 -> osm_aeroway_polygon_gen1
+  aeroway_polygon_gen1:
+    source: aeroway_polygon
+    sql_filter: area>power(ZRES12,2) AND ST_IsValid(geometry)
+    tolerance: ZRES13
+
+ref_field: &ref
+  key: ref
+  name: ref
+  type: string
+
+def_aeroway_polygon_mapping: &aeroway_polygon_mapping
+  - aerodrome
+  - heliport
+  - runway
+  - helipad
+  - taxiway
+  - apron
+
+tables:
+  # etldoc: imposm3 -> osm_aeroway_polygon
+  aeroway_polygon:
+    type: polygon
+    fields:
+    - *ref
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: aeroway
+      type: mapping_value
+    - name: area
+      type: area
+    - name: webmerc_area
+      type: webmerc_area
+    mapping:
+      aeroway: *aeroway_polygon_mapping
+      "area:aeroway": *aeroway_polygon_mapping
+
+  # etldoc: imposm3 -> osm_aeroway_linestring
+  aeroway_linestring:
+    type: linestring
+    fields:
+    - *ref
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: aeroway
+      key: aeroway
+      type: string
+    mapping:
+      aeroway:
+      - runway
+      - taxiway

@@ -1,0 +1,39 @@
+layer:
+  id: "waterway"
+  description: |
+      OpenStreetMap [waterways](http://wiki.openstreetmap.org/wiki/Waterways) for higher zoom levels
+      and Natural Earth rivers and lake centerlines for low zoom levels.
+      Linestrings without a name or which are too short are filtered
+      out at low zoom levels. Waterways do no not have a `subclass` field.
+  buffer_size: 4
+  fields:
+    name: |
+        The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway.
+        The `name` field may be empty for NaturalEarth data or at lower zoom levels.
+    name_en: English name `name:en` if available, otherwise `name`.
+    name_de: German name `name:de` if available, otherwise `name` or `name:en`.
+    class:
+      description: |
+        The original value of the [`waterway`](http://wiki.openstreetmap.org/wiki/Key:waterway) tag.
+      values:
+      - stream
+      - river
+      - canal
+      - drain
+      - ditch
+    brunnel:
+      description: |
+          Mark whether way is a tunnel or bridge.
+      values:
+        - bridge
+        - tunnel
+  datasource:
+    geometry_field: geometry
+    query: (SELECT geometry, name, name_en, name_de, {name_languages}, class, brunnel FROM layer_waterway(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./update_waterway_linestring.sql
+  - ./update_important_waterway.sql
+  - ./waterway.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml

@@ -1,0 +1,63 @@
+layer:
+  id: "landcover"
+  description: |
+      Landcover is used to describe the physical material at the surface of the earth. At lower zoom levels this is
+      from Natural Earth data for glaciers and ice shelves and at higher zoom levels the landcover is [implied by OSM tags](http://wiki.openstreetmap.org/wiki/Landcover). The most common use case for this layer
+        is to style wood (`class=wood`) and grass (`class=grass`) areas.
+  buffer_size: 4
+  fields:
+    class:
+      description: |
+          Use the **class** to assign natural colors for **landcover**.
+      values:
+      - farmland
+      - ice
+      - wood
+      - grass
+      - wetland
+      - sand
+    subclass:
+      description: |
+          Use **subclass** to do more precise styling.
+          Original value of either the
+          [`natural`](http://wiki.openstreetmap.org/wiki/Key:natural),
+          [`landuse`](http://wiki.openstreetmap.org/wiki/Key:landuse),
+          [`leisure`](http://wiki.openstreetmap.org/wiki/Key:leisure),
+          or [`wetland`](http://wiki.openstreetmap.org/wiki/Key:wetland) tag.
+      values:
+      - allotments
+      - farm
+      - farmland
+      - orchard
+      - plant_nursery
+      - vineyard
+      - grass
+      - grassland
+      - glacier
+      - meadow
+      - forest
+      - village_green
+      - recreation_ground
+      - park
+      - garden
+      - wetland
+      - grassland
+      - bog
+      - swamp
+      - wet_meadow
+      - marsh
+      - reedbed
+      - saltern
+      - tidalflat
+      - saltmarsh
+      - mangrove
+      - beach
+      - sand
+  datasource:
+    geometry_field: geometry
+    query: (SELECT geometry, class, subclass FROM layer_landcover(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./landcover.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml

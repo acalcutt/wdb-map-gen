@@ -1,0 +1,89 @@
+generalized_tables:
+
+  # etldoc: imposm3 -> osm_water_polygon_gen6
+  water_polygon_gen6:
+    source: water_polygon_gen5
+    sql_filter: area>power(ZRES5,2)
+    tolerance: ZRES7
+
+  # etldoc: imposm3 -> osm_water_polygon_gen5
+  water_polygon_gen5:
+    source: water_polygon_gen4
+    sql_filter: area>power(ZRES6,2)
+    tolerance: ZRES8
+
+  # etldoc: imposm3 -> osm_water_polygon_gen4
+  water_polygon_gen4:
+    source: water_polygon_gen3
+    sql_filter: area>power(ZRES7,2)
+    tolerance: ZRES9
+
+  # etldoc: imposm3 -> osm_water_polygon_gen3
+  water_polygon_gen3:
+    source: water_polygon_gen2
+    sql_filter: area>power(ZRES8,2)
+    tolerance: ZRES10
+
+  # etldoc: imposm3 -> osm_water_polygon_gen2
+  water_polygon_gen2:
+    source: water_polygon_gen1
+    sql_filter: area>power(ZRES9,2)
+    tolerance: ZRES11
+
+  # etldoc: imposm3 -> osm_water_polygon_gen1
+  water_polygon_gen1:
+    source: water_polygon
+    sql_filter: area>power(ZRES10,2) AND ST_IsValid(geometry)
+    tolerance: ZRES12
+
+tables:
+
+  # etldoc: imposm3 -> osm_water_polygon
+  water_polygon:
+    fields:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: validated_geometry
+    - name: area
+      type: area
+    - name: webmerc_area
+      type: webmerc_area
+    - key: name
+      name: name
+      type: string
+    - name: name_en
+      key: name:en
+      type: string
+    - name: name_de
+      key: name:de
+      type: string
+    - name: tags
+      type: hstore_tags
+    - name: natural
+      key: natural
+      type: string
+    - name: landuse
+      key: landuse
+      type: string
+    - name: waterway
+      key: waterway
+      type: string
+    filters:
+      reject:
+        covered: ["yes"]
+    mapping:
+      landuse:
+      - reservoir
+      natural:
+      - water
+      - bay
+      waterway:
+      - river
+      - riverbank
+      - stream
+      - canal
+      - drain
+      - ditch
+      - dock
+    type: polygon
