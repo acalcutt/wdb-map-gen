@@ -1,0 +1,6 @@
+#Set the GO path to the current directory (imposm3/)
+export GOPATH=`pwd`
+
+Get the code and install Imposm. imposm will be created in imposm3/bin/
+go get github.com/omniscale/imposm3
+go install github.com/omniscale/imposm3/cmd/imposm
