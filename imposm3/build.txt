@@ -1,6 +1,9 @@
 https://github.com/omniscale/imposm3
 You need Go >=1.9.
 
+On debian,
+apt-get install libgeos-dev libleveldb-dev
+
 #Set the GO path to the current directory (imposm3/)
 export GOPATH=`pwd`
 
