@@ -1,0 +1,47 @@
+# Install/run on debian
+
+1.) Install posgresql 10 ( https://www.postgresql.org/download/linux/debian/ )
+
+Create the file /etc/apt/sources.list.d/pgdg.list, and add a line for the repository:
+     deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
+	 
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+apt-get install postgresql-10
+
+2.) Install PostGIS for postgres 10 (https://postgis.net/install/)
+
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" >> /etc/apt/sources.list'
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt update
+sudo apt install postgresql-10-postgis-2.4 
+sudo apt install postgresql-10-postgis-scripts
+sudo apt install postgis
+
+3.) Clone this repository and set the sh files executable
+sudo apt install git
+git clone https://github.com/acalcutt/wdb-map-gen.git
+cd wdb-map-gen
+chmod +x *.sh
+
+4.) Recompile imposm3. the binary will be created in the imposm2/bin folder
+
+sudo apt-get install libgeos-dev libleveldb-dev build-essential
+cd [wdb-map-gen DIR]/imposm3
+export GOPATH=`pwd`
+go get github.com/omniscale/imposm3
+go install github.com/omniscale/imposm3/cmd/imposm
+
+5.) Update [wdb-map-gen DIR]\config\env.config. at minimum, set the POSTGRES_PASS
+
+6.) Import the planet pbf into postgress (note, this uses at least 500GB, make sure your postgress datastore has the space)
+
+cd [wdb-map-gen DIR]
+./load_planet.sh
+
+7.) Export to mbtiles (this step is still in process of being made, and may not yet be ready)
+
+cd [wdb-map-gen DIR]
+./export_mbtiles.sh
+
+
