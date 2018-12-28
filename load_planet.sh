@@ -19,8 +19,7 @@ mkdir -p $IMPSOSM3_CACHE_DIR
 ) > $EXPORT_DIR/config.json
 
 #Create the postgres database to dump data into
-set PGPASSWORD=$POSTGRES_PASS
-psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<EOSQL
+PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<EOSQL
 	DROP DATABASE IF EXISTS $POSTGRES_DB;
     CREATE DATABASE $POSTGRES_DB;
 	\c $POSTGRES_DB;
