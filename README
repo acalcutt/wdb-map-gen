@@ -1,3 +1,10 @@
+Sources
+https://github.com/openmaptiles/openmaptiles
+https://github.com/openmaptiles/openmaptiles-tools
+https://github.com/omniscale/imposm3
+
+
+
 # Install/run on debian
 
 1.) Install posgresql 10 ( https://www.postgresql.org/download/linux/debian/ )
@@ -24,7 +31,7 @@ git clone https://github.com/acalcutt/wdb-map-gen.git
 cd wdb-map-gen
 chmod +x *.sh
 
-4.) Recompile imposm3. the binary will be created in the imposm2/bin folder
+4.) Recompile imposm3. the binary will be created in the imposm3/bin folder
 
 sudo apt-get install libgeos-dev libleveldb-dev build-essential
 cd [wdb-map-gen DIR]/imposm3
@@ -43,5 +50,14 @@ cd [wdb-map-gen DIR]
 
 cd [wdb-map-gen DIR]
 ./export_mbtiles.sh
+
+
+# Install/run on Windows debian WSL
+
+1.) Install BigSQL postgres 10
+
+2.) Install the latest PostGIS windows binary into postgress from  ( https://winnie.postgis.net/download/windows/pg10/buildbot/ )
+
+3.) Follow step 3-5 above insside the debian WSL environment. Point the env.config to your windows postgres server.
 
 
