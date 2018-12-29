@@ -3,6 +3,10 @@ https://github.com/openmaptiles/openmaptiles
 https://github.com/openmaptiles/openmaptiles-tools
 https://github.com/omniscale/imposm3
 
+References
+https://imposm.org/docs/imposm3/latest/tutorial.html#preparation
+https://ninefinity.org/post/importing-openstreetmap-planet-osm-with-imposm3-and-osmosis/
+
 
 
 # Install/run on debian
@@ -58,6 +62,6 @@ cd [wdb-map-gen DIR]
 
 2.) Install the latest PostGIS windows binary into postgress from  ( https://winnie.postgis.net/download/windows/pg10/buildbot/ )
 
-3.) Follow step 3-5 above insside the debian WSL environment. Point the env.config to your windows postgres server.
+3.) Follow step 3-5 for debian above inside the debian WSL environment. Point the env.config to your windows postgres server.
 
 
