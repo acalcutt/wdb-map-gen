@@ -1,0 +1,16 @@
+#!/bin/bash
+. config/env.config
+echo "====> : Start Creating DB $POSTGRES_DB"
+
+#Create the postgres database to dump data into
+PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<EOSQL
+	DROP DATABASE IF EXISTS $POSTGRES_DB;
+    CREATE DATABASE $POSTGRES_DB;
+	\c $POSTGRES_DB;
+	DROP USER IF EXISTS $OSM_USER;
+	CREATE ROLE $OSM_USER LOGIN PASSWORD '$OSM_PASS' NOSUPERUSER NOCREATEROLE CREATEDB;
+    CREATE EXTENSION postgis;
+    CREATE EXTENSION hstore;
+EOSQL
+
+echo "====> : Start Creating DB $POSTGRES_DB"
