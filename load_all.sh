@@ -3,5 +3,4 @@
 ./load_osmborder.sh
 ./load_naturalearth.sh
 ./load_lakelines.sh
-#./load_planet.sh
-./load_mass.sh
+./load_planet.sh
