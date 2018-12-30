@@ -27,5 +27,6 @@ fi
 
 #Import the pdf to postgress using imposm3
 imposm3/bin/imposm import -config $EXPORT_DIR/config.json -read data/planet-latest.osm.pbf -write -optimize -overwritecache -diff
+imposm3/bin/imposm import -config $EXPORT_DIR/config.json -deployproduction
 
 echo "====> : End importing Planet OpenStreetMap data: ./data/planet-latest.osm.pbf -> imposm3[./config/mapping.yaml] -> PostgreSQL"

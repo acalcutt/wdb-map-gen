@@ -53,6 +53,10 @@ cd [wdb-map-gen DIR]
 7.) Export to mbtiles (this step is still in process of being made, and may not yet be ready)
 
 cd [wdb-map-gen DIR]
+sudo apt-get install python-pip
+pip install docopt
+pip install pyyaml
+pip install openmaptiles-tools
 ./export_mbtiles.sh
 
 
