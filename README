@@ -2,12 +2,14 @@ Sources
 https://github.com/openmaptiles/openmaptiles
 https://github.com/openmaptiles/openmaptiles-tools
 https://github.com/omniscale/imposm3
+https://github.com/giggls/osml10n-python
 
 References
 https://imposm.org/docs/imposm3/latest/tutorial.html#preparation
 https://ninefinity.org/post/importing-openstreetmap-planet-osm-with-imposm3-and-osmosis/
+https://github.com/giggls/osml10n-python/blob/master/INSTALL.md
 
-
+This is mostly a de-dockerized version of OpenMapTiles v3.9 (https://github.com/openmaptiles/openmaptiles). It very closly keeps to the way the openmaptiles quickstart works, minus all the docker obfuscation
 
 # Install/run on debian
 
@@ -52,11 +54,25 @@ cd [wdb-map-gen DIR]
 
 7.) Export to mbtiles (this step is still in process of being made, and may not yet be ready)
 
-cd [wdb-map-gen DIR]
+#openmaptiles depends
 sudo apt-get install python-pip
 pip install docopt
 pip install pyyaml
 pip install openmaptiles-tools
+
+#osml10n depends
+sudo apt-get install python3-pip
+pip3 install pykakasi
+pip3 install pyicu
+pip3 install python-Levenshtein
+pip3 install pythainlp
+pip3 install git+https://github.com/giggls/osml10n.git
+
+#tile-copy depends
+npm install --unsafe-perm -g  tl mapnik@^3.7.0 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik
+npm install git+https://github.com/acalcutt/tilelive-tmsource.git
+
+cd [wdb-map-gen DIR]
 ./export_mbtiles.sh
 
 
