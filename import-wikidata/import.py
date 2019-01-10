@@ -1,21 +1,40 @@
 #!/usr/bin/env python
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
 import psycopg2.extras
 from wikidata import etl, osm
 from cfg import *
+import os.path
+import sys
 
+print('Importing Wikidata ...')
 conn = psycopg2.connect(dbname=POSTGRES_DB, user=POSTGRES_USER,
-                        password=POSTGRES_PASSWORD, host=POSTGRES_HOST,
-                        port=POSTGRES_PORT)
+						password=POSTGRES_PASSWORD, host=POSTGRES_HOST,
+						port=POSTGRES_PORT)
 
 psycopg2.extras.register_hstore(conn)
 cur = conn.cursor()
 
-ids = osm.get_ids(OSM_TABLES, cur)
-pages = osm.get_pages(OSM_TABLES, cur)
-
-etl.recreate_table(TABLE_NAME, cur)
+print('Recreating {} table'.format(TABLE_NAME))
+etl.empty_table(TABLE_NAME, cur)
 conn.commit()
-etl.simple_parse(DUMP, ids, pages, cur, conn, TABLE_NAME, LIMIT)
+
+if(os.path.exists(DUMP)):
+	print('Scanning following tables:')
+	print(' ', '\n  '.join(sorted(OSM_TABLES)))
+
+	ids = osm.get_ids(OSM_TABLES, cur)
+	pages = osm.get_pages(OSM_TABLES, cur)
+	print('Found {:,} Wikidata IDs and {:,} Wikipedia pages to '
+		  'load'.format(len(ids), len(pages)))
+	print()
+
+	print('Parsing Wikidata dump {} ...'.format(DUMP))
+	etl.multi_parse(DUMP, ids, pages, cur, conn, TABLE_NAME, LIMIT)
+
+else:
+	print('File {} not found, no Wikidata imported!'.format(DUMP))
 
 cur.close()
 conn.close()

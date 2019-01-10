@@ -1,7 +1,6 @@
 POSTGRES_DB='openmaptiles'
 POSTGRES_USER='openmaptiles'
 POSTGRES_PASSWORD='openmaptiles'
-# POSTGRES_HOST=postgres
 POSTGRES_HOST='localhost'
 POSTGRES_PORT=5432
 
@@ -13,7 +12,21 @@ LIMIT = 100000000
 # LIMIT = 100000
 
 '''OSM tables to fetch Wikidata for'''
-OSM_TABLES = ['osm_city_point', 'osm_waterway_linestring']
+OSM_TABLES = [
+    'osm_aerodrome_label_point',
+    'osm_peak_point',
+    'osm_city_point',
+    'osm_continent_point',
+    'osm_country_point',
+    'osm_island_point',
+    'osm_island_polygon',
+    'osm_state_point',
+    'osm_poi_point',
+    'osm_poi_polygon',
+    'osm_marine_point',
+    'osm_water_polygon',
+    'osm_waterway_linestring'
+]
 
 '''Table with imported wikidata'''
 TABLE_NAME = 'wd_names'
