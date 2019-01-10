@@ -10,18 +10,20 @@ PBF_BASE=http://planet.osm.org/pbf/
 echo "====> : Start importing Planet OpenStreetMap data: data/$PBF -> imposm3[./config/mapping.yaml] -> PostgreSQL"
 
 CONFIG_DIR=$(pwd)/config
+GENCONFIG_DIR=$CONFIG_DIR/generated
 EXPORT_DIR=$(pwd)/data
-LAYERS_CONFIG=$CONFIG_DIR/wdbmap.yaml
-IMPOSM3_MAPPING=$CONFIG_DIR/mapping.yaml
-IMPOSM3_CONFIG=$CONFIG_DIR/imposm.json
+LAYER_FILE=$CONFIG_DIR/$IMPORT_LAYER_FILE
+IMPOSM3_MAPPING=$GENCONFIG_DIR/mapping.yaml
+IMPOSM3_CONFIG=$GENCONFIG_DIR/imposm.json
 IMPOSM3_CACHE_DIR=$EXPORT_DIR/imposm3_cache
 IMPOSM3_DIFF_DIR=$EXPORT_DIR/imposm3_diff
 mkdir -p $EXPORT_DIR
+mkdir -p $GENCONFIG_DIR
 mkdir -p $IMPOSM3_CACHE_DIR
 mkdir -p $IMPOSM3_DIFF_DIR
 
 #Create the mapping file
-openmaptiles-tools/bin/generate-imposm3 $LAYERS_CONFIG > $IMPOSM3_MAPPING
+openmaptiles-tools/bin/generate-imposm3 $LAYER_FILE > $IMPOSM3_MAPPING
 
 # Create the imposm3 config file
 (
@@ -29,7 +31,7 @@ openmaptiles-tools/bin/generate-imposm3 $LAYERS_CONFIG > $IMPOSM3_MAPPING
   echo "    \"cachedir\": \"$IMPOSM3_CACHE_DIR\","
   echo "    \"diffdir\": \"$IMPOSM3_DIFF_DIR\","
   echo "    \"connection\": \"postgis://$POSTGRES_USER:$POSTGRES_PASS@$POSTGRES_HOST/$POSTGRES_DB\","
-  echo "    \"mapping\": \"$CONFIG_DIR/mapping.yml\""
+  echo "    \"mapping\": \"$IMPOSM3_MAPPING\""
   echo "}"
 
 ) > $IMPOSM3_CONFIG
