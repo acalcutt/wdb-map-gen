@@ -20,16 +20,70 @@ Create the file /etc/apt/sources.list.d/pgdg.list, and add a line for the reposi
 	 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
-apt-get install postgresql-10
+apt-get install postgresql-10 postgresql-server-dev-10
 
-2.) Install PostGIS for postgres 10 (https://postgis.net/install/)
+2.) Install PostGIS and extensions for postgres 10 (https://postgis.net/install/)
 
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" >> /etc/apt/sources.list'
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt update
-sudo apt install postgresql-10-postgis-2.4 
-sudo apt install postgresql-10-postgis-scripts
-sudo apt install postgis
+apt-get -y update
+apt-get -y --no-install-recommends install autoconf automake autotools-dev build-essential ca-certificates bison cmake curl dblatex docbook-mathml docbook-xsl git gdal-bin libcunit1-dev libkakasi2-dev libtool pandoc unzip xsltproc libgdal-dev libproj-dev libxml2-dev
+
+## GEOS
+cd /opt/
+curl -o /opt/geos.tar.bz2 http://download.osgeo.org/geos/geos-3.7.0.tar.bz2
+mkdir /opt/geos
+tar xf /opt/geos.tar.bz2 -C /opt/geos --strip-components=1
+cd /opt/geos/
+./configure
+make -j
+make install
+rm -rf /opt/geos*
+## Protobuf
+cd /opt/
+wget -O protobuf-3.10.1.tar.gz https://github.com/protocolbuffers/protobuf/archive/v3.10.1.tar.gz
+tar xvzf protobuf-3.10.1.tar.gz
+cd protobuf-3.10.1
+./autogen.sh
+./configure
+make
+make install
+ldconfig
+rm -rf /opt/protobuf-3.0.2
+## Protobuf-c
+cd /opt/
+wget -O protobuf-c-1.3.2.tar.gz https://github.com/protobuf-c/protobuf-c/releases/download/v1.3.2/protobuf-c-1.3.2.tar.gz
+tar xvzf protobuf-c-1.3.2.tar.gz
+cd protobuf-c-1.3.2
+./configure
+make
+make install
+ldconfig
+rm -rf /opt/protobuf-c-1.3.2
+## Postgis
+cd /opt/
+git clone -b stable-2.4 https://github.com/postgis/postgis.git
+cd postgis
+./autogen.sh
+./configure CFLAGS="-O0 -Wall"
+make
+make install
+ldconfig
+rm -rf /opt/postgis
+## UTF8Proc
+cd /opt/
+git clone https://github.com/JuliaLang/utf8proc.git
+cd utf8proc
+git checkout -q v2.0.2
+make
+make install
+ldconfig
+rm -rf /opt/utf8proc
+## Mapnik German
+cd /opt/
+git clone https://github.com/openmaptiles/mapnik-german-l10n.git
+cd mapnik-german-l10n
+make
+make install
+rm -rf /opt/mapnik-german-l10n
 
 3.) Clone this repository and set the sh files executable
 sudo apt install git
