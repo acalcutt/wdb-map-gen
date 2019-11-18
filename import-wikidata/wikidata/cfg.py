@@ -1,12 +1,3 @@
-POSTGRES_DB='openmaptiles'
-POSTGRES_USER='openmaptiles'
-POSTGRES_PASSWORD='openmaptiles'
-POSTGRES_HOST='localhost'
-POSTGRES_PORT=5432
-
-'''Path to Wikidata dump'''
-DUMP = 'data/latest-all.json.gz'
-
 '''Max number of lines to read from dump'''
 LIMIT = 100000000
 # LIMIT = 100000
