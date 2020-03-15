@@ -32,7 +32,7 @@
     "Blake Thompson <flippmoke>"
   ],
   "dependencies": {
-    "minimist": "~0.2.0",
+    "minimist": "~1.2.5",
     "progress-stream": "~0.5.x",
     "@mapbox/sphericalmercator": "~1.0.1",
     "queue-async": "~1.0.7"
