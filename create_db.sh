@@ -11,12 +11,15 @@ PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<E
 	DROP DATABASE IF EXISTS $POSTGRES_DB;
     CREATE DATABASE $POSTGRES_DB;
 	\c $POSTGRES_DB;
-
-    CREATE EXTENSION postgis;
-    CREATE EXTENSION hstore;
-    CREATE EXTENSION unaccent;
-    CREATE EXTENSION fuzzystrmatch;
-    CREATE EXTENSION osml10n;
+	
+    -- These extensions are already loaded by the parent docker
+    CREATE EXTENSION IF NOT EXISTS postgis;
+    CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;
+    -- Extensions needed for OpenMapTiles
+    CREATE EXTENSION IF NOT EXISTS hstore;
+    CREATE EXTENSION IF NOT EXISTS unaccent;
+    CREATE EXTENSION IF NOT EXISTS osml10n;
+    CREATE EXTENSION IF NOT EXISTS gzip;
 
 EOSQL
 

@@ -11,8 +11,8 @@ mkdir -p $GENCONFIG_DIR
 mkdir -p $DEST_PROJECT_DIR
 
 #Create TM2 SOURCE DIR
-openmaptiles-tools/bin/generate-tm2source $LAYER_FILE --host="$POSTGRES_HOST" --port=$POSTGRES_PORT --database="$POSTGRES_DB" --user="$POSTGRES_USER" --password="$POSTGRES_PASS" > $DEST_PROJECT_DIR/data.yml
-openmaptiles-tools/bin/generate-sql $LAYER_FILE > $GENCONFIG_DIR/tileset.sql
+generate-tm2source $LAYER_FILE --host="$POSTGRES_HOST" --port=$POSTGRES_PORT --database="$POSTGRES_DB" --user="$POSTGRES_USER" --password="$POSTGRES_PASS" > $DEST_PROJECT_DIR/data.yml
+generate-sql $LAYER_FILE > $GENCONFIG_DIR/tileset.sql
 
 PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST -d $POSTGRES_DB -U "$POSTGRES_USER" -f postgis-vt-util/postgis-vt-util.sql
 PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST -d $POSTGRES_DB -U "$POSTGRES_USER" -f $CONFIG_DIR/language.sql

@@ -23,7 +23,7 @@ mkdir -p $IMPOSM3_CACHE_DIR
 mkdir -p $IMPOSM3_DIFF_DIR
 
 #Create the mapping file
-openmaptiles-tools/bin/generate-imposm3 $LAYER_FILE > $IMPOSM3_MAPPING
+generate-imposm3 $LAYER_FILE > $IMPOSM3_MAPPING
 
 # Create the imposm3 config file
 (
