@@ -13,14 +13,14 @@ This is mostly a de-dockerized version of OpenMapTiles v3.9 (https://github.com/
 
 # Install/run on debian
 
-1.) Install posgresql 10 ( https://www.postgresql.org/download/linux/debian/ )
+1.) Install posgresql 12 ( https://www.postgresql.org/download/linux/debian/ )
 
 Create the file /etc/apt/sources.list.d/pgdg.list, and add a line for the repository:
      deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 	 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
-apt-get install postgresql-10 postgresql-server-dev-10
+apt-get install postgresql-12 postgresql-server-dev-12
 
 2.) Install PostGIS and extensions for postgres 10 (https://postgis.net/install/)
 
@@ -118,13 +118,27 @@ make install
 sudo apt install graphviz sqlite3 aria2 osmctools
 python3 -m pip install git+https://github.com/openmaptiles/openmaptiles-tools
 
-#osml10n depends
-sudo apt-get install python3-pip
-pip3 install pykakasi
-pip3 install pyicu
-pip3 install python-Levenshtein
-pip3 install pythainlp
-pip3 install git+https://github.com/giggls/osml10n.git
+#osml10n Postgres extension
+(If using WSL, build the deb inside a folder like /opt/. emulated drives like /mnt/c will fail to build due to a permissions error)
+-build deb file-
+sudo apt-get install devscripts equivs
+sudo mk-build-deps -i debian/control
+git clone https://github.com/giggls/mapnik-german-l10n.git
+cd mapnik-german-l10n
+make deb
+-install deb file that matches your install-
+dpkg -i ../postgresql-12-osml10n_2.5.9_amd64.deb
+
+#gzip Postgres extension
+(If using WSL, build the deb inside a folder like /opt/. emulated drives like /mnt/c will fail to build due to a permissions error)
+-build deb file-
+sudo apt-get install build-essential zlib1g-dev postgresql-server-dev-all pkg-config fakeroot devscripts
+git clone https://github.com/pramsey/pgsql-gzip.git
+cd pgsql-gzip
+make
+make deb
+-install deb file that matches your install-
+dpkg -i ../postgresql-12-gzip_1.0.1_amd64.deb
 
 #tile-copy depends
 npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
@@ -135,10 +149,7 @@ cd [wdb-map-gen DIR]
 
 # Install/run on Windows debian WSL
 
-1.) Install BigSQL postgres 10
+Install Postgres 12 inside your debian WSL instance with the step above. Start it it the command /etc/init.d/postgresql start
 
-2.) Install the latest PostGIS windows binary into postgress from  ( https://winnie.postgis.net/download/windows/pg10/buildbot/ )
-
-3.) Follow step 3-5 for debian above inside the debian WSL environment. Point the env.config to your windows postgres server.
 
 
