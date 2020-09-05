@@ -49,15 +49,13 @@ tables:
 
   # etldoc: imposm3 -> osm_water_polygon
   water_polygon:
-    fields:
+    columns:
     - name: osm_id
       type: id
     - name: geometry
       type: validated_geometry
     - name: area
       type: area
-    - name: webmerc_area
-      type: webmerc_area
     - key: name
       name: name
       type: string
@@ -89,6 +87,9 @@ tables:
     mapping:
       landuse:
       - reservoir
+      - basin
+      leisure:
+      - swimming_pool
       natural:
       - water
       - bay

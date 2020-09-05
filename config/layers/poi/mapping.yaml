@@ -24,6 +24,7 @@ def_poi_mapping_amenity: &poi_mapping_amenity
   - courthouse
   - dentist
   - doctors
+  - drinking_water
   - embassy
   - fast_food
   - ferry_terminal
@@ -140,6 +141,7 @@ def_poi_mapping_shop: &poi_mapping_shop
   - camera
   - car
   - car_repair
+  - car_parts
   - carpet
   - charity
   - chemist
@@ -381,11 +383,11 @@ tables:
   # etldoc: imposm3 -> osm_poi_point
   poi_point:
     type: point
-    fields: *poi_fields
+    columns: *poi_fields
     mapping: *poi_mapping
 
   # etldoc: imposm3 -> osm_poi_polygon
   poi_polygon:
     type: polygon
-    fields: *poi_fields
+    columns: *poi_fields
     mapping: *poi_mapping
