@@ -108,11 +108,15 @@ cd [wdb-map-gen DIR]
 
 7.) Export to mbtiles (this step is still in process of being made, and may not yet be ready)
 
-#openmaptiles depends
-sudo apt-get install python-pip
-pip install docopt
-pip install pyyaml
-pip install openmaptiles-tools
+#Python Python-3.8.5 Install from source with pip
+cd Python-3.8.5
+./configure --enable-optimizations --with-ensurepip=install
+make
+make install
+
+#openmaptiles-tools install
+sudo apt install graphviz sqlite3 aria2 osmctools
+python3 -m pip install git+https://github.com/openmaptiles/openmaptiles-tools
 
 #osml10n depends
 sudo apt-get install python3-pip
@@ -123,8 +127,7 @@ pip3 install pythainlp
 pip3 install git+https://github.com/giggls/osml10n.git
 
 #tile-copy depends
-npm install --unsafe-perm -g  tl mapnik@^3.7.0 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik
-npm install git+https://github.com/acalcutt/tilelive-tmsource.git
+npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 
 cd [wdb-map-gen DIR]
 ./export_mbtiles.sh
