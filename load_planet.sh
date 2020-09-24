@@ -38,7 +38,8 @@ generate-imposm3 $LAYER_FILE > $IMPOSM3_MAPPING
 
 #Download the planet pdb
 if [ ! -f data/$PBF ]; then
-    wget $PBF_BASE$PBF -P data
+	download-osm planet -o data/$PBF
+    #wget $PBF_BASE$PBF -P data
 fi
 
 diff_flag=""
