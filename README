@@ -118,6 +118,8 @@ npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive 
 ./load_naturalearth.sh
 ./load_lakelines.sh
 ./load_planet.sh
+./load_wikidata.sh
+./load_sql.sh
 
 ------------- Export Map Data to MBtiles ------------- 
 ./export_mbtiles.sh
