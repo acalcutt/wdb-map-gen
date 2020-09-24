@@ -4,4 +4,5 @@
 ./load_naturalearth.sh
 ./load_lakelines.sh
 ./load_planet.sh
-./export_mbtiles.sh
+./load_wikidata.sh
+./load_sql.sh
