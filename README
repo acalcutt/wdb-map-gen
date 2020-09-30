@@ -65,6 +65,9 @@ cd proj-7.1.1
 ./configure
 make
 make install
+#Fix so 'proj --version' works
+ln -s /usr/local/lib/libproj.so.19 /usr/lib/libproj.so.19
+ln -s /usr/local/lib/libproj.so.19.1.1 /usr/lib/libproj.so.19.1.1
 
 Install #gdal
 apt-get install libsqlite3-dev
