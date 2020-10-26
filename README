@@ -88,7 +88,7 @@ ln -s /usr/local/lib/libgdal.so.27 /usr/lib/libgdal.so.27
 apt-get install libxml2-dev
 wget https://download.osgeo.org/postgis/source/postgis-3.0.2.tar.gz
 tar -xvf postgis-3.0.2.tar.gz
-cd ../postgis-3.0.2
+cd postgis-3.0.2
 ./configure
 make
 make install
