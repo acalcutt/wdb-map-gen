@@ -8,7 +8,7 @@ unzip data/10m_physical.zip -d data/10m_physical
 for i in `find data/10m_physical -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+		PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
 rm -rf 10m_physical
 
@@ -18,7 +18,7 @@ unzip data/10m_cultural.zip -d data/10m_cultural
 for i in `find data/10m_cultural -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+        PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
 
 #--- From https://www.naturalearthdata.com/downloads/50m-physical-vectors/ ---
@@ -27,7 +27,7 @@ unzip data/50m_physical.zip -d data/50m_physical
 for i in `find data/50m_physical -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+        PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
 rm -rf 10m_physical
 
@@ -37,7 +37,7 @@ unzip data/50m_cultural.zip -d data/50m_cultural
 for i in `find data/50m_cultural -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+        PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
 
 #--- From https://www.naturalearthdata.com/downloads/110m-physical-vectors/ ---
@@ -46,7 +46,7 @@ unzip data/110m_physical.zip -d data/110m_physical
 for i in `find data/110m_physical -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+        PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
 rm -rf 10m_physical
 
@@ -56,5 +56,5 @@ unzip data/110m_cultural.zip -d data/110m_cultural
 for i in `find data/110m_cultural -name "*.shp" -type f`; do
         table=$(basename -- ${i%.*})
         PGCONN="dbname=$POSTGRES_DB user=$POSTGRES_USER host=$POSTGRES_HOST password=$POSTGRES_PASS port=$POSTGRES_PORT"
-        PGCLIENTENCODING=UTF8 ogr2ogr -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 PG:"$PGCONN" -nlt PROMOTE_TO_MULTI -nln "$table" -skipfailure $i
+        PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$table" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" $i
 done
