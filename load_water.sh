@@ -7,16 +7,11 @@ LAKE_CENTERLINE_TABLE="lake_centerline"
 
 echo "====> : Start importing water data from https://osmdata.openstreetmap.de/data/water-polygons.html into PostgreSQL "
 
-[ -f data/water_polygons.shp ] && rm data/water_polygons.shp
-[ -f data/water_polygons.shx ] && rm data/water_polygons.shx
-[ -f data/water_polygons.dbf ] && rm data/water_polygons.dbf
 [ ! -f data/water-polygons-split-4326.zip ] && wget https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip -P data
-[ -f data/water-polygons-split-4326.zip ] && unzip -p data/water-polygons-split-4326.zip water-polygons-split-4326/water_polygons.shp > data/water_polygons.shp
-[ -f data/water-polygons-split-4326.zip ] && unzip -p data/water-polygons-split-4326.zip water-polygons-split-4326/water_polygons.shx > data/water_polygons.shx
-[ -f data/water-polygons-split-4326.zip ] && unzip -p data/water-polygons-split-4326.zip water-polygons-split-4326/water_polygons.dbf > data/water_polygons.dbf
+unzip -o data/water-polygons-split-4326.zip -d data
 
 if [ -f data/water_polygons.shp ]; then
-    PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$WATER_TABLE_NAME" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" data/water_polygons.shp
+    PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$WATER_TABLE_NAME" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" data/water-polygons-split-4326/water_polygons.shp
 fi
 
 echo "====> : End importing water data from http://openstreetmapdata.com into PostgreSQL "
