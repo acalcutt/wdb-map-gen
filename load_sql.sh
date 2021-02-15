@@ -13,6 +13,12 @@ if [ ! -d "$EXPORT_DIR" ]; then mkdir -p $EXPORT_DIR; fi
 if [ -d "$SQL_DIR" ]; then rm -Rf $SQL_DIR; fi
 if [ ! -d "$SQL_DIR" ]; then mkdir -p $SQL_DIR; fi
 
+#Analyze PostgreSQL tables
+#PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<EOSQL
+#	\c $POSTGRES_DB;
+#	ANALYZE VERBOSE;
+#EOSQL
+
 if [ "$RUN_MULTITHREADED" == true ]; then
 	echo "MULTI-THREADED"
 	#Create Parallel SQL
