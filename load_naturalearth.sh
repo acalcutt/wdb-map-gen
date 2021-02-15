@@ -22,7 +22,7 @@ unzip -o data/110m_physical.zip -d data/110m_physical
 unzip -o data/110m_cultural.zip -d data/110m_cultural
 
 rm -f $NATURAL_EARTH_DB
-for shp in data/10m_cultural/*.shp data/10m_physical/*.shp data/50m_cultural/*.shp data/50m_physical/*.shp data/110m_cultural/*.shp data/110m_physical/*.shp; \
+for shp in data/10m_cultural/10m_cultural/*.shp data/10m_physical/*.shp data/50m_cultural/*.shp data/50m_physical/*.shp data/110m_cultural/*.shp data/110m_physical/*.shp; \
 do \
 	echo $shp;
 	ogr2ogr -progress -f SQLite -append $NATURAL_EARTH_DB $shp; \
