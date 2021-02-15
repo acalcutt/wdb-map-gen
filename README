@@ -1,15 +1,5 @@
-Sources
-https://github.com/openmaptiles/openmaptiles
-https://github.com/openmaptiles/openmaptiles-tools
-https://github.com/omniscale/imposm3
-https://github.com/giggls/osml10n-python
 
-References
-https://imposm.org/docs/imposm3/latest/tutorial.html#preparation
-https://ninefinity.org/post/importing-openstreetmap-planet-osm-with-imposm3-and-osmosis/
-https://github.com/giggls/osml10n-python/blob/master/INSTALL.md
-
-This is mostly a de-dockerized version of OpenMapTiles v3.9 (https://github.com/openmaptiles/openmaptiles). It very closly keeps to the way the openmaptiles quickstart works, minus all the docker obfuscation
+This is mostly a de-dockerized version of Open Map Tiles (https://github.com/openmaptiles/openmaptiles). It very closly keeps to the way the openmaptiles quickstart works, minus all the docker obfuscation
 
 # Install/run on debian 11
 
@@ -118,6 +108,10 @@ nvm use v8.15.0
 npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 
 ------------- Import Map Data into Postgresql ------------- 
+cd [your wdb-map-gen directory]
+#run all together
+./load_all.sh
+#run seperately
 ./create_db.sh
 ./load_water.sh
 ./load_osmborder.sh
@@ -129,10 +123,6 @@ npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive 
 ------------- Export Map Data to MBtiles ------------- 
 ./export_mbtiles.sh
 
-
-# Install/run on Windows debian WSL
-
-Install inside your debian WSL instance with the step above. Start postgresql with the command /etc/init.d/postgresql start
-
-
+------------- Alternative: Load with postile ---------------
+postile --cors  --tm2 openmaptiles.tm2source/data.yaml --pghost 127.0.0.1 --pguser [username] --pgpassword [password] --listen [ip] --pgdatabase osm --style style/style.json --fonts fonts/
 
