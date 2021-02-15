@@ -11,7 +11,7 @@ echo "====> : Start importing water data from https://osmdata.openstreetmap.de/d
 unzip -o data/water-polygons-split-4326.zip -d data
 
 if [ -f data/water_polygons.shp ]; then
-    PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$WATER_TABLE_NAME" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" data/water-polygons-split-4326/water_polygons.shp
+    ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$WATER_TABLE_NAME" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" data/water-polygons-split-4326/water_polygons.shp
 fi
 
 echo "====> : End importing water data from http://openstreetmapdata.com into PostgreSQL "
