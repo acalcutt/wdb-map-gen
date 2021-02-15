@@ -2,10 +2,9 @@
 . config/env.config
 
 CONFIG_DIR=$(pwd)/config
-GENCONFIG_DIR=$CONFIG_DIR/generated
 EXPORT_DIR=$(pwd)/data
-LAYER_FILE=$CONFIG_DIR/$EXPORT_LAYER_FILE
 DEST_PROJECT_DIR=$EXPORT_DIR/openmaptiles.tm2source
+LAYER_FILE=$CONFIG_DIR/$EXPORT_LAYER_FILE
 
 if [ ! -d "$EXPORT_DIR" ]; then mkdir -p $EXPORT_DIR; fi
 if [ -d "$DEST_PROJECT_DIR" ]; then rm -Rf $DEST_PROJECT_DIR; fi
