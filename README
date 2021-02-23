@@ -99,6 +99,27 @@ export GOPATH=`pwd`
 go get github.com/omniscale/imposm3
 go install github.com/omniscale/imposm3/cmd/imposm
 
+#Install libosmium (needed by osmborder)
+apt-get install libbz2-dev libprotozero-dev libboost-tools-dev libboost-thread-dev cmake clang-tidy 
+cd /opt
+git clone https://github.com/osmcode/libosmium.git
+cd libosmium
+mkdir build
+cd build
+cmake ..
+make
+make install
+
+#Install osmborder
+cd /opt
+git clone https://github.com/pnorman/osmborder.git
+cd osmborder
+mkdir build
+cd build
+cmake ..
+make
+make install
+
 #Node Version Manager
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 nvm install v8.15.0
@@ -126,3 +147,6 @@ cd [your wdb-map-gen directory]
 ------------- Alternative: Load with postile ---------------
 postile --cors  --tm2 openmaptiles.tm2source/data.yaml --pghost 127.0.0.1 --pguser [username] --pgpassword [password] --listen [ip] --pgdatabase osm --style style/style.json --fonts fonts/
 
+
+Links
+https://bravetheheat.medium.com/parallelizing-openmaptile-vector-map-tile-generation-16x-speedup-with-two-variables-120afa11d839
