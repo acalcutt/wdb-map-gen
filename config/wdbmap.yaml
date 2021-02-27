@@ -17,8 +17,8 @@ tileset:
   name: WdbMapTiles
   version: 1.0.1
   id: openmaptiles
-  description: "A map for the WifiDB (https://live.wifidb.net), based on OpenMapTiles (https://openmaptiles.org)"
-  attribution: '<a href="https://wifidb.net/" target="_blank">&copy; WifiDB</a> <a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+  description: "WifiDB Base Map"
+  attribution: '<a href="https://wifidb.net/" target="_blank">&copy; WifiDB</a> <a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a> <a href="https://www.naturalearthdata.com/" target="_blank">Natural Earth</a>'
   center: [-12.2168, 28.6135, 4]
   bounds: [-180.0,-85.0511,180.0,85.0511]
   maxzoom: 14
