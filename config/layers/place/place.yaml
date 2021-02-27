@@ -32,6 +32,7 @@ layer:
       - village
       - hamlet
       - suburb
+      - quarter
       - neighbourhood
       - isolated_dwelling
     iso_a2:
@@ -72,7 +73,7 @@ schema:
   - ./update_island_point.sql
   - ./update_state_point.sql
   - ./update_city_point.sql
-  - ./layer.sql
+  - ./place.sql
 datasources:
   - type: imposm3
     mapping_file: ./mapping.yaml
