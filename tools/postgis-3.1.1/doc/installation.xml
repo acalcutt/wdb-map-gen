@@ -1,0 +1,2033 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="postgis_installation">
+  <title>PostGIS Installation</title>
+
+  <para>
+	This chapter details the steps required to install PostGIS.
+  </para>
+
+  <sect1 id="install_short_version">
+	<title>Short Version</title>
+	<para>To compile assuming you have all the dependencies in your search path:</para>
+	<programlisting>tar xvfz postgis-&last_release_version;.tar.gz
+cd postgis-&last_release_version;
+./configure
+make
+make install</programlisting>
+	<para>
+Once PostGIS is installed, it needs to be
+enabled (<xref linkend="create_spatial_db" />)
+or upgraded (<xref linkend="upgrading" />)
+in each individual database you want to use it in.
+  </para>
+
+  </sect1>
+
+  <sect1 id="PGInstall">
+	<title>Compiling and Install from Source</title>
+
+	<note>
+	  <para>
+		Many OS systems now include pre-built packages for PostgreSQL/PostGIS.
+		In many cases compilation is only necessary if you want the most
+		bleeding edge versions or you are a package maintainer.
+	  </para>
+	  <para>This section includes general compilation instructions, if you are compiling for Windows etc
+		or another OS, you may find additional more detailed help at <ulink url="http://trac.osgeo.org/postgis/wiki/UsersWikiInstall">PostGIS User contributed compile guides</ulink> and <ulink url="http://trac.osgeo.org/postgis/wiki/DevWikiMain">PostGIS Dev Wiki</ulink>.</para>
+	  <para>Pre-Built Packages for various OS are listed in <ulink url="http://trac.osgeo.org/postgis/wiki/UsersWikiPackages">PostGIS Pre-built Packages</ulink></para>
+	  <para>If you are a windows user, you can get stable builds via Stackbuilder or <ulink url="https://postgis.net/windows_downloads">PostGIS Windows download site</ulink>
+	  We also have <ulink url="https://postgis.net/windows_downloads">very bleeding-edge windows experimental builds</ulink> that are built usually once or twice a week or whenever anything exciting happens.  You can
+	  use these to experiment with the in progress releases of PostGIS</para>
+	</note>
+
+	<para>
+	  The PostGIS module is an extension to the PostgreSQL backend server. As
+	  such, PostGIS &last_release_version; <emphasis>requires</emphasis> full
+	  PostgreSQL server headers access in order to compile. It can be built
+	  against PostgreSQL versions &min_postgres_version; or higher. Earlier
+	  versions of PostgreSQL are <emphasis>not</emphasis> supported.
+	</para>
+
+	<para>
+	  Refer to the PostgreSQL installation guides if you haven't already
+	  installed PostgreSQL.
+	  <ulink url="http://www.postgresql.org">
+		http://www.postgresql.org
+	  </ulink>
+	  .
+	</para>
+
+	<note>
+	  <para>
+		For GEOS functionality, when you install PostgresSQL you may need to
+		explicitly link PostgreSQL against the standard C++ library:
+	  </para>
+
+	  <programlisting>LDFLAGS=-lstdc++ ./configure [YOUR OPTIONS HERE]</programlisting>
+
+	  <para>
+		This is a workaround for bogus C++ exceptions interaction with older
+		development tools. If you experience weird problems (backend
+		unexpectedly closed or similar things) try this trick. This will require
+		recompiling your PostgreSQL from scratch, of course.
+	  </para>
+	</note>
+
+	<para>
+	  The following steps outline the configuration and compilation of the
+	  PostGIS source. They are written for Linux users and will not work on
+	  Windows or Mac.
+	</para>
+
+  <sect2 id="install_getting_source">
+	<title>Getting the Source</title>
+
+	<para>
+	  Retrieve the PostGIS source archive from the downloads website
+	  <ulink url="&postgis_download_url;">
+		&postgis_download_url;
+	  </ulink>
+	</para>
+
+	<programlisting>wget &postgis_download_url;
+tar -xvzf postgis-&last_release_version;.tar.gz</programlisting>
+
+	<para>
+	  This will create a directory called
+	  <varname>postgis-&last_release_version;</varname> in the current working
+	  directory.
+	</para>
+
+	<para>
+	  Alternatively, checkout the source from the
+	  <ulink url="https://git-scm.com/">
+		git
+	  </ulink>
+	  repository
+	  <ulink url="https://git.osgeo.org/gitea/postgis/postgis/">
+		https://git.osgeo.org/gitea/postgis/postgis/
+	  </ulink>
+	  .
+	</para>
+
+	<programlisting>git clone https://git.osgeo.org/gitea/postgis/postgis.git postgis</programlisting>
+
+	<para>
+	  Change into the newly created
+	  <varname>postgis</varname> directory to continue
+	  the installation.
+	</para>
+  </sect2>
+
+  <sect2 id="install_requirements">
+	<title>Install Requirements</title>
+
+	<para>
+	  PostGIS has the following requirements for building and usage:
+	</para>
+
+	<para>
+	  <emphasis role="bold">Required</emphasis>
+	</para>
+
+	<itemizedlist>
+	  <listitem>
+		<para>
+		  PostgreSQL &min_postgres_version; or higher. A complete installation
+		  of PostgreSQL (including server headers) is required. PostgreSQL
+		  is available from
+		  <ulink url="http://www.postgresql.org">
+			http://www.postgresql.org
+		  </ulink>
+		  .
+		</para>
+		<para>For a full PostgreSQL / PostGIS support matrix and PostGIS/GEOS support matrix refer to
+			<ulink url="http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS">http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS</ulink>
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  GNU C compiler (<filename>gcc</filename>). Some other ANSI C compilers
+		  can be used to compile PostGIS, but we find far fewer problems when
+		  compiling with <filename>gcc</filename>.
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  GNU Make (<filename>gmake</filename> or <filename>make</filename>).
+		  For many systems, GNU <filename>make</filename> is the default version
+		  of make. Check the version by invoking <filename>make -v</filename>.
+		  Other versions of <filename>make</filename> may not process the
+		  PostGIS <filename>Makefile</filename> properly.
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  Proj4 reprojection library. Proj4 4.9 or above is required.
+			The Proj4 library is used to provide coordinate reprojection support within
+		  PostGIS. Proj4 is available for download from
+		  <ulink url="http://trac.osgeo.org/proj/">
+			http://trac.osgeo.org/proj/
+		  </ulink>
+		  .
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  GEOS geometry library, version 3.6 or greater, but GEOS 3.9+ is required to take full advantage of all the new functions and features. GEOS is available for download from
+		  <ulink url="http://trac.osgeo.org/geos/">
+			http://trac.osgeo.org/geos/
+		  </ulink>.
+		</para>
+	  </listitem>
+	  <listitem>
+		<para>
+		  LibXML2, version 2.5.x or higher. LibXML2 is currently used in some imports
+		  functions (ST_GeomFromGML and ST_GeomFromKML). LibXML2 is available for download from
+		  <ulink url="http://xmlsoft.org/downloads.html">http://xmlsoft.org/downloads.html</ulink>.
+		</para>
+	  </listitem>
+	  <listitem>
+		<para>
+		  JSON-C, version 0.9 or higher. JSON-C is currently used to import GeoJSON via the
+		  function ST_GeomFromGeoJson. JSON-C is available for download from
+		  <ulink url="https://github.com/json-c/json-c/releases">https://github.com/json-c/json-c/releases/</ulink>.
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  GDAL, version 2+ is required 3+ is preferred.  This is required for raster
+      support.
+		  <ulink url="http://trac.osgeo.org/gdal/wiki/DownloadSource">http://trac.osgeo.org/gdal/wiki/DownloadSource</ulink>.
+		</para>
+	  </listitem>
+
+		<listitem>
+		<para>
+		  If compiling with PostgreSQL+JIT, LLVM version &gt;=6 is required
+		  <ulink url="https://trac.osgeo.org/postgis/ticket/4125">https://trac.osgeo.org/postgis/ticket/4125</ulink>.
+		</para>
+	  </listitem>
+
+	</itemizedlist>
+
+	<para>
+	  <emphasis role="bold">Optional</emphasis>
+	</para>
+
+	<itemizedlist>
+	  <listitem>
+		<para>
+		  GDAL (pseudo optional) only if you don't want raster
+		  you can leave it out.  Also make sure to enable
+		  the drivers you want to use as described in <xref
+		  linkend="raster_configuration"/>.
+    </para>
+	  </listitem>
+	  <listitem>
+		<para>
+		  GTK (requires GTK+2.0, 2.8+) to compile the shp2pgsql-gui shape file loader.
+		  <ulink url="http://www.gtk.org/">
+			http://www.gtk.org/
+		  </ulink>
+		  .
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+			SFCGAL, version 1.1 (or higher) could be used to provide additional 2D and 3D advanced analysis functions to PostGIS cf <xref linkend="reference_sfcgal" />. And also allow to use SFCGAL rather than GEOS for some 2D functions provided by both backends (like ST_Intersection or ST_Area, for instance). A PostgreSQL configuration variable <code>postgis.backend</code> allow end user to control which backend he want to use if SFCGAL is installed (GEOS by default). Nota: SFCGAL 1.2 require at least CGAL 4.3 and Boost 1.54 (cf: <ulink url="http://oslandia.github.io/SFCGAL/installation.html">http://oslandia.github.io/SFCGAL/installation.html</ulink>)
+
+		  <ulink url="https://github.com/Oslandia/SFCGAL">https://github.com/Oslandia/SFCGAL</ulink>.
+		</para>
+	  </listitem>
+
+	 <listitem>
+			<para>
+				In order to build the <xref linkend="Address_Standardizer" /> you will also need PCRE <ulink url="http://www.pcre.org">http://www.pcre.org</ulink> (which generally is already installed on nix systems).  <code>Regex::Assemble</code> perl CPAN package is only needed if you want to rebuild the data encoded in <filename>parseaddress-stcities.h</filename>.
+				<xref linkend="Address_Standardizer" /> will automatically be built if it detects a PCRE library, or you pass in a valid <varname>--with-pcre-dir=/path/to/pcre</varname> during configure.
+			</para>
+		</listitem>
+
+		<listitem>
+			<para>
+			  To enable ST_AsMVT protobuf-c library 1.1.0 or higher (for usage) and the protoc-c compiler (for building) are required.
+				Also, pkg-config is required to verify the correct minimum version of protobuf-c.
+				See <ulink url="https://github.com/protobuf-c/protobuf-c">protobuf-c</ulink>.
+				By default, Postgis will use Wagyu to validate MVT polygons faster which requires a c++11 compiler. It will use CXXFLAGS and the same compiler as the PostgreSQL installation. To disable this and use GEOS instead use the <varname>--without-wagyu</varname> during the configure step.
+			</para>
+		</listitem>
+
+	  <listitem>
+		<para>
+		 CUnit (<filename>CUnit</filename>). This is needed for regression testing. <ulink url="http://cunit.sourceforge.net/">http://cunit.sourceforge.net/</ulink>
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  DocBook (<filename>xsltproc</filename>) is required for building the
+		  documentation. Docbook is available from
+		  <ulink url="http://www.docbook.org/">
+			http://www.docbook.org/
+		  </ulink>
+		  .
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  DBLatex (<filename>dblatex</filename>) is required for building the
+		  documentation in PDF format. DBLatex is available from
+		  <ulink url="http://dblatex.sourceforge.net/">
+			http://dblatex.sourceforge.net/
+		  </ulink>
+		  .
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>
+		  ImageMagick (<filename>convert</filename>) is required to generate the
+		  images used in the documentation. ImageMagick is available from
+		  <ulink url="http://www.imagemagick.org/">
+			http://www.imagemagick.org/
+		  </ulink>
+		  .
+		</para>
+	  </listitem>
+	</itemizedlist>
+  </sect2>
+
+
+	<sect2 id="installation_configuration">
+	  <title>Build configuration</title>
+
+	  <para>
+		As with most linux installations, the first step is to generate the
+		Makefile that will be used to build the source code. This is done by
+		running the shell script
+	  </para>
+
+	  <para>
+		<command>./configure</command>
+	  </para>
+
+	  <para>
+		With no additional parameters, this command will attempt to
+		automatically locate the required components and libraries needed to
+		build the PostGIS source code on your system. Although this is the most
+		common usage of <command>./configure</command>, the script accepts
+		several parameters for those who have the required libraries and
+		programs in non-standard locations.
+	  </para>
+	  <para>
+		The following list shows only the most commonly used parameters. For a
+		complete list, use the <command>--help</command> or
+		<command>--help=short</command> parameters.
+	  </para>
+
+	  <variablelist>
+		<varlistentry>
+		  <term><command>--with-library-minor-version</command></term>
+		  <listitem>
+			<para>Starting with PostGIS 3.0, the library files generated by default will no longer have the minor version
+			as part of the file name.  This means all PostGIS 3 libs will end in <code>postgis-3</code>.
+			This was done to make pg_upgrade easier, with downside that you can only install
+			one version PostGIS 3 series in your server.
+			To get the old behavior of file including the minor version: e.g. <code>postgis-3.0</code>
+			add this switch to your configure statement.</para>
+
+		  </listitem>
+		</varlistentry>
+
+
+		<varlistentry>
+
+		  <term><command>--prefix=PREFIX</command></term>
+		  <listitem>
+			<para>
+			  This is the location the PostGIS loader executables and shared libs will be installed.
+				By default, this location is the same as the
+			  detected PostgreSQL installation.
+			</para>
+
+			<caution>
+			  <para>
+				This parameter is currently broken, as the package will only
+				install into the PostgreSQL installation directory. Visit
+				<ulink url="http://trac.osgeo.org/postgis/ticket/635">
+				  http://trac.osgeo.org/postgis/ticket/635
+				</ulink>
+				to track this bug.
+			  </para>
+			</caution>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-pgconfig=FILE</command></term>
+		  <listitem>
+			<para>
+			  PostgreSQL provides a utility called <command>pg_config</command>
+			  to enable extensions like PostGIS to locate the PostgreSQL
+			  installation directory. Use this parameter
+			  (<command>--with-pgconfig=/path/to/pg_config</command>) to
+			  manually specify a particular PostgreSQL installation that PostGIS
+			  will build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-gdalconfig=FILE</command></term>
+		  <listitem>
+			<para>
+			  GDAL, a required library, provides functionality needed for raster support
+			  <command>gdal-config</command> to enable software installations to
+			  locate the GDAL installation directory. Use this parameter
+			  (<command>--with-gdalconfig=/path/to/gdal-config</command>) to
+			  manually specify a particular GDAL installation that PostGIS will
+			  build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-geosconfig=FILE</command></term>
+		  <listitem>
+			<para>
+			  GEOS, a required geometry library, provides a utility called
+			  <command>geos-config</command> to enable software installations to
+			  locate the GEOS installation directory. Use this parameter
+			  (<command>--with-geosconfig=/path/to/geos-config</command>) to
+			  manually specify a particular GEOS installation that PostGIS will
+			  build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-xml2config=FILE</command></term>
+		  <listitem>
+			<para>
+			  LibXML is the library required for doing GeomFromKML/GML processes.
+			  It normally is found if you have libxml installed, but if not or you want
+			  a specific version used, you'll need to point PostGIS at a specific
+			  <filename>xml2-config</filename> confi file to enable software installations to
+			  locate the LibXML installation directory. Use this parameter
+			  (<command>>--with-xml2config=/path/to/xml2-config</command>) to
+			  manually specify a particular LibXML installation that PostGIS will
+			  build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+
+
+		<varlistentry>
+		  <term><command>--with-projdir=DIR</command></term>
+		  <listitem>
+			<para>
+			  Proj4 is a reprojection library required by PostGIS. Use this
+			  parameter (<command>--with-projdir=/path/to/projdir</command>) to
+			  manually specify a particular Proj4 installation directory that
+			  PostGIS will build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-libiconv=DIR</command></term>
+		  <listitem>
+			<para>
+			  Directory where iconv is installed.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-jsondir=DIR</command></term>
+		  <listitem>
+			<para>
+			  <ulink url="http://oss.metaparadigm.com/json-c/">JSON-C</ulink> is an MIT-licensed JSON library required by PostGIS ST_GeomFromJSON support. Use this
+			  parameter (<command>--with-jsondir=/path/to/jsondir</command>) to
+			  manually specify a particular JSON-C installation directory that
+			  PostGIS will build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-pcredir=DIR</command></term>
+		  <listitem>
+			<para>
+			  <ulink url="http://www.pcre.org/">PCRE</ulink> is an BSD-licensed Perl Compatible Regular Expression library required by address_standardizer extension. Use this
+			  parameter (<command>--with-pcredir=/path/to/pcredir</command>) to
+			  manually specify a particular PCRE installation directory that
+			  PostGIS will build against.
+			</para>
+		  </listitem>
+		</varlistentry>
+
+		<varlistentry>
+		  <term><command>--with-gui</command></term>
+		  <listitem>
+			<para>
+			  Compile the data import GUI (requires GTK+2.0).  This will create shp2pgsql-gui graphical interface
+			  to shp2pgsql.
+			</para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--without-raster</command></term>
+		  <listitem>
+			<para>
+			  Compile without raster support.
+      </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--without-topology</command></term>
+		  <listitem>
+			<para>
+			  Disable topology support. There is no corresponding library
+			  as all logic needed for topology is in postgis-&last_release_version; library.
+			</para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--with-gettext=no</command></term>
+		  <listitem>
+			<para>
+			  By default PostGIS will try to detect gettext support and compile with it, however if you run into incompatibility issues that
+			  cause breakage of loader, you can disable it entirely with this command.  Refer to ticket <ulink url="http://trac.osgeo.org/postgis/ticket/748">http://trac.osgeo.org/postgis/ticket/748</ulink> for an example issue solved by configuring with this.
+			  NOTE: that you aren't missing much by turning this off.  This is used for international help/label support for the GUI loader which is not yet documented
+			  and still experimental.
+			</para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--with-sfcgal=PATH</command></term>
+		  <listitem>
+			<para>
+			  By default PostGIS will not install with sfcgal support without this switch.
+			  <varname>PATH</varname> is an optional argument that allows to specify an alternate PATH to sfcgal-config.
+			</para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--without-wagyu</command></term>
+		  <listitem>
+			<para>
+			  When building with MVT support, Postgis will use <ulink url="https://github.com/mapbox/wagyu/">Wagyu</ulink> to clip and validate MVT polygons. Wagyu is the fastest alternative and guarantees producing correct values for this specific case, but it requires a C++-11 compiler. With this optional argument you can disable using this library; GEOS will be used instead.
+			</para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><command>--without-phony-revision</command></term>
+		  <listitem>
+			<para>
+			  Disable updating postgis_revision.h to match current HEAD of the git repository.
+			</para>
+		  </listitem>
+		</varlistentry>
+	  </variablelist>
+	  <note>
+		<para>
+		  If you obtained PostGIS from the
+		  <ulink url="https://trac.osgeo.org/postgis/wiki/CodeRepository">
+			code repository
+		  </ulink>
+		  , the first step is really to run the script
+		</para>
+
+		<para>
+		  <command>./autogen.sh</command>
+		</para>
+
+		<para>
+		  This script will generate the <command>configure</command> script that
+		  in turn is used to customize the installation of PostGIS.
+		</para>
+
+		<para>
+		  If you instead obtained PostGIS as a tarball, running
+		  <command>./autogen.sh</command> is not necessary as
+		  <command>configure</command> has already been generated.
+		</para>
+	  </note>
+	</sect2>
+
+	<sect2>
+	  <title>Building</title>
+
+	  <para>
+		Once the Makefile has been generated, building PostGIS is as simple as
+		running
+	  </para>
+
+	  <para>
+		<command>make</command>
+	  </para>
+
+	  <para>
+		The last line of the output should be "<code>PostGIS was built
+		successfully. Ready to install.</code>"
+	  </para>
+
+	  <para>
+		As of PostGIS v1.4.0, all the functions have comments generated from the
+		documentation. If you wish to install these comments into your spatial
+		databases later, run the command which requires docbook.  The postgis_comments.sql and other
+		package comments files raster_comments.sql, topology_comments.sql are
+			also packaged in the tar.gz distribution in the doc folder so no need to make comments
+			if installing from the tar ball.  Comments are also included as part of the CREATE EXTENSION install.
+	  </para>
+
+	  <para>
+		<command>make comments</command>
+	  </para>
+
+	  <para>
+		Introduced in PostGIS 2.0. This generates html cheat sheets suitable for quick reference or for student handouts.
+		This requires xsltproc to build and will generate 4 files in doc folder <filename>topology_cheatsheet.html</filename>, <filename>tiger_geocoder_cheatsheet.html</filename>,
+			<filename>raster_cheatsheet.html</filename>, <filename>postgis_cheatsheet.html</filename>
+	  </para>
+	  <para>You can download some pre-built ones available in html and pdf from <ulink url="http://www.postgis.us/study_guides">PostGIS / PostgreSQL Study Guides</ulink></para>
+
+	  <para>
+		<command>make cheatsheets</command>
+	  </para>
+	</sect2>
+
+	<sect2 id="make_install_postgis_extensions">
+	  <title>Building PostGIS Extensions and Deploying them</title>
+
+	  <para>
+		The PostGIS extensions are built and installed automatically if you are using PostgreSQL 9.1+.
+	  </para>
+	  <para>If you are building from source repository, you need to build the function descriptions first. These get built if you have docbook installed. You can also manually build with the statement:
+    </para>
+	  <para>
+	  <command>make comments</command>
+    </para>
+	  <para>Building the comments is not necessary if you are building from a release tar ball since these are packaged pre-built with the tar ball already.</para>
+	  <para>The extensions should automatically build as part of the make install process.  You can if needed build from the extensions
+	  folders or copy files if you need them on a different server. </para>
+	  <programlisting>cd extensions
+cd postgis
+make clean
+make
+export PGUSER=postgres #overwrite psql variables
+make check #to test before install
+make install
+# to test extensions
+make check RUNTESTFLAGS=--extension</programlisting>
+		<note><para><code>make check</code> uses psql to run tests and as such can use psql environment variables.
+		Common ones useful to override are <varname>PGUSER</varname>,<varname>PGPORT</varname>, and <varname>PGHOST</varname>. Refer to <ulink url="https://www.postgresql.org/docs/current/libpq-envars.html">psql environment variables</ulink> </para></note>
+	  <para>The extension files will always be the same for the same version of PostGIS and PostgreSQL regardless of OS, so it is fine to copy over the extension files from one OS to another as long as you
+	  have the PostGIS binaries already installed on your servers. </para>
+		<para>If you want to install the extensions manually on a separate server different from your development,
+		You need to copy the following files from the extensions folder into the <filename>PostgreSQL / share / extension</filename> folder
+		of your PostgreSQL install as well as the needed binaries for regular PostGIS if you don't have them already on the server.
+	  </para>
+
+	  <itemizedlist>
+		<listitem>
+		  <para>
+			These are the control files that denote information such as the version of the extension to install if not specified.
+			<filename>postgis.control, postgis_topology.control</filename>.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+			All the files in the /sql folder of each extension.  Note that these need to be copied to the root of the PostgreSQL share/extension folder
+			<filename>extensions/postgis/sql/*.sql</filename>, <filename>extensions/postgis_topology/sql/*.sql</filename>
+		  </para>
+		</listitem>
+	 </itemizedlist>
+	 <para>Once you do that, you should see <varname>postgis</varname>, <varname>postgis_topology</varname> as available extensions in PgAdmin -> extensions.</para>
+	 <para>If you are using psql, you can verify that the extensions are installed by running this query:</para>
+	 <programlisting>SELECT name, default_version,installed_version
+FROM pg_available_extensions WHERE name LIKE 'postgis%' or name LIKE 'address%';
+
+             name             | default_version | installed_version
+------------------------------+-----------------+-------------------
+ address_standardizer         | &last_release_version;         | &last_release_version;
+ address_standardizer_data_us | &last_release_version;         | &last_release_version;
+ postgis                      | &last_release_version;         | &last_release_version;
+ postgis_raster               | &last_release_version;         | &last_release_version;
+ postgis_sfcgal               | &last_release_version;         |
+ postgis_tiger_geocoder       | &last_release_version;         | &last_release_version;
+ postgis_topology             | &last_release_version;         |
+(6 rows)</programlisting>
+
+<para>If you have the extension installed in the database you are querying, you'll see mention in the <varname>installed_version</varname> column.
+If you get no records back, it means you don't have postgis extensions installed on the server at all.  PgAdmin III 1.14+ will also provide this information
+in the <varname>extensions</varname> section of the database browser tree and will even allow upgrade or uninstall by right-clicking.</para>
+
+<para>If you have the extensions available, you can install postgis extension in your database of choice by either using pgAdmin extension interface or running these sql commands:</para>
+<programlisting>CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_raster;
+CREATE EXTENSION postgis_sfcgal;
+CREATE EXTENSION fuzzystrmatch; --needed for postgis_tiger_geocoder
+--optional used by postgis_tiger_geocoder, or can be used standalone
+CREATE EXTENSION address_standardizer;
+CREATE EXTENSION address_standardizer_data_us;
+CREATE EXTENSION postgis_tiger_geocoder;
+CREATE EXTENSION postgis_topology;</programlisting>
+
+<para>In psql you can use to see what versions you have installed and also what schema they are installed. </para>
+<programlisting>\connect mygisdb
+\x
+\dx postgis*</programlisting>
+
+<screen>List of installed extensions
+-[ RECORD 1 ]-------------------------------------------------
+Name        | postgis
+Version     | &last_release_version;
+Schema      | public
+Description | PostGIS geometry, geography, and raster spat..
+-[ RECORD 2 ]-------------------------------------------------
+Name        | postgis_raster
+Version     | 3.0.0dev
+Schema      | public
+Description | PostGIS raster types and functions
+-[ RECORD 3 ]-------------------------------------------------
+Name        | postgis_tiger_geocoder
+Version     | &last_release_version;
+Schema      | tiger
+Description | PostGIS tiger geocoder and reverse geocoder
+-[ RECORD 4 ]-------------------------------------------------
+Name        | postgis_topology
+Version     | &last_release_version;
+Schema      | topology
+Description | PostGIS topology spatial types and functions</screen>
+
+<warning><para>Extension tables <varname>spatial_ref_sys</varname>, <varname>layer</varname>, <varname>topology</varname> can not be explicitly backed up.  They can only
+be backed up when the respective <varname>postgis</varname> or <varname>postgis_topology</varname> extension is backed up, which only seems to happen when you backup the whole database.
+As of PostGIS 2.0.1, only srid records not packaged with PostGIS are backed up when the database is backed up so don't go around changing srids we package and expect your changes to be there. Put in a ticket if you find an issue.  The structures of extension tables are never backed up since they are created with <code>CREATE EXTENSION</code>
+and assumed to be the same for a given version of an extension. These behaviors are built into the current PostgreSQL extension model, so nothing we can do about it.</para></warning>
+
+<para>If you installed &last_release_version;, without using our
+wonderful extension system, you can change it to be extension based by
+running the below commands to package the functions in their respective extension.
+</para>
+<programlisting>
+CREATE EXTENSION postgis FROM unpackaged;
+CREATE EXTENSION postgis_raster FROM unpackaged;
+CREATE EXTENSION postgis_topology FROM unpackaged;
+CREATE EXTENSION postgis_tiger_geocoder FROM unpackaged;
+</programlisting>
+
+	</sect2>
+
+
+	<sect2>
+	  <title>Testing</title>
+
+	  <para>
+		If you wish to test the PostGIS build, run
+	  </para>
+
+	  <para>
+		<command>make check</command>
+	  </para>
+
+	  <para>
+		The above command will run through various checks and regression tests
+		using the generated library against an actual PostgreSQL database.
+	  </para>
+
+	  <note>
+		<para>
+		  If you configured PostGIS using non-standard PostgreSQL, GEOS, or
+		  Proj4 locations, you may need to add their library locations to the
+		  <varname>LD_LIBRARY_PATH</varname> environment variable.
+		</para>
+	  </note>
+
+	  <caution>
+		<para>
+		  Currently, the <command>make check</command> relies on the
+		  <code>PATH</code> and <code>PGPORT</code> environment variables when
+		  performing the checks - it does <emphasis>not</emphasis> use the
+		  PostgreSQL version that may have been specified using the
+		  configuration parameter <command>--with-pgconfig</command>. So make
+		  sure to modify your PATH to match the detected PostgreSQL installation
+		  during configuration or be prepared to deal with the impending
+		  headaches.
+		</para>
+	  </caution>
+
+	  <para>
+		If successful, the output of the test should be similar to the
+		following:
+	  </para>
+
+	  <programlisting>
+
+     CUnit - A unit testing framework for C - Version 2.1-3
+     http://cunit.sourceforge.net/
+
+
+Suite: algorithm
+  Test: test_lw_segment_side ...passed
+  Test: test_lw_segment_intersects ...passed
+  Test: test_lwline_crossing_short_lines ...passed
+  Test: test_lwline_crossing_long_lines ...passed
+  Test: test_lwline_crossing_bugs ...passed
+  Test: test_lwpoint_set_ordinate ...passed
+  Test: test_lwpoint_get_ordinate ...passed
+  Test: test_point_interpolate ...passed
+  Test: test_lwline_interpolate_points ...passed
+  Test: test_lwline_interpolate_point_3d ...passed
+  Test: test_lwline_clip ...passed
+  Test: test_lwpoly_clip ...passed
+  Test: test_lwtriangle_clip ...passed
+  Test: test_lwline_clip_big ...passed
+  Test: test_lwmline_clip ...passed
+  Test: test_geohash_point ...passed
+  Test: test_geohash_precision ...passed
+  Test: test_geohash ...passed
+  Test: test_geohash_point_as_int ...passed
+  Test: test_isclosed ...passed
+  Test: test_lwgeom_simplify ...passed
+  Test: test_lw_arc_center ...passed
+  Test: test_point_density ...passed
+  Test: test_kmeans ...passed
+  Test: test_median_handles_3d_correctly ...passed
+  Test: test_median_robustness ...passed
+  Test: test_lwpoly_construct_circle ...passed
+  Test: test_trim_bits ...passed
+  Test: test_lwgeom_remove_repeated_points ...passed
+Suite: buildarea
+  Test: buildarea1 ...passed
+  Test: buildarea2 ...passed
+  Test: buildarea3 ...passed
+  Test: buildarea4 ...passed
+  Test: buildarea4b ...passed
+  Test: buildarea5 ...passed
+  Test: buildarea6 ...passed
+  Test: buildarea7 ...passed
+Suite: geometry_clean
+  Test: test_lwgeom_make_valid ...passed
+Suite: clip_by_rectangle
+  Test: test_lwgeom_clip_by_rect ...DEBUG1: lwgeom_clip_by_rect: GEOS Error: IllegalArgumentException: Invalid number of points in LinearRing found 3 - must be 0 or >= 4
+passed
+Suite: force_sfs
+  Test: test_sfs_11 ...passed
+  Test: test_sfs_12 ...passed
+  Test: test_sqlmm ...passed
+Suite: geodetic
+  Test: test_sphere_direction ...passed
+  Test: test_sphere_project ...passed
+  Test: test_lwgeom_area_sphere ...passed
+  Test: test_gbox_from_spherical_coordinates ...passed
+  Test: test_gserialized_get_gbox_geocentric ...passed
+  Test: test_clairaut ...passed
+  Test: test_edge_intersection ...passed
+  Test: test_edge_intersects ...passed
+  Test: test_edge_distance_to_point ...passed
+  Test: test_edge_distance_to_edge ...passed
+  Test: test_lwgeom_distance_sphere ...passed
+  Test: test_lwgeom_check_geodetic ...passed
+  Test: test_gserialized_from_lwgeom ...passed
+  Test: test_spheroid_distance ...passed
+  Test: test_spheroid_area ...passed
+  Test: test_lwpoly_covers_point2d ...passed
+  Test: test_gbox_utils ...passed
+  Test: test_vector_angle ...passed
+  Test: test_vector_rotate ...passed
+  Test: test_lwgeom_segmentize_sphere ...passed
+  Test: test_ptarray_contains_point_sphere ...passed
+  Test: test_ptarray_contains_point_sphere_iowa ...passed
+  Test: test_gbox_to_string_truncated ...passed
+Suite: geos
+  Test: test_geos_noop ...passed
+  Test: test_geos_subdivide ...passed
+  Test: test_geos_linemerge ...passed
+  Test: test_geos_offsetcurve ...passed
+  Test: test_geos_offsetcurve_crash ...passed
+  Test: test_geos_makevalid ...passed
+Suite: clustering
+  Test: basic_test ...passed
+  Test: nonsequential_test ...passed
+  Test: basic_distance_test ...passed
+  Test: single_input_test ...passed
+  Test: empty_inputs_test ...passed
+  Test: multipoint_test ...passed
+  Test: dbscan_test ...passed
+  Test: dbscan_test_3612a ...passed
+  Test: dbscan_test_3612b ...passed
+  Test: dbscan_test_3612c ...passed
+Suite: clustering_unionfind
+  Test: test_unionfind_create ...passed
+  Test: test_unionfind_union ...passed
+  Test: test_unionfind_ordered_by_cluster ...passed
+  Test: test_unionfind_path_compression ...passed
+  Test: test_unionfind_collapse_cluster_ids ...passed
+Suite: homogenize
+  Test: test_coll_point ...passed
+  Test: test_coll_line ...passed
+  Test: test_coll_poly ...passed
+  Test: test_coll_coll ...passed
+  Test: test_geom ...passed
+  Test: test_coll_curve ...passed
+Suite: encoded_polyline_input
+  Test: in_encoded_polyline_test_geoms ...passed
+  Test: in_encoded_polyline_test_precision ...passed
+Suite: geojson_input
+  Test: in_geojson_test_srid ...passed
+  Test: in_geojson_test_bbox ...passed
+  Test: in_geojson_test_geoms ...passed
+Suite: iterator
+  Test: test_point_count ...passed
+  Test: test_ordering ...passed
+  Test: test_modification ...passed
+  Test: test_mixed_rw_access ...passed
+  Test: test_cannot_modify_read_only ...passed
+  Test: test_no_memory_leaked_when_iterator_is_partially_used ...passed
+Suite: twkb_input
+  Test: test_twkb_in_point ...passed
+  Test: test_twkb_in_linestring ...passed
+  Test: test_twkb_in_polygon ...passed
+  Test: test_twkb_in_multipoint ...passed
+  Test: test_twkb_in_multilinestring ...passed
+  Test: test_twkb_in_multipolygon ...passed
+  Test: test_twkb_in_collection ...passed
+  Test: test_twkb_in_precision ...passed
+Suite: serialization/deserialization
+  Test: test_typmod_macros ...passed
+  Test: test_flags_macros ...passed
+  Test: test_serialized_srid ...NOTICE: SRID value -3005 converted to the officially unknown SRID value 0
+passed
+  Test: test_gserialized_from_lwgeom_size ...passed
+  Test: test_gbox_serialized_size ...passed
+  Test: test_lwgeom_from_gserialized ...passed
+  Test: test_lwgeom_count_vertices ...passed
+  Test: test_on_gser_lwgeom_count_vertices ...passed
+  Test: test_geometry_type_from_string ...passed
+  Test: test_lwcollection_extract ...passed
+  Test: test_lwgeom_free ...passed
+  Test: test_lwgeom_swap_ordinates ...passed
+  Test: test_f2d ...passed
+  Test: test_lwgeom_clone ...passed
+  Test: test_lwgeom_force_clockwise ...passed
+  Test: test_lwgeom_calculate_gbox ...passed
+  Test: test_lwgeom_is_empty ...passed
+  Test: test_lwgeom_same ...passed
+  Test: test_lwline_from_lwmpoint ...passed
+  Test: test_lwgeom_as_curve ...passed
+  Test: test_lwgeom_scale ...passed
+  Test: test_gserialized_is_empty ...passed
+  Test: test_gserialized_peek_gbox_p_no_box_when_empty ...passed
+  Test: test_gserialized_peek_gbox_p_gets_correct_box ...passed
+  Test: test_gserialized_peek_gbox_p_fails_for_unsupported_cases ...passed
+  Test: test_gbox_same_2d ...passed
+  Test: test_signum_macro ...passed
+Suite: lwstroke
+  Test: test_lwcurve_linearize ...passed
+  Test: test_unstroke ...passed
+Suite: measures
+  Test: test_mindistance2d_tolerance ...passed
+  Test: test_mindistance3d_tolerance ...NOTICE: One or both of the geometries is missing z-value. The unknown z-value will be regarded as "any value"
+NOTICE: One or both of the geometries is missing z-value. The unknown z-value will be regarded as "any value"
+passed
+  Test: test_rect_tree_contains_point ...passed
+  Test: test_rect_tree_intersects_tree ...passed
+  Test: test_lwgeom_segmentize2d ...NOTICE: ptarray.c:448 - ptarray_segmentize2d: Too many segments required (1.000000e+101)
+NOTICE: liblwgeom code interrupted
+NOTICE: liblwgeom code interrupted
+NOTICE: liblwgeom code interrupted
+NOTICE: liblwgeom code interrupted
+passed
+  Test: test_lwgeom_locate_along ...passed
+  Test: test_lw_dist2d_pt_arc ...passed
+  Test: test_lw_dist2d_seg_arc ...passed
+  Test: test_lw_dist2d_arc_arc ...passed
+  Test: test_lw_arc_length ...passed
+  Test: test_lw_dist2d_pt_ptarrayarc ...passed
+  Test: test_lw_dist2d_ptarray_ptarrayarc ...passed
+  Test: test_lwgeom_tcpa ...passed
+  Test: test_lwgeom_is_trajectory ...NOTICE: Geometry is not a LINESTRING
+NOTICE: Line does not have M dimension
+NOTICE: Measure of vertex 1 (1) not bigger than measure of vertex 0 (1)
+NOTICE: Measure of vertex 1 (0) not bigger than measure of vertex 0 (1)
+NOTICE: Measure of vertex 2 (2) not bigger than measure of vertex 1 (3)
+passed
+  Test: test_rect_tree_distance_tree ...passed
+Suite: effectivearea
+  Test: do_test_lwgeom_effectivearea_lines ...passed
+  Test: do_test_lwgeom_effectivearea_polys ...passed
+Suite: chaikin
+  Test: do_test_chaikin_lines ...passed
+  Test: do_test_chaikin_polygons ...passed
+Suite: filterm
+  Test: do_test_filterm_single_geometries ...passed
+  Test: do_test_filterm_collections ...passed
+Suite: minimum_bounding_circle
+  Test: basic_test ...passed
+  Test: test_empty ...passed
+Suite: miscellaneous
+  Test: test_misc_force_2d ...passed
+  Test: test_misc_simplify ...passed
+  Test: test_misc_count_vertices ...passed
+  Test: test_misc_area ...passed
+  Test: test_misc_wkb ...passed
+  Test: test_grid ...passed
+  Test: test_grid_in_place ...passed
+  Test: test_clone ...passed
+  Test: test_lwmpoint_from_lwgeom ...passed
+Suite: noding
+  Test: test_lwgeom_node ...passed
+Suite: encoded_polyline_output
+  Test: out_encoded_polyline_test_geoms ...passed
+  Test: out_encoded_polyline_test_srid ...passed
+  Test: out_encoded_polyline_test_precision ...passed
+Suite: geojson_output
+  Test: out_geojson_test_precision ...passed
+  Test: out_geojson_test_dims ...passed
+  Test: out_geojson_test_srid ...passed
+  Test: out_geojson_test_bbox ...passed
+  Test: out_geojson_test_geoms ...passed
+Suite: gml_output
+  Test: out_gml_test_precision ...passed
+  Test: out_gml_test_srid ...passed
+  Test: out_gml_test_dims ...passed
+  Test: out_gml_test_geodetic ...passed
+  Test: out_gml_test_geoms ...passed
+  Test: out_gml_test_geoms_prefix ...passed
+  Test: out_gml_test_geoms_nodims ...passed
+  Test: out_gml2_extent ...passed
+  Test: out_gml3_extent ...passed
+Suite: kml_output
+  Test: out_kml_test_precision ...passed
+  Test: out_kml_test_dims ...passed
+  Test: out_kml_test_geoms ...passed
+  Test: out_kml_test_prefix ...passed
+Suite: svg_output
+  Test: out_svg_test_precision ...passed
+  Test: out_svg_test_dims ...passed
+  Test: out_svg_test_relative ...passed
+  Test: out_svg_test_geoms ...passed
+  Test: out_svg_test_srid ...passed
+Suite: x3d_output
+  Test: out_x3d3_test_precision ...passed
+  Test: out_x3d3_test_geoms ...passed
+  Test: out_x3d3_test_option ...passed
+Suite: ptarray
+  Test: test_ptarray_append_point ...passed
+  Test: test_ptarray_append_ptarray ...passed
+  Test: test_ptarray_locate_point ...passed
+  Test: test_ptarray_isccw ...passed
+  Test: test_ptarray_signed_area ...passed
+  Test: test_ptarray_insert_point ...passed
+  Test: test_ptarray_contains_point ...passed
+  Test: test_ptarrayarc_contains_point ...passed
+  Test: test_ptarray_scale ...passed
+Suite: printing
+  Test: test_lwprint_default_format ...passed
+  Test: test_lwprint_format_orders ...passed
+  Test: test_lwprint_optional_format ...passed
+  Test: test_lwprint_oddball_formats ...passed
+  Test: test_lwprint_bad_formats ...passed
+Suite: sfcgal
+  Test: test_sfcgal_noop ...passed
+Suite: split
+  Test: test_lwline_split_by_point_to ...passed
+  Test: test_lwgeom_split ...passed
+Suite: stringbuffer
+  Test: test_stringbuffer_append ...passed
+  Test: test_stringbuffer_aprintf ...passed
+Suite: surface
+  Test: triangle_parse ...passed
+  Test: tin_parse ...passed
+  Test: polyhedralsurface_parse ...passed
+  Test: surface_dimension ...passed
+Suite: spatial_trees
+  Test: test_tree_circ_create ...passed
+  Test: test_tree_circ_pip ...passed
+  Test: test_tree_circ_pip2 ...passed
+  Test: test_tree_circ_distance ...passed
+  Test: test_tree_circ_distance_threshold ...passed
+Suite: triangulate
+  Test: test_lwgeom_delaunay_triangulation ...passed
+  Test: test_lwgeom_voronoi_diagram ...passed
+  Test: test_lwgeom_voronoi_diagram_expected_empty ...passed
+  Test: test_lwgeom_voronoi_diagram_custom_envelope ...passed
+Suite: twkb_output
+  Test: test_twkb_out_point ...passed
+  Test: test_twkb_out_linestring ...passed
+  Test: test_twkb_out_polygon ...passed
+  Test: test_twkb_out_multipoint ...passed
+  Test: test_twkb_out_multilinestring ...passed
+  Test: test_twkb_out_multipolygon ...passed
+  Test: test_twkb_out_collection ...passed
+  Test: test_twkb_out_idlist ...passed
+Suite: varint
+  Test: test_zigzag ...passed
+  Test: test_varint ...passed
+  Test: test_varint_roundtrip ...passed
+Suite: wkb_input
+  Test: test_wkb_in_point ...passed
+  Test: test_wkb_in_linestring ...passed
+  Test: test_wkb_in_polygon ...passed
+  Test: test_wkb_in_multipoint ...passed
+  Test: test_wkb_in_multilinestring ...passed
+  Test: test_wkb_in_multipolygon ...passed
+  Test: test_wkb_in_collection ...passed
+  Test: test_wkb_in_circularstring ...passed
+  Test: test_wkb_in_compoundcurve ...passed
+  Test: test_wkb_in_curvpolygon ...passed
+  Test: test_wkb_in_multicurve ...passed
+  Test: test_wkb_in_multisurface ...passed
+  Test: test_wkb_in_malformed ...passed
+Suite: wkb_output
+  Test: test_wkb_out_point ...passed
+  Test: test_wkb_out_linestring ...passed
+  Test: test_wkb_out_polygon ...passed
+  Test: test_wkb_out_multipoint ...passed
+  Test: test_wkb_out_multilinestring ...passed
+  Test: test_wkb_out_multipolygon ...passed
+  Test: test_wkb_out_collection ...passed
+  Test: test_wkb_out_circularstring ...passed
+  Test: test_wkb_out_compoundcurve ...passed
+  Test: test_wkb_out_curvpolygon ...passed
+  Test: test_wkb_out_multicurve ...passed
+  Test: test_wkb_out_multisurface ...passed
+  Test: test_wkb_out_polyhedralsurface ...passed
+Suite: wkt_input
+  Test: test_wkt_in_point ...passed
+  Test: test_wkt_in_linestring ...passed
+  Test: test_wkt_in_polygon ...passed
+  Test: test_wkt_in_multipoint ...passed
+  Test: test_wkt_in_multilinestring ...passed
+  Test: test_wkt_in_multipolygon ...passed
+  Test: test_wkt_in_collection ...passed
+  Test: test_wkt_in_circularstring ...passed
+  Test: test_wkt_in_compoundcurve ...passed
+  Test: test_wkt_in_curvpolygon ...passed
+  Test: test_wkt_in_multicurve ...passed
+  Test: test_wkt_in_multisurface ...passed
+  Test: test_wkt_in_tin ...passed
+  Test: test_wkt_in_polyhedralsurface ...passed
+  Test: test_wkt_in_errlocation ...passed
+  Test: test_wkt_double ...passed
+Suite: wkt_output
+  Test: test_wkt_out_point ...passed
+  Test: test_wkt_out_linestring ...passed
+  Test: test_wkt_out_polygon ...passed
+  Test: test_wkt_out_multipoint ...passed
+  Test: test_wkt_out_multilinestring ...passed
+  Test: test_wkt_out_multipolygon ...passed
+  Test: test_wkt_out_collection ...passed
+  Test: test_wkt_out_circularstring ...passed
+  Test: test_wkt_out_compoundcurve ...passed
+  Test: test_wkt_out_curvpolygon ...passed
+  Test: test_wkt_out_multicurve ...passed
+  Test: test_wkt_out_multisurface ...passed
+Suite: wrapx
+  Test: test_lwgeom_wrapx ...passed
+
+Run Summary:    Type  Total    Ran Passed Failed Inactive
+              suites     44     44    n/a      0        0
+               tests    300    300    300      0        0
+             asserts   4215   4215   4215      0      n/a
+Elapsed time =    0.229 seconds
+
+PostgreSQL 12devel on x86_64-w64-mingw32, compiled by gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0, 64-bit
+  Postgis 3.0.0dev - r17081 - 2018-11-28 18:50:02
+  scripts 3.0.0dev r17081
+  GEOS: 3.7.0-CAPI-1.11.0 673b9939
+  PROJ: Rel. 5.2.0, September 15th, 2018
+
+Running tests
+
+ ../loader/Point .............. ok
+ ../loader/PointM .............. ok
+ ../loader/PointZ .............. ok
+ ../loader/MultiPoint .............. ok
+ ../loader/MultiPointM .............. ok
+ ../loader/MultiPointZ .............. ok
+ ../loader/Arc .............. ok
+ ../loader/ArcM .............. ok
+ ../loader/ArcZ .............. ok
+ ../loader/Polygon .............. ok
+ ../loader/PolygonM .............. ok
+ ../loader/PolygonZ .............. ok
+ ../loader/TSTPolygon ......... ok
+ ../loader/TSIPolygon ......... ok
+ ../loader/TSTIPolygon ......... ok
+ ../loader/PointWithSchema ..... ok
+ ../loader/NoTransPoint ......... ok
+ ../loader/NotReallyMultiPoint ......... ok
+ ../loader/MultiToSinglePoint ......... ok
+ ../loader/ReprojectPts ........ ok
+ ../loader/ReprojectPtsGeog ........ ok
+ ../loader/Latin1 .... ok
+ ../loader/Latin1-implicit .... ok
+ ../loader/mfile .... ok
+ ../dumper/literalsrid ....... ok
+ ../dumper/realtable ....... ok
+ affine .. ok
+ bestsrid .. ok
+ binary .. ok
+ boundary .. ok
+ chaikin .. ok
+ filterm .. ok
+ cluster .. ok
+ concave_hull .. ok
+ concave_hull_hard .. ok
+ ctors .. ok
+ curvetoline .. ok
+ dump .. ok
+ dumppoints .. ok
+ empty .. ok
+ estimatedextent .. ok
+ forcecurve .. ok
+ geography .. ok
+ geometric_median .. ok
+ in_geohash .. ok
+ in_gml .. ok
+ in_kml .. ok
+ in_encodedpolyline .. ok
+ iscollection .. ok
+ legacy .. ok
+ long_xact .. ok
+ lwgeom_regress .. ok
+ measures .. ok
+ minimum_bounding_circle .. ok
+ normalize .. ok
+ operators .. ok
+ orientation .. ok
+ out_geometry .. ok
+ out_geography .. ok
+ polygonize .. ok
+ polyhedralsurface .. ok
+ postgis_type_name .. ok
+ quantize_coordinates .. ok
+ regress .. ok
+ regress_bdpoly .. ok
+ regress_gist_index_nd .. ok
+ regress_index .. ok
+ regress_index_nulls .. ok
+ regress_management .. ok
+ regress_selectivity .. ok
+ regress_lrs .. ok
+ regress_ogc .. ok
+ regress_ogc_cover .. ok
+ regress_ogc_prep .. ok
+ regress_proj .. ok
+ relate .. ok
+ remove_repeated_points .. ok
+ removepoint .. ok
+ reverse .. ok
+ setpoint .. ok
+ simplify .. ok
+ simplifyvw .. ok
+ size .. ok
+ snaptogrid .. ok
+ split .. ok
+ sql-mm-serialize .. ok
+ sql-mm-circularstring .. ok
+ sql-mm-compoundcurve .. ok
+ sql-mm-curvepoly .. ok
+ sql-mm-general .. ok
+ sql-mm-multicurve .. ok
+ sql-mm-multisurface .. ok
+ swapordinates .. ok
+ summary .. ok
+ temporal .. ok
+ tickets .. ok
+ twkb .. ok
+ typmod .. ok
+ wkb .. ok
+ wkt .. ok
+ wmsservers .. ok
+ knn_recheck .. ok
+ temporal_knn .. ok
+ hausdorff .. ok
+ regress_buffer_params .. ok
+ frechet .. ok
+ offsetcurve .. ok
+ relatematch .. ok
+ isvaliddetail .. ok
+ sharedpaths .. ok
+ snap .. ok
+ node .. ok
+ unaryunion .. ok
+ clean .. ok
+ relate_bnr .. ok
+ delaunaytriangles .. ok
+ clipbybox2d .. ok
+ subdivide .. ok
+ voronoi .. ok
+ minimum_clearance .. ok
+ oriented_envelope .. ok
+ in_geojson .. ok
+ regress_brin_index .. ok
+ regress_brin_index_3d .. ok
+ regress_brin_index_geography .. ok
+ regress_spgist_index_2d .. ok
+ regress_spgist_index_3d .. ok
+ regress_spgist_index_nd .. ok
+ mvt .. ok
+ geobuf .. ok
+ mvt_jsonb .. ok
+ uninstall .. ok (4643)
+
+Run tests: 134
+Failed: 0
+
+
+-- if you build with SFCGAL
+
+PostgreSQL 12devel on x86_64-w64-mingw32, compiled by gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0, 64-bit
+  Postgis 3.0.0dev - r17081 - 2018-11-28 18:50:02
+  scripts 3.0.0dev r17081
+  GEOS: 3.7.0-CAPI-1.11.0 673b9939
+  PROJ: Rel. 5.2.0, September 15th, 2018
+  SFCGAL: 1.3.2
+
+Running tests
+
+ regress_sfcgal .. ok
+ empty .. ok
+ geography .. ok
+ legacy .. ok
+ measures .. ok
+ regress_ogc_prep .. ok
+ regress_ogc .. ok
+ regress .. ok
+ tickets .. ok
+ concave_hull .. ok
+ wmsservers .. ok
+ approximatemedialaxis .. ok
+ uninstall .. ok (4643)
+
+Run tests: 13
+Failed: 0
+
+-- if you built with raster support
+
+
+
+     CUnit - A unit testing framework for C - Version 2.1-2
+     http://cunit.sourceforge.net/
+
+
+Suite: pixtype
+  Test: test_pixtype_size ...passed
+  Test: test_pixtype_alignment ...passed
+  Test: test_pixtype_name ...passed
+  Test: test_pixtype_index_from_name ...passed
+  Test: test_pixtype_get_min_value ...passed
+  Test: test_pixtype_compare_clamped_values ...passed
+Suite: raster_basics
+  Test: test_raster_new ...passed
+  Test: test_raster_empty ...passed
+  Test: test_raster_metadata ...passed
+  Test: test_raster_clone ...passed
+  Test: test_raster_from_band ...passed
+  Test: test_raster_replace_band ...passed
+Suite: band_basics
+  Test: test_band_metadata ...passed
+  Test: test_band_pixtype_1BB ...passed
+  Test: test_band_pixtype_2BUI ...passed
+  Test: test_band_pixtype_4BUI ...passed
+  Test: test_band_pixtype_8BUI ...passed
+  Test: test_band_pixtype_8BSI ...passed
+  Test: test_band_pixtype_16BUI ...passed
+  Test: test_band_pixtype_16BSI ...passed
+  Test: test_band_pixtype_32BUI ...passed
+  Test: test_band_pixtype_32BSI ...passed
+  Test: test_band_pixtype_32BF ...passed
+  Test: test_band_pixtype_64BF ...passed
+  Test: test_band_get_pixel_line ...WARNING: Limiting returning number values to 1
+WARNING: Attempting to get pixel values with out of range raster coordinates: (5, 5)
+passed
+  Test: test_band_new_offline_from_path ...passed
+Suite: raster_wkb
+  Test: test_raster_wkb ...SRID value -1 converted to the officially unknown SRID value 0
+SRID value -1 converted to the officially unknown SRID value 0
+SRID value -1 converted to the officially unknown SRID value 0
+SRID value -1 converted to the officially unknown SRID value 0
+SRID value -1 converted to the officially unknown SRID value 0
+SRID value -1 converted to the officially unknown SRID value 0
+passed
+Suite: gdal
+  Test: test_gdal_configured ...passed
+  Test: test_gdal_drivers ...passed
+  Test: test_gdal_rasterize ...passed
+  Test: test_gdal_polygonize ...passed
+  Test: test_raster_to_gdal ...Warning 6: PNG driver doesn't support data type Float64. Only eight bit (Byte) and sixteen bit (UInt16) bands supported. Defaulting to Byte
+
+passed
+  Test: test_gdal_to_raster ...passed
+  Test: test_gdal_warp ...passed
+Suite: raster_geometry
+  Test: test_raster_envelope ...passed
+  Test: test_raster_envelope_geom ...passed
+  Test: test_raster_convex_hull ...passed
+  Test: test_raster_surface ...INFO: Ring Self-intersection at or near point 2 -2
+INFO: Ring Self-intersection at or near point 3 -3
+passed
+  Test: test_raster_perimeter ...passed
+  Test: test_raster_pixel_as_polygon ...passed
+Suite: raster_misc
+  Test: test_raster_cell_to_geopoint ...passed
+  Test: test_raster_geopoint_to_cell ...passed
+  Test: test_raster_from_two_rasters ...passed
+  Test: test_raster_compute_skewed_raster ...passed
+Suite: band_stats
+  Test: test_band_stats ...passed
+  Test: test_band_value_count ...passed
+Suite: band_misc
+  Test: test_band_get_nearest_pixel ...passed
+  Test: test_band_get_pixel_of_value ...passed
+  Test: test_pixel_set_to_array ...passed
+Suite: mapalgebra
+  Test: test_raster_iterator ...passed
+  Test: test_band_reclass ...passed
+  Test: test_raster_colormap ...passed
+Suite: spatial_relationship
+  Test: test_raster_geos_overlaps ...passed
+  Test: test_raster_geos_touches ...passed
+  Test: test_raster_geos_contains ...passed
+  Test: test_raster_geos_contains_properly ...passed
+  Test: test_raster_geos_covers ...passed
+  Test: test_raster_geos_covered_by ...passed
+  Test: test_raster_within_distance ...passed
+  Test: test_raster_fully_within_distance ...passed
+  Test: test_raster_intersects ...passed
+  Test: test_raster_same_alignment ...passed
+Suite: misc
+  Test: test_rgb_to_hsv ...passed
+  Test: test_hsv_to_rgb ...passed
+  Test: test_util_gdal_open ...passed
+
+Run Summary:    Type  Total    Ran Passed Failed Inactive
+              suites     12     12    n/a      0        0
+               tests     65     65     65      0        0
+             asserts  45896  45896  45896      0      n/a
+
+Elapsed time =    0.499 seconds
+
+Loading Raster into 'postgis_reg'
+PostgreSQL 12devel on x86_64-w64-mingw32, compiled by gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0, 64-bit
+  Postgis 3.0.0dev - r17081 - 2018-11-28 18:50:02
+  scripts 3.0.0dev r17081
+  raster scripts 3.0.0dev r17081
+  GEOS: 3.7.0-CAPI-1.11.0 673b9939
+  PROJ: Rel. 5.2.0, September 15th, 2018
+  GDAL: GDAL 2.3.1, released 2018/06/22
+
+Running tests
+
+ check_gdal .. ok
+ load_outdb ... ok
+ check_raster_columns .. ok
+ check_raster_overviews .. ok
+ rt_io .. ok
+ rt_bytea .. ok
+ rt_wkb .. ok
+ box3d .. ok
+ rt_addband .. ok
+ rt_band .. ok
+ rt_tile .. ok
+ rt_dimensions .. ok
+ rt_scale .. ok
+ rt_pixelsize .. ok
+ rt_upperleft .. ok
+ rt_rotation .. ok
+ rt_georeference .. ok
+ rt_set_properties .. ok
+ rt_isempty .. ok
+ rt_hasnoband .. ok
+ rt_metadata .. ok
+ rt_rastertoworldcoord .. ok
+ rt_worldtorastercoord .. ok
+ rt_convexhull .. ok
+ rt_envelope .. ok
+ rt_band_properties .. ok
+ rt_set_band_properties .. ok
+ rt_pixelaspolygons .. ok
+ rt_pixelaspoints .. ok
+ rt_pixelascentroids .. ok
+ rt_setvalues_array .. ok
+ rt_summarystats .. ok
+ rt_count .. ok
+ rt_histogram .. ok
+ rt_quantile .. ok
+ rt_valuecount .. ok
+ rt_valuepercent .. ok
+ rt_bandmetadata .. ok
+ rt_pixelvalue .. ok
+ rt_neighborhood .. ok
+ rt_nearestvalue .. ok
+ rt_pixelofvalue .. ok
+ rt_polygon .. ok
+ rt_setbandpath .. ok
+ rt_utility .. ok
+ rt_fromgdalraster .. ok
+ rt_asgdalraster .. ok
+ rt_astiff .. ok
+ rt_asjpeg .. ok
+ rt_aspng .. ok
+ rt_reclass .. ok
+ rt_gdalwarp .. ok
+ rt_asraster .. ok
+ rt_dumpvalues .. ok
+ rt_makeemptycoverage .. ok
+ rt_createoverview .. ok
+ rt_mapalgebraexpr .. ok
+ rt_mapalgebrafct .. ok
+ rt_mapalgebraexpr_2raster .. ok
+ rt_mapalgebrafct_2raster .. ok
+ rt_mapalgebrafctngb .. ok
+ rt_mapalgebrafctngb_userfunc .. ok
+ rt_intersection .. ok
+ rt_clip .. ok
+ rt_mapalgebra .. ok
+ rt_mapalgebra_expr .. ok
+ rt_mapalgebra_mask .. ok
+ rt_union .. ok
+ rt_invdistweight4ma .. ok
+ rt_4ma .. ok
+ rt_setvalues_geomval .. ok
+ rt_elevation_functions .. ok
+ rt_colormap .. ok
+ rt_grayscale .. ok
+ rt_gist_relationships .. ok
+ rt_intersects .. ok
+ rt_samealignment .. ok
+ rt_geos_relationships .. ok
+ rt_iscoveragetile .. ok
+ bug_test_car5 .. ok
+ permitted_gdal_drivers .. ok
+ tickets .. ok
+ loader/Basic .. ok
+ loader/Projected ... ok
+ loader/BasicCopy .. ok
+ loader/BasicFilename .. ok
+ loader/BasicOutDB .. ok
+ loader/Tiled10x10 .. ok
+ loader/Tiled10x10Copy .. ok
+ loader/Tiled8x8 .. ok
+ clean .. ok
+ uninstall .. ok (4643)
+
+Run tests: 101
+Failed: 0
+
+-- topology regress
+PostgreSQL 12devel on x86_64-w64-mingw32, compiled by gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0, 64-bit
+  Postgis 3.0.0dev - r17081 - 2018-11-28 18:50:02
+  scripts 3.0.0dev r17081
+  GEOS: 3.7.0-CAPI-1.11.0 673b9939
+  PROJ: Rel. 5.2.0, September 15th, 2018
+
+Running tests
+
+ regress/legacy_validate .. ok
+ regress/legacy_predicate .. ok
+ regress/legacy_invalid .. ok
+ regress/sqlmm .. ok
+ regress/legacy_query .. ok
+ regress/addnode .. ok
+ regress/addedge .. ok
+ regress/addface .. ok
+ regress/addface2.5d .. ok
+ regress/addtopogeometrycolumn .. ok
+ regress/polygonize .. ok
+ regress/st_addisoedge .. ok
+ regress/st_addisonode .. ok
+ regress/st_addedgemodface .. ok
+ regress/st_addedgenewfaces .. ok
+ regress/st_changeedgegeom .. ok
+ regress/st_createtopogeo .. ok
+ regress/st_getfacegeometry .. ok
+ regress/st_getfaceedges .. ok
+ regress/st_modedgeheal .. ok
+ regress/st_modedgesplit .. ok
+ regress/st_newedgeheal .. ok
+ regress/st_newedgessplit .. ok
+ regress/st_remedgenewface .. ok
+ regress/st_remedgemodface .. ok
+ regress/st_simplify .. ok
+ regress/topoelement .. ok
+ regress/topoelementarray_agg .. ok
+ regress/topogeo_addlinestring .. ok
+ regress/topogeo_addpoint .. ok
+ regress/topogeo_addpolygon .. ok
+ regress/topogeom_edit .. ok
+ regress/topogeometry_type .. ok
+ regress/topojson .. ok
+ regress/topologysummary .. ok
+ regress/topo2.5d .. ok
+ regress/totopogeom .. ok
+ regress/droptopology .. ok
+ regress/droptopogeometrycolumn .. ok
+ regress/copytopology .. ok
+ regress/createtopogeom .. ok
+ regress/createtopology .. ok
+ regress/gml .. ok
+ regress/getnodebypoint .. ok
+ regress/getedgebypoint .. ok
+ regress/getfacebypoint .. ok
+ regress/getringedges .. ok
+ regress/gettopogeomelements .. ok
+ regress/layertrigger .. ok
+ regress/validatetopology .. ok
+ uninstall .. ok (4643)
+
+Run tests: 51
+Failed: 0
+
+-- if you built --with-gui, you should see this too
+
+     CUnit - A unit testing framework for C - Version 2.1-2
+     http://cunit.sourceforge.net/
+
+
+Suite: Shapefile Loader File shp2pgsql Test
+  Test: test_ShpLoaderCreate() ...passed
+  Test: test_ShpLoaderDestroy() ...passed
+Suite: Shapefile Loader File pgsql2shp Test
+  Test: test_ShpDumperCreate() ...passed
+  Test: test_ShpDumperDestroy() ...passed
+
+Run Summary:    Type  Total    Ran Passed Failed Inactive
+              suites      2      2    n/a      0        0
+               tests      4      4      4      0        0
+             asserts      4      4      4      0      n/a</programlisting>
+
+	  <para>The <varname>postgis_tiger_geocoder</varname> and <varname>address_standardizer</varname> extensions, currenlty only support the standard PostgreSQL installcheck.  To test these use the below.  Note: the make install is not necessary if you already did make install at root of PostGIS code folder.</para>
+	  <para>For address_standardizer:
+	  <programlisting>cd extensions/address_standardizer
+make install
+make installcheck
+	  </programlisting></para>
+
+	  <para>Output should look like:
+	  <screen>============== dropping database "contrib_regression" ==============
+DROP DATABASE
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test-init-extensions     ... ok
+test test-parseaddress        ... ok
+test test-standardize_address_1 ... ok
+test test-standardize_address_2 ... ok
+
+=====================
+ All 4 tests passed.
+=====================</screen></para>
+
+	  <para>For tiger geocoder, make sure you have postgis and fuzzystrmatch extensions available in your PostgreSQL instance. The address_standardizer tests will also kick in if you built postgis with address_standardizer support:
+	  <programlisting>cd extensions/postgis_tiger_geocoder
+make install
+make installcheck
+	  </programlisting></para>
+	  <para>output should look like:
+	  <screen>============== dropping database "contrib_regression" ==============
+DROP DATABASE
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== installing fuzzystrmatch               ==============
+CREATE EXTENSION
+============== installing postgis                     ==============
+CREATE EXTENSION
+============== installing postgis_tiger_geocoder      ==============
+CREATE EXTENSION
+============== installing address_standardizer        ==============
+CREATE EXTENSION
+============== running regression test queries        ==============
+test test-normalize_address   ... ok
+test test-pagc_normalize_address ... ok
+
+=====================
+All 2 tests passed.
+=====================</screen></para>
+	</sect2>
+
+	<sect2>
+	  <title>Installation</title>
+
+	  <para>
+		To install PostGIS, type
+	  </para>
+
+	  <para>
+		<command>make install</command>
+	  </para>
+
+	  <para>
+		This will copy the PostGIS installation files into their appropriate
+		subdirectory specified by the <command>--prefix</command> configuration
+		parameter. In particular:
+	  </para>
+
+	  <itemizedlist>
+		<listitem>
+		  <para>
+			The loader and dumper binaries are installed in
+			<filename>[prefix]/bin</filename>.
+		  </para>
+		</listitem>
+
+		<listitem>
+		  <para>
+			The SQL files, such as <filename>postgis.sql</filename>, are
+			installed in <filename>[prefix]/share/contrib</filename>.
+		  </para>
+		</listitem>
+
+		<listitem>
+		  <para>
+			The PostGIS libraries are installed in
+			<filename>[prefix]/lib</filename>.
+		  </para>
+		</listitem>
+	  </itemizedlist>
+
+	  <para>
+		If you previously ran the <command>make comments</command> command to
+		generate the <filename>postgis_comments.sql</filename>, <filename>raster_comments.sql</filename> file, install the
+		sql file by running
+	  </para>
+
+	  <para>
+		<command>make comments-install</command>
+	  </para>
+
+	  <note>
+		<para>
+		  <filename>postgis_comments.sql</filename>, <filename>raster_comments.sql</filename>, <filename>topology_comments.sql</filename> was separated from the
+		  typical build and installation targets since with it comes the extra
+		  dependency of <command>xsltproc</command>.
+		</para>
+	  </note>
+	</sect2>
+  </sect1>
+
+  <sect1 id="installing_pagc_address_standardizer"><title>Installing and Using the address standardizer</title>
+		<para>The <code>address_standardizer</code> extension used to be a separate package that required separate download. From PostGIS 2.2 on, it is now bundled in.
+		For more information about the address_standardize, what it does, and how to configure it for your needs, refer to <xref linkend="Address_Standardizer" />.</para>
+		<para>This standardizer can be used in conjunction with the PostGIS packaged tiger geocoder extension as a replacement for the <xref linkend="Normalize_Address" /> discussed.
+		To use as replacement refer to  <xref linkend="tiger_pagc_address_standardizing" />.
+		You can also use it as a building block for your own geocoder or use it to standardize your addresses for easier compare of addresses.</para>
+
+		<para>The address standardizer relies on PCRE which is usually already installed on many Nix systems,
+but you can download the latest at: <ulink url="http://www.pcre.org">http://www.pcre.org</ulink>. If during <xref linkend="installation_configuration" />, PCRE is found, then the address standardizer extension will automatically be built.  If you have a custom pcre install you want to use instead, pass to configure <code>--with-pcredir=/path/to/pcre</code> where <filename>/path/to/pcre</filename> is the root folder for your pcre include and lib directories.</para>
+
+		<para>For Windows users, the PostGIS 2.1+ bundle is packaged with the address_standardizer already so no need to compile and can move straight to <code>CREATE EXTENSION</code> step.</para>
+
+
+      <para>Once you have installed, you can connect to your database and run the SQL:</para>
+			<programlisting>CREATE EXTENSION address_standardizer;</programlisting>
+
+			<para>The following test requires no rules, gaz, or lex tables</para>
+			<programlisting>SELECT num, street, city, state, zip
+ FROM parse_address('1 Devonshire Place PH301, Boston, MA 02109');</programlisting>
+			<para>Output should be</para>
+			<screen> num |         street         |  city  | state |  zip
+-----+------------------------+--------+-------+-------
+ 1   | Devonshire Place PH301 | Boston | MA    | 02109</screen>
+
+        <sect2><title>Installing Regex::Assemble</title>
+            <para>Perl Regex:Assemble is no longer needed for compiling address_standardizer extension since the files it generates are part of the source tree.  However if you need to edit the <filename>usps-st-city-orig.txt</filename> or <filename>usps-st-city-orig.txt usps-st-city-adds.tx</filename>, you need to rebuild <filename>parseaddress-stcities.h</filename> which does require Regex:Assemble.</para>
+            <programlisting>cpan Regexp::Assemble</programlisting>
+            <para>or if you are on Ubuntu / Debian you might need to do</para>
+            <programlisting>sudo perl -MCPAN -e "install Regexp::Assemble"</programlisting>
+        </sect2>
+	</sect1>
+
+  <sect1 id="loading_extras_tiger_geocoder">
+	<title>Installing, Upgrading Tiger Geocoder and loading data</title>
+
+	<para>Extras like Tiger geocoder may not be packaged in your PostGIS distribution. If you are missing the tiger geocoder extension or want a newer version than what your install comes with, then use
+	the <filename>share/extension/postgis_tiger_geocoder.*</filename> files from the packages in <ulink url="http://postgis.net/windows_downloads/">Windows Unreleased Versions</ulink> section for your version of PostgreSQL.
+	Although these packages are for windows, the postgis_tiger_geocoder extension files will work on any OS since the extension is an SQL/plpgsql only extension.</para>
+	<sect2 id="install_tiger_geocoder_extension">
+		<title>Tiger Geocoder Enabling your PostGIS database: Using Extension</title>
+		<para>If you are using PostgreSQL 9.1+ and PostGIS 2.1+, you can take advantage of the new extension model for installing tiger geocoder. To do so:</para>
+		<orderedlist>
+			<listitem><para>First get binaries for PostGIS 2.1+ or compile and install as usual.  This should install the necessary extension files as well for tiger geocoder.</para></listitem>
+			<listitem><para>Connect to your database via psql or pgAdmin or some other tool and run the following SQL commands.  Note that if you are installing in a database that already has postgis, you don't need to do the first step.  If you have <varname>fuzzystrmatch</varname> extension already installed, you don't need to do the second step either.</para>
+			<para><programlisting>CREATE EXTENSION postgis;
+CREATE EXTENSION fuzzystrmatch;
+CREATE EXTENSION postgis_tiger_geocoder;
+--this one is optional if you want to use the rules based standardizer (pagc_normalize_address)
+CREATE EXTENSION address_standardizer;</programlisting></para>
+
+<para>If you already have postgis_tiger_geocoder extension installed, and just want to update to the latest run:</para>
+<programlisting>ALTER EXTENSION postgis UPDATE;
+ALTER EXTENSION postgis_tiger_geocoder UPDATE;</programlisting>
+<para>If you made custom entries or changes to <varname>tiger.loader_platform</varname> and <varname>tiger.loader_variables</varname> you may need to update these.</para>
+</listitem>
+			<listitem><para>To confirm your install is working correctly, run this sql in your database:</para>
+				<programlisting>SELECT na.address, na.streetname,na.streettypeabbrev, na.zip
+	FROM normalize_address('1 Devonshire Place, Boston, MA 02109') AS na;</programlisting>
+				<para>Which should output</para>
+				<para><screen> address | streetname | streettypeabbrev |  zip
+---------+------------+------------------+-------
+	   1 | Devonshire | Pl               | 02109</screen></para>
+			</listitem>
+			<listitem><para>Create a new record in <varname>tiger.loader_platform</varname> table with the paths of your executables and server. </para>
+				<para>So for example to create a profile called debbie that follows <code>sh</code> convention. You would do:</para>
+				<programlisting>INSERT INTO tiger.loader_platform(os, declare_sect, pgbin, wget, unzip_command, psql, path_sep,
+		   loader, environ_set_command, county_process_command)
+SELECT 'debbie', declare_sect, pgbin, wget, unzip_command, psql, path_sep,
+	   loader, environ_set_command, county_process_command
+  FROM tiger.loader_platform
+  WHERE os = 'sh';</programlisting>
+				<para>And then edit the paths in the <emphasis>declare_sect</emphasis> column to those that fit Debbie's pg, unzip,shp2pgsql, psql, etc path locations.</para>
+
+				<para>If you don't edit this  <varname>loader_platform</varname> table, it will just contain common case locations of items and you'll have to edit the generated script after the script is generated.</para>
+			</listitem>
+			<listitem><para>As of PostGIS 2.4.1 the Zip code-5 digit tabulation area <varname>zcta5</varname> load step was revised to load current zcta5 data and is part of the  <xref linkend="Loader_Generate_Nation_Script" /> when enabled.
+It is turned off by default because it takes quite a bit of time to load (20 to 60 minutes), takes up quite a bit of disk space, and is not used that often.</para>
+<para>To enable it, do the following:</para>
+<programlisting>UPDATE tiger.loader_lookuptables SET load = true WHERE table_name = 'zcta510';</programlisting>
+<para>
+If present the <xref linkend="Geocode" /> function can use it if a boundary filter is added to limit to just zips in that boundary.
+The <xref linkend="Reverse_Geocode" /> function uses it if the returned address is missing a zip, which often happens with highway reverse geocoding.</para></listitem>
+			<listitem><para>Create a folder called <filename>gisdata</filename> on root of server or your local pc if you have a fast network connection to the server. This folder is
+where the tiger files will be downloaded to and processed.  If you are not happy with having the folder on the root of the server, or simply want to change to a different folder for staging, then edit the field <varname>staging_fold</varname> in the <varname>tiger.loader_variables</varname> table.</para></listitem>
+            <listitem><para>Create a folder called temp in the <filename>gisdata</filename> folder or whereever you designated the <varname>staging_fold</varname> to be.  This will be
+the folder where the loader extracts the downloaded tiger data.</para></listitem>
+			<listitem><para>Then run the  <xref linkend="Loader_Generate_Nation_Script" />  SQL function make sure to use the name of your custom profile and copy the script to a .sh or .bat file.  So for example to build  the nation load:</para>
+					<programlisting>psql -c "SELECT Loader_Generate_Nation_Script('debbie')" -d geocoder -tA > /gisdata/nation_script_load.sh</programlisting>
+			</listitem>
+
+			<listitem><para>Run the generated nation load commandline scripts.</para>
+				<programlisting>cd /gisdata
+sh nation_script_load.sh</programlisting>
+      </listitem>
+
+      <listitem><para>After you are done running the nation script, you should have three tables in your <code>tiger_data</code> schema and they should be filled with data. Confirm you do by doing the following queries from psql or pgAdmin</para>
+				<programlisting>SELECT count(*) FROM tiger_data.county_all;</programlisting>
+<screen> count
+-------
+  3233
+(1 row)</screen>
+				<programlisting>SELECT count(*) FROM tiger_data.state_all;</programlisting>
+<screen>
+ count
+-------
+    56
+(1 row)
+</screen>
+      </listitem>
+
+			<listitem><para>By default the tables corresponding to <varname>bg</varname>, <varname>tract</varname>, <varname>tabblock</varname> are not loaded. These tables are not used by the geocoder but are used by folks for population statistics.
+			 If you wish to load them as part of your state loads, run the following statement to enable them.</para>
+				<programlisting>UPDATE tiger.loader_lookuptables SET load = true WHERE load = false AND lookup_name IN('tract', 'bg', 'tabblock');</programlisting>
+				<para>Alternatively you can load just these tables after loading state data using the <xref linkend="Loader_Generate_Census_Script" /></para></listitem>
+
+			<listitem><para>For each state you want to load data for, generate a state script <xref linkend="Loader_Generate_Script" />.</para><warning><para>DO NOT Generate the state script until you have already loaded the nation data, because the state script utilizes county list loaded by nation script.</para></warning></listitem>
+
+			<listitem><programlisting>psql -c "SELECT Loader_Generate_Script(ARRAY['MA'], 'debbie')" -d geocoder -tA > /gisdata/ma_load.sh</programlisting></listitem>
+
+			<listitem><para>Run the generated commandline scripts.</para>
+				<programlisting>cd /gisdata
+sh ma_load.sh</programlisting>
+			</listitem>
+			<listitem><para>After you are done loading all data or at a stopping point, it's a good idea to analyze all the tiger tables to update the stats (include inherited stats)</para>
+			    <programlisting>SELECT install_missing_indexes();
+vacuum (analyze, verbose) tiger.addr;
+vacuum (analyze, verbose) tiger.edges;
+vacuum (analyze, verbose) tiger.faces;
+vacuum (analyze, verbose) tiger.featnames;
+vacuum (analyze, verbose) tiger.place;
+vacuum (analyze, verbose) tiger.cousub;
+vacuum (analyze, verbose) tiger.county;
+vacuum (analyze, verbose) tiger.state;
+vacuum (analyze, verbose) tiger.zip_lookup_base;
+vacuum (analyze, verbose) tiger.zip_state;
+vacuum (analyze, verbose) tiger.zip_state_loc;</programlisting>
+			</listitem>
+		</orderedlist>
+		<sect3 id="convert_tiger_geocoder_extension"><title>Converting a Tiger Geocoder Regular Install to Extension Model</title>
+			<para>If you installed the tiger geocoder without using the extension model, you can convert to the extension model as follows:</para>
+			<orderedlist>
+				<listitem><para>Follow instructions in <xref linkend="upgrade_tiger_geocoder" /> for the non-extension model upgrade.</para></listitem>
+				<listitem><para>Connect to your database with psql or pgAdmin and run the following command:</para>
+					<programlisting>CREATE EXTENSION postgis_tiger_geocoder FROM unpackaged;</programlisting>
+				</listitem>
+			</orderedlist>
+		</sect3>
+
+	</sect2>
+	<sect2 id="install_tiger_geocoder">
+		<title>Tiger Geocoder Enabling your PostGIS database: Not Using Extensions</title>
+		<para>
+		  First install PostGIS using the prior instructions.
+		</para>
+
+		<para>
+		  If you don't have an extras folder, download <ulink url="&postgis_download_url;">&postgis_download_url;</ulink>
+		</para>
+
+		<para>
+		  <command>tar xvfz postgis-&last_release_version;.tar.gz</command>
+		</para>
+
+		<para>
+		  <command>cd postgis-&last_release_version;/extras/tiger_geocoder</command>
+		</para>
+
+		<para>Edit the <filename>tiger_loader_2015.sql</filename> (or latest loader file you find, unless you want to load different year) to the paths of your executables server etc or alternatively you can update the <varname>loader_platform</varname> table once installed. If you don't edit this file or the <varname>loader_platform</varname> table, it will just contain common case locations of items and you'll have to edit the generated script after the fact when you run the  <xref linkend="Loader_Generate_Nation_Script" /> and <xref linkend="Loader_Generate_Script" />  SQL functions.
+		 </para>
+		<para>If you are installing Tiger geocoder for the first time edit either the <filename>create_geocode.bat</filename> script If you are on windows
+			or the <filename>create_geocode.sh</filename> if you are on Linux/Unix/Mac OSX with your PostgreSQL specific settings and run the corresponding script from the commandline. </para>
+
+
+		<para>Verify that you now have a <varname>tiger</varname> schema in your database and that it is part of your database search_path.  If it is not, add it with a command something along the line of: <programlisting>ALTER DATABASE geocoder SET search_path=public, tiger;</programlisting></para>
+		<para>The normalizing address functionality works more or less without any data except for tricky addresses.  Run this test and verify things look like this:
+			<programlisting>SELECT pprint_addy(normalize_address('202 East Fremont Street, Las Vegas, Nevada 89101')) As pretty_address;
+pretty_address
+---------------------------------------
+202 E Fremont St, Las Vegas, NV 89101
+			</programlisting>
+		</para>
+	</sect2>
+	<sect2 id="tiger_pagc_address_standardizing"><title>Using Address Standardizer Extension with Tiger geocoder</title>
+			<para>One of the many complaints of folks is the address normalizer function <xref linkend="Normalize_Address" /> function that normalizes an address for prepping before geocoding.  The normalizer is far from perfect and trying to patch its imperfectness takes a vast amount of resources.  As such we have integrated with another
+			project that has a much better address standardizer engine.  To use this new address_standardizer, you compile the extension as described in <xref linkend="installing_pagc_address_standardizer" /> and install as an extension in your database.</para>
+
+			<para>Once you install this extension in the same database as you have installed <code>postgis_tiger_geocoder</code>, then the <xref linkend="Pagc_Normalize_Address" /> can be used instead of <xref linkend="Normalize_Address" />. This extension is tiger agnostic, so can be used with other data sources such as international addresses. The tiger geocoder extension does come packaged with its own custom versions of <xref linkend="rulestab" /> ( <code>tiger.pagc_rules</code>) , <xref linkend="gaztab" /> (<code>tiger.pagc_gaz</code>), and <xref linkend="lextab" /> (<code>tiger.pagc_lex</code>).  These you can add and update to improve your standardizing experience for your own needs.</para>
+	</sect2>
+	<sect2 id="tiger_geocoder_loading_data">
+		<title>Loading Tiger Data</title>
+		<para>The instructions for loading data are available in a more detailed form  in the <filename>extras/tiger_geocoder/tiger_2011/README</filename>.  This just includes the general steps.</para>
+		<para>The load process downloads data from the census website for the respective nation files, states requested, extracts the files, and then loads each state into its own separate
+		set of state tables.  Each state table inherits from the tables defined in <varname>tiger</varname> schema so that its sufficient to just query those tables to access all the data and drop a set of state tables at any time using the <xref linkend="Drop_State_Tables_Generate_Script" /> if you need to reload a state or just don't need a state anymore.</para>
+		<para>In order to be able to load data you'll need the following tools:</para>
+		<itemizedlist>
+			<listitem><para>A tool to unzip the zip files from census website.</para>
+			  <para>For Unix like systems: <varname>unzip</varname> executable which is usually already installed on most Unix like platforms.</para>
+			  <para>For Windows, 7-zip which is a free compress/uncompress tool you can download from <ulink url="http://www.7-zip.org/">http://www.7-zip.org/</ulink> </para>
+			</listitem>
+			<listitem><para><filename>shp2pgsql</filename> commandline which is installed by default when you install PostGIS.</para></listitem>
+			<listitem><para><filename>wget</filename> which is a web grabber tool usually installed on most Unix/Linux systems.</para>
+				<para>If you are on windows, you can get pre-compiled binaries from <ulink url="http://gnuwin32.sourceforge.net/packages/wget.htm">http://gnuwin32.sourceforge.net/packages/wget.htm</ulink> </para>
+			</listitem>
+		</itemizedlist>
+		<para>If you are upgrading from tiger_2010, you'll need to first generate and run <xref linkend="Drop_Nation_Tables_Generate_Script" />. Before you load any state data, you need to load the nation wide data which you do with  <xref linkend="Loader_Generate_Nation_Script" />. Which will
+		generate a loader script for you.   <xref linkend="Loader_Generate_Nation_Script" /> is a one-time step that should be done for upgrading (from 2010) and for new installs.</para>
+		<para>To load state data refer to <xref linkend="Loader_Generate_Script" /> to generate a data load script for your platform for the states you desire.
+			Note that you can install these piecemeal. You don't have to load all the states you want all at once.  You can load them as you need them.</para>
+
+		<para>After the states you desire have been loaded, make sure to run the:
+		<programlisting>SELECT install_missing_indexes();</programlisting> as described in  <xref linkend="Install_Missing_Indexes" />.</para>
+		<para>To test that things are working as they should, try to run a geocode on an address in your state using <xref linkend="Geocode" /> </para>
+	</sect2>
+	<sect2 id="upgrade_tiger_geocoder">
+		<title>Upgrading your Tiger Geocoder Install</title>
+		<para>
+		  If you have Tiger Geocoder packaged with 2.0+ already installed, you can upgrade the functions at any time even from an interim tar ball if there are fixes you badly need.  This will only work for Tiger geocoder not installed with extensions.
+		</para>
+
+		<para>
+		  If you don't have an extras folder, download <ulink url="&postgis_download_url;">&postgis_download_url;</ulink>
+		</para>
+
+		<para>
+		  <command>tar xvfz postgis-&last_release_version;.tar.gz</command>
+		</para>
+
+		<para>
+		  <command>cd postgis-&last_release_version;/extras/tiger_geocoder/tiger_2011</command>
+		</para>
+
+		<para>Locate the  <filename>upgrade_geocoder.bat</filename> script If you are on windows
+			or the <filename>upgrade_geocoder.sh</filename> if you are on Linux/Unix/Mac OSX.  Edit the file to have your postgis database credentials.</para>
+
+		<para>If you are upgrading from 2010 or 2011, make sure to unremark out the loader script line so you get the latest script for loading 2012 data.</para>
+		<para>
+			Then run th corresponding script from the commandline.
+		</para>
+
+		<para>Next drop all nation tables and load up the new ones. Generate a drop script with this SQL statement as detailed in <xref linkend="Drop_Nation_Tables_Generate_Script" /></para>
+			<programlisting>SELECT drop_nation_tables_generate_script();</programlisting>
+		<para>Run the generated drop SQL statements.</para>
+		<para>Generate a nation load script with this SELECT statement as detailed in <xref linkend="Loader_Generate_Nation_Script" /></para>
+		<para><emphasis role="bold">For windows</emphasis></para>
+		<programlisting>SELECT loader_generate_nation_script('windows'); </programlisting>
+		<para><emphasis role="bold">For unix/linux</emphasis></para>
+		<programlisting>SELECT loader_generate_nation_script('sh');</programlisting>
+		<para>Refer to <xref linkend="tiger_geocoder_loading_data" /> for instructions on how to run the generate script. This only needs to be done once.</para>
+		<note><para>You can have a mix of 2010/2011 state tables and can upgrade each state separately.  Before you upgrade a state to 2011, you first need to drop the 2010 tables for that state using <xref linkend="Drop_State_Tables_Generate_Script" />.</para></note>
+	</sect2>
+
+  </sect1>
+
+
+  <sect1>
+	<title>Common Problems during installation</title>
+	<para>
+	  There are several things to check when your installation or upgrade
+	  doesn't go as you expected.
+	</para>
+
+	<orderedlist>
+	  <listitem>
+		<para>
+		  Check that you have installed PostgreSQL &min_postgres_version;
+		  or newer, and that you are compiling against the same version of the
+		  PostgreSQL source as the version of PostgreSQL that is running.
+		  Mix-ups can occur when your (Linux) distribution has already
+		  installed PostgreSQL, or you have otherwise installed PostgreSQL
+		  before and forgotten about it. PostGIS will only work with PostgreSQL
+		  &min_postgres_version; or newer, and strange, unexpected
+		  error messages will result if you use an older version. To check the
+		  version of PostgreSQL which is running, connect to the database using
+		  psql and run this query:
+		</para>
+
+		<programlisting>SELECT version();</programlisting>
+
+		<para>
+		  If you are running an RPM based distribution, you can check for the
+		  existence of pre-installed packages using the <command>rpm</command>
+		  command as follows: <command>rpm -qa | grep postgresql</command>
+		</para>
+	  </listitem>
+
+	  <listitem>
+		<para>If your upgrade fails, make sure you are restoring into a database that already has PostGIS installed.</para>
+		<programlisting>SELECT postgis_full_version();</programlisting>
+	  </listitem>
+	</orderedlist>
+
+	<para>
+	  Also check that configure has correctly detected the location and version
+	  of PostgreSQL, the Proj4 library and the GEOS library.
+	</para>
+
+	<orderedlist>
+	  <listitem>
+		<para>
+		  The output from configure is used to generate the
+		  <filename>postgis_config.h</filename> file. Check that the
+		  <varname>POSTGIS_PGSQL_VERSION</varname>,
+		  <varname>POSTGIS_PROJ_VERSION</varname> and
+		  <varname>POSTGIS_GEOS_VERSION</varname> variables have been set
+		  correctly.
+		</para>
+	  </listitem>
+	</orderedlist>
+  </sect1>
+
+</chapter>

@@ -1,0 +1,5212 @@
+# SOME DESCRIPTIVE TITLE.
+#
+# Translators:
+# TERAMOTO Ikuhiro <yellow@affrc.go.jp>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: PostGIS\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-12-15 04:51+0000\n"
+"PO-Revision-Date: 2018-09-20 02:01+0000\n"
+"Last-Translator: TERAMOTO Ikuhiro <yellow@affrc.go.jp>\n"
+"Language-Team: Japanese (http://www.transifex.com/postgis/postgis/language/"
+"ja/)\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Tag: title
+#: using_postgis_dataman.xml:3
+#, no-c-format
+msgid "Data Management"
+msgstr ""
+
+#. Tag: title
+#: using_postgis_dataman.xml:6
+#, no-c-format
+msgid "GIS Objects"
+msgstr "GISオブジェクト"
+
+#. Tag: para
+#: using_postgis_dataman.xml:8
+#, fuzzy, no-c-format
+msgid ""
+"The GIS objects supported by PostGIS are a superset of the \"Simple Features"
+"\" standard defined by the OpenGIS Consortium (OGC). PostGIS supports all "
+"the objects and functions specified in the OGC \"Simple Features for SQL\" "
+"specification (SFS)."
+msgstr ""
+"PostGISでサポートされるGISオブジェクトは、OpenGIS Consortium (OGC)が定義する"
+"\"Simple Features\" のスーパーセットです。 PostGISはOGCの\"Simple Features "
+"for SQL\"仕様で定められた全てのオブジェクトと関数に対応しています。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:13
+#, fuzzy, no-c-format
+msgid ""
+"PostGIS extends the standard with support for embedded SRID information."
+msgstr ""
+"PostGISは標準から拡張して 3DZ, 3DM, 4次元 (訳注: それぞれXYZ, XYM, XYZM)座標"
+"に対応しています。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:16
+#, no-c-format
+msgid "OpenGIS WKB and WKT"
+msgstr "OpenGIS WKBとWKT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:18
+#, no-c-format
+msgid ""
+"The OpenGIS specification defines two standard ways of expressing spatial "
+"objects: the Well-Known Text (WKT) form and the Well-Known Binary (WKB) "
+"form. Both WKT and WKB include information about the type of the object and "
+"the coordinates which form the object."
+msgstr ""
+"OpenGIS仕様は空間オブジェクトの表現について二つの標準を定義しています。Well-"
+"Knownテキスト (WKT)形式とWell-Knownバイナリ (WKB)形式です。WKTもWKBも、オブ"
+"ジェクトの型とオブジェクトを形成する座標に関する情報を持っています。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:23
+#, no-c-format
+msgid ""
+"Examples of the text representations (WKT) of the spatial objects of the "
+"features are as follows:"
+msgstr ""
+"フィーチャーの空間オブジェクトのテキスト表現 (WKT)の例は、次の通りです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:28
+#, no-c-format
+msgid "POINT(0 0)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:32
+#, fuzzy, no-c-format
+msgid "POINT Z (0 0 0)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:36
+#, fuzzy, no-c-format
+msgid "POINT ZM (0 0 0 0)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:40
+#, no-c-format
+msgid "LINESTRING(0 0,1 1,1 2)"
+msgstr "LINESTRING(0 0,1 1,1 2)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:44
+#, no-c-format
+msgid "POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))"
+msgstr "POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:48
+#, no-c-format
+msgid "MULTIPOINT((0 0),(1 2))"
+msgstr "MULTIPOINT((0 0),(1 2))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:52
+#, fuzzy, no-c-format
+msgid "MULTIPOINT Z ((0 0 0),(1 2 3))"
+msgstr "MULTIPOINT((0 0),(1 2))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:56
+#, no-c-format
+msgid "MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))"
+msgstr "MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:60
+#, no-c-format
+msgid ""
+"MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 "
+"-2,-2 -1,-1 -1)))"
+msgstr ""
+"MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 "
+"-2,-2 -1,-1 -1)))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:65
+#, no-c-format
+msgid "GEOMETRYCOLLECTION(POINT(2 3),LINESTRING(2 3,3 4))"
+msgstr "GEOMETRYCOLLECTION(POINT(2 3),LINESTRING(2 3,3 4))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:69
+#, no-c-format
+msgid ""
+"The OpenGIS specification also requires that the internal storage format of "
+"spatial objects include a spatial referencing system identifier (SRID). The "
+"SRID is required when creating spatial objects for insertion into the "
+"database."
+msgstr ""
+"OpenGIS仕様では、空間オブジェクトの内部保存書式は空間参照系識別子 (Spatial "
+"Referencing System IDentifier, SRID)を含むことも求められます。SRIDはデータ"
+"ベースへの挿入のために空間オブジェクトが生成される時に求められます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:74
+#, no-c-format
+msgid ""
+"Input/Output of these formats are available using the following interfaces:"
+msgstr "これらの書式の入出力は次のインタフェースを用いて実現できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:77
+#, no-c-format
+msgid ""
+"bytea WKB = ST_AsBinary(geometry);\n"
+"text WKT = ST_AsText(geometry);\n"
+"geometry = ST_GeomFromWKB(bytea WKB, SRID);\n"
+"geometry = ST_GeometryFromText(text WKT, SRID);"
+msgstr ""
+"バイト配列 WKB = ST_AsBinary(geometry);\n"
+"テキスト WKT = ST_AsText(geometry);\n"
+"ジオメトリ = ST_GeomFromWKB (bytea WKB、SRID);\n"
+"ジオメトリ = ST_GeometryFromText (テキスト WKT、SRID);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:79
+#, no-c-format
+msgid ""
+"For example, a valid insert statement to create and insert an OGC spatial "
+"object would be:"
+msgstr ""
+"たとえば、OGC空間オブジェクトを生成して挿入する妥当なINSERTステートメントは次"
+"の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:82
+#, no-c-format
+msgid ""
+"INSERT INTO geotable ( the_geom, the_name )\n"
+"  VALUES ( ST_GeomFromText('POINT(-126.4 45.32)', 312), 'A Place');"
+msgstr ""
+"INSERT INTO geotable ( the_geom, the_name )\n"
+"  VALUES ( ST_GeomFromText('POINT(-126.4 45.32)', 312), 'A Place');"
+
+#. Tag: title
+#: using_postgis_dataman.xml:86
+#, no-c-format
+msgid "PostGIS EWKB, EWKT and Canonical Forms"
+msgstr "PostGIS EWKB, EWKTと標準形式"
+
+#. Tag: para
+#: using_postgis_dataman.xml:88
+#, fuzzy, no-c-format
+msgid ""
+"First OpenGIS specifications (prior to 1.2.0) only support 2D geometries, "
+"and the associated SRID is *never* embedded in the input/output "
+"representations."
+msgstr ""
+"OGC書式は2次元ジオメトリしかサポートされておらず、また、入出力の表現において"
+"SRIDは*決して*埋め込まれません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:91
+#, no-c-format
+msgid ""
+"Even though the last OpenGIS specification 1.2.1 supports 3DM and 3DZ "
+"coordinates specifing ZM qualifiers, it does not include yet the associated "
+"SRID in the input/output representations."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:95
+#, fuzzy, no-c-format
+msgid ""
+"PostGIS extended formats add 3DM, 3DZ, 4D coordinates support and embedded "
+"SRID information. However, PostGIS EWKB/EWKT outputs have several "
+"peculiarities:"
+msgstr ""
+"PostGIS EWKB/EWKT では 3DM, 3DZ, 4D の座標サポートが追加され、SRID情報が埋め"
+"込まれます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:100
+#, no-c-format
+msgid "For 3DZ geometries they will drop the Z qualifier:"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:101
+#, no-c-format
+msgid "OpenGIS: POINT Z (1 2 3)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:102
+#, no-c-format
+msgid "EWKB/EWKT: POINT(1 2 3)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:105
+#, no-c-format
+msgid "For 3DM geometries they will keep the M qualifier:"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:106
+#, no-c-format
+msgid "OpenGIS: POINT M (1 2 3)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:107
+#, no-c-format
+msgid "EWKB/EWKT: POINTM(1 2 3)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:110
+#, no-c-format
+msgid "For 4D geometries they will drop the ZM qualifiers:"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:111
+#, no-c-format
+msgid "OpenGIS: POINT ZM (1 2 3 4)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:112
+#, no-c-format
+msgid "EWKB/EWKT: POINT(1 2 3 4)"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:116
+#, no-c-format
+msgid ""
+"By doing this, PostGIS EWKB/EWKT avoids over-specifying dimensionality and a "
+"whole categories of potential errors that ISO admits, e.g.:"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:121
+#, fuzzy, no-c-format
+msgid "POINT ZM (1 1)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:124
+#, fuzzy, no-c-format
+msgid "POINT ZM (1 1 1)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:127
+#, fuzzy, no-c-format
+msgid "POINT (1 1 1 1)"
+msgstr "POINT(0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:132
+#, fuzzy, no-c-format
+msgid ""
+"PostGIS extended formats are currently superset of the OGC one (every valid "
+"WKB/WKT is a valid EWKB/EWKT) but this might vary in the future, "
+"specifically if OGC comes out with a new format conflicting with our "
+"extensions. Thus you SHOULD NOT rely on this feature!"
+msgstr ""
+"PostGIS拡張書式は現在のところOGC書式のスーパーセットとなっています (全ての妥"
+"当なWKB/WKTは妥当なEWKB/EWKTです)。しかし、特にもしOGCがPostGIS拡張と矛盾する"
+"新しい書式を出すことがあるなら、これは将来変更されるかも知れません。ゆえにこ"
+"の機能に頼るべきではありません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:137
+#, no-c-format
+msgid ""
+"Examples of the text representations (EWKT) of the extended spatial objects "
+"of the features are as follows."
+msgstr "拡張された空間オブジェクトのテキスト表現 (EWKT)の例は、次の通りです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:142
+#, no-c-format
+msgid "POINT(0 0 0) -- XYZ"
+msgstr "POINT(0 0 0) -- XYZ"
+
+#. Tag: para
+#: using_postgis_dataman.xml:146
+#, no-c-format
+msgid "SRID=32632;POINT(0 0) -- XY with SRID"
+msgstr "SRID=32632;POINT(0 0) -- SRID付きXY"
+
+#. Tag: para
+#: using_postgis_dataman.xml:150
+#, no-c-format
+msgid "POINTM(0 0 0) -- XYM"
+msgstr "POINTM(0 0 0) -- XYM"
+
+#. Tag: para
+#: using_postgis_dataman.xml:154
+#, no-c-format
+msgid "POINT(0 0 0 0) -- XYZM"
+msgstr "POINT(0 0 0 0) -- XYZM"
+
+#. Tag: para
+#: using_postgis_dataman.xml:158
+#, no-c-format
+msgid "SRID=4326;MULTIPOINTM(0 0 0,1 2 1) -- XYM with SRID"
+msgstr "SRID=4326;MULTIPOINTM(0 0 0,1 2 1) -- SRID付きXYM"
+
+#. Tag: para
+#: using_postgis_dataman.xml:162
+#, no-c-format
+msgid "MULTILINESTRING((0 0 0,1 1 0,1 2 1),(2 3 1,3 2 1,5 4 1))"
+msgstr "MULTILINESTRING((0 0 0,1 1 0,1 2 1),(2 3 1,3 2 1,5 4 1))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:167
+#, no-c-format
+msgid ""
+"POLYGON((0 0 0,4 0 0,4 4 0,0 4 0,0 0 0),(1 1 0,2 1 0,2 2 0,1 2 0,1 1 0))"
+msgstr ""
+"POLYGON((0 0 0,4 0 0,4 4 0,0 4 0,0 0 0),(1 1 0,2 1 0,2 2 0,1 2 0,1 1 0))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:172
+#, no-c-format
+msgid ""
+"MULTIPOLYGON(((0 0 0,4 0 0,4 4 0,0 4 0,0 0 0),(1 1 0,2 1 0,2 2 0,1 2 0,1 1 "
+"0)),((-1 -1 0,-1 -2 0,-2 -2 0,-2 -1 0,-1 -1 0)))"
+msgstr ""
+"MULTIPOLYGON(((0 0 0,4 0 0,4 4 0,0 4 0,0 0 0),(1 1 0,2 1 0,2 2 0,1 2 0,1 1 "
+"0)),((-1 -1 0,-1 -2 0,-2 -2 0,-2 -1 0,-1 -1 0)))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:177
+#, no-c-format
+msgid "GEOMETRYCOLLECTIONM( POINTM(2 3 9), LINESTRINGM(2 3 4, 3 4 5) )"
+msgstr "GEOMETRYCOLLECTIONM( POINTM(2 3 9), LINESTRINGM(2 3 4, 3 4 5) )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:181
+#, no-c-format
+msgid "MULTICURVE( (0 0, 5 5), CIRCULARSTRING(4 0, 4 4, 8 4) )"
+msgstr "MULTICURVE( (0 0, 5 5), CIRCULARSTRING(4 0, 4 4, 8 4) )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:185
+#, no-c-format
+msgid ""
+"POLYHEDRALSURFACE( ((0 0 0, 0 0 1, 0 1 1, 0 1 0, 0 0 0)), ((0 0 0, 0 1 0, 1 "
+"1 0, 1 0 0, 0 0 0)), ((0 0 0, 1 0 0, 1 0 1, 0 0 1, 0 0 0)), ((1 1 0, 1 1 1, "
+"1 0 1, 1 0 0, 1 1 0)), ((0 1 0, 0 1 1, 1 1 1, 1 1 0, 0 1 0)), ((0 0 1, 1 0 "
+"1, 1 1 1, 0 1 1, 0 0 1)) )"
+msgstr ""
+"POLYHEDRALSURFACE( ((0 0 0, 0 0 1, 0 1 1, 0 1 0, 0 0 0)), ((0 0 0, 0 1 0, 1 "
+"1 0, 1 0 0, 0 0 0)), ((0 0 0, 1 0 0, 1 0 1, 0 0 1, 0 0 0)), ((1 1 0, 1 1 1, "
+"1 0 1, 1 0 0, 1 1 0)), ((0 1 0, 0 1 1, 1 1 1, 1 1 0, 0 1 0)), ((0 0 1, 1 0 "
+"1, 1 1 1, 0 1 1, 0 0 1)) )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:191
+#, no-c-format
+msgid "TRIANGLE ((0 0, 0 9, 9 0, 0 0))"
+msgstr "TRIANGLE ((0 0, 0 9, 9 0, 0 0))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:195
+#, no-c-format
+msgid "TIN( ((0 0 0, 0 0 1, 0 1 0, 0 0 0)), ((0 0 0, 0 1 0, 1 1 0, 0 0 0)) )"
+msgstr "TIN( ((0 0 0, 0 0 1, 0 1 0, 0 0 0)), ((0 0 0, 0 1 0, 1 1 0, 0 0 0)) )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:200
+#, no-c-format
+msgid ""
+"Conversion between these formats is available using the following interfaces:"
+msgstr "これらの書式の変換は次のインタフェースを用いて実現できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:202
+#, no-c-format
+msgid ""
+"bytea EWKB = ST_AsEWKB(geometry);\n"
+"text EWKT = ST_AsEWKT(geometry);\n"
+"geometry = ST_GeomFromEWKB(bytea EWKB);\n"
+"geometry = ST_GeomFromEWKT(text EWKT);"
+msgstr ""
+"バイト配列 EWKB = ST_AsEWKB(geometry);\n"
+"テキスト EWKT = ST_AsEWKT(geometry);\n"
+"ジオメトリ = ST_GeomFromEWKB(bytea EWKB);\n"
+"ジオメトリ = ST_GeomFromEWKT(text EWKT);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:204
+#, no-c-format
+msgid ""
+"For example, a valid insert statement to create and insert a PostGIS spatial "
+"object would be:"
+msgstr ""
+"たとえば、PostGISの空間オブジェクトを作成し挿入する妥当なINSERTステートメント"
+"は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:207
+#, no-c-format
+msgid ""
+"INSERT INTO geotable ( the_geom, the_name )\n"
+"  VALUES ( ST_GeomFromEWKT('SRID=312;POINTM(-126.4 45.32 15)'), 'A Place' )"
+msgstr ""
+"INSERT INTO geotable ( the_geom, the_name )\n"
+"  VALUES ( ST_GeomFromEWKT('SRID=312;POINTM(-126.4 45.32 15)'), 'A Place' )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:209
+#, no-c-format
+msgid ""
+"The \"canonical forms\" of a PostgreSQL type are the representations you get "
+"with a simple query (without any function call) and the one which is "
+"guaranteed to be accepted with a simple insert, update or copy. For the "
+"PostGIS 'geometry' type these are:"
+msgstr ""
+"PostgreSQLの「標準的な形式」は単純なクエリ (全く関数呼び出しが無い)で得る表現"
+"であり、単純なINSERT, UPDATE, COPYで受け付けられることが保障されるものです。"
+"PostGISの\"geometory\"型の場合は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:213
+#, no-c-format
+msgid ""
+"- Output\n"
+"  - binary: EWKB\n"
+"        ascii: HEXEWKB (EWKB in hex form)\n"
+"- Input\n"
+"  - binary: EWKB\n"
+"        ascii: HEXEWKB|EWKT"
+msgstr ""
+"- 出力\n"
+"  - バイナリ: EWKB\n"
+"        ascii: HEXEWKB (EWKBのHEX表現)\n"
+"- 入力\n"
+"  - バイナリ: EWKB\n"
+"        ascii: HEXEWKB|EWKT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:215
+#, no-c-format
+msgid ""
+"For example this statement reads EWKT and returns HEXEWKB in the process of "
+"canonical ascii input/output:"
+msgstr ""
+"たとえば、次のステートメントは、標準的なASCII文字列による入出力の処理でEWKTを"
+"読み、HEXEWKBを返すものです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:218
+#, no-c-format
+msgid ""
+"=# SELECT 'SRID=4;POINT(0 0)'::geometry;\n"
+"\n"
+"geometry\n"
+"----------------------------------------------------\n"
+"01010000200400000000000000000000000000000000000000\n"
+"(1 row)"
+msgstr ""
+"=# SELECT 'SRID=4;POINT(0 0)'::geometry;\n"
+"\n"
+"geometry\n"
+"----------------------------------------------------\n"
+"01010000200400000000000000000000000000000000000000\n"
+"(1 row)"
+
+#. Tag: title
+#: using_postgis_dataman.xml:221
+#, no-c-format
+msgid "SQL-MM Part 3"
+msgstr "SQL-MM第3部"
+
+#. Tag: para
+#: using_postgis_dataman.xml:223
+#, no-c-format
+msgid ""
+"The SQL Multimedia Applications Spatial specification extends the simple "
+"features for SQL spec by defining a number of circularly interpolated curves."
+msgstr ""
+"SQLマルチメディア・アプリケーション空間仕様は、円弧補完曲線を定義したSQL仕様"
+"の拡張です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:227
+#, no-c-format
+msgid ""
+"The SQL-MM definitions include 3DM, 3DZ and 4D coordinates, but do not allow "
+"the embedding of SRID information."
+msgstr ""
+"SQL-MMの定義では、3DM、3DZと4Dの座標を含みますが、SRID情報の埋め込みはできま"
+"せん。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:230
+#, no-c-format
+msgid ""
+"The Well-Known Text extensions are not yet fully supported. Examples of some "
+"simple curved geometries are shown below:"
+msgstr ""
+"Well-Known Text拡張はまだ完全にはサポートされていません。単純な曲線ジオメトリ"
+"の例を次に示します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:235
+#, no-c-format
+msgid "CIRCULARSTRING(0 0, 1 1, 1 0)"
+msgstr "CIRCULARSTRING(0 0, 1 1, 1 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:236
+#, no-c-format
+msgid "CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0)"
+msgstr "CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:237
+#, no-c-format
+msgid ""
+"The CIRCULARSTRING is the basic curve type, similar to a LINESTRING in the "
+"linear world. A single segment required three points, the start and end "
+"points (first and third) and any other point on the arc. The exception to "
+"this is for a closed circle, where the start and end points are the same. In "
+"this case the second point MUST be the center of the arc, ie the opposite "
+"side of the circle. To chain arcs together, the last point of the previous "
+"arc becomes the first point of the next arc, just like in LINESTRING. This "
+"means that a valid circular string must have an odd number of points greater "
+"than 1."
+msgstr ""
+"CIRCULARSTRINGは基本的な曲線型で、線型のLINESTRINGに似ています。一つの辺で、"
+"始点、終点 (一つめと三つめ)と弧上の任意の点、の3点が必要です。例外として、始"
+"点と終点が同じとなる閉曲線があります。閉曲線では二つ目の点が弧の中心、すなわ"
+"ち円の反対側にならなければなりません。弧の連結では、LINESTRINGと同じように、"
+"前の弧の最後の点が次の弧の最初の点となります。よって、妥当なCIRCULARSTRINGは1"
+"以上の奇数になります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:250
+#, no-c-format
+msgid "COMPOUNDCURVE(CIRCULARSTRING(0 0, 1 1, 1 0),(1 0, 0 1))"
+msgstr "COMPOUNDCURVE(CIRCULARSTRING(0 0, 1 1, 1 0),(1 0, 0 1))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:251
+#, no-c-format
+msgid ""
+"A compound curve is a single, continuous curve that has both curved "
+"(circular) segments and linear segments. That means that in addition to "
+"having well-formed components, the end point of every component (except the "
+"last) must be coincident with the start point of the following component."
+msgstr ""
+"複合曲線は、曲線 (円弧)セグメントと線型セグメントの両方を持つ、単一の連続した"
+"曲線です。 よって、要素が的確である必要があることに加え、各要素 (最終要素は除"
+"く)の終点は次の要素の始点と同じになる必要があります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:259
+#, no-c-format
+msgid ""
+"CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0),(1 1, 3 3, 3 1, 1 1))"
+msgstr ""
+"CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0),(1 1, 3 3, 3 1, 1 1))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:261
+#, no-c-format
+msgid ""
+"Example compound curve in a curve polygon: "
+"CURVEPOLYGON(COMPOUNDCURVE(CIRCULARSTRING(0 0,2 0, 2 1, 2 3, 4 3),(4 3, 4 5, "
+"1 4, 0 0)), CIRCULARSTRING(1.7 1, 1.4 0.4, 1.6 0.4, 1.6 0.5, 1.7 1) )"
+msgstr ""
+"曲線ポリゴンの中に複合ポリゴンがある例は次の通りです。 "
+"CURVEPOLYGON(COMPOUNDCURVE(CIRCULARSTRING(0 0,2 0, 2 1, 2 3, 4 3),(4 3, 4 5, "
+"1 4, 0 0)), CIRCULARSTRING(1.7 1, 1.4 0.4, 1.6 0.4, 1.6 0.5, 1.7 1) )"
+
+#. Tag: para
+#: using_postgis_dataman.xml:265
+#, no-c-format
+msgid ""
+"A CURVEPOLYGON is just like a polygon, with an outer ring and zero or more "
+"inner rings. The difference is that a ring can take the form of a circular "
+"string, linear string or compound string."
+msgstr ""
+"CURVEPOLYGONは外環と0以上の内環とを持つ点でPOLYGONと似ています。 異なる点は、"
+"環に曲線ストリング、線型ストリング、複合ストリングのいずれも取れる点です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:269
+#, no-c-format
+msgid "As of PostGIS 1.4 PostGIS supports compound curves in a curve polygon."
+msgstr ""
+"PostGIS 1.4から、PostGISで曲線ポリゴンで複合曲線をサポートするようになりまし"
+"た。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:273
+#, no-c-format
+msgid "MULTICURVE((0 0, 5 5),CIRCULARSTRING(4 0, 4 4, 8 4))"
+msgstr "MULTICURVE((0 0, 5 5),CIRCULARSTRING(4 0, 4 4, 8 4))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:274
+#, no-c-format
+msgid ""
+"The MULTICURVE is a collection of curves, which can include linear strings, "
+"circular strings or compound strings."
+msgstr ""
+"MULTICURVEは曲線のコレクションで、線型ストリング、曲線ストリング、複合ストリ"
+"ングを取れます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:279
+#, no-c-format
+msgid ""
+"MULTISURFACE(CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0),(1 1, 3 3, "
+"3 1, 1 1)),((10 10, 14 12, 11 10, 10 10),(11 11, 11.5 11, 11 11.5, 11 11)))"
+msgstr ""
+"MULTISURFACE(CURVEPOLYGON(CIRCULARSTRING(0 0, 4 0, 4 4, 0 4, 0 0),(1 1, 3 3, "
+"3 1, 1 1)),((10 10, 14 12, 11 10, 10 10),(11 11, 11.5 11, 11 11.5, 11 11)))"
+
+#. Tag: para
+#: using_postgis_dataman.xml:282
+#, no-c-format
+msgid ""
+"This is a collection of surfaces, which can be (linear) polygons or curve "
+"polygons."
+msgstr "サーフェスのコレクションです。(線型)ポリゴンか曲線ポリゴンを取れます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:288
+#, no-c-format
+msgid ""
+"All floating point comparisons within the SQL-MM implementation are "
+"performed to a specified tolerance, currently 1E-8."
+msgstr ""
+"SQL-MM実装での全ての浮動小数点数の比較では、所定の丸め誤差があります。現在は"
+"1E-8です。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:294
+#, no-c-format
+msgid "PostGIS Geography Type"
+msgstr "PostGISジオグラフィ型"
+
+#. Tag: para
+#: using_postgis_dataman.xml:296
+#, no-c-format
+msgid ""
+"The geography type provides native support for spatial features represented "
+"on \"geographic\" coordinates (sometimes called \"geodetic\" coordinates, or "
+"\"lat/lon\", or \"lon/lat\"). Geographic coordinates are spherical "
+"coordinates expressed in angular units (degrees)."
+msgstr ""
+"ジオグラフィ型は、「地理」座標 (しばしば「測地」座標、\"lat/lon\"、\"lon/lat"
+"\"、緯度経度, 経度緯度などとも呼ばれます)上で表現された空間フィーチャーのネイ"
+"ティブサポートするためのものです。地理座標は角度の単位 (度)で表現される球面座"
+"標です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:298
+#, no-c-format
+msgid ""
+"The basis for the PostGIS geometry type is a plane. The shortest path "
+"between two points on the plane is a straight line. That means calculations "
+"on geometries (areas, distances, lengths, intersections, etc) can be "
+"calculated using cartesian mathematics and straight line vectors."
+msgstr ""
+"PostGISジオメトリ型の基礎は平面です。平面上の二点間の最短コースは直線になりま"
+"す。よって、ジオメトリ上の計算 (面積、距離、長さ、インタセクション等)は、デカ"
+"ルト座標と線型ベクトルを使用することができます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:300
+#, no-c-format
+msgid ""
+"The basis for the PostGIS geographic type is a sphere. The shortest path "
+"between two points on the sphere is a great circle arc. That means that "
+"calculations on geographies (areas, distances, lengths, intersections, etc) "
+"must be calculated on the sphere, using more complicated mathematics. For "
+"more accurate measurements, the calculations must take the actual spheroidal "
+"shape of the world into account."
+msgstr ""
+"PostGISのジオグラフィ型の基礎は球面です。球面上での二点間の最短距離は大圏の弧"
+"です。よって、ジオグラフィ上の計算 (面積、距離、長さ、インタセクション等)は、"
+"球面上で計算しなければならず、複雑な計算が必要となります。より正確な計測のた"
+"めには、世界の実際の回転楕円体の形を考慮に入れなければならず、非常に複雑で"
+"す。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:302
+#, no-c-format
+msgid ""
+"Because the underlying mathematics is much more complicated, there are fewer "
+"functions defined for the geography type than for the geometry type. Over "
+"time, as new algorithms are added, the capabilities of the geography type "
+"will expand."
+msgstr ""
+"基礎となる数学が大変に複雑なので、ジオグラフィ型用に定義された関数は、ジオメ"
+"トリ型よりも少ないです。時間とともに、新しいアルゴリズムが追加されて、ジオグ"
+"ラフィ型の能力は拡大していくでしょう。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:304
+#, no-c-format
+msgid ""
+"It uses a data type called <varname>geography</varname>. None of the GEOS "
+"functions support the <varname>geography</varname> type. As a workaround one "
+"can convert back and forth between geometry and geography types."
+msgstr ""
+"<varname>geography</varname>と呼ばれるデータ型を使用します。GEOS関数は"
+"<varname>geography</varname>型に対応していません。回避策として、ジオメトリと"
+"ジオグラフィの型変換を行うことができます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:307
+#, no-c-format
+msgid ""
+"Prior to PostGIS 2.2, the geography type only supported WGS 84 long lat "
+"(SRID:4326). For PostGIS 2.2 and above, any long/lat based spatial reference "
+"system defined in the <varname>spatial_ref_sys</varname> table can be used. "
+"You can even add your own custom spheroidal spatial reference system as "
+"described in <ulink url=\"http://www.bostongis.com/blog/index.php?/"
+"archives/266-geography-type-is-not-limited-to-earth.html\">geography type is "
+"not limited to earth</ulink>."
+msgstr ""
+"PostGIS 2.2より前は、ジオグラフィ型はWGS84経度緯度 (SRID:4326)だけに対応して"
+"いました。PostGIS 2.2以降は、<varname>spatial_ref_sys</varname>で定義されてい"
+"る経度緯度ベースの空間参照系の全てが使えます。<ulink url=\"http://www."
+"bostongis.com/blog/index.php?/archives/266-geography-type-is-not-limited-to-"
+"earth.html\">geography type is not limited to earth</ulink>の記述にある通り、"
+"独自の回転楕円体の空間参照系を追加することもできます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:311
+#, no-c-format
+msgid ""
+"Regardless which spatial reference system you use, the units returned by the "
+"measurement (<xref linkend=\"ST_Distance\"/>, <xref linkend=\"ST_Length\"/>, "
+"<xref linkend=\"ST_Perimeter\"/>, <xref linkend=\"ST_Area\"/>) and for input "
+"of <xref linkend=\"ST_DWithin\"/> are in meters."
+msgstr ""
+"どの空間参照系を使用しても、計測関数 (<xref linkend=\"ST_Distance\"/>, <xref "
+"linkend=\"ST_Length\"/>, <xref linkend=\"ST_Perimeter\"/>, <xref linkend="
+"\"ST_Area\"/>)の返り値の単位と、<xref linkend=\"ST_DWithin\"/>の入力の単位は"
+"メートルです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:313
+#, no-c-format
+msgid ""
+"The geography type uses the PostgreSQL typmod definition format so that a "
+"table with a geography field can be added in a single step. All the standard "
+"OGC formats except for curves are supported."
+msgstr ""
+"ジオグラフィ型はPostgreSQLのtypmod定義書式を使います。ジオグラフィカラムを持"
+"つテーブルに1ステップで追加できます。標準OGC書式は曲線を除いてサポートしま"
+"す。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:317
+#, no-c-format
+msgid "Geography Basics"
+msgstr "ジオグラフィ基礎"
+
+#. Tag: para
+#: using_postgis_dataman.xml:318
+#, no-c-format
+msgid ""
+"The geography type does not support curves, TINS, or POLYHEDRALSURFACEs, but "
+"other geometry types are supported. Standard geometry type data will "
+"autocast to geography if it is of SRID 4326. You can also use the EWKT and "
+"EWKB conventions to insert data."
+msgstr ""
+"ジオグラフィ型はシンプルフィーチャーの最も簡単なもののみサポートします。標準"
+"的なジオメトリ型データで、SRIDが4326の場合は、ジオグラフィに自動でキャストさ"
+"れます。またデータ挿入においてEWKTとEWKBの取り決めを使うこともできます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:323
+#, no-c-format
+msgid ""
+"POINT: Creating a table with 2D point geography when srid is not specified "
+"defaults to 4326 WGS 84 long lat:"
+msgstr ""
+"POINT: SRID指定なしでの2次元ポイントジオグラフィのテーブル生成は次の通りで"
+"す。デフォルトは4326 WGS84経度緯度となります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:324
+#, no-c-format
+msgid "CREATE TABLE ptgeogwgs(gid serial PRIMARY KEY, geog geography(POINT) );"
+msgstr ""
+"CREATE TABLE ptgeogwgs(gid serial PRIMARY KEY, geog geography(POINT) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:325
+#, no-c-format
+msgid "POINT: Creating a table with 2D point geography in NAD83 longlat:"
+msgstr ""
+"POINT: NAD83経度緯度での2次元ポイントジオグラフィのテーブル生成は次の通りで"
+"す。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:326
+#, no-c-format
+msgid ""
+"CREATE TABLE ptgeognad83(gid serial PRIMARY KEY, geog "
+"geography(POINT,4269) );"
+msgstr ""
+"CREATE TABLE ptgeognad83(gid serial PRIMARY KEY, geog "
+"geography(POINT,4269) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:327
+#, no-c-format
+msgid "Creating a table with z coordinate point and explicitly specifying srid"
+msgstr ""
+"Z値を持ち、明示的にSRIDを指定したポイントのテーブル生成は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:328
+#, no-c-format
+msgid ""
+"CREATE TABLE ptzgeogwgs84(gid serial PRIMARY KEY, geog "
+"geography(POINTZ,4326) );"
+msgstr ""
+"CREATE TABLE ptzgeogwgs84(gid serial PRIMARY KEY, geog "
+"geography(POINTZ,4326) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:331
+#, no-c-format
+msgid "LINESTRING"
+msgstr "LINESTRING"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:332
+#, no-c-format
+msgid ""
+"CREATE TABLE lgeog(gid serial PRIMARY KEY, geog geography(LINESTRING) );"
+msgstr ""
+"CREATE TABLE lgeog(gid serial PRIMARY KEY, geog geography(LINESTRING) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:335
+#, no-c-format
+msgid "POLYGON"
+msgstr "POLYGON"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:336
+#, no-c-format
+msgid ""
+"--polygon NAD 1927 long lat\n"
+"CREATE TABLE lgeognad27(gid serial PRIMARY KEY, geog "
+"geography(POLYGON,4267) );"
+msgstr ""
+"-- ポリゴン NAD 1927経度緯度\n"
+"CREATE TABLE lgeognad27(gid serial PRIMARY KEY, geog "
+"geography(POLYGON,4267) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:339
+#, no-c-format
+msgid "MULTIPOINT"
+msgstr "MULTIPOINT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:342
+#, no-c-format
+msgid "MULTILINESTRING"
+msgstr "MULTILINESTRING"
+
+#. Tag: para
+#: using_postgis_dataman.xml:345
+#, no-c-format
+msgid "MULTIPOLYGON"
+msgstr "MULTIPOLYGON"
+
+#. Tag: para
+#: using_postgis_dataman.xml:348
+#, no-c-format
+msgid "GEOMETRYCOLLECTION"
+msgstr "GEOMETRYCOLLECTION"
+
+#. Tag: para
+#: using_postgis_dataman.xml:352
+#, no-c-format
+msgid ""
+"The geography fields get registered in the <varname>geography_columns</"
+"varname> system view."
+msgstr ""
+"ジオグラフィ型のフィールドは<varname>geography_columns</varname>システム"
+"ビューに登録されます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:354
+#, no-c-format
+msgid ""
+"Now, check the \"geography_columns\" view and see that your table is listed."
+msgstr ""
+"\"geography_columns\"ビューをチェックして、テーブルが一覧にあるか見て下さい。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:356
+#, no-c-format
+msgid ""
+"You can create a new table with a GEOGRAPHY column using the CREATE TABLE "
+"syntax."
+msgstr ""
+"CREATE TABLEの文法でジオグラフィカラムを持つテーブルを新規に生成できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:359
+#, no-c-format
+msgid ""
+"CREATE TABLE global_points (\n"
+"    id SERIAL PRIMARY KEY,\n"
+"    name VARCHAR(64),\n"
+"    location GEOGRAPHY(POINT,4326)\n"
+"  );"
+msgstr ""
+"CREATE TABLE global_points (\n"
+"    id SERIAL PRIMARY KEY,\n"
+"    name VARCHAR(64),\n"
+"    location GEOGRAPHY(POINT,4326)\n"
+"  );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:362
+#, no-c-format
+msgid ""
+"Note that the location column has type GEOGRAPHY and that geography type "
+"supports two optional modifiers: a type modifier that restricts the kind of "
+"shapes and dimensions allowed in the column; an SRID modifier that restricts "
+"the coordinate reference identifier to a particular number."
+msgstr ""
+"locationカラムはジオグラフィ型で、二つの任意修飾子に対応していることにご注意"
+"ください。一つは、そのカラムで使用できる形状と次元を限定する型修飾子です。も"
+"う一つは、座標参照IDを特定の数に限定するSRID修飾子です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:363
+#, no-c-format
+msgid ""
+"Allowable values for the type modifier are: POINT, LINESTRING, POLYGON, "
+"MULTIPOINT, MULTILINESTRING, MULTIPOLYGON. The modifier also supports "
+"dimensionality restrictions through suffixes: Z, M and ZM. So, for example a "
+"modifier of 'LINESTRINGM' would only allow line strings with three "
+"dimensions in, and would treat the third dimension as a measure. Similarly, "
+"'POINTZM' would expect four dimensional data."
+msgstr ""
+"型修飾子として受け付ける値は、POINT, LINESTRING, POLYGON, MULTIPOINT, "
+"MULTILINESTRING, MULTIPOLYGONです。型修飾子は、Z, M, ZMの後置子を付けることで"
+"次元制限にも対応します。たとえば、'LINESTRINGM'という型修飾子で、三つ目の次元"
+"をMとする3次元のラインストリングのみ受け付けることになります。同じよう"
+"に'POINTZM'で、4次元データを期待します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:365
+#, no-c-format
+msgid ""
+"If you do not specify an SRID, the SRID will default to 4326 WGS 84 long/lat "
+"will be used, and all calculations will proceed using WGS84."
+msgstr ""
+"SRIDを指定していない場合には、SRIDは4326 WGS84経度緯度が使われ、全ての計算は"
+"WGS 84を使って行われます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:366
+#, no-c-format
+msgid ""
+"Once you have created your table, you can see it in the GEOGRAPHY_COLUMNS "
+"table:"
+msgstr ""
+"テーブルを作ったら、次のようにしてGEOGRAPHY_COLUMNSを見ることができます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:367
+#, no-c-format
+msgid ""
+"-- See the contents of the metadata view\n"
+"SELECT * FROM geography_columns;"
+msgstr ""
+"-- メタデータビューの中身を見る\n"
+"SELECT * FROM geography_columns;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:369
+#, no-c-format
+msgid ""
+"You can insert data into the table the same as you would if it was using a "
+"GEOMETRY column:"
+msgstr ""
+"ジオメトリカラムを使うのと同じようにテーブルへのデータの挿入ができます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:371
+#, no-c-format
+msgid ""
+"-- Add some data into the test table\n"
+"INSERT INTO global_points (name, location) VALUES ('Town', 'SRID=4326;"
+"POINT(-110 30)');\n"
+"INSERT INTO global_points (name, location) VALUES ('Forest', 'SRID=4326;"
+"POINT(-109 29)');\n"
+"INSERT INTO global_points (name, location) VALUES ('London', 'SRID=4326;"
+"POINT(0 49)');"
+msgstr ""
+"-- testテーブルにデータを追加する\n"
+"INSERT INTO global_points (name, location) VALUES ('Town', 'SRID=4326;"
+"POINT(-110 30)');\n"
+"INSERT INTO global_points (name, location) VALUES ('Forest', 'SRID=4326;"
+"POINT(-109 29)');\n"
+"INSERT INTO global_points (name, location) VALUES ('London', 'SRID=4326;"
+"POINT(0 49)');"
+
+#. Tag: para
+#: using_postgis_dataman.xml:373
+#, no-c-format
+msgid ""
+"Creating an index works the same as GEOMETRY. PostGIS will note that the "
+"column type is GEOGRAPHY and create an appropriate sphere-based index "
+"instead of the usual planar index used for GEOMETRY."
+msgstr ""
+"ジオメトリと同じ操作でインデックスを作成します。PostGISは、カラム型がジオグラ"
+"フィであるかを見て、ジオメトリで使われる平面用インデックスの代わりに球面ベー"
+"スのインデックスを作成します。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:376
+#, no-c-format
+msgid ""
+"-- Index the test table with a spherical index\n"
+"  CREATE INDEX global_points_gix ON global_points USING GIST ( location );"
+msgstr ""
+"-- testテーブルに球面インデックスを作成\n"
+"  CREATE INDEX global_points_gix ON global_points USING GIST ( location );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:379
+#, no-c-format
+msgid ""
+"Query and measurement functions use units of meters. So distance parameters "
+"should be expressed in meters, and return values should be expected in "
+"meters (or square meters for areas)."
+msgstr ""
+"クエリと計測関数はメートル単位となります。そのため距離パラメータはメートル "
+"(面積の場合は平方メートル)単位となります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:381
+#, no-c-format
+msgid ""
+"-- Show a distance query and note, London is outside the 1000km tolerance\n"
+"  SELECT name FROM global_points WHERE ST_DWithin(location, 'SRID=4326;"
+"POINT(-110 29)'::geography, 1000000);"
+msgstr ""
+"-- 距離クエリの表示。ロンドンは1000km範囲外です\n"
+"  SELECT name FROM global_points WHERE ST_DWithin(location, 'SRID=4326;"
+"POINT(-110 29)'::geography, 1000000);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:384
+#, no-c-format
+msgid ""
+"You can see the power of GEOGRAPHY in action by calculating how close a "
+"plane flying from Seattle to London (LINESTRING(-122.33 47.606, 0.0 51.5)) "
+"comes to Reykjavik (POINT(-21.96 64.15))."
+msgstr ""
+"ジオグラフィの威力については、シアトルからロンドンまで (LINESTRING(-122.33 "
+"47.606, 0.0 51.5))の飛行機がレイキャビク (POINT(-21.96 64.15))に最も近くなる"
+"ときの距離を求めてみると分かります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:386
+#, no-c-format
+msgid ""
+"-- Distance calculation using GEOGRAPHY (122.2km)\n"
+"  SELECT ST_Distance('LINESTRING(-122.33 47.606, 0.0 51.5)'::geography, "
+"'POINT(-21.96 64.15)'::geography);"
+msgstr ""
+"-- ジオグラフィを使った距離計算 (122.2km)\n"
+"  SELECT ST_Distance('LINESTRING(-122.33 47.606, 0.0 51.5)'::geography, "
+"'POINT(-21.96 64.15)'::geography);"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:389
+#, no-c-format
+msgid ""
+"-- Distance calculation using GEOMETRY (13.3 \"degrees\")\n"
+"  SELECT ST_Distance('LINESTRING(-122.33 47.606, 0.0 51.5)'::geometry, "
+"'POINT(-21.96 64.15)'::geometry);"
+msgstr ""
+"-- ジオメトリを使った計算 (13.3 \"度\")\n"
+"  SELECT ST_Distance('LINESTRING(-122.33 47.606, 0.0 51.5)'::geometry, "
+"'POINT(-21.96 64.15)'::geometry);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:392
+#, no-c-format
+msgid ""
+"Testing different lon/lat projects. Any long lat spatial reference system "
+"listed in <varname>spatial_ref_sys</varname> table is allowed."
+msgstr ""
+"異なる経度緯度座標系を試します。<varname>spatial_ref_sys</varname>テーブルで"
+"挙げられている経度緯度の空間参照系なら全て可能です。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:394
+#, no-c-format
+msgid ""
+"-- NAD 83 lon/lat\n"
+"SELECT 'SRID=4269;POINT(-123 34)'::geography;\n"
+"                    geography\n"
+"----------------------------------------------------\n"
+" 0101000020AD1000000000000000C05EC00000000000004140\n"
+"(1 row)"
+msgstr ""
+"-- NAD83経度緯度\n"
+"SELECT 'SRID=4269;POINT(-123 34)'::geography;\n"
+"                    geography\n"
+"----------------------------------------------------\n"
+" 0101000020AD1000000000000000C05EC00000000000004140\n"
+"(1 row)"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:396
+#, no-c-format
+msgid ""
+"-- NAD27 lon/lat\n"
+"SELECT 'SRID=4267;POINT(-123 34)'::geography;\n"
+"\n"
+"                    geography\n"
+"----------------------------------------------------\n"
+" 0101000020AB1000000000000000C05EC00000000000004140\n"
+"(1 row)"
+msgstr ""
+"-- NAD27経度緯度\n"
+"SELECT 'SRID=4267;POINT(-123 34)'::geography;\n"
+"\n"
+"                    geography\n"
+"----------------------------------------------------\n"
+" 0101000020AB1000000000000000C05EC00000000000004140\n"
+"(1 row)"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:398
+#, no-c-format
+msgid ""
+"-- NAD83 UTM zone meters, yields error since its a meter based projection\n"
+"SELECT 'SRID=26910;POINT(-123 34)'::geography;\n"
+"\n"
+"ERROR:  Only lon/lat coordinate systems are supported in geography.\n"
+"LINE 1: SELECT 'SRID=26910;POINT(-123 34)'::geography;"
+msgstr ""
+"-- メートル単位のNAD83 UTM、メートル単位の投影法ですのでエラーが出ます\n"
+"SELECT 'SRID=26910;POINT(-123 34)'::geography;\n"
+"\n"
+"ERROR:  Only lon/lat coordinate systems are supported in geography.\n"
+"LINE 1: SELECT 'SRID=26910;POINT(-123 34)'::geography;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:400
+#, no-c-format
+msgid ""
+"The GEOGRAPHY type calculates the true shortest distance over the sphere "
+"between Reykjavik and the great circle flight path between Seattle and "
+"London."
+msgstr ""
+"ジオグラフィ型は、レイキャビクとシアトル-ロンドン間の飛行機の大圏コースとの間"
+"の、球面上での本当に最も近い距離を計算します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:402
+#, no-c-format
+msgid ""
+"<ulink url=\"http://gc.kls2.com/cgi-bin/gc?PATH=SEA-LHR\">Great Circle "
+"mapper</ulink> The GEOMETRY type calculates a meaningless cartesian distance "
+"between Reykjavik and the straight line path from Seattle to London plotted "
+"on a flat map of the world. The nominal units of the result might be called "
+"\"degrees\", but the result doesn't correspond to any true angular "
+"difference between the points, so even calling them \"degrees\" is "
+"inaccurate."
+msgstr ""
+"<ulink url=\"http://gc.kls2.com/cgi-bin/gc?PATH=SEA-LHR\">大圏コースマップ</"
+"ulink> ジオメトリ型は、平面の世界地図上にプロットされたレイキャビクとシアト"
+"ル-ロンドン間の直線とのデカルト距離という意味のない値を出します。結果の名目上"
+"の単位は「度」ですが、点間の本当の角度差にあっていませんので、「度」と言うこ"
+"と自体不正確です。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:406
+#, no-c-format
+msgid "When to use Geography Data type over Geometry data type"
+msgstr "ジオグラフィ型をジオメトリ型にして使用すべき時"
+
+#. Tag: para
+#: using_postgis_dataman.xml:407
+#, no-c-format
+msgid ""
+"The geography type allows you to store data in longitude/latitude "
+"coordinates, but at a cost: there are fewer functions defined on GEOGRAPHY "
+"than there are on GEOMETRY; those functions that are defined take more CPU "
+"time to execute."
+msgstr ""
+"ジオグラフィ型によって、経度緯度座標でデータを格納できるようになりましたが、"
+"ジオグラフィで定義されている関数が、ジオメトリより少ないのと、実行にCPU時間が"
+"かかる、というところが犠牲になっています。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:408
+#, no-c-format
+msgid ""
+"The type you choose should be conditioned on the expected working area of "
+"the application you are building. Will your data span the globe or a large "
+"continental area, or is it local to a state, county or municipality?"
+msgstr ""
+"選択した型が、期待する領域から出ないことを、ジオメトリ型にして使用する条件と"
+"すべきです。使用するデータは地球全体か、大陸か、州か、自治体か?"
+
+#. Tag: para
+#: using_postgis_dataman.xml:410
+#, no-c-format
+msgid ""
+"If your data is contained in a small area, you might find that choosing an "
+"appropriate projection and using GEOMETRY is the best solution, in terms of "
+"performance and functionality available."
+msgstr ""
+"データが小さいエリア内におさまるなら、適切な投影を選択してジオメトリを使うの"
+"が、効率面でも機能面でも最も良い方法です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:411
+#, no-c-format
+msgid ""
+"If your data is global or covers a continental region, you may find that "
+"GEOGRAPHY allows you to build a system without having to worry about "
+"projection details. You store your data in longitude/latitude, and use the "
+"functions that have been defined on GEOGRAPHY."
+msgstr ""
+"データが地球全体か大陸なら、ジオグラフィで投影法の細かい問題を気にせずにシス"
+"テムを構築できるでしょう。経度/緯度のデータを保存して、ジオグラフィで定義され"
+"た関数使います。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:413
+#, no-c-format
+msgid ""
+"If you don't understand projections, and you don't want to learn about them, "
+"and you're prepared to accept the limitations in functionality available in "
+"GEOGRAPHY, then it might be easier for you to use GEOGRAPHY than GEOMETRY. "
+"Simply load your data up as longitude/latitude and go from there."
+msgstr ""
+"投影法を理解していなくて、学習したくもなくて、かつ、ジオグラフィで使える関数"
+"が限られていることを受け入れるのなら、ジオグラフィを使った方が簡単です。単純"
+"にデータを経度/緯度でロードして、そこから進めて下さい。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:416
+#, no-c-format
+msgid ""
+"Refer to <xref linkend=\"PostGIS_TypeFunctionMatrix\"/> for compare between "
+"what is supported for Geography vs. Geometry. For a brief listing and "
+"description of Geography functions, refer to <xref linkend="
+"\"PostGIS_GeographyFunctions\"/>"
+msgstr ""
+"ジオグラフィとジオメトリ間のサポート状況の比較については<xref linkend="
+"\"PostGIS_TypeFunctionMatrix\"/>をご覧下さい。ジオグラフィ関数の簡潔なリスト"
+"と説明については<xref linkend=\"PostGIS_GeographyFunctions\"/>をご覧下さい。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:422
+#, no-c-format
+msgid "Geography Advanced FAQ"
+msgstr "ジオグラフィに関する高度なよくある質問"
+
+#. Tag: para
+#: using_postgis_dataman.xml:426
+#, no-c-format
+msgid "Do you calculate on the sphere or the spheroid?"
+msgstr "球または回転楕円体のどちらで計算するのでしょうか?"
+
+#. Tag: para
+#: using_postgis_dataman.xml:430
+#, no-c-format
+msgid ""
+"By default, all distance and area calculations are done on the spheroid. You "
+"should find that the results of calculations in local areas match up will "
+"with local planar results in good local projections. Over larger areas, the "
+"spheroidal calculations will be more accurate than any calculation done on a "
+"projected plane."
+msgstr ""
+"デフォルトでは、全ての距離と面積の計算は回転楕円体で行います。局所的なエリア"
+"での計算結果と良好な投影を施した平面での結果と比較して下さい。大きなエリアの"
+"場合は、回転楕円体計算は、投影平面上でのどの計算よりも精度が高くなります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:433
+#, no-c-format
+msgid ""
+"All the geography functions have the option of using a sphere calculation, "
+"by setting a final boolean parameter to 'FALSE'. This will somewhat speed up "
+"calculations, particularly for cases where the geometries are very simple."
+msgstr ""
+"全てのジオグラフィ関数には、最後の真偽パラメータを'FALSE'にすると球面を使った"
+"計算を行うというオプションがあります。これは、特にジオメトリが非常に単純であ"
+"る場合に計算を速くするためのものです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:439
+#, no-c-format
+msgid "What about the date-line and the poles?"
+msgstr "日付変更線や極に関してはどうなっていますか?"
+
+#. Tag: para
+#: using_postgis_dataman.xml:443
+#, no-c-format
+msgid ""
+"All the calculations have no conception of date-line or poles, the "
+"coordinates are spherical (longitude/latitude) so a shape that crosses the "
+"dateline is, from a calculation point of view, no different from any other "
+"shape."
+msgstr ""
+"全ての計算に日付変更線や極の概念がありません。座標は球 (経度/緯度)であるの"
+"で、日付変更線とクロスする形状は、計算の観点からは、他のものと変わりありませ"
+"ん。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:451
+#, no-c-format
+msgid "What is the longest arc you can process?"
+msgstr "処理できる最も長い弧はどうなりますか?"
+
+#. Tag: para
+#: using_postgis_dataman.xml:455
+#, no-c-format
+msgid ""
+"We use great circle arcs as the \"interpolation line\" between two points. "
+"That means any two points are actually joined up two ways, depending on "
+"which direction you travel along the great circle. All our code assumes that "
+"the points are joined by the *shorter* of the two paths along the great "
+"circle. As a consequence, shapes that have arcs of more than 180 degrees "
+"will not be correctly modelled."
+msgstr ""
+"大圏の弧を2点の「補完線」として使用しています。任意の2点は、実際には2方向につ"
+"ながっていて、どちらの方向に行くかに依存します。PostGISの全てのコードは、大圏"
+"コースの2コースのうち*短い*方でつながっていると仮定しています。結果として、"
+"180度以上の弧を持つ形状は正しくモデル化されません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:462
+#, no-c-format
+msgid ""
+"Why is it so slow to calculate the area of Europe / Russia / insert big "
+"geographic region here ?"
+msgstr ""
+"なぜヨーロッパやロシアといった大きな範囲の面積計算はとても遅いのですか?"
+
+#. Tag: para
+#: using_postgis_dataman.xml:466
+#, no-c-format
+msgid ""
+"Because the polygon is so darned huge! Big areas are bad for two reasons: "
+"their bounds are huge, so the index tends to pull the feature no matter what "
+"query you run; the number of vertices is huge, and tests (distance, "
+"containment) have to traverse the vertex list at least once and sometimes N "
+"times (with N being the number of vertices in the other candidate feature)."
+msgstr ""
+"ポリゴンがとんでもなく大きいからです。二つの理由から、大きなエリアは悪いで"
+"す。一つは、バウンダリボックスが大きいため、どのようなクエリを走らせても、イ"
+"ンデックスがフィーチャーを引っ張ってくる傾向にあるためです。もう一つは、頂点"
+"数が巨大で、テスト (距離、包含)関数では、少なくとも1回、通常はN (Nは、もう一"
+"方のフィーチャーの頂点数)回、頂点を横断しなければならないためです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:471
+#, no-c-format
+msgid ""
+"As with GEOMETRY, we recommend that when you have very large polygons, but "
+"are doing queries in small areas, you \"denormalize\" your geometric data "
+"into smaller chunks so that the index can effectively subquery parts of the "
+"object and so queries don't have to pull out the whole object every time. "
+"Please consult <xref linkend=\"ST_Subdivide\"/> function documentation. Just "
+"because you *can* store all of Europe in one polygon doesn't mean you "
+"*should*."
+msgstr ""
+"ジオメトリでは、大きなポリゴンを持っているけれども小さな範囲のクエリを実行す"
+"る時、ジオメトリデータ情報を小片に「非正規化」します。これにより、インデック"
+"スが効果的にオブジェクトの一部を問い合わせるようになり、またクエリが常にオブ"
+"ジェクト全体を引っ張りこむようなことがないようになります。<xref linkend="
+"\"ST_Subdivide\"/>を参照して下さい。ヨーロッパ全体を一つのポリゴンに*格納でき"
+"る*からといって、*そうすべき*だというわけではありません。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:480
+#, no-c-format
+msgid "Spatial Metadata Tables"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:482
+#, fuzzy, no-c-format
+msgid ""
+"The OpenGIS \"Simple Features Specification for SQL\" defines some metadata "
+"tables to describe geometry table structure and coordinate systems. In order "
+"to ensure that metadata remains consistent, operations such as creating and "
+"removing a spatial column are carried out through special procedures defined "
+"by OpenGIS."
+msgstr ""
+"OpenGISの「SQL用シンプルフィーチャー仕様」では、標準GISオブジェクト型とこれら"
+"を操作するために必要な関数、メタデータテーブルのセットが定義されています。メ"
+"タデータが一貫性を維持していることを保証するために、空間カラムの生成、消去と"
+"いった操作はOpenGISで定義されている空間プロシージャを通して実行されます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:488
+#, no-c-format
+msgid ""
+"There are two OpenGIS meta-data tables: <varname>SPATIAL_REF_SYS</varname> "
+"and <varname>GEOMETRY_COLUMNS</varname>. The <varname>SPATIAL_REF_SYS</"
+"varname> table holds the numeric IDs and textual descriptions of coordinate "
+"systems used in the spatial database."
+msgstr ""
+"OpenGISメタデータテーブルには<varname>SPATIAL_REF_SYS</varname>と"
+"<varname>GEOMETRY_COLUMNS</varname>の二つがあります。"
+"<varname>SPATIAL_REF_SYS</varname>テーブルは空間データベースで用いられる座標"
+"系の、数字によるIDと文字による説明を持っています。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:495
+#, no-c-format
+msgid "The SPATIAL_REF_SYS Table and Spatial Reference Systems"
+msgstr "SPATIAL_REF_SYSテーブルと空間参照系"
+
+#. Tag: para
+#: using_postgis_dataman.xml:497
+#, fuzzy, no-c-format
+msgid ""
+"The <varname>SPATIAL_REF_SYS</varname> table used by PostGIS is an OGC-"
+"compliant database table that lists over 3000 known <ulink url=\"https://en."
+"wikipedia.org/wiki/Spatial_reference_system\">spatial reference systems</"
+"ulink> and details needed to transform (reproject) between them."
+msgstr ""
+"spatial_ref_sysテーブルは、PostGISに含まれるもので、3000以上の<ulink url="
+"\"http://www.sharpgis.net/post/2007/05/Spatial-references2c-coordinate-"
+"systems2c-projections2c-datums2c-ellipsoids-e28093-confusing.aspx\">空間参照"
+"系</ulink>と、座標変換/投影変換を行うのに必要な詳細情報との一覧を持つ、OGC準"
+"拠のデータベーステーブルです。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:502
+#, fuzzy, no-c-format
+msgid ""
+"The PostGIS <varname>SPATIAL_REF_SYS</varname> table contains over 3000 of "
+"the most common spatial reference system definitions that are handled by the "
+"<ulink url=\"https://proj.org\">PROJ</ulink> projection library. But there "
+"are many coordinate systems that it does not contain. You can define your "
+"own custom spatial reference system if you are familiar with PROJ "
+"constructs. Keep in mind that most spatial reference systems are regional "
+"and have no meaning when used outside of the bounds they were intended for."
+msgstr ""
+"PostGISのspatial_ref_sysテーブルには、projライブラリで使われる3000以上の一般"
+"に使われる空間参照系定義がありますが、全てを持っているわけではなく、proj4の構"
+"築に慣れているならカスタム投影を定義することができます。ほとんどの空間参照系"
+"は地域限定のもので、想定されている範囲の外で使うと意味が無いことに注意して下"
+"さい。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:510
+#, fuzzy, no-c-format
+msgid ""
+"A resource for finding spatial reference systems not defined in the core set "
+"is <ulink url=\"http://spatialreference.org/\">http://spatialreference.org/</"
+"ulink>"
+msgstr ""
+"PostGISのコアセットに入っていない空間参照系を探すための素晴らしい資料が"
+"<ulink url=\"http://spatialreference.org/\">http://spatialreference.org/</"
+"ulink>にあります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:512
+#, fuzzy, no-c-format
+msgid ""
+"Some commonly used spatial reference systems are: <ulink url=\"http://"
+"spatialreference.org/ref/epsg/4326/\">4326 - WGS 84 Long Lat</ulink>, <ulink "
+"url=\"http://spatialreference.org/ref/epsg/4269/\">4269 - NAD 83 Long Lat</"
+"ulink>, <ulink url=\"http://spatialreference.org/ref/epsg/3395/\">3395 - WGS "
+"84 World Mercator</ulink>, <ulink url=\"http://spatialreference.org/ref/"
+"epsg/2163/\">2163 - US National Atlas Equal Area</ulink>, and the 60 WGS84 "
+"UTM zones. UTM zones are one of the most ideal for measurement, but only "
+"cover 6-degree regions. (To determine which UTM zone to use for your area of "
+"interest, see the <ulink url=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiplpgsqlfunctionsDistance\">utmzone PostGIS plpgsql helper function</"
+"ulink>.)"
+msgstr ""
+"よく共通的に使われる空間参照系は次の通りです (訳注: 日本では状況が異なりま"
+"す)。<ulink url=\"http://spatialreference.org/ref/epsg/4326/\">4326 - WGS 84 "
+"経度緯度</ulink>、<ulink url=\"http://spatialreference.org/ref/epsg/4269/"
+"\">4269 - NAD 83 経度緯度</ulink>、<ulink url=\"http://spatialreference.org/"
+"ref/epsg/3395/\">3395 - WGS 84 メルカトル図法</ulink>、<ulink url=\"http://"
+"spatialreference.org/ref/epsg/2163/\">2163 - 米国ナショナルアトラス正積図法</"
+"ulink>、NAD83とWGS84のUTM空間参照系 - UTMゾーンは計測に最も理想的なものの一つ"
+"ですが6度 (訳注: 経度)の領域しかカバーしません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:521
+#, fuzzy, no-c-format
+msgid ""
+"US states use State Plane spatial reference systems (meter or feet based) - "
+"usually one or 2 exists per state. Most of the meter-based ones are in the "
+"core set, but many of the feet-based ones or ESRI created ones will need to "
+"be copied from <ulink url=\"http://spatialreference.org\">spatialreference."
+"org</ulink>."
+msgstr ""
+"まざまな米国の州の平面空間参照系 (メートルまたはフィート単位) - 通常は州ごと"
+"に一つか二つあります。メートル単位のもののほとんどがPostGISのコアセットに入っ"
+"ていますが、多数のフィート単位のものやESRIが作ったものについては<ulink url="
+"\"http://spatialreference.org\">spatialreference.org</ulink>から取得して下さ"
+"い。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:527
+#, fuzzy, no-c-format
+msgid ""
+"You can even define non-Earth-based coordinate systems, such as <ulink url="
+"\"http://spatialreference.org/ref/iau2000/mars-2000/\">Mars 2000</ulink> "
+"This Mars coordinate system is non-planar (it's in degrees spheroidal), but "
+"you can use it with the <varname>geography</varname> type to obtain length "
+"and proximity measurements in meters instead of degrees."
+msgstr ""
+"核戦争時に人類を輸送するための火星遠征を計画し、火星居住用の地図を作成する場"
+"合であったとしても、<ulink url=\"http://spatialreference.org/ref/iau2000/"
+"mars-2000/\">Mars 2000</ulink>といった地球以外の座標系を作成し、"
+"<varname>spatial_ref_sys</varname>に挿入して使うことができます。この火星座標"
+"系は非平面 (回転楕円体面の度)ですが、ジオグラフィ型で長さや、計測近似値を、度"
+"単位でなくメートル単位で得ることができます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:532
+#, fuzzy, no-c-format
+msgid "The <varname>SPATIAL_REF_SYS</varname> table definition is:"
+msgstr "<varname>SPATIAL_REF_SYS</varname>テーブル定義は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:534
+#, no-c-format
+msgid ""
+"CREATE TABLE spatial_ref_sys (\n"
+"  srid       INTEGER NOT NULL PRIMARY KEY,\n"
+"  auth_name  VARCHAR(256),\n"
+"  auth_srid  INTEGER,\n"
+"  srtext     VARCHAR(2048),\n"
+"  proj4text  VARCHAR(2048)\n"
+")"
+msgstr ""
+"CREATE TABLE spatial_ref_sys (\n"
+"  srid       INTEGER NOT NULL PRIMARY KEY,\n"
+"  auth_name  VARCHAR(256),\n"
+"  auth_srid  INTEGER,\n"
+"  srtext     VARCHAR(2048),\n"
+"  proj4text  VARCHAR(2048)\n"
+")"
+
+#. Tag: para
+#: using_postgis_dataman.xml:536 using_postgis_dataman.xml:619
+#, fuzzy, no-c-format
+msgid "The columns are:"
+msgstr "カラムの意味は次の通りです。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:540 using_postgis_dataman.xml:652
+#, fuzzy, no-c-format
+msgid "SRID"
+msgstr "AUTH_SRID"
+
+#. Tag: para
+#: using_postgis_dataman.xml:543
+#, fuzzy, no-c-format
+msgid ""
+"An integer code that uniquely identifies the <ulink url=\"http://en."
+"wikipedia.org/wiki/SRID\">Spatial Reference System</ulink> (SRS) within the "
+"database."
+msgstr ""
+"一意に定められた整数値で、データベースで空間参照系 (SRS)を識別するものです。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:549
+#, no-c-format
+msgid "AUTH_NAME"
+msgstr "AUTH_NAME"
+
+#. Tag: para
+#: using_postgis_dataman.xml:552
+#, fuzzy, no-c-format
+msgid ""
+"The name of the standard or standards body that is being cited for this "
+"reference system. For example, \"EPSG\" is a valid <varname>AUTH_NAME</"
+"varname>."
+msgstr ""
+"その参照系の引用元である標準の名前です。たとえば「EPSG」は妥当な"
+"<varname>AUTH_NAME</varname>です。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:559
+#, no-c-format
+msgid "AUTH_SRID"
+msgstr "AUTH_SRID"
+
+#. Tag: para
+#: using_postgis_dataman.xml:562
+#, no-c-format
+msgid ""
+"The ID of the Spatial Reference System as defined by the Authority cited in "
+"the <varname>AUTH_NAME</varname>. In the case of EPSG, this is where the "
+"EPSG projection code would go."
+msgstr ""
+"<varname>AUTH_NAME</varname>で引用される団体によって定義された空間参照系のID"
+"です。EPSGの場合、EPSG投影コードが入ります。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:569
+#, no-c-format
+msgid "SRTEXT"
+msgstr "SRTEXT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:572
+#, no-c-format
+msgid ""
+"The Well-Known Text representation of the Spatial Reference System. An "
+"example of a WKT SRS representation is:"
+msgstr ""
+"空間参照系のWell-Knownテキスト表現です。たとえば、WKT SRSの表現は、次のように"
+"なります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:575
+#, no-c-format
+msgid ""
+"PROJCS[\"NAD83 / UTM Zone 10N\",\n"
+"  GEOGCS[\"NAD83\",\n"
+"        DATUM[\"North_American_Datum_1983\",\n"
+"          SPHEROID[\"GRS 1980\",6378137,298.257222101]\n"
+"        ],\n"
+"        PRIMEM[\"Greenwich\",0],\n"
+"        UNIT[\"degree\",0.0174532925199433]\n"
+"  ],\n"
+"  PROJECTION[\"Transverse_Mercator\"],\n"
+"  PARAMETER[\"latitude_of_origin\",0],\n"
+"  PARAMETER[\"central_meridian\",-123],\n"
+"  PARAMETER[\"scale_factor\",0.9996],\n"
+"  PARAMETER[\"false_easting\",500000],\n"
+"  PARAMETER[\"false_northing\",0],\n"
+"  UNIT[\"metre\",1]\n"
+"]"
+msgstr ""
+"PROJCS[\"NAD83 / UTM Zone 10N\",\n"
+"  GEOGCS[\"NAD83\",\n"
+"        DATUM[\"North_American_Datum_1983\",\n"
+"          SPHEROID[\"GRS 1980\",6378137,298.257222101]\n"
+"        ],\n"
+"        PRIMEM[\"Greenwich\",0],\n"
+"        UNIT[\"degree\",0.0174532925199433]\n"
+"  ],\n"
+"  PROJECTION[\"Transverse_Mercator\"],\n"
+"  PARAMETER[\"latitude_of_origin\",0],\n"
+"  PARAMETER[\"central_meridian\",-123],\n"
+"  PARAMETER[\"scale_factor\",0.9996],\n"
+"  PARAMETER[\"false_easting\",500000],\n"
+"  PARAMETER[\"false_northing\",0],\n"
+"  UNIT[\"metre\",1]\n"
+"]"
+
+#. Tag: para
+#: using_postgis_dataman.xml:577
+#, fuzzy, no-c-format
+msgid ""
+"For a listing of EPSG projection codes and their corresponding WKT "
+"representations, see <ulink url=\"http://www.opengeospatial.org/\">http://"
+"www.opengeospatial.org/</ulink>. For a discussion of SRS WKT in general, see "
+"the OpenGIS \"Coordinate Transformation Services Implementation Specification"
+"\" at <ulink url=\"http://www.opengeospatial.org/standards\">http://www."
+"opengeospatial.org/standards</ulink>. For information on the European "
+"Petroleum Survey Group (EPSG) and their database of spatial reference "
+"systems, see <ulink url=\"http://www.epsg.org/\">http://www.epsg.org</ulink>."
+msgstr ""
+"EPSG投影コードと対応するWKT表現の一覧については、<ulink url=\"http://www."
+"opengeospatial.org/\">http://www.opengeospatial.org/</ulink>をご覧下さい。WKT"
+"の一般的な議論については、OpenGISの<ulink url=\"http://www.opengeospatial."
+"org/standards\">http://www.opengeospatial.org/standards</ulink>にある「座標変"
+"換サービス実装仕様」をご覧下さい。欧州石油調査グループ(European Petroleum "
+"Survey Group, EPSG)とEPSG空間参照系のデータベースに関する情報は、<ulink url="
+"\"http://www.epsg.org/\">http://www.epsg.org/</ulink>をご覧下さい。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:590
+#, no-c-format
+msgid "PROJ4TEXT"
+msgstr "PROJ4TEXT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:593
+#, fuzzy, no-c-format
+msgid ""
+"PostGIS uses the PROJ library to provide coordinate transformation "
+"capabilities. The <varname>PROJ4TEXT</varname> column contains the Proj4 "
+"coordinate definition string for a particular SRID. For example:"
+msgstr ""
+"PostGISは座標変換機能を提供するためにProj4ライブラリを用いています。 "
+"<varname>PROJ4TEXT</varname>カラムには、特定のSRIDを示すProj4座標定義文字列が"
+"入ります。たとえば次のようになります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:598
+#, no-c-format
+msgid "+proj=utm +zone=10 +ellps=clrk66 +datum=NAD27 +units=m"
+msgstr "+proj=utm +zone=10 +ellps=clrk66 +datum=NAD27 +units=m"
+
+#. Tag: para
+#: using_postgis_dataman.xml:600
+#, fuzzy, no-c-format
+msgid ""
+"For more information see the <ulink url=\"https://proj.org/\">Proj4 web "
+"site</ulink>. The <filename>spatial_ref_sys.sql</filename> file contains "
+"both <varname>SRTEXT</varname> and <varname>PROJ4TEXT</varname> definitions "
+"for all EPSG projections."
+msgstr ""
+"詳細情報については、Proj4ウェブサイト<ulink url=\"http://trac.osgeo.org/proj/"
+"\">http://trac.osgeo.org/proj/</ulink>をご覧下さい。"
+"<filename>spatial_ref_sys.sql</filename>は、全てのEPSG投影法のための"
+"<varname>SRTEXT</varname>と<varname>PROJ4TEXT</varname>とを持っています。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:611
+#, fuzzy, no-c-format
+msgid "The GEOMETRY_COLUMNS View"
+msgstr "GEOMETRY_COLUMNSビュー"
+
+#. Tag: para
+#: using_postgis_dataman.xml:613
+#, fuzzy, no-c-format
+msgid ""
+"<varname>GEOMETRY_COLUMNS</varname> is a view reading from database system "
+"catalog tables. Its structure is:"
+msgstr ""
+"<varname>GEOMETRY_COLUMNS</varname>は、データベースのシステムカタログから読み"
+"取るビューです。構造は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:616
+#, no-c-format
+msgid "\\d geometry_columns"
+msgstr "\\d geometry_columns"
+
+#. Tag: screen
+#: using_postgis_dataman.xml:617
+#, no-c-format
+msgid ""
+"View \"public.geometry_columns\"\n"
+"      Column       |          Type          | Modifiers\n"
+"-------------------+------------------------+-----------\n"
+" f_table_catalog   | character varying(256) |\n"
+" f_table_schema    | character varying(256) |\n"
+" f_table_name      | character varying(256) |\n"
+" f_geometry_column | character varying(256) |\n"
+" coord_dimension   | integer                |\n"
+" srid              | integer                |\n"
+" type              | character varying(30)  |"
+msgstr ""
+"View \"public.geometry_columns\"\n"
+"      Column       |          Type          | Modifiers\n"
+"-------------------+------------------------+-----------\n"
+" f_table_catalog   | character varying(256) |\n"
+" f_table_schema    | character varying(256) |\n"
+" f_table_name      | character varying(256) |\n"
+" f_geometry_column | character varying(256) |\n"
+" coord_dimension   | integer                |\n"
+" srid              | integer                |\n"
+" type              | character varying(30)  |"
+
+#. Tag: term
+#: using_postgis_dataman.xml:623
+#, no-c-format
+msgid "F_TABLE_CATALOG, F_TABLE_SCHEMA, F_TABLE_NAME"
+msgstr "F_TABLE_CATALOG, F_TABLE_SCHEMA, F_TABLE_NAME"
+
+#. Tag: para
+#: using_postgis_dataman.xml:626
+#, no-c-format
+msgid ""
+"The fully qualified name of the feature table containing the geometry "
+"column. Note that the terms \"catalog\" and \"schema\" are Oracle-ish. There "
+"is not PostgreSQL analogue of \"catalog\" so that column is left blank -- "
+"for \"schema\" the PostgreSQL schema name is used (<varname>public</varname> "
+"is the default)."
+msgstr ""
+"ジオメトリカラムを持つフィーチャーテーブルの完全修飾名。\"catalog\"および"
+"\"schema\"の語はOracle風であることに注意して下さい。\"catalog\"に類似するもの"
+"はPostgreSQLになく、このカラムは空白にされます。\"schema\"については"
+"PostgreSQLスキーマ名が使われています (<varname>public</varname>がデフォルトで"
+"す)。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:635
+#, no-c-format
+msgid "F_GEOMETRY_COLUMN"
+msgstr "F_GEOMETRY_COLUMN"
+
+#. Tag: para
+#: using_postgis_dataman.xml:638
+#, no-c-format
+msgid "The name of the geometry column in the feature table."
+msgstr "フィーチャーテーブル内のジオメトリカラムの名前。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:643
+#, no-c-format
+msgid "COORD_DIMENSION"
+msgstr "COORD_DIMENSION"
+
+#. Tag: para
+#: using_postgis_dataman.xml:646
+#, no-c-format
+msgid "The spatial dimension (2, 3 or 4 dimensional) of the column."
+msgstr "そのカラムの空間の次元 (2, 3 または 4)。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:655
+#, no-c-format
+msgid ""
+"The ID of the spatial reference system used for the coordinate geometry in "
+"this table. It is a foreign key reference to the <varname>SPATIAL_REF_SYS</"
+"varname>."
+msgstr ""
+"このテーブルの座標ジオメトリのために使われる空間参照系のID。"
+"<varname>SPATIAL_REF_SYS</varname>への外部キーになっています。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:662
+#, no-c-format
+msgid "TYPE"
+msgstr "TYPE"
+
+#. Tag: para
+#: using_postgis_dataman.xml:665
+#, no-c-format
+msgid ""
+"The type of the spatial object. To restrict the spatial column to a single "
+"type, use one of: POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, "
+"MULTIPOLYGON, GEOMETRYCOLLECTION or corresponding XYM versions POINTM, "
+"LINESTRINGM, POLYGONM, MULTIPOINTM, MULTILINESTRINGM, MULTIPOLYGONM, "
+"GEOMETRYCOLLECTIONM. For heterogeneous (mixed-type) collections, you can use "
+"\"GEOMETRY\" as the type."
+msgstr ""
+"空間オブジェクトの型。空間カラムを単一型に制限するには、POINT、LINESTRING、"
+"POLYGON、MULTIPOINT、MULTILINESTRING、MULTIPOLYGON、GEOMETRYCOLLECTIONのうち"
+"のいずれかを、また、XYMで使う場合には、LINESTRINGM、POLYGONM、MULTIPOINTM、"
+"MULTILINESTRINGM、MULTIPOLYGONM、GEOMETRYCOLLECTIONMのうちのいずれかを使いま"
+"す。複数の型が混合するコレクションの場合は\"GEOMETRY\"を型とすることができま"
+"す。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:674
+#, no-c-format
+msgid ""
+"This attribute is (probably) not part of the OpenGIS specification, but is "
+"required for ensuring type homogeneity."
+msgstr ""
+"この属性は (おそらく)OpenGIS仕様に入っていませんが、型の同一性を保証するため"
+"に必要です。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:684
+#, no-c-format
+msgid "Creating a Spatial Table"
+msgstr "空間テーブルを作る"
+
+#. Tag: para
+#: using_postgis_dataman.xml:686
+#, no-c-format
+msgid ""
+"Creating a table with spatial data, can be done in one step. As shown in the "
+"following example which creates a roads table with a 2D linestring geometry "
+"column in WGS84 long lat"
+msgstr ""
+"空間データを持つテーブルの生成は、1段階でできます。2次元ラインストリングで"
+"WGS84経度緯度のジオメトリカラムを持つroadsテーブルの生成の例を次に示します。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:688
+#, no-c-format
+msgid ""
+"CREATE TABLE ROADS (ID serial, ROAD_NAME text, geom "
+"geometry(LINESTRING,4326) );"
+msgstr ""
+"CREATE TABLE ROADS (ID serial, ROAD_NAME text, geom "
+"geometry(LINESTRING,4326) );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:690
+#, no-c-format
+msgid ""
+"We can add additional columns using standard ALTER TABLE command as we do in "
+"this next example where we add a 3-D linestring."
+msgstr ""
+"次の、3次元ラインストリングを追加する例で示す通り、標準的なALTER TABLEコマン"
+"ドを使ってカラムを追加できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:691
+#, no-c-format
+msgid "ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);"
+msgstr "ALTER TABLE roads ADD COLUMN geom2 geometry(LINESTRINGZ,4326);"
+
+#. Tag: title
+#: using_postgis_dataman.xml:695
+#, fuzzy, no-c-format
+msgid "Manually Registering Geometry Columns"
+msgstr "手動でジオメトリカラムをgeometry_columnsに登録する"
+
+#. Tag: para
+#: using_postgis_dataman.xml:697
+#, no-c-format
+msgid ""
+"Two of the cases where you may need this are the case of SQL Views and bulk "
+"inserts. For bulk insert case, you can correct the registration in the "
+"geometry_columns table by constraining the column or doing an alter table. "
+"For views, you could expose using a CAST operation. Note, if your column is "
+"typmod based, the creation process would register it correctly, so no need "
+"to do anything. Also views that have no spatial function applied to the "
+"geometry will register the same as the underlying table geometry column."
+msgstr ""
+"これが必要になる事例に、SQLビューとバルクインサートの二つがあります。バルクイ"
+"ンサートの場合には、カラムに制約を与えるか、ALTER TABLEを実行することで、"
+"geometry_columnsテーブル内の登録を訂正することができます。ビューの場合には、"
+"CAST演算を使用します。カラムが型修飾子に基づく場合には、生成処理によって正し"
+"く登録されるので、何も行う必要がありません。ジオメトリに適用する空間関数を持"
+"たないビューも、基礎となるテーブルのジオメトリカラムと同じように登録されま"
+"す。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:702
+#, no-c-format
+msgid ""
+"-- Lets say you have a view created like this\n"
+"CREATE VIEW public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom, 3395) As geom, f_name\n"
+"        FROM public.mytable;\n"
+"\n"
+"-- For it to register correctly\n"
+"-- You need to cast the geometry\n"
+"--\n"
+"DROP VIEW public.vwmytablemercator;\n"
+"CREATE VIEW  public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom, 3395)::geometry(Geometry, 3395) As "
+"geom, f_name\n"
+"        FROM public.mytable;\n"
+"\n"
+"-- If you know the geometry type for sure is a 2D POLYGON then you could do\n"
+"DROP VIEW public.vwmytablemercator;\n"
+"CREATE VIEW  public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom,3395)::geometry(Polygon, 3395) As "
+"geom, f_name\n"
+"        FROM public.mytable;"
+msgstr ""
+"-- 次のようなビューがあるとします\n"
+"CREATE VIEW public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom, 3395) As geom, f_name\n"
+"        FROM public.mytable;\n"
+"\n"
+"-- 正しく登録するには、\n"
+"-- ジオメトリをキャストします。\n"
+"--\n"
+"DROP VIEW public.vwmytablemercator;\n"
+"CREATE VIEW  public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom, 3395)::geometry(Geometry, 3395) As "
+"geom, f_name\n"
+"        FROM public.mytable;\n"
+"\n"
+"-- ジオメトリタイプが確実に2次元ポリゴンだと知っているなら\n"
+"-- 次のようにできます。\n"
+"DROP VIEW public.vwmytablemercator;\n"
+"CREATE VIEW  public.vwmytablemercator AS\n"
+"        SELECT gid, ST_Transform(geom,3395)::geometry(Polygon, 3395) As "
+"geom, f_name\n"
+"        FROM public.mytable;"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:703
+#, no-c-format
+msgid ""
+"--Lets say you created a derivative table by doing a bulk insert\n"
+"SELECT poi.gid, poi.geom, citybounds.city_name\n"
+"INTO myschema.my_special_pois\n"
+"FROM poi INNER JOIN citybounds ON ST_Intersects(citybounds.geom, poi.geom);\n"
+"\n"
+"-- Create 2D index on new table\n"
+"CREATE INDEX idx_myschema_myspecialpois_geom_gist\n"
+"  ON myschema.my_special_pois USING gist(geom);\n"
+"\n"
+"-- If your points are 3D points or 3M points,\n"
+"-- then you might want to create an nd index instead of a 2D index\n"
+"CREATE INDEX my_special_pois_geom_gist_nd\n"
+"        ON my_special_pois USING gist(geom gist_geometry_ops_nd);\n"
+"\n"
+"-- To manually register this new table's geometry column in "
+"geometry_columns.\n"
+"-- Note it will also change the underlying structure of the table to\n"
+"-- to make the column typmod based.\n"
+"SELECT populate_geometry_columns('myschema.my_special_pois'::regclass);\n"
+"\n"
+"-- If you are using PostGIS 2.0 and for whatever reason, you\n"
+"-- you need the constraint based definition behavior\n"
+"-- (such as case of inherited tables where all children do not have the same "
+"type and srid)\n"
+"-- set optional use_typmod argument to false\n"
+"SELECT populate_geometry_columns('myschema.my_special_pois'::regclass, "
+"false);"
+msgstr ""
+"-- 次のように、バルクインサートで派生テーブルを生成したとしましょう\n"
+"SELECT poi.gid, poi.geom, citybounds.city_name\n"
+"INTO myschema.my_special_pois\n"
+"FROM poi INNER JOIN citybounds ON ST_Intersects(citybounds.geom, poi.geom);\n"
+"\n"
+"-- 新しいテーブルに2次元インデックスを作ります\n"
+"CREATE INDEX idx_myschema_myspecialpois_geom_gist\n"
+"  ON myschema.my_special_pois USING gist(geom);\n"
+"\n"
+"-- ポイントが3次元ポイントであったり、XYMポイントであったりした場合には、\n"
+"-- 次のように、2次元インデックスでなくN次元インデックスを作ることになるかも\n"
+"-- 知れません。\n"
+"CREATE INDEX my_special_pois_geom_gist_nd\n"
+"        ON my_special_pois USING gist(geom gist_geometry_ops_nd);\n"
+"\n"
+"-- 新しいテーブルのジオメトリカラムをgeometry_columnsに手動登録するには、\n"
+"-- 次のようにします。\n"
+"-- カラムを型修飾子ベースにするために、基礎となるテーブル構造も変更すること"
+"に\n"
+"-- 注意して下さい。\n"
+"SELECT populate_geometry_columns('myschema.my_special_pois'::regclass);\n"
+"\n"
+"-- PostGIS 2.0を使っていて、何らかの理由で古い制約をもとにした定義を行う\n"
+"-- (派生テーブルが同じタイプやSRIDを持たないといった場合)ことが必要な場合に"
+"は、\n"
+"-- 新しい任意変数use_typemodをfalseにします。\n"
+"SELECT populate_geometry_columns('myschema.my_special_pois'::regclass, "
+"false);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:705
+#, no-c-format
+msgid ""
+"Although the old-constraint based method is still supported, a constraint-"
+"based geometry column used directly in a view, will not register correctly "
+"in geometry_columns, as will a typmod one. In this example we define a "
+"column using typmod and another using constraints."
+msgstr ""
+"古い制約を基にした手法は現在も対応していますが、制約を基にしたジオメトリカラ"
+"ムで直接的にビューで使われている場合は、型修飾子のようには正しく"
+"geometry_columnsに登録されません。次の例では、型修飾子を使ったカラム定義と、"
+"制約に基づくカラムの定義とを行っています。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:708
+#, no-c-format
+msgid ""
+"CREATE TABLE pois_ny(gid SERIAL PRIMARY KEY, poi_name text, cat text, geom "
+"geometry(POINT,4326));\n"
+"SELECT AddGeometryColumn('pois_ny', 'geom_2160', 2160, 'POINT', 2, false);"
+msgstr ""
+"CREATE TABLE pois_ny(gid SERIAL PRIMARY KEY, poi_name text, cat text, geom "
+"geometry(POINT,4326));\n"
+"SELECT AddGeometryColumn('pois_ny', 'geom_2160', 2160, 'POINT', 2, false);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:709
+#, no-c-format
+msgid "If we run in psql"
+msgstr "psqlで次を実行します。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:710
+#, no-c-format
+msgid "\\d pois_ny;"
+msgstr "\\d pois_ny;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:711
+#, no-c-format
+msgid ""
+"We observe they are defined differently -- one is typmod, one is constraint"
+msgstr "型修飾子と制約に基づくのとでは異なった定義になっているのが見えます。"
+
+#. Tag: screen
+#: using_postgis_dataman.xml:712
+#, no-c-format
+msgid ""
+"Table \"public.pois_ny\"\n"
+"  Column   |         Type          |                       Modifiers\n"
+"\n"
+"-----------+-----------------------"
+"+------------------------------------------------------\n"
+" gid       | integer               | not null default "
+"nextval('pois_ny_gid_seq'::regclass)\n"
+" poi_name  | text                  |\n"
+" cat       | character varying(20) |\n"
+" geom      | geometry(Point,4326)  |\n"
+" geom_2160 | geometry              |\n"
+"Indexes:\n"
+"    \"pois_ny_pkey\" PRIMARY KEY, btree (gid)\n"
+"Check constraints:\n"
+"    \"enforce_dims_geom_2160\" CHECK (st_ndims(geom_2160) = 2)\n"
+"    \"enforce_geotype_geom_2160\" CHECK (geometrytype(geom_2160) = 'POINT'::"
+"text\n"
+"        OR geom_2160 IS NULL)\n"
+"    \"enforce_srid_geom_2160\" CHECK (st_srid(geom_2160) = 2160)"
+msgstr ""
+"Table \"public.pois_ny\"\n"
+"  Column   |         Type          |                       Modifiers\n"
+"\n"
+"-----------+-----------------------"
+"+------------------------------------------------------\n"
+" gid       | integer               | not null default "
+"nextval('pois_ny_gid_seq'::regclass)\n"
+" poi_name  | text                  |\n"
+" cat       | character varying(20) |\n"
+" geom      | geometry(Point,4326)  |\n"
+" geom_2160 | geometry              |\n"
+"Indexes:\n"
+"    \"pois_ny_pkey\" PRIMARY KEY, btree (gid)\n"
+"Check constraints:\n"
+"    \"enforce_dims_geom_2160\" CHECK (st_ndims(geom_2160) = 2)\n"
+"    \"enforce_geotype_geom_2160\" CHECK (geometrytype(geom_2160) = 'POINT'::"
+"text\n"
+"        OR geom_2160 IS NULL)\n"
+"    \"enforce_srid_geom_2160\" CHECK (st_srid(geom_2160) = 2160)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:713
+#, no-c-format
+msgid "In geometry_columns, they both register correctly"
+msgstr "geometry_columnsでは、両方とも正しく登録されています。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:714
+#, no-c-format
+msgid ""
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'pois_ny';"
+msgstr ""
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'pois_ny';"
+
+#. Tag: screen
+#: using_postgis_dataman.xml:715
+#, no-c-format
+msgid ""
+"f_table_name | f_geometry_column | srid | type\n"
+"-------------+-------------------+------+-------\n"
+"pois_ny      | geom              | 4326 | POINT\n"
+"pois_ny      | geom_2160         | 2160 | POINT"
+msgstr ""
+"f_table_name | f_geometry_column | srid | type\n"
+"-------------+-------------------+------+-------\n"
+"pois_ny      | geom              | 4326 | POINT\n"
+"pois_ny      | geom_2160         | 2160 | POINT"
+
+#. Tag: para
+#: using_postgis_dataman.xml:716
+#, no-c-format
+msgid "However -- if we were to create a view like this"
+msgstr "しかし、次のようにビューを作ろうとします。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:717
+#, no-c-format
+msgid ""
+"CREATE VIEW vw_pois_ny_parks AS\n"
+"SELECT *\n"
+"  FROM pois_ny\n"
+"  WHERE cat='park';\n"
+"\n"
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'vw_pois_ny_parks';"
+msgstr ""
+"CREATE VIEW vw_pois_ny_parks AS\n"
+"SELECT *\n"
+"  FROM pois_ny\n"
+"  WHERE cat='park';\n"
+"\n"
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'vw_pois_ny_parks';"
+
+#. Tag: para
+#: using_postgis_dataman.xml:718
+#, no-c-format
+msgid ""
+"The typmod based geom view column registers correctly, but the constraint "
+"based one does not."
+msgstr ""
+"型修飾子によるgeomのビューカラムは正しく登録されますが、制約に基づくものは正"
+"しく登録されません。"
+
+#. Tag: screen
+#: using_postgis_dataman.xml:720
+#, no-c-format
+msgid ""
+"f_table_name   | f_geometry_column | srid |   type\n"
+"------------------+-------------------+------+----------\n"
+" vw_pois_ny_parks | geom              | 4326 | POINT\n"
+" vw_pois_ny_parks | geom_2160         |    0 | GEOMETRY"
+msgstr ""
+"f_table_name   | f_geometry_column | srid |   type\n"
+"------------------+-------------------+------+----------\n"
+" vw_pois_ny_parks | geom              | 4326 | POINT\n"
+" vw_pois_ny_parks | geom_2160         |    0 | GEOMETRY"
+
+#. Tag: para
+#: using_postgis_dataman.xml:722
+#, fuzzy, no-c-format
+msgid ""
+"This may change in future versions of PostGIS, but for now to force the "
+"constraint-based view column to register correctly, you need to do this:"
+msgstr ""
+"これは、将来的にPostGISの版で変更されるかもしれませんが、今のところは、制約に"
+"基づくビューカラムを正しく登録させるには、次のようにします。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:724
+#, no-c-format
+msgid ""
+"DROP VIEW vw_pois_ny_parks;\n"
+"CREATE VIEW vw_pois_ny_parks AS\n"
+"SELECT gid, poi_name, cat,\n"
+"  geom,\n"
+"  geom_2160::geometry(POINT,2160) As geom_2160\n"
+"  FROM pois_ny\n"
+"  WHERE cat = 'park';\n"
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'vw_pois_ny_parks';"
+msgstr ""
+"DROP VIEW vw_pois_ny_parks;\n"
+"CREATE VIEW vw_pois_ny_parks AS\n"
+"SELECT gid, poi_name, cat,\n"
+"  geom,\n"
+"  geom_2160::geometry(POINT,2160) As geom_2160\n"
+"  FROM pois_ny\n"
+"  WHERE cat = 'park';\n"
+"SELECT f_table_name, f_geometry_column, srid, type\n"
+"        FROM geometry_columns\n"
+"        WHERE f_table_name = 'vw_pois_ny_parks';"
+
+#. Tag: screen
+#: using_postgis_dataman.xml:725
+#, no-c-format
+msgid ""
+"f_table_name   | f_geometry_column | srid | type\n"
+"------------------+-------------------+------+-------\n"
+" vw_pois_ny_parks | geom              | 4326 | POINT\n"
+" vw_pois_ny_parks | geom_2160         | 2160 | POINT"
+msgstr ""
+"f_table_name   | f_geometry_column | srid | type\n"
+"------------------+-------------------+------+-------\n"
+" vw_pois_ny_parks | geom              | 4326 | POINT\n"
+" vw_pois_ny_parks | geom_2160         | 2160 | POINT"
+
+#. Tag: title
+#: using_postgis_dataman.xml:730
+#, no-c-format
+msgid "Geometry Validation"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:732
+#, no-c-format
+msgid ""
+"PostGIS is compliant with the Open Geospatial Consortium’s (OGC) OpenGIS "
+"Specifications. As such, many PostGIS methods require, or more accurately, "
+"assume that geometries that are operated on are both simple and valid. For "
+"example, it does not make sense to calculate the area of a polygon that has "
+"a hole defined outside of the polygon, or to construct a polygon from a non-"
+"simple boundary line."
+msgstr ""
+"PostGISはOpen Geospatial Consortium (OGC)のOpenGIS仕様に準拠しています。多く"
+"のPostGISメソッドは、操作対象のジオメトリが単純かつ妥当であることが求められま"
+"す (正確に言うとそう仮定します)。たとえば、ポリゴンの外に穴があるようなものの"
+"面積を計算したり、単純でない境界線を持つポリゴンを作ったりするのは、意味があ"
+"りません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:739
+#, no-c-format
+msgid ""
+"According to the OGC Specifications, a <emphasis>simple</emphasis> geometry "
+"is one that has no anomalous geometric points, such as self intersection or "
+"self tangency and primarily refers to 0 or 1-dimensional geometries (i.e. "
+"<varname>[MULTI]POINT, [MULTI]LINESTRING</varname>). Geometry validity, on "
+"the other hand, primarily refers to 2-dimensional geometries (i.e. "
+"<varname>[MULTI]POLYGON)</varname> and defines the set of assertions that "
+"characterizes a valid polygon. The description of each geometric class "
+"includes specific conditions that further detail geometric simplicity and "
+"validity."
+msgstr ""
+"OGS仕様に沿うと、<emphasis>単純な</emphasis>ジオメトリとは、自己インタセクト"
+"や自己接触のような、異常な幾何点を持たないことです。主に0次元または1次元のジ"
+"オメトリ (<varname>[MULTI]POINT, [MULTI]LINESTRING</varname>))に適用します。 "
+"他方、ジオメトリの妥当性は、主に2次元ジオメトリ (<varname>[MULTI]POLYGON</"
+"varname>)に適用し、妥当なポリゴンを特徴づける位置指定子の集合を定義します。"
+"個々のジオメトリクラスには、単純性と妥当性をさらに詳細に述べる特定の条件があ"
+"ります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:749
+#, fuzzy, no-c-format
+msgid ""
+"A <varname>POINT</varname> is inherently <emphasis>simple</emphasis> as a 0-"
+"dimensional geometry object."
+msgstr ""
+"<varname>POINT</varname>は0次元ジオメトリオブジェクトとして常に<emphasis>単純"
+"</emphasis>です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:752
+#, no-c-format
+msgid ""
+"<varname>MULTIPOINT</varname>s are <emphasis>simple</emphasis> if no two "
+"coordinates (<varname>POINT</varname>s) are equal (have identical coordinate "
+"values)."
+msgstr ""
+"<varname>MULTIPOINT</varname>は、二つの座標値 (<varname>POINT</varname>)が同"
+"じでないなら<emphasis>単純</emphasis>です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:756
+#, no-c-format
+msgid ""
+"A <varname>LINESTRING</varname> is <emphasis>simple</emphasis> if it does "
+"not pass through the same <varname>POINT</varname> twice (except for the "
+"endpoints, in which case it is referred to as a linear ring and additionally "
+"considered closed)."
+msgstr ""
+"<varname>LINESTRING</varname>は、2度同じ<varname>POINT</varname>を通らない "
+"(終点は除きます。この場合は線型環と呼ばれ、さらに言うと閉じていると思われま"
+"す)なら<emphasis>単純</emphasis>です。"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:771
+#, no-c-format
+msgid "<emphasis>(a)</emphasis>"
+msgstr "<emphasis>(a)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:781
+#, no-c-format
+msgid "<emphasis>(b)</emphasis>"
+msgstr "<emphasis>(b)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:793
+#, no-c-format
+msgid "<emphasis>(c)</emphasis>"
+msgstr "<emphasis>(c)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:803
+#, no-c-format
+msgid "<emphasis>(d)</emphasis>"
+msgstr "<emphasis>(d)</emphasis>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:813
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">(a)</emphasis> and <emphasis role=\"bold\">(c)</"
+"emphasis> are simple <varname>LINESTRING</varname>s, <emphasis role=\"bold"
+"\">(b)</emphasis> and <emphasis role=\"bold\">(d)</emphasis> are not."
+msgstr ""
+"<emphasis role=\"bold\">(a)</emphasis>と<emphasis role=\"bold\">(c)</"
+"emphasis>は単純な<varname>LINESTRING</varname>です。<emphasis role=\"bold"
+"\">(b)</emphasis>と<emphasis role=\"bold\">(d)</emphasis>は単純ではありませ"
+"ん。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:822
+#, no-c-format
+msgid ""
+"A <varname>MULTILINESTRING</varname> is <emphasis>simple</emphasis> only if "
+"all of its elements are simple and the only intersection between any two "
+"elements occurs at <varname>POINT</varname>s that are on the boundaries of "
+"both elements."
+msgstr ""
+"<varname>MULTILINESTRING</varname>は、 全ての要素が単純で、かつ任意の2要素の"
+"インタセクトが要素の境界である<varname>POINT</varname>でだけ発生する場合に"
+"限って<emphasis>単純</emphasis>です。"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:837
+#, no-c-format
+msgid "<emphasis>(e)</emphasis>"
+msgstr "<emphasis>(e)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:847
+#, no-c-format
+msgid "<emphasis>(f)</emphasis>"
+msgstr "<emphasis>(f)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:857
+#, no-c-format
+msgid "<emphasis>(g)</emphasis>"
+msgstr "<emphasis>(g)</emphasis>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:867
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">(e)</emphasis> and <emphasis role=\"bold\">(f)</"
+"emphasis> are simple <varname>MULTILINESTRING</varname>s, <emphasis role="
+"\"bold\">(g)</emphasis> is not."
+msgstr ""
+"<emphasis role=\"bold\">(e)</emphasis>と<emphasis role=\"bold\">(f)</"
+"emphasis>は単純な<varname>MULTILINESTRING</varname>です。<emphasis role="
+"\"bold\">(g)</emphasis>は単純ではありません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:876
+#, no-c-format
+msgid ""
+"By definition, a <varname>POLYGON</varname> is always <emphasis>simple</"
+"emphasis>. It is <emphasis>valid</emphasis> if no two rings in the boundary "
+"(made up of an exterior ring and interior rings) cross. The boundary of a "
+"<varname>POLYGON</varname> may intersect at a <varname>POINT</varname> but "
+"only as a tangent (i.e. not on a line). A <varname>POLYGON</varname> may not "
+"have cut lines or spikes and the interior rings must be contained entirely "
+"within the exterior ring."
+msgstr ""
+"定義から<varname>POLYGON</varname>は常に単純です。バウンダリ内の環 (外環と内"
+"環からなる)のうち二つがクロスしていないなら<emphasis>妥当</emphasis>です。"
+"<varname>POLYGON</varname>の境界は、<varname>POINT</varname>とインタセクトす"
+"るかも知れませんが、接点にしかなりません (すなわち線上にない)。"
+"<varname>POLYGON</varname>はカットラインまたはスパイクを持たなくても良く、内"
+"環は外環の中に完全に含まれていなければなりません。"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:894
+#, no-c-format
+msgid "<emphasis>(h)</emphasis>"
+msgstr "<emphasis>(h)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:904
+#, no-c-format
+msgid "<emphasis>(i)</emphasis>"
+msgstr "<emphasis>(i)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:914
+#, no-c-format
+msgid "<emphasis>(j)</emphasis>"
+msgstr "<emphasis>(j)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:926
+#, no-c-format
+msgid "<emphasis>(k)</emphasis>"
+msgstr "<emphasis>(k)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:936
+#, no-c-format
+msgid "<emphasis>(l)</emphasis>"
+msgstr "<emphasis>(l)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:946
+#, no-c-format
+msgid "<emphasis>(m)</emphasis>"
+msgstr "<emphasis>(m)</emphasis>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:955
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">(h)</emphasis> and <emphasis role=\"bold\">(i)</"
+"emphasis> are valid <varname>POLYGON</varname>s, <emphasis role=\"bold\">(j-"
+"m)</emphasis> cannot be represented as single <varname>POLYGON</varname>s, "
+"but <emphasis role=\"bold\">(j)</emphasis> and <emphasis role=\"bold\">(m)</"
+"emphasis> could be represented as a valid <varname>MULTIPOLYGON</varname>."
+msgstr ""
+"<emphasis role=\"bold\">(h)</emphasis>と<emphasis role=\"bold\">(i)</"
+"emphasis>は妥当な<varname>POLYGON</varname>です。<emphasis role=\"bold\">(jか"
+"らm)</emphasis>は単一の<varname>POLYGON</varname>としては表現できませんが、"
+"<emphasis role=\"bold\">(j)</emphasis>と<emphasis role=\"bold\">(m)</"
+"emphasis>は妥当な<varname>MULTIPOLYGON</varname>として表現できます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:967
+#, no-c-format
+msgid ""
+"A <varname>MULTIPOLYGON</varname> is <emphasis>valid</emphasis> if and only "
+"if all of its elements are valid and the interiors of no two elements "
+"intersect. The boundaries of any two elements may touch, but only at a "
+"finite number of <varname>POINT</varname>s."
+msgstr ""
+"<varname>MULTIPOLYGON</varname>は、全ての要素が妥当で、二つのポリゴン要素につ"
+"いて内側がインタセクトしていない場合は<emphasis>妥当</emphasis>です。ポリゴン"
+"要素の任意の二つの境界は接触してもよいですが、有限な数の<varname>POINT</"
+"varname>でなければなりません。"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:982
+#, no-c-format
+msgid "<emphasis>(n)</emphasis>"
+msgstr "<emphasis>(n)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:992
+#, no-c-format
+msgid "<emphasis>(o)</emphasis>"
+msgstr "<emphasis>(o)</emphasis>"
+
+#. Tag: emphasis
+#: using_postgis_dataman.xml:1002
+#, no-c-format
+msgid "<emphasis>(p)</emphasis>"
+msgstr "<emphasis>(p)</emphasis>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1011
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">(n)</emphasis> and <emphasis role=\"bold\">(o)</"
+"emphasis> are not valid <varname>MULTIPOLYGON</varname>s. <emphasis role="
+"\"bold\">(p)</emphasis>, however, is valid."
+msgstr ""
+"<emphasis role=\"bold\">(n)</emphasis>と<emphasis role=\"bold\">(o)</"
+"emphasis>は妥当でない<varname>MULTIPOLYGON</varname>です。<emphasis role="
+"\"bold\">(p)</emphasis>は妥当です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1020
+#, no-c-format
+msgid ""
+"Most of the functions implemented by the GEOS library rely on the assumption "
+"that your geometries are valid as specified by the OpenGIS Simple Feature "
+"Specification. To check simplicity or validity of geometries you can use the "
+"<link linkend=\"ST_IsSimple\">ST_IsSimple()</link> and <link linkend="
+"\"ST_IsValid\">ST_IsValid()</link>"
+msgstr ""
+"GEOSライブラリを使って実装されている関数のほとんどは、ジオメトリがOpenGISシン"
+"プルフィーチャー仕様で定義されているように妥当であると仮定しています。ジオメ"
+"トリが単純であるか、また妥当であるか、のチェックとして<link linkend="
+"\"ST_IsSimple\">ST_IsSimple()</link>と<link linkend=\"ST_IsValid"
+"\">ST_IsValid()</link>が使えます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1026
+#, no-c-format
+msgid ""
+"-- Typically, it doesn't make sense to check\n"
+"-- for validity on linear features since it will always return TRUE.\n"
+"-- But in this example, PostGIS extends the definition of the OGC IsValid\n"
+"-- by returning false if a LineString has less than 2 *distinct* vertices.\n"
+"gisdb=# SELECT\n"
+"   ST_IsValid('LINESTRING(0 0, 1 1)'),\n"
+"   ST_IsValid('LINESTRING(0 0, 0 0, 0 0)');\n"
+"\n"
+" st_isvalid | st_isvalid\n"
+"------------+-----------\n"
+"      t     |     f"
+msgstr ""
+"-- 一般的に、線フィーチャーの妥当性のチェックは\n"
+"-- 常にTRUEを返すので意味がありません\n"
+"-- しかし、この例では、PostGISがOGCのIsValidの定義を拡張して\n"
+"-- *一意な頂点*が2より少ないラインストリングについてFALSEを\n"
+"-- 返すようにしています\n"
+"gisdb=# SELECT\n"
+"   ST_IsValid('LINESTRING(0 0, 1 1)'),\n"
+"   ST_IsValid('LINESTRING(0 0, 0 0, 0 0)');\n"
+"\n"
+" st_isvalid | st_isvalid\n"
+"------------+-----------\n"
+"      t     |     f"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1028
+#, no-c-format
+msgid ""
+"By default, PostGIS does not apply this validity check on geometry input, "
+"because testing for validity needs lots of CPU time for complex geometries, "
+"especially polygons. If you do not trust your data sources, you can manually "
+"enforce such a check to your tables by adding a check constraint:"
+msgstr ""
+"デフォルトでは、PostGISはジオメトリ入力に関するこの妥当性チェックを適用しませ"
+"ん。複雑なジオメトリの妥当性のチェックはCPU時間を多く必要とするためです。デー"
+"タソースが信用できない場合は、手動でこのチェックを強制するための制約を付ける"
+"ことができます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1034
+#, no-c-format
+msgid ""
+"ALTER TABLE mytable\n"
+"  ADD CONSTRAINT geometry_valid_check\n"
+"        CHECK (ST_IsValid(the_geom));"
+msgstr ""
+"ALTER TABLE mytable\n"
+"  ADD CONSTRAINT geometry_valid_check\n"
+"        CHECK (ST_IsValid(the_geom));"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1036
+#, no-c-format
+msgid ""
+"If you encounter any strange error messages such as \"GEOS Intersection() "
+"threw an error!\" when calling PostGIS functions with valid input "
+"geometries, you likely found an error in either PostGIS or one of the "
+"libraries it uses, and you should contact the PostGIS developers. The same "
+"is true if a PostGIS function returns an invalid geometry for valid input."
+msgstr ""
+"妥当な入力ジオメトリでPostGIS関数を呼んだのに「GEOS Intersection()がエラーを"
+"投げました!」というようなエラーメッセージに遭遇したなら、PostGISまたは使用し"
+"ているライブラリの中のエラーを発見しました。PostGIS開発者に連絡するべきです。"
+"PostGIS関数が妥当である入力ジオメトリから妥当でないジオメトリが返る場合も同じ"
+"です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1044
+#, no-c-format
+msgid ""
+"Strictly compliant OGC geometries cannot have Z or M values. The <link "
+"linkend=\"ST_IsValid\">ST_IsValid()</link> function won't consider higher "
+"dimensioned geometries invalid! Invocations of <link linkend="
+"\"AddGeometryColumn\">AddGeometryColumn()</link> will add a constraint "
+"checking geometry dimensions, so it is enough to specify 2 there."
+msgstr ""
+"厳格にOGCジオメトリに準拠すると、Z値やM値を持てません。<link linkend="
+"\"ST_IsValid\">ST_IsValid()</link>は高次を考慮に入れません。<link linkend="
+"\"AddGeometryColumn\">AddGeometryColumn()</link>を実行するとジオメトリの次元"
+"をチェックする制約が加わるので、そこで2を指定すれば十分です。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1054
+#, fuzzy, no-c-format
+msgid "Loading Spatial Data"
+msgstr "GIS (ベクタ)データをロードする"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1056
+#, fuzzy, no-c-format
+msgid ""
+"Once you have created a spatial table, you are ready to upload spatial data "
+"to the database. There are two built-in ways to get spatial data into a "
+"PostGIS/PostgreSQL database: using formatted SQL statements or using the "
+"Shapefile loader."
+msgstr ""
+"空間テーブルを作成したら、これでGISデータをデータベースにアップロードする準備"
+"ができたことになります。現在、PostGIS/PostgreSQLデータベースにデータをロード"
+"するには、SQLステートメントを使う、またはシェープファイルのローダ/ダンパを使"
+"う、二つの方法があります。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1062
+#, fuzzy, no-c-format
+msgid "Using SQL to Load Data"
+msgstr "SQLを使ってデータを検索する"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1064
+#, fuzzy, no-c-format
+msgid ""
+"If spatial data can be converted to a text representation (as either WKT or "
+"WKB), then using SQL might be the easiest way to get data into PostGIS. Data "
+"can be bulk-loaded into PostGIS/PostgreSQL by loading a text file of SQL "
+"<code>INSERT</code> statements using the <code>psql</code> SQL utility."
+msgstr ""
+"データをテキスト表現に変換できるなら、フォーマットされたSQLを使うのがデータを"
+"PostGISに入れる最も簡単な方法です。Oracleや他のSQLデータベースを使うように、"
+"SQL端末モニタにSQLの\"INSERT\"ステートメントで一杯になった大きなテキストファ"
+"イルをパイプで送ることで、大量のデータをロードできます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1069
+#, fuzzy, no-c-format
+msgid ""
+"A SQL load file (<filename>roads.sql</filename> for example) might look like "
+"this:"
+msgstr ""
+"データアップロードファイル (たとえば<filename>roads.sql</filename>)は次のよう"
+"になるでしょう。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1072
+#, no-c-format
+msgid ""
+"BEGIN;\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (1,'LINESTRING(191232 243118,191108 243242)','Jeff Rd');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (2,'LINESTRING(189141 244158,189265 244817)','Geordie Rd');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (3,'LINESTRING(192783 228138,192612 229814)','Paul St');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (4,'LINESTRING(189412 252431,189631 259122)','Graeme Ave');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (5,'LINESTRING(190131 224148,190871 228134)','Phil Tce');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (6,'LINESTRING(198231 263418,198213 268322)','Dave Cres');\n"
+"COMMIT;"
+msgstr ""
+"BEGIN;\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (1,'LINESTRING(191232 243118,191108 243242)','Jeff Rd');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (2,'LINESTRING(189141 244158,189265 244817)','Geordie Rd');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (3,'LINESTRING(192783 228138,192612 229814)','Paul St');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (4,'LINESTRING(189412 252431,189631 259122)','Graeme Ave');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (5,'LINESTRING(190131 224148,190871 228134)','Phil Tce');\n"
+"INSERT INTO roads (road_id, roads_geom, road_name)\n"
+"  VALUES (6,'LINESTRING(198231 263418,198213 268322)','Dave Cres');\n"
+"COMMIT;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1074
+#, fuzzy, no-c-format
+msgid "The SQL file can be loaded into PostgreSQL using <code>psql</code>:"
+msgstr ""
+"データファイルは、次に示す\"psql\"というSQL端末モニタを使って、簡単に"
+"PostgreSQLにパイプで送ることができます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1076
+#, no-c-format
+msgid "psql -d [database] -f roads.sql"
+msgstr "psql -d [データベース名] -f roads.sql"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1080
+#, fuzzy, no-c-format
+msgid "Using the Shapefile Loader"
+msgstr "shp2pgsql: ESRIシェープファイルローダを使う"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1082
+#, fuzzy, no-c-format
+msgid ""
+"The <filename>shp2pgsql</filename> data loader converts Shapefiles into SQL "
+"suitable for insertion into a PostGIS/PostgreSQL database either in geometry "
+"or geography format. The loader has several operating modes selected by "
+"command line flags."
+msgstr ""
+"<filename>shp2pgsql</filename>データローダは、ESRIシェープファイルをPostGIS/"
+"PostgreSQLデータベースに、ジオメトリまたはジオグラフィとして挿入するための適"
+"切なSQLに変換します。ローダには、次に示すコマンドラインフラグによって区別され"
+"る、いくつかの操作モードがあります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1087
+#, fuzzy, no-c-format
+msgid ""
+"There is also a <filename>shp2pgsql-gui</filename> graphical interface with "
+"most of the options as the command-line loader. This may be easier to use "
+"for one-off non-scripted loading or if you are new to PostGIS. It can also "
+"be configured as a plugin to PgAdminIII."
+msgstr ""
+"また、コマンドラインローダのほとんどのオプションに対応する"
+"<filename>shp2pgsql-gui</filename>グラフィカルユーザインタフェースがありま"
+"す。一度限りのロードしか行わずスクリプト化しない場合やPostGISに不慣れな方に"
+"とって便利になるかもしれません。これはpgAdminIIIのプラグインとして構築するこ"
+"ともできます。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1095
+#, no-c-format
+msgid "(c|a|d|p) These are mutually exclusive options:"
+msgstr "(c|a|d|p) 相互に排他的なオプションです"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1100
+#, no-c-format
+msgid "<term>-c</term>"
+msgstr "<term>-c</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1102
+#, fuzzy, no-c-format
+msgid ""
+"Creates a new table and populates it from the Shapefile. <emphasis>This is "
+"the default mode.</emphasis>"
+msgstr ""
+"新しいテーブルの作成とシェープファイルからのデータの読み込みを行います。"
+"<emphasis>これがデフォルトモードです</emphasis>。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1110
+#, no-c-format
+msgid "<term>-a</term>"
+msgstr "<term>-a</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1112
+#, fuzzy, no-c-format
+msgid ""
+"Appends data from the Shapefile into the database table. Note that to use "
+"this option to load multiple files, the files must have the same attributes "
+"and same data types."
+msgstr ""
+"シェープファイルからデータベーステーブルにデータを追加します。複数のファイル"
+"をロードするためにこのオプションを使う場合は、これらのファイルは同じ属性と同"
+"じデータ型を持つ必要があります。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1121
+#, no-c-format
+msgid "<term>-d</term>"
+msgstr "<term>-d</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1123
+#, fuzzy, no-c-format
+msgid ""
+"Drops the database table before creating a new table with the data in the "
+"Shapefile."
+msgstr ""
+"シェープファイルにあるデータを持つ新しいテーブルを作成する前にデータベース"
+"テーブルを削除します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1130
+#, no-c-format
+msgid "<term>-p</term>"
+msgstr "<term>-p</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1132
+#, no-c-format
+msgid ""
+"Only produces the table creation SQL code, without adding any actual data. "
+"This can be used if you need to completely separate the table creation and "
+"data loading steps."
+msgstr ""
+"テーブル作成のSQLコードを生成するだけで、実際のデータは追加しません。このモー"
+"ドは、テーブル作成とデータロードとを完全に分けたい場合に使用します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1145
+#, no-c-format
+msgid "<term>-?</term>"
+msgstr "<term>-?</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1147
+#, no-c-format
+msgid "Display help screen."
+msgstr "ヘルプ画面を表示します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1154
+#, no-c-format
+msgid "<term>-D</term>"
+msgstr "<term>-D</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1156
+#, no-c-format
+msgid ""
+"Use the PostgreSQL \"dump\" format for the output data. This can be combined "
+"with -a, -c and -d. It is much faster to load than the default \"insert\" "
+"SQL format. Use this for very large data sets."
+msgstr ""
+"出力データにPostgreSQLのダンプ書式を用います。このモードは-a, -c, -dと組み合"
+"わせて利用します。デフォルトの\"insert\"によるSQL書式よりも、大変早くロードで"
+"きます。大きなデータセットではこちらを使用して下さい。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1165
+#, fuzzy, no-c-format
+msgid "-s [&lt;FROM_SRID&gt;:]&lt;SRID&gt;"
+msgstr "-s [&lt;FROM_SRID&gt;:]&lt;SRID&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1167
+#, fuzzy, no-c-format
+msgid ""
+"Creates and populates the geometry tables with the specified SRID. "
+"Optionally specifies that the input shapefile uses the given FROM_SRID, in "
+"which case the geometries will be reprojected to the target SRID."
+msgstr ""
+"指定したSRIDでジオメトリデーブルの作成とデータの読み込みを行います。 入力"
+"シェープファイルが使っているFROM_SRIDの指定が可能で、この場合は対象SRIDに投影"
+"変換を行います。FROM_SRIDは-Dと一緒には指定できません。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1177
+#, no-c-format
+msgid "<term>-k</term>"
+msgstr "<term>-k</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1179
+#, no-c-format
+msgid ""
+"Keep identifiers' case (column, schema and attributes). Note that attributes "
+"in Shapefile are all UPPERCASE."
+msgstr ""
+"識別子 (カラム、スキーマおよび属性)の大文字小文字を保持します。シェープファイ"
+"ルの属性は全て大文字であることに注意して下さい。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1187
+#, no-c-format
+msgid "<term>-i</term>"
+msgstr "<term>-i</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1189
+#, no-c-format
+msgid ""
+"Coerce all integers to standard 32-bit integers, do not create 64-bit "
+"bigints, even if the DBF header signature appears to warrant it."
+msgstr ""
+"全ての整数を標準の32ビット整数に強制します。DBFヘッダではそれが正当であったと"
+"しても、64ビットのbigintを生成しません。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1197
+#, no-c-format
+msgid "<term>-I</term>"
+msgstr "<term>-I</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1199
+#, no-c-format
+msgid "Create a GiST index on the geometry column."
+msgstr "ジオメトリカラムにGiSTインデックスを生成します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1206
+#, no-c-format
+msgid "<term>-m</term>"
+msgstr "<term>-m</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1208
+#, no-c-format
+msgid ""
+"-m <filename>a_file_name</filename> Specify a file containing a set of "
+"mappings of (long) column names to 10 character DBF column names. The "
+"content of the file is one or more lines of two names separated by white "
+"space and no trailing or leading space. For example:"
+msgstr ""
+"-m <filename>a_file_name</filename>で、長いカラム名を10文字のDBFカラム名に対"
+"応付けるファイルを指定します。ファイルは、1以上の行を持ちます。各行は空白区切"
+"りで二つの名前を持ち、行頭行末に空白を入れません。例を次に示します。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1213
+#, no-c-format
+msgid ""
+"COLUMNNAME DBFFIELD1\n"
+"AVERYLONGCOLUMNNAME DBFFIELD2"
+msgstr ""
+"COLUMNNAME DBFFIELD1\n"
+"AVERYLONGCOLUMNNAME DBFFIELD2"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1219
+#, no-c-format
+msgid "<term>-S</term>"
+msgstr "<term>-S</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1221
+#, no-c-format
+msgid ""
+"Generate simple geometries instead of MULTI geometries. Will only succeed if "
+"all the geometries are actually single (I.E. a MULTIPOLYGON with a single "
+"shell, or or a MULTIPOINT with a single vertex)."
+msgstr ""
+"マルチ系ジオメトリの替りに単一ジオメトリを生成します。全てのジオメトリが実際"
+"に単一である (たとえば単一の外環でなるMULTIPOLYGONや単一の頂点でなる"
+"MULTIPOINT)場合にのみ成功します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1230
+#, no-c-format
+msgid "-t &lt;dimensionality&gt;"
+msgstr "-t &lt;次元&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1232
+#, no-c-format
+msgid ""
+"Force the output geometry to have the specified dimensionality. Use the "
+"following strings to indicate the dimensionality: 2D, 3DZ, 3DM, 4D."
+msgstr ""
+"出力ジオメトリが特定の次元を持つよう強制します。次元は、2D, 3DZ, 3DM, 4Dの文"
+"字列を使います。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1236
+#, no-c-format
+msgid ""
+"If the input has fewer dimensions that specified, the output will have those "
+"dimensions filled in with zeroes. If the input has more dimensions that "
+"specified, the unwanted dimensions will be stripped."
+msgstr ""
+"入力の次元が出力より小さい場合には、出力では0が入ります。入力の次元が大きい場"
+"合には、外されます。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1245
+#, no-c-format
+msgid "<term>-w</term>"
+msgstr "<term>-w</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1247
+#, no-c-format
+msgid ""
+"Output WKT format, instead of WKB. Note that this can introduce coordinate "
+"drifts due to loss of precision."
+msgstr ""
+"出力書式をWKBでなくWKTにします。精度が低下して、座標変動が発生しうることに注"
+"意が必要です。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1255
+#, no-c-format
+msgid "<term>-e</term>"
+msgstr "<term>-e</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1257
+#, no-c-format
+msgid ""
+"Execute each statement on its own, without using a transaction. This allows "
+"loading of the majority of good data when there are some bad geometries that "
+"generate errors. Note that this cannot be used with the -D flag as the \"dump"
+"\" format always uses a transaction."
+msgstr ""
+"トランザクションを使わずに、ステートメントごとに実行するようにします。エラー"
+"の元となる不良なジオメトリがいくつか含んでいる時に、大半の良好なデータのロー"
+"ドが可能にするものです。ダンプ書式ではトランザクションを常に使うので、-Dフラ"
+"グを指定している場合には使えません。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1267
+#, no-c-format
+msgid "-W &lt;encoding&gt;"
+msgstr "-W &lt;エンコーディング&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1269
+#, no-c-format
+msgid ""
+"Specify encoding of the input data (dbf file). When used, all attributes of "
+"the dbf are converted from the specified encoding to UTF8. The resulting SQL "
+"output will contain a <code>SET CLIENT_ENCODING to UTF8</code> command, so "
+"that the backend will be able to reconvert from UTF8 to whatever encoding "
+"the database is configured to use internally."
+msgstr ""
+"入力データ (dbfファイル)のエンコーディングを指定します。全てのdbfの属性は指定"
+"されたエンコーディングからUTF8に変換されます。SQL出力結果には <code>SET "
+"CLIENT_ENCODING to UTF8</code>が含まれるようになり、バックエンドはUTF-8から"
+"データベースが内部利用のために設定したエンコーディングに再変換できます。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1279
+#, no-c-format
+msgid "-N &lt;policy&gt;"
+msgstr "-N &lt;方針&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1281
+#, no-c-format
+msgid "NULL geometries handling policy (insert*,skip,abort)"
+msgstr ""
+"NULLジオメトリ操作方針(insert*=挿入, skip=スキップ, abort=強制終了)を選択しま"
+"す。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1287
+#, no-c-format
+msgid "<term>-n</term>"
+msgstr "<term>-n</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1289
+#, no-c-format
+msgid ""
+"-n Only import DBF file. If your data has no corresponding shapefile, it "
+"will automatically switch to this mode and load just the dbf. So setting "
+"this flag is only needed if you have a full shapefile set, and you only want "
+"the attribute data and no geometry."
+msgstr ""
+"DBFファイルのみインポートします。対応するシェープファイルを持っていない場"
+"合、 自動的にこのモードになり、DBFファイルのみロードします。 このフラグは、完"
+"全なシェープファイル群を持っていて、属性データだけが欲しくてジオメトリが欲し"
+"くない時のみ使用します。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1297
+#, no-c-format
+msgid "<term>-G</term>"
+msgstr "<term>-G</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1299
+#, no-c-format
+msgid ""
+"Use geography type instead of geometry (requires lon/lat data) in WGS84 long "
+"lat (SRID=4326)"
+msgstr ""
+"ジオメトリ型のかわりに、ジオグラフィ型で、WGS84経度緯度 (SRID=4326)を使用しま"
+"す (経度緯度データが必要です)。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1305
+#, no-c-format
+msgid "-T &lt;tablespace&gt;"
+msgstr "-T &lt;tablespace&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1307
+#, no-c-format
+msgid ""
+"Specify the tablespace for the new table. Indexes will still use the default "
+"tablespace unless the -X parameter is also used. The PostgreSQL "
+"documentation has a good description on when to use custom tablespaces."
+msgstr ""
+"新しいテーブルのテーブル空間を指定します。 -Xパラメータが使われない場合には、"
+"インデックスはデフォルトのテーブル空間を使用します。PostgreSQL文書には、テー"
+"ブル空間を用いるべき時に関する良い文書があります。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1315
+#, no-c-format
+msgid "-X &lt;tablespace&gt;"
+msgstr "-X &lt;tablespace&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1317
+#, no-c-format
+msgid ""
+"Specify the tablespace for the new table's indexes. This applies to the "
+"primary key index, and the GIST spatial index if -I is also used."
+msgstr ""
+"新しいテーブルのインデックスで使われるテーブル空間を指定します。 主キーイン"
+"デックスに適用され、-Iが合わせて使われている場合にはGiST空間インデックスにも"
+"適用されます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1325
+#, fuzzy, no-c-format
+msgid ""
+"An example session using the loader to create an input file and loading it "
+"might look like this:"
+msgstr ""
+"ローダを使って入力ファイルを生成してアップロードするセッション例は次の通りで"
+"す。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1330
+#, no-c-format
+msgid ""
+"# shp2pgsql -c -D -s 4269 -i -I shaperoads.shp myschema.roadstable &gt; "
+"roads.sql\n"
+"# psql -d roadsdb -f roads.sql"
+msgstr ""
+"# shp2pgsql -c -D -s 4269 -i -I shaperoads.shp myschema.roadstable &gt; "
+"roads.sql\n"
+"# psql -d roadsdb -f roads.sql"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1332
+#, fuzzy, no-c-format
+msgid "A conversion and load can be done in one step using UNIX pipes:"
+msgstr "変換とアップロードはUNIXのパイプを使うと一回で実行できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1336
+#, no-c-format
+msgid "# shp2pgsql shaperoads.shp myschema.roadstable | psql -d roadsdb"
+msgstr "# shp2pgsql shaperoads.shp myschema.roadstable | psql -d roadsdb"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1341
+#, fuzzy, no-c-format
+msgid "Extracting Spatial Data"
+msgstr "空間テーブルを作る"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1343
+#, fuzzy, no-c-format
+msgid ""
+"Spatial data can be extracted from the database using either SQL or the "
+"Shapefile dumper. The section on SQL presents some of the functions "
+"available to do comparisons and queries on spatial tables."
+msgstr ""
+"データは、SQLまたはシェープファイルローダ/ダンパを使ってデータベースから抜き"
+"出すことができます。SQLに関する節において、空間テーブルでの比較とクエリを行う"
+"ために用いることができる演算子のいくつかを議論します。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1349
+#, fuzzy, no-c-format
+msgid "Using SQL to Extract Data"
+msgstr "SQLを使ってデータを検索する"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1351
+#, fuzzy, no-c-format
+msgid ""
+"The most straightforward way of extracting spatial data out of the database "
+"is to use a SQL <code>SELECT</code> query to define the data set to be "
+"extracted and dump the resulting columns into a parsable text file:"
+msgstr ""
+"データベースからデータを引き出す最も直接的な手段は、次のように、SQLのSELECTク"
+"エリを使って返ってくるレコードとカラムの数を減らし、結果のカラムを可読テキス"
+"トファイルにダンプするやり方です。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1356
+#, no-c-format
+msgid ""
+"db=# SELECT road_id, ST_AsText(road_geom) AS geom, road_name FROM roads;\n"
+"\n"
+"road_id | geom                                    | road_name\n"
+"--------+-----------------------------------------+-----------\n"
+"          1 | LINESTRING(191232 243118,191108 243242) | Jeff Rd\n"
+"          2 | LINESTRING(189141 244158,189265 244817) | Geordie Rd\n"
+"          3 | LINESTRING(192783 228138,192612 229814) | Paul St\n"
+"          4 | LINESTRING(189412 252431,189631 259122) | Graeme Ave\n"
+"          5 | LINESTRING(190131 224148,190871 228134) | Phil Tce\n"
+"          6 | LINESTRING(198231 263418,198213 268322) | Dave Cres\n"
+"          7 | LINESTRING(218421 284121,224123 241231) | Chris Way\n"
+"(6 rows)"
+msgstr ""
+"db=# SELECT road_id, ST_AsText(road_geom) AS geom, road_name FROM roads;\n"
+"\n"
+"road_id | geom                                    | road_name\n"
+"--------+-----------------------------------------+-----------\n"
+"          1 | LINESTRING(191232 243118,191108 243242) | Jeff Rd\n"
+"          2 | LINESTRING(189141 244158,189265 244817) | Geordie Rd\n"
+"          3 | LINESTRING(192783 228138,192612 229814) | Paul St\n"
+"          4 | LINESTRING(189412 252431,189631 259122) | Graeme Ave\n"
+"          5 | LINESTRING(190131 224148,190871 228134) | Phil Tce\n"
+"          6 | LINESTRING(198231 263418,198213 268322) | Dave Cres\n"
+"          7 | LINESTRING(218421 284121,224123 241231) | Chris Way\n"
+"(6 rows)"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1358
+#, fuzzy, no-c-format
+msgid ""
+"There will be times when some kind of restriction is necessary to cut down "
+"the number of records returned. In the case of attribute-based restrictions, "
+"use the same SQL syntax as used with a non-spatial table. In the case of "
+"spatial restrictions, the following functions are useful:"
+msgstr ""
+"しかし、返ってくる結果の数を削るために、なんらかの制限をかけることが重要とな"
+"るときがあるでしょう。属性ベースの制限の場合、非空間テーブルで使う通常の文法"
+"と同じSQLを使うだけです。空間ベースの制限の場合、次の演算子が使用可能であり、"
+"便利です。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1366
+#, no-c-format
+msgid "ST_Intersects"
+msgstr "ST_Intersects"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1369
+#, no-c-format
+msgid "This function tells whether two geometries share any space."
+msgstr ""
+"この関数は、二つのジオメトリが空間を共有しているかどうかをテストします。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1374
+#, no-c-format
+msgid "<term>=</term>"
+msgstr "<term>=</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1377
+#, no-c-format
+msgid ""
+"This tests whether two geometries are geometrically identical. For example, "
+"if 'POLYGON((0 0,1 1,1 0,0 0))' is the same as 'POLYGON((0 0,1 1,1 0,0 "
+"0))' (it is)."
+msgstr ""
+"この関数で、二つのジオメトリが幾何的に同一であるかを見ることができます。たと"
+"えば、'POLYGON((0 0,1 1,1 0,0 0))' は 'POLYGON((0 0,1 1,1 0,0 0))' と同じかを"
+"見ることができます (これは同じとなります)。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1385
+#, no-c-format
+msgid ""
+"Next, you can use these operators in queries. Note that when specifying "
+"geometries and boxes on the SQL command line, you must explicitly turn the "
+"string representations into geometries function. The 312 is a fictitious "
+"spatial reference system that matches our data. So, for example:"
+msgstr ""
+"次に、これらの演算子をクエリで使うことができます。SQLコマンドラインからジオメ"
+"トリとボックスの指定を行うときは、明示的に文字列表現をジオメトリに変換しなけ"
+"ればならないことに注意して下さい。たとえば、次のようになります。ただし312は架"
+"空の空間参照系番号で、ここでのデータに合致しています。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1391
+#, no-c-format
+msgid ""
+"SELECT road_id, road_name\n"
+"  FROM roads\n"
+"  WHERE roads_geom='SRID=312;LINESTRING(191232 243118,191108 243242)'::"
+"geometry;"
+msgstr ""
+"SELECT road_id, road_name\n"
+"  FROM roads\n"
+"  WHERE roads_geom='SRID=312;LINESTRING(191232 243118,191108 243242)'::"
+"geometry;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1393
+#, no-c-format
+msgid ""
+"The above query would return the single record from the \"ROADS_GEOM\" table "
+"in which the geometry was equal to that value."
+msgstr ""
+"上のクエリは\"ROADS_GEOM\"テーブルから、その値と等価である単一のレコードを返"
+"します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1396
+#, no-c-format
+msgid ""
+"To check whether some of the roads passes in the area defined by a polygon:"
+msgstr ""
+"道路がポリゴンで定義した面を通過するかどうかをチェックするには次のようにしま"
+"す。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1398
+#, no-c-format
+msgid ""
+"SELECT road_id, road_name\n"
+"FROM roads\n"
+"WHERE ST_Intersects(roads_geom, 'SRID=312;POLYGON((...))');"
+msgstr ""
+"SELECT road_id, road_name\n"
+"FROM roads\n"
+"WHERE ST_Intersects(roads_geom, 'SRID=312;POLYGON((...))');"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1402
+#, no-c-format
+msgid ""
+"The most common spatial query will probably be a \"frame-based\" query, used "
+"by client software, like data browsers and web mappers, to grab a \"map frame"
+"\" worth of data for display."
+msgstr ""
+"最も一般的な空間クエリは「フレームベース」のクエリでしょう。これは、表示する"
+"ためのデータの価値のある「マップフレーム」を取得するために、データブラウザや"
+"ウェブマッパのようなクライアントソフトウェアに使われます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1405
+#, no-c-format
+msgid ""
+"When using the \"&amp;&amp;\" operator, you can specify either a BOX3D as "
+"the comparison feature or a GEOMETRY. When you specify a GEOMETRY, however, "
+"its bounding box will be used for the comparison."
+msgstr ""
+"\"&amp;&amp;\"演算子を使うとき、比較フィーチャーをBOX3DかGEOMETRYかに指定する"
+"ことができます。ただし、GEOMETRYを指定すると、それのバウンディングボックスが"
+"比較に使われます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1409
+#, no-c-format
+msgid "Using a \"BOX3D\" object for the frame, such a query looks like this:"
+msgstr "次に示すクエリのように、フレームにBOX3Dオブジェクトを使います。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1411
+#, no-c-format
+msgid ""
+"SELECT ST_AsText(roads_geom) AS geom\n"
+"FROM roads\n"
+"WHERE\n"
+"  roads_geom &amp;&amp; ST_MakeEnvelope(191232, 243117,191232, 243119,312);"
+msgstr ""
+"SELECT ST_AsText(roads_geom) AS geom\n"
+"FROM roads\n"
+"WHERE\n"
+"  roads_geom &amp;&amp; ST_MakeEnvelope(191232, 243117,191232, 243119,312);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1413
+#, no-c-format
+msgid ""
+"Note the use of the SRID 312, to specify the projection of the envelope."
+msgstr ""
+"エンベロープの投影を指定するためにSRID 312を使っていることに注意して下さい。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1419
+#, fuzzy, no-c-format
+msgid "Using the Shapefile Dumper"
+msgstr "ダンパを使う"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1421
+#, fuzzy, no-c-format
+msgid ""
+"The <filename>pgsql2shp</filename> table dumper connects to the database and "
+"converts a table (possibly defined by a query) into a shape file. The basic "
+"syntax is:"
+msgstr ""
+"<filename>pgsql2shp</filename>テーブルダンパは、データベースに直接接続して、"
+"テーブル (あるいはクエリによって定義されたもの)をシェープファイルに変換するも"
+"のです。基本的な文法は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1425
+#, no-c-format
+msgid ""
+"pgsql2shp [&lt;options&gt;] &lt;database&gt; [&lt;schema&gt;.]&lt;table&gt;"
+msgstr ""
+"pgsql2shp [&lt;オプション&gt;] &lt;database&gt; [&lt;スキーマ&gt;.]&lt;"
+"table&gt;"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1427
+#, no-c-format
+msgid "pgsql2shp [&lt;options&gt;] &lt;database&gt; &lt;query&gt;"
+msgstr "pgsql2shp [&lt;オプション&gt;] &lt;データベース&gt; &lt;クエリ&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1429
+#, no-c-format
+msgid "The commandline options are:"
+msgstr "コマンドラインオプションは次の通りです。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1433
+#, no-c-format
+msgid "-f &lt;filename&gt;"
+msgstr "-f &lt;ファイル名&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1436
+#, no-c-format
+msgid "Write the output to a particular filename."
+msgstr "特定のファイル名に出力を書きこみます。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1441
+#, no-c-format
+msgid "-h &lt;host&gt;"
+msgstr "-h &lt;ホスト&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1444
+#, no-c-format
+msgid "The database host to connect to."
+msgstr "接続先データベースのホスト名。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1449
+#, no-c-format
+msgid "-p &lt;port&gt;"
+msgstr "-p &lt;ポート&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1452
+#, no-c-format
+msgid "The port to connect to on the database host."
+msgstr "接続先データベースのポート。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1457
+#, no-c-format
+msgid "-P &lt;password&gt;"
+msgstr "-P &lt;パスワード&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1460
+#, no-c-format
+msgid "The password to use when connecting to the database."
+msgstr "データベースに接続するためのパスワード。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1465
+#, no-c-format
+msgid "-u &lt;user&gt;"
+msgstr "-u &lt;ユーザ名&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1468
+#, no-c-format
+msgid "The username to use when connecting to the database."
+msgstr "データベースに接続する際のユーザ名。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1473
+#, no-c-format
+msgid "-g &lt;geometry column&gt;"
+msgstr "-g &lt;ジオメトリカラム&gt;"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1476
+#, no-c-format
+msgid ""
+"In the case of tables with multiple geometry columns, the geometry column to "
+"use when writing the shape file."
+msgstr ""
+"複数のジオメトリカラムを持つテーブルの場合の、シェープファイルの出力に使用す"
+"るジオメトリカラム。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1482
+#, no-c-format
+msgid "<term>-b</term>"
+msgstr "<term>-b</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1485
+#, no-c-format
+msgid ""
+"Use a binary cursor. This will make the operation faster, but will not work "
+"if any NON-geometry attribute in the table lacks a cast to text."
+msgstr ""
+"バイナリカーソルを使います。これは、実行時間を短くしますが、テーブルの非ジオ"
+"メトリ属性がテキストへのキャストを持っていない場合には、動作しません。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1492
+#, no-c-format
+msgid "<term>-r</term>"
+msgstr "<term>-r</term>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1495
+#, no-c-format
+msgid ""
+"Raw mode. Do not drop the <varname>gid</varname> field, or escape column "
+"names."
+msgstr ""
+"Rawモード。<varname>gid</varname>フィールドを落としたり、カラム名をエスケープ"
+"してはいけません。"
+
+#. Tag: term
+#: using_postgis_dataman.xml:1501
+#, no-c-format
+msgid "-m <varname>filename</varname>"
+msgstr "-m <varname>ファイル名</varname>"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1503
+#, no-c-format
+msgid ""
+"Remap identifiers to ten character names. The content of the file is lines "
+"of two symbols separated by a single white space and no trailing or leading "
+"space: VERYLONGSYMBOL SHORTONE ANOTHERVERYLONGSYMBOL SHORTER etc."
+msgstr ""
+"識別名を10文字名に再割り当てします。 ファイルの中身は、一つの空白で区切られ、"
+"前と後に空白が無い二つのシンボルの行からなります。VERYLONGSYMBOL SHORTONE "
+"ANOTHERVERYLONGSYMBOL SHORTER等となります。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1516
+#, fuzzy, no-c-format
+msgid "Building Spatial Indexes"
+msgstr "インデックスを構築する"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1518
+#, fuzzy, no-c-format
+msgid ""
+"Indexes make using a spatial database for large data sets possible. Without "
+"indexing, a search for features would require a sequential scan of every "
+"record in the database. Indexing speeds up searching by organizing the data "
+"into a structure which can be quickly traversed to find records."
+msgstr ""
+"インデックスは大きなデータセットを持つ空間データベースの利用を可能にするもの"
+"です。インデックスなしでは、地物の検索でデータベースの全レコードを「シーケン"
+"シャルスキャン」する必要があります。インデックスをつけることで、データを検索"
+"木に組織化して、特定のレコードを発見するための検索をより早くすることができま"
+"す。 PostgreSQLは、B木、SP-GiST、GiSTの3種類のインデックスにデフォルトで対応"
+"しています。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1524
+#, no-c-format
+msgid ""
+"The B-tree index method commonly used for attribute data is not very useful "
+"for spatial data, since it only supports storing and querying data in a "
+"single dimension. Data such as geometry which has 2 or more dimensions) "
+"requires an index method that supports range query across all the data "
+"dimensions. (That said, it is possible to effectively index so-called XY "
+"data using a B-tree and explict range searches.) One of the main advantages "
+"of PostgreSQL for spatial data handling is that it offers several kinds of "
+"indexes which work well for multi-dimensional data: GiST, BRIN and SP-GiST "
+"indexes."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1536
+#, fuzzy, no-c-format
+msgid ""
+"<emphasis role=\"bold\">GiST (Generalized Search Tree)</emphasis> indexes "
+"break up data into \"things to one side\", \"things which overlap\", "
+"\"things which are inside\" and can be used on a wide range of data-types, "
+"including GIS data. PostGIS uses an R-Tree index implemented on top of GiST "
+"to index spatial data. GiST is the most commonly-used and versatile spatial "
+"index method, and offers very good query performance."
+msgstr ""
+"GiST (Generalized Search Trees)インデックスはデータを「一方へのもの」 (訳注: "
+"「左側にあるもの」「上側にあるもの」など)、「オーバラップするもの」、「中にあ"
+"るもの」に分割して、GISデータを含む幅広いデータ型で使えるようにしたものです。"
+"PostGISではGISデータにインデックスを付けるためにGiSTの上でR木インデックス実装"
+"を使用しています。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1546
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">BRIN (Block Range Index)</emphasis> indexes operate "
+"by summarizing the spatial extent of ranges of table records. Search is done "
+"via a scan of the ranges. BRIN is only appropriate for use for some kinds of "
+"data (spatially sorted, with infrequent or no update). But it provides much "
+"faster index create time, and much smaller index size."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1556
+#, no-c-format
+msgid ""
+"<emphasis role=\"bold\">SP-GiST (Space-Partitioned Generalized Search Tree)</"
+"emphasis> is a generic index method that supports partitioned search trees "
+"such as quad-trees, k-d trees, and radix trees (tries)."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1563
+#, no-c-format
+msgid ""
+"For more information see the <ulink url=\"https://postgis.net/workshops/"
+"postgis-intro/indexing.html\">PostGIS Workshop</ulink>, and the <ulink url="
+"\"https://www.postgresql.org/docs/current/indexes.html\">PostgreSQL "
+"documentation</ulink>."
+msgstr ""
+
+#. Tag: title
+#: using_postgis_dataman.xml:1569
+#, no-c-format
+msgid "GiST Indexes"
+msgstr "GiSTインデックス"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1571
+#, no-c-format
+msgid ""
+"GiST stands for \"Generalized Search Tree\" and is a generic form of "
+"indexing. In addition to GIS indexing, GiST is used to speed up searches on "
+"all kinds of irregular data structures (integer arrays, spectral data, etc) "
+"which are not amenable to normal B-Tree indexing."
+msgstr ""
+"GiSTは「汎用的な検索木 (Generalized Search Tree)」の意味で、インデックスの一"
+"般化された形式です。GISインデックスに加えて、GiSTは通常のB木インデックスに従"
+"わない全ての種類の不規則なデータ構造 (整数配列, スペクトラルデータ等)の検索速"
+"度を向上させるために使います。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1576
+#, no-c-format
+msgid ""
+"Once a GIS data table exceeds a few thousand rows, you will want to build an "
+"index to speed up spatial searches of the data (unless all your searches are "
+"based on attributes, in which case you'll want to build a normal index on "
+"the attribute fields)."
+msgstr ""
+"ひとたびGISデータテーブルが数千行を超えたら、空間検索の速度向上のためインデッ"
+"クスを構築したくなるでしょう (これは属性検索でない場合です。属性でしたら通常"
+"のインデックスを属性フィールドに追加します)。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1581
+#, no-c-format
+msgid ""
+"The syntax for building a GiST index on a \"geometry\" column is as follows:"
+msgstr "GiSTインデックスをジオメトリカラムに追加するための文は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1585
+#, no-c-format
+msgid "CREATE INDEX [indexname] ON [tablename] USING GIST ( [geometryfield] );"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING GIST ( [ジオメトリカラム"
+"名] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1587
+#, no-c-format
+msgid ""
+"The above syntax will always build a 2D-index. To get the an n-dimensional "
+"index for the geometry type, you can create one using this syntax:"
+msgstr ""
+"上の文では常に2次元インデックスを構築します。n次元インデックスをジオメトリ型"
+"で使うには、次の文でインデックスを生成できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1588
+#, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename] USING GIST ([geometryfield] "
+"gist_geometry_ops_nd);"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING GIST ( [ジオメトリカラム"
+"名] gist_geometry_ops_nd);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1590
+#, no-c-format
+msgid ""
+"Building a spatial index is a computationally intensive exercise. It also "
+"blocks write access to your table for the time it creates, so on a "
+"production system you may want to do in in a slower CONCURRENTLY-aware way:"
+msgstr ""
+"空間インデックスの構築は、計算量を集中させて行われます。また、この時には、"
+"テーブルへの書き込みアクセスがブロックされます。そのため、本番システムではよ"
+"り遅いCONCURRENTLYを選択するかも知れません。次のようにします。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1591
+#, no-c-format
+msgid ""
+"CREATE INDEX CONCURRENTLY [indexname] ON [tablename] USING GIST "
+"( [geometryfield] );"
+msgstr ""
+"CREATE INDEX CONCURRENTLY [インデックス名] ON [テーブル名] USING GIST ( [ジオ"
+"メトリカラム名] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1593 using_postgis_dataman.xml:1761
+#, no-c-format
+msgid ""
+"After building an index, it is sometimes helpful to force PostgreSQL to "
+"collect table statistics, which are used to optimize query plans:"
+msgstr ""
+"インデックス構築後に、時々PostgreSQLにテーブルの統計情報を集めさせると助かり"
+"ます。クエリプランの最適化に使われます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1596 using_postgis_dataman.xml:1764
+#, no-c-format
+msgid "VACUUM ANALYZE [table_name] [(column_name)];"
+msgstr "VACUUM ANALYZE [テーブル名] [(カラム名)];"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1601
+#, no-c-format
+msgid "BRIN Indexes"
+msgstr "BRINインデックス"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1603
+#, fuzzy, no-c-format
+msgid ""
+"BRIN stands for \"Block Range Index\". It is an general-purpose <ulink url="
+"\"https://www.postgresql.org/docs/current/brin.html\">index method</ulink> "
+"introduced in PostgreSQL 9.5. BRIN is a <emphasis>lossy</emphasis> index "
+"method, meaning that a a secondary check is required to confirm that a "
+"record matches a given search condition (which is the case for all provided "
+"spatial indexes). It provides much faster index creation and much smaller "
+"index size, with reasonable read performance. Its primary purpose is to "
+"support indexing very large tables on columns which have a correlation with "
+"their physical location within the table. In addition to spatial indexing, "
+"BRIN can speed up searches on various kinds of attribute data structures "
+"(integer, arrays etc)."
+msgstr ""
+"BRINは\"Block Range Index\"のことで、PostgreSQL 9.5で導入された一般性のあるイ"
+"ンデックスの形式です。BRINは不可逆インデックスで、主に読み取り効率と書き込み"
+"効率とを妥協させるために使われます。主要な目標は、非常に大きなテーブルの取り"
+"扱いで、そのテーブルのために、テーブル内の物理的な位置との自然な相関があるカ"
+"ラムを一部に持ちます。GISインデックスだけでなく、BRINは規則的だったりそうでな"
+"い多種多様なデータ構造 (整数、配列等)における検索速度の向上のために使われま"
+"す。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1617
+#, fuzzy, no-c-format
+msgid ""
+"Once a spatial table exceeds a few thousand rows, you will want to build an "
+"index to speed up spatial searches of the data. GiST indexes are very "
+"performant as long as their size doesn't exceed the amount of RAM available "
+"for the database, and as long as you can afford the index storage size, and "
+"the cost of index update on write. Otherwise, for very large tables BRIN "
+"index can be considered as an alternative."
+msgstr ""
+"ひとたびGISデータテーブルが数千行を超えたら、空間検索の速度向上のためインデッ"
+"クスを構築したくなるでしょう (これは属性検索でない場合です。属性でしたら通常"
+"のインデックスを属性フィールドに追加します)。GiSTインデックスは、サイズがデー"
+"タベースに割り当てられているRAM容量を超えずに、ストレージサイズが十分であり、"
+"かつ書き込みワークロードのペナルティに余裕がある限りは、本当に高性能です。そ"
+"の他の場合にはBRINインデックスが他の選択肢として考えられます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1624
+#, fuzzy, no-c-format
+msgid ""
+"A BRIN index stores the bounding box enclosing all the geometries contained "
+"in the rows in a contiguous set of table blocks, called a <emphasis>block "
+"range</emphasis>. When executing a query using the index the block ranges "
+"are scanned to find the ones that intersect the query extent. This is "
+"efficient only if the data is physically ordered so that the bounding boxes "
+"for block ranges have minimal overlap (and ideally are mutually exclusive). "
+"The resulting index is very small in size, but is typically less performant "
+"for read than a GiST index over the same data."
+msgstr ""
+"BRINインデックスの原理は、テーブルブロックの集合の全ての行に含まれる全てのジ"
+"オメトリを余すところなく取り込んだバウンディングボックスだけを格納することで"
+"す。明らかに、このインデックス手法は、ブロックレンジの結果バウンディングボッ"
+"クスが相互に排他的になるように、データが物理的に並ぶ場合にだけ効率が良くなり"
+"ます。結果インデックスは本当に小さいのですが、多くの場合で、GiSTインデックス"
+"より効率が落ちます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1634
+#, fuzzy, no-c-format
+msgid ""
+"Building a BRIN index is much less CPU-intensive than building a GiST index. "
+"It's common to find that a BRIN index is ten times faster to build than a "
+"GiST index over the same data. And because a BRIN index stores only one "
+"bounding box for each range of table blocks, it's common to use up to a "
+"thousand times less disk space than a GiST index."
+msgstr ""
+"BRINインデックスの構築はGiSTインデックスの構築より少ない資源集約で済みます。"
+"BRINインデックスがGiSTインデックスが求めるよりも十分の一以下であるのが本当に"
+"一般的です。BRINインデックスは、多数のテーブルブロックに対して一つのバウン"
+"ディングボックスを格納するだけなので、この手の他のインデックスよりもディスク"
+"使用量が数千分の一程度で済むのが一般的です。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1640
+#, fuzzy, no-c-format
+msgid ""
+"You can choose the number of blocks to summarize in a range. If you decrease "
+"this number, the index will be bigger but will probably provide better "
+"performance."
+msgstr ""
+"レンジ内で要約するブロック数を選択できます。この数字を減らすと、インデックス"
+"は大きくなりますが、効率向上の助けになる可能性があります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1644
+#, no-c-format
+msgid ""
+"For BRIN to be effective, the table data should be stored in a physical "
+"order which minimizes the amount of block extent overlap. It may be that the "
+"data is already sorted appropriately (for instance, if it is loaded from "
+"another dataset that is already sorted in spatial order). Otherwise, this "
+"can be accomplished by sorting the data by a one-dimensional spatial key. "
+"One way to do this is to create a new table sorted by the geometry values "
+"(which in recent PostGIS versions uses an efficient Hilbert curve ordering):"
+msgstr ""
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1653
+#, no-c-format
+msgid ""
+"CREATE TABLE table_sorted AS\n"
+"   SELECT * FROM table  ORDER BY geom;"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1655
+#, no-c-format
+msgid ""
+"Alternatively, data can be sorted in-place by using a GeoHash as a "
+"(temporary) index, and clustering on that index:"
+msgstr ""
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1659
+#, no-c-format
+msgid ""
+"CREATE INDEX idx_temp_geohash ON table\n"
+"    USING btree (ST_GeoHash( ST_Transform( geom, 4326 ), 20));\n"
+"CLUSTER table USING idx_temp_geohash;"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1662
+#, fuzzy, no-c-format
+msgid ""
+"The syntax for building a BRIN index on a <code>geometry</code> column is:"
+msgstr ""
+"BRINインデックスを「ジオメトリ」カラムに追加するための文は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1664
+#, fuzzy, no-c-format
+msgid "CREATE INDEX [indexname] ON [tablename] USING BRIN ( [geome_col] );"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING BRIN ( [ジオメトリカラム"
+"名] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1666
+#, fuzzy, no-c-format
+msgid ""
+"The above syntax builds a 2D index. To build a 3D-dimensional index, use "
+"this syntax:"
+msgstr ""
+"上の文では常に2次元インデックスを構築します。3次元インデックスは次の文で生成"
+"できます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1668
+#, fuzzy, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename]\n"
+"    USING BRIN ([geome_col] brin_geometry_inclusion_ops_3d);"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING BRIN ( [ジオメトリカラム"
+"名] brin_geometry_inclusion_ops_3d);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1670
+#, fuzzy, no-c-format
+msgid "You can also get a 4D-dimensional index using the 4D operator class:"
+msgstr "また、4次元演算子クラスを使う4次元インデックスを使うこともできます。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1672
+#, fuzzy, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename]\n"
+"    USING BRIN ([geome_col] brin_geometry_inclusion_ops_4d);"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING BRIN ( [ジオメトリカラム"
+"名] brin_geometry_inclusion_ops_4d);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1674
+#, fuzzy, no-c-format
+msgid ""
+"The above commands use the default number of blocks in a range, which is "
+"128. To specify the number of blocks to summarise in a range, use this syntax"
+msgstr ""
+"上の書式では、デフォルトの数値やレンジ内ブロック数を使っていますが、値は128で"
+"す。ブロック数を指定するには、レンジ内の要約をすることになります。次の文のよ"
+"うにして作ります。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1677
+#, fuzzy, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename]\n"
+"    USING BRIN ( [geome_col] ) WITH (pages_per_range = [number]);"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING BRIN ( [ジオメトリカラム"
+"名] ) WITH (pages_per_range = [数字]);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1679
+#, fuzzy, no-c-format
+msgid ""
+"Keep in mind that a BRIN index only stores one index entry for a large "
+"number of rows. If your table stores geometries with a mixed number of "
+"dimensions, it's likely that the resulting index will have poor performance. "
+"You can avoid this performance penalty by choosing the operator class with "
+"the least number of dimensions of the stored geometries"
+msgstr ""
+"また、BRINインデックスは、多数の行で一つのインデックス値を格納することを心に"
+"留めておいて下さい。テーブルに違う次元のジオメトリを格納する場合には、イン"
+"デックスの効率が悪くなります。この効率欠落を回避するには、格納したジオメトリ"
+"の次元数の最小値となる演算子クラスを選択します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1687
+#, fuzzy, no-c-format
+msgid ""
+"The <code>geography</code> datatype is supported for BRIN indexing. The "
+"syntax for building a BRIN index on a geography column is:"
+msgstr ""
+"「ジオグラフィ」型もまたBRINインデックスに対応しています。BRINインデックスを"
+"「ジオグラフィ」カラムに構築するための文は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1690
+#, fuzzy, no-c-format
+msgid "CREATE INDEX [indexname] ON [tablename] USING BRIN ( [geog_col] );"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING BRIN ( [ジオグラフィカラ"
+"ム名] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1692
+#, fuzzy, no-c-format
+msgid ""
+"The above syntax builds a 2D-index for geospatial objects on the spheroid."
+msgstr ""
+"上の書式では常に回転楕円対面上の地理空間オブジェクトの2次元インデックスを構築"
+"します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1694
+#, fuzzy, no-c-format
+msgid ""
+"Currently, only \"inclusion support\" is provided, meaning that just the "
+"<varname>&amp;&amp;</varname>, <varname>~</varname> and <varname>@</varname> "
+"operators can be used for the 2D cases (for both <code>geometry</code> and "
+"<code>geography</code>), and just the <varname>&amp;&amp;&amp;</varname> "
+"operator for 3D geometries. There is currently no support for kNN searches."
+msgstr ""
+"現在のところは「包括対応」だけをここで考えています。これは、<varname>&amp;"
+"&amp;</varname>、<varname>~</varname>と<varname>@</varname>演算子だけが2次元"
+"の場合に使われることを意味します (「ジオメトリ」「ジオグラフィ」の両方)。"
+"<varname>&amp;&amp;&amp;</varname>演算子は3次元ジオメトリで使えます。しばらく"
+"はKNN検索に対応しません。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1701
+#, no-c-format
+msgid ""
+"An important difference between BRIN and other index types is that the "
+"database does not maintain the index dynamically. Changes to spatial data in "
+"the table are simply appended to the end of the index. This will cause index "
+"search performance to degrade over time. The index can be updated by "
+"performing a <code>VACUUM</code>, or by using a special function "
+"<code>brin_summarize_new_values(regclass)</code>. For this reason BRIN may "
+"be most appropriate for use with data that is read-only, or only rarely "
+"changing. For more information refer to the <ulink url=\"https://www."
+"postgresql.org/docs/current/brin-intro.html#BRIN-OPERATION\">manual</ulink>."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1711
+#, no-c-format
+msgid "To summarize using BRIN for spatial data:"
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1715
+#, no-c-format
+msgid "Index build time is very fast, and index size is very small."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1716
+#, no-c-format
+msgid "Index query time is slower than GiST, but can still be very acceptable."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1717
+#, no-c-format
+msgid "Requires table data to be sorted in a spatial ordering."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1718
+#, no-c-format
+msgid "Requires manual index maintenance."
+msgstr ""
+
+#. Tag: para
+#: using_postgis_dataman.xml:1719
+#, no-c-format
+msgid ""
+"Most appropriate for very large tables, with low or no overlap (e.g. "
+"points), and which are static or change infrequently."
+msgstr ""
+
+#. Tag: title
+#: using_postgis_dataman.xml:1727
+#, no-c-format
+msgid "SP-GiST Indexes"
+msgstr "SP-GiSTインデックス"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1729
+#, no-c-format
+msgid ""
+"SP-GiST stands for \"Space-Partitioned Generalized Search Tree\" and is a "
+"generic form of indexing that supports partitioned search trees, such as "
+"quad-trees, k-d trees, and radix trees (tries). The common feature of these "
+"data structures is that they repeatedly divide the search space into "
+"partitions that need not be of equal size. In addition to GIS indexing, SP-"
+"GiST is used to speed up searches on many kinds of data, such as phone "
+"routing, ip routing, substring search, etc."
+msgstr ""
+"SP-GiSTは、「空間分割された一般探索木」を表します。四分木、k次元木、基数木 "
+"(トライ木)のような分割探索木に対応するインデックスの総称的な形式です。この"
+"データ構造の一般的な機能は、検索空間を反復して分割することですが、分割は等し"
+"いサイズである必要はありません。SP-GiSTは、GISインデックスだけでなく、電話回"
+"線のルーティングや、IPルーティング、部分文字列検索等といった、様々な種類の"
+"データを探索する速度の向上に使われます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1737
+#, fuzzy, no-c-format
+msgid ""
+"As it is the case for GiST indexes, SP-GiST indexes are lossy, in the sense "
+"that they store the bounding box enclosing spatial objects. SP-GiST indexes "
+"can be considered as an alternative to GiST indexes. The performance tests "
+"reveal that SP-GiST indexes are especially beneficial when there are many "
+"overlapping objects, that is, with so-called “spaghetti data”."
+msgstr ""
+"GiSTインデックスのためのケースですので、空間オブジェクトを覆うバウンディング"
+"ボックスを保存するという意味で、SP-GiSTインデックスは不可逆です。SP-GiSTイン"
+"デックスは、GiSTインデックスの選択肢の一つとして考えることができます。能率試"
+"験によって、SP-GiSTインデックスは,、多数のオーバラップするオブジェクトがある"
+"「スパゲッティデータ」と呼ばれる状態のときに、特に有利であることが分かりまし"
+"た。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1744
+#, no-c-format
+msgid ""
+"Once a GIS data table exceeds a few thousand rows, an SP-GiST index may be "
+"used to speed up spatial searches of the data. The syntax for building an SP-"
+"GiST index on a \"geometry\" column is as follows:"
+msgstr ""
+"一度GISデータテーブルが数千行を超えると、データの空間探索の速度向上にSP-GiST"
+"インデックスを使うと良いかも知れません。「ジオメトリ」カラムにSP-GiSTインデッ"
+"クスを構築するための文は次の通りです。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1748
+#, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename] USING SPGIST ( [geometryfield] );"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING SPGIST ( [ジオメトリカラ"
+"ム] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1750
+#, no-c-format
+msgid ""
+"The above syntax will build a 2-dimensional index. A 3-dimensional index for "
+"the geometry type can be created using the 3D operator class:"
+msgstr ""
+"上の文では、2次元インデックスを構築します。ジオメトリ型の3次元インデックス"
+"は、次のように、3次元演算子クラスを使用して生成します。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1753
+#, no-c-format
+msgid ""
+"CREATE INDEX [indexname] ON [tablename] USING SPGIST ([geometryfield] "
+"spgist_geometry_ops_3d);"
+msgstr ""
+"CREATE INDEX [インデックス名] ON [テーブル名] USING SPGIST ([ジオメトリカラ"
+"ム] spgist_geometry_ops_3d);"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1755
+#, no-c-format
+msgid ""
+"Building a spatial index is a computationally intensive operation. It also "
+"blocks write access to your table for the time it creates, so on a "
+"production system you may want to do in in a slower CONCURRENTLY-aware way:"
+msgstr ""
+"空間インデックスの構築は、計算量を集中させて行われます。また、この時には、"
+"テーブルへの書き込みアクセスがブロックされます。そのため、本番システムでは、"
+"より遅いCONCURRENTLYを選択するかも知れません。次のようにします。"
+
+#. Tag: programlisting
+#: using_postgis_dataman.xml:1759
+#, no-c-format
+msgid ""
+"CREATE INDEX CONCURRENTLY [indexname] ON [tablename] USING SPGIST "
+"( [geometryfield] );"
+msgstr ""
+"CREATE INDEX CONCURRENTLY [インデックス名] ON [テーブル名] USING SPGIST ( [ジ"
+"オメトリカラム] );"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1766
+#, no-c-format
+msgid ""
+"An SP-GiST index can accelerate queries involving the following operators:"
+msgstr ""
+"SP-GiSTインデックスは次の演算子を含むクエリの実行速度を向上させられます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1768
+#, no-c-format
+msgid ""
+"&lt;&lt;, &amp;&lt;, &amp;&gt;, &gt;&gt;, &lt;&lt;|, &amp;&lt;|, |&amp;&gt;, "
+"|&gt;&gt;, &amp;&amp;, @&gt;, &lt;@, and ~=, for 2-dimensional indexes,"
+msgstr ""
+"2次元インデックスについては &lt;&lt;, &amp;&lt;, &amp;&gt;, &gt;&gt;, &lt;"
+"&lt;|, &amp;&lt;|, |&amp;&gt;, |&gt;&gt;, &amp;&amp;, @&gt;, &lt;@, and ~= 。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1769
+#, no-c-format
+msgid "&amp;/&amp;, ~==, @&gt;&gt;, and &lt;&lt;@, for 3-dimensional indexes."
+msgstr ""
+"3次元インデックスについては &amp;/&amp;, ~==, @&gt;&gt;, and &lt;&lt;@ 。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1771
+#, no-c-format
+msgid "There is no support for kNN searches at the moment."
+msgstr "現時点ではkNN探索に対応していません。"
+
+#. Tag: title
+#: using_postgis_dataman.xml:1774
+#, no-c-format
+msgid "Using Indexes"
+msgstr "インデックスを使う"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1776
+#, fuzzy, no-c-format
+msgid ""
+"Ordinarily, indexes invisibly speed up data access: once the index is built, "
+"the PostgreSQL query planner automatically decides when to use index "
+"information to speed up a query plan. Unfortunately, the query planner "
+"sometimes does not optimize the use of GiST indexes, so queries end up using "
+"slow sequential scans instead of a spatial index."
+msgstr ""
+"通常、インデックスは見えないところでデータアクセスの速度向上を行います。すな"
+"わち、ひとたびインデックスが構築されたら、クエリプランナは透過的に、クエリプ"
+"ランの速度を向上させるためにインデックス情報を使うべき時を判断します。残念な"
+"ことに、PostgreSQLクエリプランナは、GiSTインデックスの使用について十分に最適"
+"化できず、時々、検索で空間インデックスを使用すべきなのに、テーブル全体を順に"
+"走査することがあります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1782
+#, fuzzy, no-c-format
+msgid ""
+"If you find your spatial indexes are not being used, there are a couple "
+"things you can do:"
+msgstr ""
+"空間インデックスが使用されていない (または属性インデックスがその問題のために"
+"使用されていない)場合、次の二つのことができます。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1787
+#, fuzzy, no-c-format
+msgid ""
+"Examine the query plan and check your query actually computes the thing you "
+"need. An erroneous JOIN, either forgotten or to the wrong table, can "
+"unexpectedly retrieve table records multiple times. To get the query plan, "
+"execute with <code>EXPLAIN</code> in front of the query."
+msgstr ""
+"まず、クエリプランを読んで、クエリが実際に必要な計算をしようとしているか確認"
+"します。JOIN条件を忘れていたり、間違ったテーブルに付けていたりすることで、暴"
+"走することがあり、予期せずに何度もテーブル全体を得ることになります。クエリプ"
+"ランを取得するには、クエリの前にEXPLAINキーワードを追加します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1794
+#, fuzzy, no-c-format
+msgid ""
+"Make sure statistics are gathered about the number and distributions of "
+"values in a table, to provide the query planner with better information to "
+"make decisions around index usage. <command>VACUUM ANALYZE</command> will "
+"compute both."
+msgstr ""
+"次に、テーブル内の値の数量と分布に関する統計情報を収集するとともに、クエリプ"
+"ランナにインデックス使用にかかる意思決定のための、より良い情報を与えるように"
+"します。<command>VACUUM ANALYZE</command>は両方を計算します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1799
+#, no-c-format
+msgid ""
+"You should regularly vacuum your databases anyways - many PostgreSQL DBAs "
+"have <command>VACUUM</command> run as an off-peak cron job on a regular "
+"basis."
+msgstr ""
+"データベースに対する定期的なvacuumは常に実行するべきです。多くのPostgreSQL"
+"データベースエージェントは、閑散時のcronジョブとして定期的に<command>VACUUM</"
+"command>を実行します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1804
+#, no-c-format
+msgid ""
+"If vacuuming does not help, you can temporarily force the planner to use the "
+"index information by using the <command>set enable_seqscan to off;</command> "
+"command. This way you can check whether planner is at all capable to "
+"generate an index accelerated query plan for your query. You should only use "
+"this command only for debug: generally speaking, the planner knows better "
+"than you do about when to use indexes. Once you have run your query, do not "
+"forget to set <varname>ENABLE_SEQSCAN</varname> back on, so that other "
+"queries will utilize the planner as normal."
+msgstr ""
+"vacuumが働かないなら、<command>set enable_seqscan to off;</command>コマンド"
+"で、一時的にプランナに対してインデックス情報の使用を強制することができます。"
+"この方法で、プランナがインデックスを使用するプランを生成できるかどうか確認で"
+"きます。このコマンドはデバッグにのみ使用すべきです。一般的に言うと、プランナ"
+"はあなたよりインデックスを使うべき時を知っています。クエリを実行したら、"
+"<varname>ENABLE_SEQSCAN</varname>設定を戻して、他のクエリでは通常通りプランナ"
+"を使用します。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1816
+#, no-c-format
+msgid ""
+"If <command>set enable_seqscan to off;</command> helps your query to run, "
+"your Postgres is likely not tuned for your hardware. If you find the planner "
+"wrong about the cost of sequential vs index scans try reducing the value of "
+"<varname>random_page_cost</varname> in postgresql.conf or using <command>set "
+"random_page_cost to 1.1;</command>. Default value for the parameter is 4, "
+"try setting it to 1 (on SSD) or 2 (on fast magnetic disks). Decreasing the "
+"value makes the planner more inclined of using Index scans."
+msgstr ""
+"もし、<command>set enable_seqscan to off;</command>がクエリの実行に役立ってい"
+"るなら、お使いのPostgreSQLはハードウェアにあわせた調整をしていないようです。"
+"順に走査する際のコストとインデックスを使う際のコストとを比較してプランナが間"
+"違っていることに気付いたら、postgresql.confで<varname>random_page_cost</"
+"varname>の値を減らしてみるか、<command>set random_page_cost to 1.1;</command>"
+"を使ってみてください。このパラメータのデフォルト値は4ですが、それを1 (SSDの場"
+"合)または2 (高速磁気ディスクの場合)にして下さい。値を減らすことで、プランナが"
+"よりインデックススキャンを行う傾向になります。"
+
+#. Tag: para
+#: using_postgis_dataman.xml:1826
+#, fuzzy, no-c-format
+msgid ""
+"If <command>set enable_seqscan to off;</command> does not help your query, "
+"the query may be using a SQL construct that the Postgres planner is not yet "
+"able to optimize. It may be possible to rewrite the query in a way that the "
+"planner is able to handle. For example, a subquery with an inline SELECT may "
+"not produce an efficient plan, but could possibly be rewritten using a "
+"LATERAL JOIN."
+msgstr ""
+"<command>set enable_seqscan to off;</command>がクエリの役に立たない場合には、"
+"PostgreSQLがまだ解決できない構文を使ってしまっているのかもしれません。インラ"
+"インSELECTのサブクエリが一つの例です。プランナが最適化できるように書き直す必"
+"要があります。LATERAL JOINと呼びます。"
+
+#~ msgid "Using PostGIS: Data Management and Queries"
+#~ msgstr "PostGISを使う: データ管理とクエリ"
+
+#~ msgid "Using OpenGIS Standards"
+#~ msgstr "OpenGIS標準を使う"
+
+#~ msgid ""
+#~ "For details on determining which UTM zone to use for your area of "
+#~ "interest, check out the <ulink url=\"http://trac.osgeo.org/postgis/wiki/"
+#~ "UsersWikiplpgsqlfunctionsDistance\">utmzone PostGIS plpgsql helper "
+#~ "function</ulink>."
+#~ msgstr ""
+#~ "対象領域がどのUTMゾーンになるかを決めるには、<ulink url=\"http://trac."
+#~ "osgeo.org/postgis/wiki/UsersWikiplpgsqlfunctionsDistance\">utmzone "
+#~ "PostGIS plpgsql helper function</ulink>を参照して下さい。"
+
+#~ msgid "The <varname>SPATIAL_REF_SYS</varname> columns are as follows:"
+#~ msgstr "<varname>SPATIAL_REF_SYS</varname>のカラムは次の通りです。"
+
+#~ msgid "<ulink url=\"http://en.wikipedia.org/wiki/SRID\">SRID</ulink>"
+#~ msgstr "<ulink url=\"http://en.wikipedia.org/wiki/SRID\">SRID</ulink>"
+
+#~ msgid "<term>SRID</term>"
+#~ msgstr "<term>SRID</term>"
+
+#~ msgid "Ensuring OpenGIS compliancy of geometries"
+#~ msgstr "ジオメトリのOpenGIS準拠を確実にする"
+
+#~ msgid "Dimensionally Extended 9 Intersection Model (DE-9IM)"
+#~ msgstr ""
+#~ "ここで、Dimensionally Extended 9 Intersection Modelまたは略してDE-9IMを見"
+#~ "てみましょう。"
+
+#~ msgid ""
+#~ "It is sometimes the case that the typical spatial predicates (<xref "
+#~ "linkend=\"ST_Intersects\"/>, <xref linkend=\"ST_Contains\"/>, <xref "
+#~ "linkend=\"ST_Crosses\"/>, <xref linkend=\"ST_Touches\"/>, ...) are "
+#~ "insufficient in and of themselves to adequately provide that desired "
+#~ "spatial filter."
+#~ msgstr ""
+#~ "代表的な空間述語 (<xref linkend=\"ST_Intersects\"/>, <xref linkend="
+#~ "\"ST_Contains\"/>, <xref linkend=\"ST_Crosses\"/>, <xref linkend="
+#~ "\"ST_Touches\"/>, ...)は、求められる空間フィルタを適切に提供するには十分で"
+#~ "ないことが時々あります。"
+
+#~ msgid ""
+#~ "For example, consider a linear dataset representing a road network. It "
+#~ "may be the task of a GIS analyst to identify all road segments that cross "
+#~ "each other, not at a point, but on a line, perhaps invalidating some "
+#~ "business rule. In this case, <xref linkend=\"ST_Crosses\"/> does not "
+#~ "adequately provide the necessary spatial filter since, for linear "
+#~ "features, it returns <varname>true</varname> only where they cross at a "
+#~ "point."
+#~ msgstr ""
+#~ "たとえば、道路網を表現する線型のデータセットがあるとします。ビジネスルール"
+#~ "を無視しているかも知れませんが、点で交差するだけでなく線上で交差する道路区"
+#~ "間を全て判別することがGIS解析者の仕事となるかも知れません。この場合、 "
+#~ "<xref linkend=\"ST_Crosses\"/>では重要な空間フィルタとして十分ではありませ"
+#~ "ん。線型のフィーチャーでは、点でクロス (訳注: インタセクトより厳しい条件で"
+#~ "す)している場合のみ<varname>true</varname>が返ります。"
+
+#~ msgid ""
+#~ "One two-step solution might be to first perform the actual intersection "
+#~ "(<xref linkend=\"ST_Intersection\"/>) of pairs of road segments that "
+#~ "spatially intersect (<xref linkend=\"ST_Intersects\"/>), and then compare "
+#~ "the intersection's <xref linkend=\"ST_GeometryType\"/> with "
+#~ "'<varname>LINESTRING</varname>' (properly dealing with cases that return "
+#~ "<varname>GEOMETRYCOLLECTION</varname>s of <varname>[MULTI]POINT</"
+#~ "varname>s, <varname>[MULTI]LINESTRING</varname>s, etc.)."
+#~ msgstr ""
+#~ "空間的にインタセクトしている (<xref linkend=\"ST_Intersects\"/>)と判別され"
+#~ "た二つの区間の組み合わせについて、実際のインタセクト (<xref linkend="
+#~ "\"ST_Intersection\"/>)を取り、 インタセクトの<xref linkend="
+#~ "\"ST_GeometryType\"/>が''<varname>LINESTRING</varname>'であるかを見る "
+#~ "(<varname>[MULTI]POINT</varname>や<varname>[MULTI]LINESTRING</varname>等か"
+#~ "らなる<varname>GEOMETRYCOLLECTION</varname>が帰ってくる場合にしっかり対応"
+#~ "するため)、という2段階の方法で解くことはできます。"
+
+#~ msgid "A more elegant / faster solution may indeed be desirable."
+#~ msgstr "よりエレガントかつ速い解法が本当に望ましいでしょう。"
+
+#~ msgid ""
+#~ "A second [theoretical] example may be that of a GIS analyst trying to "
+#~ "locate all wharfs or docks that intersect a lake's boundary on a line and "
+#~ "where only one end of the wharf is up on shore. In other words, where a "
+#~ "wharf is within, but not completely within a lake, intersecting the "
+#~ "boundary of a lake on a line, and where the wharf's endpoints are both "
+#~ "completely within and on the boundary of the lake. The analyst may need "
+#~ "to use a combination of spatial predicates to isolate the sought after "
+#~ "features:"
+#~ msgstr ""
+#~ "二つ目の[理論的な]例として、GIS解析者が全ての湖の境界に線でインタセクトす"
+#~ "る波止場やドックの全ての位置を特定しようとするとします。ここで、波止場の一"
+#~ "端だけ陸にあるとします。言いかえると、波止場が湖の中にあるが完全に中に入り"
+#~ "きってはいなくて、湖と線でインタセクトして、波止場の一方の端が完全に湖に"
+#~ "入っていて、かつもう一方の端点が境界線上にあります。解析者は空間述語の組み"
+#~ "合わせで、非常に望まれるフィーチャーを引き出す必要があるかも知れません。"
+
+#~ msgid "(lake, wharf) = TRUE"
+#~ msgstr "(lake, wharf) = TRUE"
+
+#~ msgid "(lake, wharf) = FALSE"
+#~ msgstr "(lake, wharf) = FALSE"
+
+#~ msgid "(<xref linkend=\"ST_Intersection\"/>(wharf, lake)) = 'LINESTRING'"
+#~ msgstr "(<xref linkend=\"ST_Intersection\"/>(wharf, lake)) = 'LINESTRING'"
+
+#~ msgid ""
+#~ "(<xref linkend=\"ST_Multi\"/>(<xref linkend=\"ST_Intersection\"/>(<xref "
+#~ "linkend=\"ST_Boundary\"/>(wharf), <xref linkend=\"ST_Boundary\"/"
+#~ ">(lake)))) = 1"
+#~ msgstr ""
+#~ "(<xref linkend=\"ST_Multi\"/>(<xref linkend=\"ST_Intersection\"/>(<xref "
+#~ "linkend=\"ST_Boundary\"/>(wharf), <xref linkend=\"ST_Boundary\"/"
+#~ ">(lake)))) = 1"
+
+#~ msgid "... (needless to say, this could get quite complicated)"
+#~ msgstr "…(複雑なので以下略)"
+
+#~ msgid ""
+#~ "So enters the Dimensionally Extended 9 Intersection Model, or DE-9IM for "
+#~ "short."
+#~ msgstr ""
+#~ "ここで、Dimensionally Extended 9 Intersection Mode、略してDE-9IMを見てみま"
+#~ "しょう。"
+
+#~ msgid "Theory"
+#~ msgstr "理論"
+
+#~ msgid ""
+#~ "According to the <ulink url=\"http://www.opengeospatial.org/standards/sfs"
+#~ "\">OpenGIS Simple Features Implementation Specification for SQL</ulink>, "
+#~ "\"the basic approach to comparing two geometries is to make pair-wise "
+#~ "tests of the intersections between the Interiors, Boundaries and "
+#~ "Exteriors of the two geometries and to classify the relationship between "
+#~ "the two geometries based on the entries in the resulting 'intersection' "
+#~ "matrix.\""
+#~ msgstr ""
+#~ "<ulink url=\"http://www.opengeospatial.org/standards/sfs\">OpenGIS Simple "
+#~ "Features Implementation Specification for SQL</ulink>によると「二つのジオ"
+#~ "メトリの比較の基本的なアプローチは、二つのジオメトリの内部、境界、外部のイ"
+#~ "ンタセクションの比較と、『インタセクション行列』の要素に基づく2ジオメトリ"
+#~ "の関係の分類です」。"
+
+#~ msgid "<glossterm>Boundary</glossterm>"
+#~ msgstr "<glossterm>境界 (Boundary)</glossterm>"
+
+#~ msgid ""
+#~ "The boundary of a geometry is the set of geometries of the next lower "
+#~ "dimension. For <varname>POINT</varname>s, which have a dimension of 0, "
+#~ "the boundary is the empty set. The boundary of a <varname>LINESTRING</"
+#~ "varname> are the two endpoints. For <varname>POLYGON</varname>s, the "
+#~ "boundary is the linework that make up the exterior and interior rings."
+#~ msgstr ""
+#~ "ジオメトリの境界は一つ低い次元のジオメトリの集合です。0次元の"
+#~ "<varname>POINT</varname>の境界は空集合です。<varname>LINESTRING</varname>"
+#~ "の境界は二つの端点です。 <varname>POLYGON</varname>の境界は外環と内環を形"
+#~ "成する線です。"
+
+#~ msgid "<glossterm>Interior</glossterm>"
+#~ msgstr "<glossterm>内部 (Interior)</glossterm>"
+
+#~ msgid ""
+#~ "The interior of a geometry are those points of a geometry that are left "
+#~ "when the boundary is removed. For <varname>POINT</varname>s, the interior "
+#~ "is the <varname>POINT</varname> itself. The interior of a "
+#~ "<varname>LINESTRING</varname> are the set of real points between the "
+#~ "endpoints. For <varname>POLYGON</varname>s, the interior is the areal "
+#~ "surface inside the polygon."
+#~ msgstr ""
+#~ "ジオメトリの内部は境界を取り去った際に残るジオメトリです。<varname>POINT</"
+#~ "varname>の内部は<varname>POINT</varname>自身です。<varname>LINESTRING</"
+#~ "varname>の内部は二つの端点の間の実際の点の集合です。<varname>POLYGON</"
+#~ "varname>の内部はポリゴンの内側の範囲であるサーフェスです。"
+
+#~ msgid "<glossterm>Exterior</glossterm>"
+#~ msgstr "<glossterm>外部 (Exterior)</glossterm>"
+
+#~ msgid ""
+#~ "The exterior of a geometry is the universe, an areal surface, not on the "
+#~ "interior or boundary of the geometry."
+#~ msgstr "ジオメトリの外部は、内部と境界を除いた全領域のサーフェスです。"
+
+#~ msgid ""
+#~ "Given geometry <emphasis>a</emphasis>, where the <emphasis>I(a)</"
+#~ "emphasis>, <emphasis>B(a)</emphasis>, and <emphasis>E(a)</emphasis> are "
+#~ "the <emphasis>Interior</emphasis>, <emphasis>Boundary</emphasis>, and "
+#~ "<emphasis>Exterior</emphasis> of a, the mathematical representation of "
+#~ "the matrix is:"
+#~ msgstr ""
+#~ "ジオメトリ<emphasis>a</emphasis>があり、aの内部、境界、外部をそれぞれ"
+#~ "<emphasis>I(a)</emphasis>、<emphasis>B(a)</emphasis>、<emphasis>E(a)</"
+#~ "emphasis>とします。数学的な行列表現は次のようになります。"
+
+#~ msgid "<emphasis role=\"bold\">Interior</emphasis>"
+#~ msgstr "<emphasis role=\"bold\">内部 (Interior)</emphasis>"
+
+#~ msgid "<emphasis role=\"bold\">Boundary</emphasis>"
+#~ msgstr "<emphasis role=\"bold\">境界 (Boundary)</emphasis>"
+
+#~ msgid "<emphasis role=\"bold\">Exterior</emphasis>"
+#~ msgstr "<emphasis role=\"bold\">外部 (Exterior)</emphasis>"
+
+#~ msgid "dim( I(a) ∩ I(b) )"
+#~ msgstr "dim( I(a) ∩ I(b) )"
+
+#~ msgid "dim( I(a) ∩ B(b) )"
+#~ msgstr "dim( I(a) ∩ B(b) )"
+
+#~ msgid "dim( I(a) ∩ E(b) )"
+#~ msgstr "dim( I(a) ∩ E(b) )"
+
+#~ msgid "dim( B(a) ∩ I(b) )"
+#~ msgstr "dim( B(a) ∩ I(b) )"
+
+#~ msgid "dim( B(a) ∩ B(b) )"
+#~ msgstr "dim( B(a) ∩ B(b) )"
+
+#~ msgid "dim( B(a) ∩ E(b) )"
+#~ msgstr "dim( B(a) ∩ E(b) )"
+
+#~ msgid "dim( E(a) ∩ I(b) )"
+#~ msgstr "dim( E(a) ∩ I(b) )"
+
+#~ msgid "dim( E(a) ∩ B(b) )"
+#~ msgstr "dim( E(a) ∩ B(b) )"
+
+#~ msgid "dim( E(a) ∩ E(b) )"
+#~ msgstr "dim( E(a) ∩ E(b) )"
+
+#~ msgid ""
+#~ "Where <emphasis>dim(a)</emphasis> is the dimension of <emphasis>a</"
+#~ "emphasis> as specified by <xref linkend=\"ST_Dimension\"/> but has the "
+#~ "domain of <literal>{0,1,2,T,F,*}</literal>"
+#~ msgstr ""
+#~ "ここで、<emphasis>dim(a)</emphasis>は<emphasis>a</emphasis>の次元で、"
+#~ "<xref linkend=\"ST_Dimension\"/>で規定されますが、{0,1,2,T,F,*}の値域を持"
+#~ "ちます。"
+
+#~ msgid "<literal>0</literal> =&gt; point"
+#~ msgstr "<literal>0</literal> =&gt; 点"
+
+#~ msgid "<literal>1</literal> =&gt; line"
+#~ msgstr "<literal>1</literal> =&gt; 線"
+
+#~ msgid "<literal>2</literal> =&gt; area"
+#~ msgstr "<literal>2</literal> =&gt; 面"
+
+#~ msgid "<literal>T</literal> =&gt; <literal>{0,1,2}</literal>"
+#~ msgstr "<literal>T</literal> =&gt; <literal>{0,1,2}</literal>"
+
+#~ msgid "<literal>F</literal> =&gt; empty set"
+#~ msgstr "<literal>F</literal> =&gt; 空集合"
+
+#~ msgid "<literal>*</literal> =&gt; don't care"
+#~ msgstr "<literal>*</literal> =&gt; 何でも良い"
+
+#~ msgid "Visually, for two overlapping polygonal geometries, this looks like:"
+#~ msgstr ""
+#~ "二つのオーバラップするポリゴンについて可視化すると、次のようになります。"
+
+#~ msgid "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">2</emphasis>"
+#~ msgstr ""
+#~ "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">2</emphasis>"
+
+#~ msgid "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">1</emphasis>"
+#~ msgstr ""
+#~ "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">1</emphasis>"
+
+#~ msgid "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">0</emphasis>"
+#~ msgstr ""
+#~ "<emphasis>dim(...) = </emphasis><emphasis role=\"bold\">0</emphasis>"
+
+#~ msgid ""
+#~ "Read from left to right and from top to bottom, the dimensional matrix is "
+#~ "represented, '<emphasis role=\"bold\">212101212</emphasis>'."
+#~ msgstr ""
+#~ "左から右、上から下に読むと、次元行列は'<emphasis role=\"bold\">212101212</"
+#~ "emphasis>'と表現されます。"
+
+#~ msgid ""
+#~ "A relate matrix that would therefore represent our first example of two "
+#~ "lines that intersect on a line would be: '<emphasis role=\"bold"
+#~ "\">1*1***1**</emphasis>'"
+#~ msgstr ""
+#~ "一つ目の例である、2線が線上でインタセクトする場合の関係行列は'<emphasis "
+#~ "role=\"bold\">1*1***1**</emphasis>'となります。"
+
+#~ msgid ""
+#~ "-- Identify road segments that cross on a line\n"
+#~ "SELECT a.id\n"
+#~ "FROM roads a, roads b\n"
+#~ "WHERE a.id != b.id\n"
+#~ "AND a.geom &amp;&amp; b.geom\n"
+#~ "AND ST_Relate(a.geom, b.geom, '1*1***1**');"
+#~ msgstr ""
+#~ "-- 線上でクロスする道路区間の判別\n"
+#~ "SELECT a.id\n"
+#~ "FROM roads a, roads b\n"
+#~ "WHERE a.id != b.id\n"
+#~ "AND a.geom &amp;&amp; b.geom\n"
+#~ "AND ST_Relate(a.geom, b.geom, '1*1***1**');"
+
+#~ msgid ""
+#~ "A relate matrix that represents the second example of wharfs partly on "
+#~ "the lake's shoreline would be '<emphasis role=\"bold\">102101FF2</"
+#~ "emphasis>'"
+#~ msgstr ""
+#~ "二つ目の例である、一部が湖の水涯線上にある波止場についての関係行列"
+#~ "は'<emphasis role=\"bold\">102101FF2</emphasis>'となります。"
+
+#~ msgid ""
+#~ "-- Identify wharfs partly on a lake's shoreline\n"
+#~ "SELECT a.lake_id, b.wharf_id\n"
+#~ "FROM lakes a, wharfs b\n"
+#~ "WHERE a.geom &amp;&amp; b.geom\n"
+#~ "AND ST_Relate(a.geom, b.geom, '102101FF2');"
+#~ msgstr ""
+#~ "-- 一部が湖の水涯線上にある波止場の判別\n"
+#~ "SELECT a.lake_id, b.wharf_id\n"
+#~ "FROM lakes a, wharfs b\n"
+#~ "WHERE a.geom &amp;&amp; b.geom\n"
+#~ "AND ST_Relate(a.geom, b.geom, '102101FF2');"
+
+#~ msgid "For more information or reading, see:"
+#~ msgstr "詳細情報ついては、次のページをご覧ください。"
+
+#~ msgid ""
+#~ "<ulink url=\"http://www.opengeospatial.org/standards/sfs\">OpenGIS Simple "
+#~ "Features Implementation Specification for SQL</ulink> (version 1.1, "
+#~ "section 2.1.13.2)"
+#~ msgstr ""
+#~ "<ulink url=\"http://www.opengeospatial.org/standards/sfs\">OpenGIS Simple "
+#~ "Features Implementation Specification for SQL</ulink> (1.1版, 2.1.13.2節)"
+
+#~ msgid "Dimensionally Extended Nine-Intersection Model (DE-9IM)"
+#~ msgstr "Dimensionally Extended Nine-Intersection Model (DE-9IM)"
+
+#~ msgid "GeoTools: Point Set Theory and the DE-9IM Matrix"
+#~ msgstr "GeoTools: Point Set Theory and the DE-9IM Matrix"
+
+#~ msgid "<emphasis>Encyclopedia of GIS</emphasis> By Hui Xiong"
+#~ msgstr "Hui Xiongさんによる<emphasis>Encyclopedia of GIS</emphasis>"
+
+#~ msgid "Loading Data Using SQL"
+#~ msgstr "SQLを使ってロードする"
+
+#~ msgid "Retrieving GIS Data"
+#~ msgstr "GISデータを検索する"
+
+#~ msgid "Note: before PostGIS 2.4 this compared only boxes of geometries."
+#~ msgstr ""
+#~ "ご注意: PostGIS 2.4より前では、これはジオメトリのボックスでの比較でした。"
+
+#~ msgid ""
+#~ "B-Trees are used for data which can be sorted along one axis; for "
+#~ "example, numbers, letters, dates. Spatial data can be sorted along a "
+#~ "space-filling curve, Z-order curve or Hilbert curve. This representation "
+#~ "however does not allow speeding up common operations."
+#~ msgstr ""
+#~ "B木は、数字、文字、日付といった、一つの軸に沿ってソートできるデータに使用"
+#~ "します。 空間データは空間充填曲線、Z階数曲線またはヒルベルト曲線に沿って"
+#~ "ソートされます。しかし、この表現は一般的な演算子の速度向上を許しません。"
+
+#~ msgid "Complex Queries"
+#~ msgstr "複雑なクエリ"
+
+#~ msgid ""
+#~ "The <emphasis>raison d'etre</emphasis> of spatial database functionality "
+#~ "is performing queries inside the database which would ordinarily require "
+#~ "desktop GIS functionality. Using PostGIS effectively requires knowing "
+#~ "what spatial functions are available, and ensuring that appropriate "
+#~ "indexes are in place to provide good performance. The SRID of 312 used in "
+#~ "these examples is purely for demonstration. You should be using a REAL "
+#~ "SRID listed in the the spatial_ref_sys table and one that matches the "
+#~ "projection of your data. If your data has no spatial reference system "
+#~ "specified, you should be THINKING very thoughtfully why it doesn't and "
+#~ "maybe it should."
+#~ msgstr ""
+#~ "空間データベース機能の<emphasis>レゾンデートル</emphasis>は、通常はデスク"
+#~ "トップGISに求める機能を、データベース内部のクエリで実現してすることです。"
+#~ "PostGISを効果的に使用するには、どの空間関数が有効かを知り、また、良好なパ"
+#~ "フォーマンスを提供する所に適切にインデックスがあることが保証されていること"
+#~ "が求められます。なお、本例ではSRID 312を使っていますが、これは純粋に例とし"
+#~ "て出しているだけです。spatial_ref_sysテーブルにあり、データの投影法に合致"
+#~ "している、本当のSRIDを使ってください。空間参照系を持たないデータについて"
+#~ "は、なぜ持っていないのか、持つべきなのかも知れないのか、をじっくり*考えて"
+#~ "ください*。 たとえば分子内部や火星旅行の到達位置といった、定義された空間参"
+#~ "照系を持たない場合には、単にSRIDを無視するか、一つ作成して"
+#~ "<varname>spatial_ref_sys</varname>テーブルに追加して下さい。"
+
+#~ msgid ""
+#~ "If your reason is because you are modeling something that doesn't have a "
+#~ "geographic spatial reference system defined such as the internals of a "
+#~ "molecule or the floorplan of a not yet built amusement park then that's "
+#~ "fine. If the location of the amusement park has been planned however, "
+#~ "then it would make sense to use a suitable planar coordinate system for "
+#~ "that location if nothing more than to ensure the amusement part is not "
+#~ "trespassing on already existing structures."
+#~ msgstr ""
+#~ "分子の内部構造や開発前の遊園地の間取り図といった、空間参照系を持たないもの"
+#~ "を扱うためだったら、問題ありません。ただし、遊園地の位置が決まっている場合"
+#~ "だと、遊園地が既存構造の上に入り込まないようにするためだけでも、その位置に"
+#~ "適切な平面座標系を使うようにします。"
+
+#~ msgid "Taking Advantage of Indexes"
+#~ msgstr "インデックスの利点を使う"
+
+#~ msgid ""
+#~ "When constructing a query it is important to remember that only the "
+#~ "bounding-box-based operators such as &amp;&amp; can take advantage of the "
+#~ "GiST spatial index. Functions such as <varname>ST_Distance()</varname> "
+#~ "cannot use the index to optimize their operation. For example, the "
+#~ "following query would be quite slow on a large table:"
+#~ msgstr ""
+#~ "クエリを作成するとき、&amp;&amp;のようなバウンディングボックスを基準とした"
+#~ "演算子によってのみGiST空間インデックスの利点が出てくることだけは覚えておく"
+#~ "ことが重要です。<varname>ST_Distance()</varname>のような関数では演算の最適"
+#~ "化を行うためにインデックスを使うことができません。たとえば、次のクエリで"
+#~ "は、大きなテーブルでは本当に遅くなります。"
+
+#~ msgid ""
+#~ "SELECT the_geom\n"
+#~ "FROM geom_table\n"
+#~ "WHERE ST_Distance(the_geom, 'SRID=312;POINT(100000 200000)') &lt; 100"
+#~ msgstr ""
+#~ "SELECT the_geom\n"
+#~ "FROM geom_table\n"
+#~ "WHERE ST_Distance(the_geom, 'SRID=312;POINT(100000 200000)') &lt; 100"
+
+#~ msgid ""
+#~ "This query is selecting all the geometries in geom_table which are within "
+#~ "100 units of the point (100000, 200000). It will be slow because it is "
+#~ "calculating the distance between each point in the table and our "
+#~ "specified point, ie. one <varname>ST_Distance()</varname> calculation for "
+#~ "each row in the table. We can avoid this by using the single step index "
+#~ "accelerated function ST_DWithin to reduce the number of distance "
+#~ "calculations required:"
+#~ msgstr ""
+#~ "このクエリは、geom_tableにおける (100000, 200000)の点から距離が100単位以内"
+#~ "にある全てのジオメトリを選択します。このクエリは、テーブル内にあるそれぞれ"
+#~ "の点と指定した点との距離を計算する、すなわち、それぞれの行で一つの"
+#~ "<varname>ST_Distance()</varname>計算を行うため、遅くなります。1ステップで"
+#~ "インデックスを利用するST_DWithin関数を使って、求められる距離計算の量を減ら"
+#~ "すことで回避できます。次のようにします。"
+
+#~ msgid ""
+#~ "SELECT the_geom\n"
+#~ "FROM geom_table\n"
+#~ "WHERE ST_DWithin(the_geom, 'SRID=312;POINT(100000 200000)', 100)"
+#~ msgstr ""
+#~ "SELECT the_geom\n"
+#~ "FROM geom_table\n"
+#~ "WHERE ST_DWithin(the_geom, 'SRID=312;POINT(100000 200000)', 100)"
+
+#~ msgid ""
+#~ "This query selects the same geometries, but it does it in a more "
+#~ "efficient way. Assuming there is a GiST index on the_geom, the query "
+#~ "planner will recognize that it can use the index to reduce the number of "
+#~ "rows before calculating the result of the <varname>ST_Distance()</"
+#~ "varname> function. Notice that the <varname>ST_MakeEnvelope</varname> "
+#~ "geometry which is used in the &amp;&amp; operation is a 200 unit square "
+#~ "box centered on the original point - this is our \"query box\". The &amp;"
+#~ "&amp; operator uses the index to quickly reduce the result set down to "
+#~ "only those geometries which have bounding boxes that overlap the \"query "
+#~ "box\". Assuming that our query box is much smaller than the extents of "
+#~ "the entire geometry table, this will drastically reduce the number of "
+#~ "distance calculations that need to be done."
+#~ msgstr ""
+#~ "このクエリは、同じジオメトリを選択しますが、より効果的な方法で行われます。"
+#~ "the_geomにGiSTインデックスがあると仮定すると、クエリプランナは"
+#~ "<varname>ST_Distance()</varname>関数の結果を計算する前にインデックスを使っ"
+#~ "て行を減らせると認識します。 &amp;&amp;演算子で使われる"
+#~ "<varname>ST_MakeEnvelope</varname>ジオメトリは、元のポイントに中央寄せした"
+#~ "200単位の正方形です。これは「クエリボックス」です。&amp;&amp;演算子は、結"
+#~ "果セットを「クエリボックス」にオーバラップするバウンディングボックスを持つ"
+#~ "ジオメトリだけに素早く減らすためにインデックスを使います。「クエリボック"
+#~ "ス」がジオメトリテーブル全体の範囲より十分に小さいと仮定すると、行われなけ"
+#~ "ればならない距離計算の量は劇的に減少します。"
+
+#~ msgid "Examples of Spatial SQL"
+#~ msgstr "空間SQLの例"
+
+#~ msgid ""
+#~ "The examples in this section will make use of two tables, a table of "
+#~ "linear roads, and a table of polygonal municipality boundaries. The table "
+#~ "definitions for the <varname>bc_roads</varname> table is:"
+#~ msgstr ""
+#~ "本節の例では、線型の道、ポリゴンの自治体境界、の二つのテーブルを使います。"
+#~ "テーブルの定義をしまします。<varname>bc_roads</varname>については次の通り"
+#~ "です。"
+
+#~ msgid ""
+#~ "Column      | Type              | Description\n"
+#~ "------------+-------------------+-------------------\n"
+#~ "gid         | integer           | Unique ID\n"
+#~ "name        | character varying | Road Name\n"
+#~ "the_geom    | geometry          | Location Geometry (Linestring)"
+#~ msgstr ""
+#~ "Column      | Type              | Description\n"
+#~ "------------+-------------------+-------------------\n"
+#~ "gid         | integer           | Unique ID\n"
+#~ "name        | character varying | Road Name\n"
+#~ "the_geom    | geometry          | Location Geometry (Linestring)"
+
+#~ msgid ""
+#~ "The table definition for the <varname>bc_municipality</varname> table is:"
+#~ msgstr ""
+#~ "<varname>bc_municipality</varname>テーブルの定義については次の通りです。"
+
+#~ msgid ""
+#~ "Column     | Type              | Description\n"
+#~ "-----------+-------------------+-------------------\n"
+#~ "gid        | integer           | Unique ID\n"
+#~ "code       | integer           | Unique ID\n"
+#~ "name       | character varying | City / Town Name\n"
+#~ "the_geom   | geometry          | Location Geometry (Polygon)"
+#~ msgstr ""
+#~ "Column     | Type              | Description\n"
+#~ "-----------+-------------------+-------------------\n"
+#~ "gid        | integer           | Unique ID\n"
+#~ "code       | integer           | Unique ID\n"
+#~ "name       | character varying | City / Town Name\n"
+#~ "the_geom   | geometry          | Location Geometry (Polygon)"
+
+#~ msgid "What is the total length of all roads, expressed in kilometers?"
+#~ msgstr "道路の総延長はkm表記でいくらになるでしょう?"
+
+#~ msgid "You can answer this question with a very simple piece of SQL:"
+#~ msgstr "この問題は、次のようなとても単純なSQLで答えを得ることができます。"
+
+#~ msgid ""
+#~ "SELECT sum(ST_Length(the_geom))/1000 AS km_roads FROM bc_roads;\n"
+#~ "\n"
+#~ "km_roads\n"
+#~ "------------------\n"
+#~ "70842.1243039643\n"
+#~ "(1 row)"
+#~ msgstr ""
+#~ "SELECT sum(ST_Length(the_geom))/1000 AS km_roads FROM bc_roads;\n"
+#~ "\n"
+#~ "km_roads\n"
+#~ "------------------\n"
+#~ "70842.1243039643\n"
+#~ "(1 row)"
+
+#~ msgid "How large is the city of Prince George, in hectares?"
+#~ msgstr "プリンスジョージ市の大きさはha表記でいくらになるでしょう?"
+
+#~ msgid ""
+#~ "This query combines an attribute condition (on the municipality name) "
+#~ "with a spatial calculation (of the area):"
+#~ msgstr ""
+#~ "このクエリでは、属性条件 (municipality name, 自治体名)に空間計算 (面積)を"
+#~ "併用しています。"
+
+#~ msgid ""
+#~ "SELECT\n"
+#~ "  ST_Area(the_geom)/10000 AS hectares\n"
+#~ "FROM bc_municipality\n"
+#~ "WHERE name = 'PRINCE GEORGE';\n"
+#~ "\n"
+#~ "hectares\n"
+#~ "------------------\n"
+#~ "32657.9103824927\n"
+#~ "(1 row)"
+#~ msgstr ""
+#~ "SELECT\n"
+#~ "  ST_Area(the_geom)/10000 AS hectares\n"
+#~ "FROM bc_municipality\n"
+#~ "WHERE name = 'PRINCE GEORGE';\n"
+#~ "\n"
+#~ "hectares\n"
+#~ "------------------\n"
+#~ "32657.9103824927\n"
+#~ "(1 row)"
+
+#~ msgid "What is the largest municipality in the province, by area?"
+#~ msgstr "県内で最も大きな面積となる自治体はどこでしょう?"
+
+#~ msgid ""
+#~ "This query brings a spatial measurement into the query condition. There "
+#~ "are several ways of approaching this problem, but the most efficient is "
+#~ "below:"
+#~ msgstr ""
+#~ "このクエリは、空間計測をクエリ条件に持ってきています。この問題へのアプロー"
+#~ "チの方法はいくつかありますが、最も効率的なのは次の通りです。"
+
+#~ msgid ""
+#~ "SELECT\n"
+#~ "  name,\n"
+#~ "  ST_Area(the_geom)/10000 AS hectares\n"
+#~ "FROM\n"
+#~ "  bc_municipality\n"
+#~ "ORDER BY hectares DESC\n"
+#~ "LIMIT 1;\n"
+#~ "\n"
+#~ "name           | hectares\n"
+#~ "---------------+-----------------\n"
+#~ "TUMBLER RIDGE  | 155020.02556131\n"
+#~ "(1 row)"
+#~ msgstr ""
+#~ "SELECT\n"
+#~ "  name,\n"
+#~ "  ST_Area(the_geom)/10000 AS hectares\n"
+#~ "FROM\n"
+#~ "  bc_municipality\n"
+#~ "ORDER BY hectares DESC\n"
+#~ "LIMIT 1;\n"
+#~ "\n"
+#~ "name           | hectares\n"
+#~ "---------------+-----------------\n"
+#~ "TUMBLER RIDGE  | 155020.02556131\n"
+#~ "(1 row)"
+
+#~ msgid ""
+#~ "Note that in order to answer this query we have to calculate the area of "
+#~ "every polygon. If we were doing this a lot it would make sense to add an "
+#~ "area column to the table that we could separately index for performance. "
+#~ "By ordering the results in a descending direction, and them using the "
+#~ "PostgreSQL \"LIMIT\" command we can easily pick off the largest value "
+#~ "without using an aggregate function like max()."
+#~ msgstr ""
+#~ "このクエリの答えを出すためには、全てのポリゴンの面積を求める必要があること"
+#~ "に注意して下さい。このクエリを多く実行する場合、性能向上のためにテーブルに"
+#~ "areaカラムを追加して、別のインデックスを追加することができるようにするの"
+#~ "は、意義のあることです。結果を距離について降順に並べ替え、PostgreSQLの"
+#~ "\"LIMIT\"コマンドを用いることで、max()のような集約関数を使わずに、簡単に最"
+#~ "も大きい値を集約関数を得ることができます。"
+
+#~ msgid ""
+#~ "What is the length of roads fully contained within each municipality?"
+#~ msgstr "各自治体内に含まれる道路の総延長はいくらでしょう?"
+
+#~ msgid ""
+#~ "This is an example of a \"spatial join\", because we are bringing "
+#~ "together data from two tables (doing a join) but using a spatial "
+#~ "interaction condition (\"contained\") as the join condition rather than "
+#~ "the usual relational approach of joining on a common key:"
+#~ msgstr ""
+#~ "これは、二つのテーブルからデータを持ち込んで (結合して)いるので「空間結"
+#~ "合」の例です。しかし、結合の条件として共通キーの上で接続するという普通のリ"
+#~ "レーションのやり方でなく空間インタラクション条件 (「含む」)を使っていま"
+#~ "す。"
+
+#~ msgid ""
+#~ "SELECT\n"
+#~ "  m.name,\n"
+#~ "  sum(ST_Length(r.the_geom))/1000 as roads_km\n"
+#~ "FROM\n"
+#~ "  bc_roads AS r,\n"
+#~ "  bc_municipality AS m\n"
+#~ "WHERE\n"
+#~ "  ST_Contains(m.the_geom, r.the_geom)\n"
+#~ "GROUP BY m.name\n"
+#~ "ORDER BY roads_km;\n"
+#~ "\n"
+#~ "name                        | roads_km\n"
+#~ "----------------------------+------------------\n"
+#~ "SURREY                      | 1539.47553551242\n"
+#~ "VANCOUVER                   | 1450.33093486576\n"
+#~ "LANGLEY DISTRICT            | 833.793392535662\n"
+#~ "BURNABY                     | 773.769091404338\n"
+#~ "PRINCE GEORGE               | 694.37554369147\n"
+#~ "..."
+#~ msgstr ""
+#~ "SELECT\n"
+#~ "  m.name,\n"
+#~ "  sum(ST_Length(r.the_geom))/1000 as roads_km\n"
+#~ "FROM\n"
+#~ "  bc_roads AS r,\n"
+#~ "  bc_municipality AS m\n"
+#~ "WHERE\n"
+#~ "  ST_Contains(m.the_geom, r.the_geom)\n"
+#~ "GROUP BY m.name\n"
+#~ "ORDER BY roads_km;\n"
+#~ "\n"
+#~ "name                        | roads_km\n"
+#~ "----------------------------+------------------\n"
+#~ "SURREY                      | 1539.47553551242\n"
+#~ "VANCOUVER                   | 1450.33093486576\n"
+#~ "LANGLEY DISTRICT            | 833.793392535662\n"
+#~ "BURNABY                     | 773.769091404338\n"
+#~ "PRINCE GEORGE               | 694.37554369147\n"
+#~ "..."
+
+#~ msgid ""
+#~ "This query takes a while, because every road in the table is summarized "
+#~ "into the final result (about 250K roads for our particular example "
+#~ "table). For smaller overlays (several thousand records on several "
+#~ "hundred) the response can be very fast."
+#~ msgstr ""
+#~ "このクエリは、テーブル内の全ての道路の合計を最終結果 (この例での話ですが約"
+#~ "250Kmの道です)にまとめられるので、少し時間がかかります。より小さいオーバレ"
+#~ "イ (数百の道路で数千のレコード)の場合、応答はもっと早くなりえます。"
+
+#~ msgid ""
+#~ "Create a new table with all the roads within the city of Prince George."
+#~ msgstr "プリンスジョージ市内の全ての道路からなるテーブルを作る"
+
+#~ msgid ""
+#~ "This is an example of an \"overlay\", which takes in two tables and "
+#~ "outputs a new table that consists of spatially clipped or cut resultants. "
+#~ "Unlike the \"spatial join\" demonstrated above, this query actually "
+#~ "creates new geometries. An overlay is like a turbo-charged spatial join, "
+#~ "and is useful for more exact analysis work:"
+#~ msgstr ""
+#~ "これは「オーバレイ」の例です。つまり、二つのテーブルを取得して、空間的に切"
+#~ "り取られた結果からなる新しいテーブルを出力します。上で示した「空間結合」と"
+#~ "違い、このクエリは実際に新しいジオメトリを生成します。生成されたオーバレイ"
+#~ "はターボのかかった空間結合みたいなもので、より確かな解析作業に便利です。"
+
+#~ msgid ""
+#~ "CREATE TABLE pg_roads as\n"
+#~ "SELECT\n"
+#~ "  ST_Intersection(r.the_geom, m.the_geom) AS intersection_geom,\n"
+#~ "  ST_Length(r.the_geom) AS rd_orig_length,\n"
+#~ "  r.*\n"
+#~ "FROM\n"
+#~ "  bc_roads AS r,\n"
+#~ "  bc_municipality AS m\n"
+#~ "WHERE\n"
+#~ "  m.name = 'PRINCE GEORGE'\n"
+#~ "        AND ST_Intersects(r.the_geom, m.the_geom);"
+#~ msgstr ""
+#~ "CREATE TABLE pg_roads as\n"
+#~ "SELECT\n"
+#~ "  ST_Intersection(r.the_geom, m.the_geom) AS intersection_geom,\n"
+#~ "  ST_Length(r.the_geom) AS rd_orig_length,\n"
+#~ "  r.*\n"
+#~ "FROM\n"
+#~ "  bc_roads AS r,\n"
+#~ "  bc_municipality AS m\n"
+#~ "WHERE\n"
+#~ "  m.name = 'PRINCE GEORGE'\n"
+#~ "        AND ST_Intersects(r.the_geom, m.the_geom);"
+
+#~ msgid "What is the length in kilometers of \"Douglas St\" in Victoria?"
+#~ msgstr "ビクトリア州の「ダグラス通り」の長さはkm表記でいくらになるでしょう?"
+
+#~ msgid ""
+#~ "SELECT\n"
+#~ "  sum(ST_Length(r.the_geom))/1000 AS kilometers\n"
+#~ "FROM\n"
+#~ "  bc_roads r,\n"
+#~ "  bc_municipality m\n"
+#~ "WHERE\n"
+#~ "        r.name = 'Douglas St'\n"
+#~ "        AND m.name = 'VICTORIA'\n"
+#~ "        AND ST_Intersects(m.the_geom, r.the_geom);\n"
+#~ "\n"
+#~ "kilometers\n"
+#~ "------------------\n"
+#~ "4.89151904172838\n"
+#~ "(1 row)"
+#~ msgstr ""
+#~ "SELECT\n"
+#~ "  sum(ST_Length(r.the_geom))/1000 AS kilometers\n"
+#~ "FROM\n"
+#~ "  bc_roads r,\n"
+#~ "  bc_municipality m\n"
+#~ "WHERE\n"
+#~ "        r.name = 'Douglas St'\n"
+#~ "        AND m.name = 'VICTORIA'\n"
+#~ "        AND ST_Intersects(m.the_geom, r.the_geom);\n"
+#~ "\n"
+#~ "kilometers\n"
+#~ "------------------\n"
+#~ "4.89151904172838\n"
+#~ "(1 row)"
+
+#~ msgid "What is the largest municipality polygon that has a hole?"
+#~ msgstr "穴を持つ自治体ポリゴンのうち最も大きいのはどれでしょう?"
+
+#~ msgid ""
+#~ "SELECT gid, name, ST_Area(the_geom) AS area\n"
+#~ "FROM bc_municipality\n"
+#~ "WHERE ST_NRings(the_geom) &gt; 1\n"
+#~ "ORDER BY area DESC LIMIT 1;\n"
+#~ "\n"
+#~ "gid  | name         | area\n"
+#~ "-----+--------------+------------------\n"
+#~ "12   | SPALLUMCHEEN | 257374619.430216\n"
+#~ "(1 row)"
+#~ msgstr ""
+#~ "SELECT gid, name, ST_Area(the_geom) AS area\n"
+#~ "FROM bc_municipality\n"
+#~ "WHERE ST_NRings(the_geom) &gt; 1\n"
+#~ "ORDER BY area DESC LIMIT 1;\n"
+#~ "\n"
+#~ "gid  | name         | area\n"
+#~ "-----+--------------+------------------\n"
+#~ "12   | SPALLUMCHEEN | 257374619.430216\n"
+#~ "(1 row)"

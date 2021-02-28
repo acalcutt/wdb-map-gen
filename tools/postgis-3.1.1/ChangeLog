@@ -1,0 +1,264 @@
+2021-01-28  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS, README.postgis, Version.config, doc/release_notes.xml,
+	extensions/upgradeable_versions.mk: Prepare for 3.1.1 release
+
+2021-01-13  Regina Obe <lr@pcorp.us>
+
+	* extensions/upgradeable_versions.mk: Get rid of 3.1.0dev upgrade
+	path
+
+2021-01-03  Sandro Santilli <strk@kbt.io>
+
+	* NEWS, liblwgeom/lwgeom_geos_clean.c: Avoid listing the same
+	geometry in different collections Closes #4823 in 3.1 branch (3.1.1dev)
+
+2021-01-05  Sandro Santilli <strk@kbt.io>
+
+	* NEWS, postgis/lwgeom_geos_clean.c: Copy input of ST_MakeValid
+	before passing to lwgeom_make_valid The lwgeom_make_valid function can change the input geometry.
+	Closes #4825 in 3.1 branch (3.1.1dev)
+
+2021-01-02  Regina Obe <lr@pcorp.us>
+
+	* doc/reference_processing.xml: Document that ST_ReducePrecision
+	came in 3.1.0 and requires GEOS 3.9
+
+2020-12-31  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS: Add news item for VSICURL fix
+
+2020-12-31  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* raster/rt_core/rt_util.c, raster/rt_pg/rtpostgis.c,
+	raster/test/cunit/cu_misc.c: Make the VSICURL synthetic driver work
+	as documented. Closes #4818
+
+2020-12-21  Regina Obe <lr@pcorp.us>
+
+	* ci/berrie64/postgis_regress.sh,
+	doc/xsl/postgis_gardentest.sql.xsl: Put back voronoi garden tests
+	and add make garden to berrie64 arsenal of tests
+
+2020-12-21  Sandro Santilli <strk@kbt.io>
+
+	* liblwgeom/cunit/cu_clean.c: Fix expected result to include SRID
+
+2020-12-21  Sandro Santilli <strk@kbt.io>
+
+	* NEWS, liblwgeom/cunit/cu_clean.c, liblwgeom/lwgeom_geos_clean.c: 
+	Do not free 0-allocated geoms vector for made-valid empty
+	collections References #4814 in 3.1 branch Includes unit test and NEWS entry
+
+2020-12-18  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS, README.postgis, Version.config: Bump to 3.1.1 dev
+
+2020-12-18  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS, README.md, README.postgis: Final edits for 3.1.0
+
+2020-12-18  Regina Obe <lr@pcorp.us>
+
+	* doc/po/de/release_notes.xml.po: Minor fixes to mangled release
+	notes
+
+2020-12-16  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS: Minor edits to NEWS
+
+2020-12-15  Regina Obe <lr@pcorp.us>
+
+	* doc/po/de/administration.xml.po,
+	doc/po/de/database_tuning.xml.po, doc/po/de/faq.xml.po,
+	doc/po/de/faq_raster.xml.po, doc/po/de/installation.xml.po,
+	doc/po/de/introduction.xml.po, doc/po/de/performance_tips.xml.po,
+	doc/po/de/postgis.xml.po, doc/po/de/reference.xml.po,
+	doc/po/de/reference_accessor.xml.po,
+	doc/po/de/reference_bbox.xml.po,
+	doc/po/de/reference_cluster.xml.po,
+	doc/po/de/reference_constructor.xml.po,
+	doc/po/de/reference_editor.xml.po, doc/po/de/reference_guc.xml.po,
+	doc/po/de/reference_lrs.xml.po, doc/po/de/reference_measure.xml.po,
+	doc/po/de/reference_operator.xml.po,
+	doc/po/de/reference_output.xml.po,
+	doc/po/de/reference_processing.xml.po,
+	doc/po/de/reference_raster.xml.po,
+	doc/po/de/reference_relationship.xml.po,
+	doc/po/de/reference_trajectory.xml.po,
+	doc/po/de/reference_validation.xml.po,
+	doc/po/de/release_notes.xml.po, doc/po/de/reporting.xml.po,
+	doc/po/de/usage.xml.po, doc/po/de/using_postgis_app.xml.po,
+	doc/po/de/using_postgis_dataman.xml.po,
+	doc/po/de/using_postgis_query.xml.po,
+	doc/po/es/administration.xml.po, doc/po/es/faq.xml.po,
+	doc/po/es/faq_raster.xml.po, doc/po/es/installation.xml.po,
+	doc/po/es/introduction.xml.po, doc/po/es/performance_tips.xml.po,
+	doc/po/es/postgis.xml.po, doc/po/es/reference.xml.po,
+	doc/po/es/reference_accessor.xml.po,
+	doc/po/es/reference_bbox.xml.po,
+	doc/po/es/reference_cluster.xml.po,
+	doc/po/es/reference_constructor.xml.po,
+	doc/po/es/reference_editor.xml.po, doc/po/es/reference_guc.xml.po,
+	doc/po/es/reference_lrs.xml.po, doc/po/es/reference_measure.xml.po,
+	doc/po/es/reference_operator.xml.po,
+	doc/po/es/reference_output.xml.po,
+	doc/po/es/reference_processing.xml.po,
+	doc/po/es/reference_raster.xml.po,
+	doc/po/es/reference_relationship.xml.po,
+	doc/po/es/reference_trajectory.xml.po,
+	doc/po/es/reference_validation.xml.po,
+	doc/po/es/release_notes.xml.po, doc/po/es/reporting.xml.po,
+	doc/po/es/using_postgis_app.xml.po,
+	doc/po/es/using_postgis_dataman.xml.po,
+	doc/po/es/using_postgis_query.xml.po,
+	doc/po/fr/administration.xml.po, doc/po/fr/faq.xml.po,
+	doc/po/fr/faq_raster.xml.po, doc/po/fr/installation.xml.po,
+	doc/po/fr/introduction.xml.po, doc/po/fr/performance_tips.xml.po,
+	doc/po/fr/postgis.xml.po, doc/po/fr/reference.xml.po,
+	doc/po/fr/reference_accessor.xml.po,
+	doc/po/fr/reference_bbox.xml.po,
+	doc/po/fr/reference_cluster.xml.po,
+	doc/po/fr/reference_constructor.xml.po,
+	doc/po/fr/reference_editor.xml.po, doc/po/fr/reference_guc.xml.po,
+	doc/po/fr/reference_lrs.xml.po, doc/po/fr/reference_measure.xml.po,
+	doc/po/fr/reference_operator.xml.po,
+	doc/po/fr/reference_output.xml.po,
+	doc/po/fr/reference_processing.xml.po,
+	doc/po/fr/reference_raster.xml.po,
+	doc/po/fr/reference_relationship.xml.po,
+	doc/po/fr/reference_trajectory.xml.po,
+	doc/po/fr/reference_validation.xml.po,
+	doc/po/fr/release_notes.xml.po, doc/po/fr/reporting.xml.po,
+	doc/po/fr/using_postgis_app.xml.po,
+	doc/po/fr/using_postgis_dataman.xml.po,
+	doc/po/fr/using_postgis_query.xml.po,
+	doc/po/ja/database_tuning.xml.po, doc/po/ja/extras_topology.xml.po,
+	doc/po/ja/faq_raster.xml.po, doc/po/ja/installation.xml.po,
+	doc/po/ja/introduction.xml.po, doc/po/ja/performance_tips.xml.po,
+	doc/po/ja/postgis.xml.po, doc/po/ja/reference.xml.po,
+	doc/po/ja/reference_accessor.xml.po,
+	doc/po/ja/reference_bbox.xml.po,
+	doc/po/ja/reference_cluster.xml.po,
+	doc/po/ja/reference_constructor.xml.po,
+	doc/po/ja/reference_editor.xml.po,
+	doc/po/ja/reference_input.xml.po, doc/po/ja/reference_lrs.xml.po,
+	doc/po/ja/reference_measure.xml.po,
+	doc/po/ja/reference_operator.xml.po,
+	doc/po/ja/reference_output.xml.po,
+	doc/po/ja/reference_processing.xml.po,
+	doc/po/ja/reference_raster.xml.po,
+	doc/po/ja/reference_relationship.xml.po,
+	doc/po/ja/reference_validation.xml.po, doc/po/ja/usage.xml.po,
+	doc/po/ja/using_postgis_app.xml.po,
+	doc/po/ja/using_postgis_dataman.xml.po,
+	doc/po/ja/using_postgis_query.xml.po,
+	doc/po/ko_KR/database_tuning.xml.po,
+	doc/po/ko_KR/extras_topology.xml.po,
+	doc/po/ko_KR/faq_raster.xml.po, doc/po/ko_KR/installation.xml.po,
+	doc/po/ko_KR/introduction.xml.po,
+	doc/po/ko_KR/performance_tips.xml.po, doc/po/ko_KR/postgis.xml.po,
+	doc/po/ko_KR/reference.xml.po,
+	doc/po/ko_KR/reference_accessor.xml.po,
+	doc/po/ko_KR/reference_bbox.xml.po,
+	doc/po/ko_KR/reference_cluster.xml.po,
+	doc/po/ko_KR/reference_constructor.xml.po,
+	doc/po/ko_KR/reference_editor.xml.po,
+	doc/po/ko_KR/reference_input.xml.po,
+	doc/po/ko_KR/reference_lrs.xml.po,
+	doc/po/ko_KR/reference_measure.xml.po,
+	doc/po/ko_KR/reference_operator.xml.po,
+	doc/po/ko_KR/reference_output.xml.po,
+	doc/po/ko_KR/reference_processing.xml.po,
+	doc/po/ko_KR/reference_raster.xml.po,
+	doc/po/ko_KR/reference_relationship.xml.po,
+	doc/po/ko_KR/reference_validation.xml.po,
+	doc/po/ko_KR/release_notes.xml.po, doc/po/ko_KR/usage.xml.po,
+	doc/po/ko_KR/using_postgis_app.xml.po,
+	doc/po/ko_KR/using_postgis_dataman.xml.po,
+	doc/po/ko_KR/using_postgis_query.xml.po,
+	doc/po/pl/administration.xml.po, doc/po/pl/extras.xml.po,
+	doc/po/pl/extras_address_standardizer.xml.po,
+	doc/po/pl/extras_historytable.xml.po,
+	doc/po/pl/extras_tigergeocoder.xml.po,
+	doc/po/pl/extras_topology.xml.po, doc/po/pl/faq.xml.po,
+	doc/po/pl/faq_raster.xml.po, doc/po/pl/installation.xml.po,
+	doc/po/pl/introduction.xml.po, doc/po/pl/performance_tips.xml.po,
+	doc/po/pl/postgis.xml.po, doc/po/pl/reference.xml.po,
+	doc/po/pl/reference_accessor.xml.po,
+	doc/po/pl/reference_bbox.xml.po,
+	doc/po/pl/reference_cluster.xml.po,
+	doc/po/pl/reference_constructor.xml.po,
+	doc/po/pl/reference_editor.xml.po,
+	doc/po/pl/reference_exception.xml.po,
+	doc/po/pl/reference_guc.xml.po, doc/po/pl/reference_input.xml.po,
+	doc/po/pl/reference_lrs.xml.po,
+	doc/po/pl/reference_management.xml.po,
+	doc/po/pl/reference_measure.xml.po,
+	doc/po/pl/reference_operator.xml.po,
+	doc/po/pl/reference_output.xml.po,
+	doc/po/pl/reference_processing.xml.po,
+	doc/po/pl/reference_raster.xml.po,
+	doc/po/pl/reference_relationship.xml.po,
+	doc/po/pl/reference_sfcgal.xml.po, doc/po/pl/reference_srs.xml.po,
+	doc/po/pl/reference_trajectory.xml.po,
+	doc/po/pl/reference_transaction.xml.po,
+	doc/po/pl/reference_transformation.xml.po,
+	doc/po/pl/reference_troubleshooting.xml.po,
+	doc/po/pl/reference_type.xml.po,
+	doc/po/pl/reference_validation.xml.po,
+	doc/po/pl/reference_version.xml.po, doc/po/pl/release_notes.xml.po,
+	doc/po/pl/reporting.xml.po, doc/po/pl/using_postgis_app.xml.po,
+	doc/po/pl/using_postgis_dataman.xml.po,
+	doc/po/pl/using_postgis_query.xml.po,
+	doc/po/pl/using_raster_dataman.xml.po,
+	doc/po/templates/database_tuning.xml.pot,
+	doc/po/templates/extras_topology.xml.pot,
+	doc/po/templates/faq_raster.xml.pot,
+	doc/po/templates/installation.xml.pot,
+	doc/po/templates/introduction.xml.pot,
+	doc/po/templates/performance_tips.xml.pot,
+	doc/po/templates/postgis.xml.pot,
+	doc/po/templates/reference.xml.pot,
+	doc/po/templates/reference_accessor.xml.pot,
+	doc/po/templates/reference_bbox.xml.pot,
+	doc/po/templates/reference_cluster.xml.pot,
+	doc/po/templates/reference_constructor.xml.pot,
+	doc/po/templates/reference_editor.xml.pot,
+	doc/po/templates/reference_input.xml.pot,
+	doc/po/templates/reference_lrs.xml.pot,
+	doc/po/templates/reference_measure.xml.pot,
+	doc/po/templates/reference_operator.xml.pot,
+	doc/po/templates/reference_output.xml.pot,
+	doc/po/templates/reference_processing.xml.pot,
+	doc/po/templates/reference_raster.xml.pot,
+	doc/po/templates/reference_relationship.xml.pot,
+	doc/po/templates/reference_validation.xml.pot,
+	doc/po/templates/release_notes.xml.pot,
+	doc/po/templates/usage.xml.pot,
+	doc/po/templates/using_postgis_app.xml.pot,
+	doc/po/templates/using_postgis_dataman.xml.pot,
+	doc/po/templates/using_postgis_query.xml.pot: Update pots and pos
+
+2020-12-15  Regina Obe <lr@pcorp.us>
+
+	* ci/winnie/build_postgis.sh: Missed spot in removing
+	--with-library-minor-version
+
+2020-12-15  Paul Ramsey <pramsey@cleverelephant.ca>
+
+	* NEWS, README.postgis, Version.config,
+	extensions/upgradeable_versions.mk: Prepare for 3.1.0 release
+
+2020-12-14  Martin Davis <mtnclimb@gmail.com>
+
+	* doc/using_postgis_query.xml: Improve doc Using Indexes text
+
+2020-12-14  Martin Davis <mtnclimb@gmail.com>
+
+	* doc/using_postgis_query.xml: Minor doc fix
+
+2020-12-14  Martin Davis <mtnclimb@gmail.com>
+
+	* Improve doc Using Indexes section
+
