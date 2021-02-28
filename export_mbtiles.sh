@@ -16,3 +16,4 @@ generate-tm2source $LAYER_FILE --host="$POSTGRES_HOST" --port=$POSTGRES_PORT --d
 #Export to MBTILES tileset
 nvm use v8.15.0
 UV_THREADPOOL_SIZE=$UV_THREADPOOL_SIZE tilelive-copy --scheme="$RENDER_SCHEME" --bounds="$BBOX" --timeout="$TILE_TIMEOUT" --concurrency="$COPY_CONCURRENCY" --minzoom="$MIN_ZOOM" --maxzoom="$MAX_ZOOM" "tmsource:///$DEST_PROJECT_DIR" "mbtiles://$EXPORT_DIR/$MBTILES_NAME"
+#tl copy -r tilelive-tmsource,tilelive-tmstyle,tilelive-mapnik,tilejson,tilelive-vector --scheme="$RENDER_SCHEME" --minzoom="$MIN_ZOOM" --maxzoom="$MAX_ZOOM" --bounds="$BBOX" --quiet=false "tmsource://$EXPORT_DIR/openmaptiles.tm2source" "mbtiles://$EXPORT_DIR/test.mbtiles"
