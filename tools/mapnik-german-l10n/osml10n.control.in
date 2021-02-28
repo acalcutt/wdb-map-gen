@@ -1,0 +1,5 @@
+# osml10n extension
+comment = 'Localization functions for Openstreetmap based maps'
+default_version = 'VERSION'
+relocatable = true
+requires = 'postgis,hstore,unaccent,fuzzystrmatch'

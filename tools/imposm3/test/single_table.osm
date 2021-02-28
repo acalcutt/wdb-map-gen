@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis SNAPSHOT-r25240">
+
+  <node id="10001" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="10">
+      <tag k="random" v="tag"/>
+      <tag k="not" v="mapped"/>
+  </node>
+
+  <node id="10002" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="11">
+      <tag k="random" v="tag"/>
+      <tag k="but" v="mapped"/>
+      <tag k="poi" v="unicorn"/>
+  </node>
+
+
+  <node id="20001" version="1" timestamp="2011-11-11T00:11:11Z" lat="43" lon="11"/>
+  <node id="20002" version="1" timestamp="2011-11-11T00:11:11Z" lat="43" lon="12"/>
+  <node id="20003" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="12"/>
+  <node id="20004" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="11"/>
+
+  <way id="20101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <tag k="not" v="mapped"/>
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20102" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <tag k="poi" v="unicorn"/> <!-- only mapped for nodes -->
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20103" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <tag k="building" v="yes"/> <!-- only mapped for polygons, but way not closed -->
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20201" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <tag k="highway" v="yes"/>
+    <tag k="random" v="tag"/>
+    <tag k="source" v="filtered out"/>
+    <tag k="created_by" v="filtered out"/>
+  </way>
+
+
+  <way id="20301" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <nd ref="20003"/>
+    <nd ref="20004"/>
+    <nd ref="20001"/>
+    <tag k="poi" v="unicorn"/> <!-- only mapped for nodes -->
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20401" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <nd ref="20003"/>
+    <nd ref="20004"/>
+    <nd ref="20001"/>
+    <tag k="building" v="yes"/>
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20501" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <nd ref="20003"/>
+    <nd ref="20004"/>
+    <nd ref="20001"/>
+    <tag k="landuse" v="grass"/>
+    <tag k="highway" v="pedestrian"/>
+    <tag k="area" v="yes"/>
+    <tag k="random" v="tag"/>
+  </way>
+
+  <way id="20502" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <nd ref="20003"/>
+    <nd ref="20004"/>
+    <nd ref="20001"/>
+    <tag k="landuse" v="grass"/>
+    <tag k="highway" v="pedestrian"/>
+    <tag k="area" v="no"/>
+    <tag k="random" v="tag"/>
+  </way>
+
+
+  <way id="20601" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <nd ref="20003"/>
+    <nd ref="20004"/>
+    <nd ref="20001"/>
+    <tag k="landuse" v="grass"/>
+    <tag k="highway" v="pedestrian"/>
+    <tag k="random" v="tag"/>
+  </way>
+
+
+  <!-- source nodes/ways for tests below -->
+  <node id="31001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="31002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="82"/>
+  <node id="31003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="82"/>
+  <node id="31004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="80"/>
+  <way id="31002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="31001"/>
+    <nd ref="31002"/>
+    <tag k="barrier" v="fence"/>
+  </way>
+
+  <way id="31003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="31002"/>
+    <nd ref="31003"/>
+    <nd ref="31004"/>
+    <nd ref="31001"/>
+  </way>
+
+  <!-- modify duplicate node id -->
+  <node id="31101" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80">
+    <tag k="amenity" v="cafe"/>
+  </node>
+  <way id="31101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="31001"/>
+    <nd ref="31002"/>
+    <nd ref="31003"/>
+    <nd ref="31004"/>
+    <nd ref="31001"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+  <relation id="31101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="31002" role="outer"/>
+    <member type="way" ref="31003" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="building" v="yes"/>
+  </relation>
+
+
+  <!-- modify relation does create duplicate polygon -->
+  <node id="32001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="90"/>
+  <node id="32002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="92"/>
+  <node id="32003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="92"/>
+  <node id="32004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="90"/>
+
+  <way id="32101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="32001"/>
+    <nd ref="32002"/>
+    <nd ref="32003"/>
+    <nd ref="32004"/>
+    <nd ref="32001"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+  <relation id="32901" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="32101" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="building" v="yes"/>
+  </relation>
+</osm>

@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+"""
+Usage:
+  generate-sql <tileset> [--dir <dir>] [--nodata]
+  generate-sql --help
+  generate-sql --version
+
+Options:
+  -d --dir=<dir>      Output multiple sql files into this directory.
+                      Without the -d parameter, prints everything to STDOUT.
+  -n --nodata         If set, materialized views are created without the data.
+                      Use refresh-views utility to refresh views after creation.
+  --help              Show this screen.
+  --version           Show version.
+"""
+import re
+from pathlib import Path
+from docopt import docopt
+import openmaptiles
+from openmaptiles.sql import collect_sql
+from openmaptiles.utils import print_err
+
+if __name__ == '__main__':
+    args = docopt(__doc__, version=openmaptiles.__version__)
+    nodata = args['--nodata']
+    tileset = args['<tileset>']
+    if not args['--dir']:
+        print(collect_sql(tileset, nodata=nodata))
+    else:
+        run_first, parallel_sql, run_last = collect_sql(
+            tileset, nodata=nodata, parallel=True)
+
+        path = Path(args['--dir'])
+        path.mkdir(parents=True, exist_ok=True)
+        parallel_dir = path / 'parallel'
+        parallel_dir.mkdir(exist_ok=True)
+
+        deleted_files = 0
+        for file in parallel_dir.glob('*.sql'):
+            if re.match(r'^\d+\.sql$', file.name):
+                file.unlink()
+                deleted_files += 1
+            else:
+                print_err(f"Unexpected file {file} is ignored")
+
+        if deleted_files:
+            print_err(f"Removed {deleted_files} existing files in dir {parallel_dir}")
+
+        (path / 'run_first.sql').write_text(run_first)
+        (path / 'run_last.sql').write_text(run_last)
+        for file, sql in parallel_sql.items():
+            (parallel_dir / f"{file}.sql").write_text(sql)
+
+        print_err(
+            f"Created {len(parallel_sql)} sql files for parallel execution at {path}"
+        )

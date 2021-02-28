@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osmChange version="0.6" generator="Osmosis 0.41">
+  <modify>
+    <node id="1001" version="2" lat="47.5" lon="13.5"/>
+  </modify>
+  <create>
+    <node id="10001" version="2" lat="40.0" lon="10.0">
+        <tag k="name" v="Bar"/>
+        <tag k="place" v="village"/>
+    </node>
+  </create>
+  <modify>
+    <!-- modify but not present in initial import -->
+    <node id="10002" version="2" lat="40.0" lon="10.1">
+        <tag k="name" v="Baz"/>
+        <tag k="place" v="city"/>
+    </node>
+  </modify>
+  <delete>
+    <node id="10000" version="2" lat="40.0" lon="10.1"/>
+  </delete>
+
+  <delete>
+    <relation id="2001"/>
+  </delete>
+
+  <modify>
+    <!-- change landuse=park to natural=water -->
+    <way id="11001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="11001"/>
+      <nd ref="11002"/>
+      <nd ref="11003"/>
+      <nd ref="11004"/>
+      <nd ref="11001"/>
+      <tag k="name" v="way 11001"/>
+      <tag k="natural" v="water"/>
+    </way>
+    <relation id="13001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="13001" role="outer"/>
+      <tag k="natural" v="water"/>
+      <tag k="type" v="multipolygon"/>
+    </relation>
+  </modify>
+
+  <!-- test for changed tags from way to relation and added tag to contained way -->
+  <modify>
+    <way id="14001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="14001"/>
+      <nd ref="14002"/>
+      <nd ref="14003"/>
+      <nd ref="14004"/>
+      <nd ref="14001"/>
+      <tag k="name" v="way 14001"/>
+    </way>
+    <way id="14011" version="2" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="14011"/>
+      <nd ref="14012"/>
+      <nd ref="14013"/>
+      <nd ref="14014"/>
+      <nd ref="14011"/>
+      <tag k="name" v="way 14011"/>
+      <tag k="natural" v="water"/>
+    </way>
+    <relation id="14001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <!-- now a new style relation -->
+      <member type="way" ref="14001" role="outer"/>
+      <member type="way" ref="14011" role="inner"/>
+      <tag k="type" v="multipolygon"/>
+      <tag k="landuse" v="park"/>
+    </relation>
+  </modify>
+
+  <!-- test split relation way -->
+  <create>
+    <way id="15002" version="1" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="15003"/>
+      <nd ref="15004"/>
+      <nd ref="15001"/>
+      <tag k="name" v="way 15002"/>
+      <tag k="highway" v="residential"/>
+    </way>
+  </create>
+  <modify>
+    <way id="15001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="15001"/>
+      <nd ref="15002"/>
+      <nd ref="15003"/>
+      <tag k="name" v="way 15001"/>
+    </way>
+    <relation id="15001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="15001" role="outer"/>
+      <member type="way" ref="15002" role="outer"/>
+      <member type="way" ref="15011" role="inner"/>
+      <tag k="type" v="multipolygon"/>
+      <tag k="landuse" v="park"/>
+    </relation>
+  </modify>
+
+  <modify>
+    <way id="17003" version="2" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="17001"/>
+      <nd ref="17002"/>
+      <nd ref="17003"/>
+      <tag k="name" v="way 17003"/>
+      <tag k="layer" v="2"/>
+      <tag k="highway" v="residential"/>
+    </way>
+  </modify>
+
+  <!-- test merge relation way -->
+  <delete>
+    <way id="16002" version="2" timestamp="2011-11-11T00:11:11Z"/>
+  </delete>
+  <modify>
+    <way id="16001" version="1" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="16001"/>
+      <nd ref="16002"/>
+      <nd ref="16003"/>
+      <nd ref="16004"/>
+      <nd ref="16001"/>
+      <tag k="name" v="way 16001"/>
+    </way>
+    <relation id="16001" version="2" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="16001" role="outer"/>
+      <member type="way" ref="16011" role="inner"/>
+      <tag k="type" v="multipolygon"/>
+      <tag k="landuse" v="park"/>
+    </relation>
+  </modify>
+
+
+  <!-- test that node (n:20001) does not reference way (w:20001) after it was deleted -->
+  <delete>
+    <node id="20002" />
+    <way id="20001" />
+  </delete>
+
+  <!-- test that way (w:21001) does not reference way (r:21001) after it was deleted -->
+  <delete>
+    <relation id="21001" />
+  </delete>
+
+  <!-- test that way (w:40001) gets added to gen0/1 after tag changed -->
+  <modify>
+      <way id="40001" version="2" timestamp="2011-11-11T00:11:11Z">
+        <nd ref="40001"/>
+        <nd ref="40002"/>
+        <nd ref="40003"/>
+        <nd ref="40004"/>
+        <tag k="highway" v="secondary"/>
+      </way>
+  </modify>
+
+
+  <!-- test removing of relation (r:50021) -->
+  <delete>
+    <relation id="50021" />
+  </delete>
+
+  <!-- test removing of relation (r:50121) without tags -->
+  <delete>
+    <relation id="50121" />
+  </delete>
+
+  <!-- test removing of duplicate ids -->
+  <delete>
+    <relation id="51001" />
+    <way id="51011" />
+  </delete>
+
+  <!-- update zig-zag line with coords internaly cached in differend deltacoords bunches -->
+  <modify>
+    <node id="60001" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.00"/>
+    <node id="60002" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.01"/>
+    <node id="60003" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.02"/>
+    <node id="61004" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.03"/>
+    <node id="62005" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.04"/>
+    <node id="63006" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.05"/>
+    <node id="64007" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.06"/>
+    <node id="64008" version="1" timestamp="2011-11-11T00:11:11Z" lat="0" lon="20.10"/>
+  </modify>
+
+  <!-- add remove tags from nodes/coords -->
+  <modify>
+    <node id="70001" version="2" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.00"/>
+    <node id="70002" version="2" timestamp="2011-11-11T00:11:11Z" lat="0.02" lon="20.00">
+        <tag k="amenity" v="police"/>
+    </node>
+  </modify>
+
+
+  <!-- test if additional create inserts duplicate elements (checks #66) -->
+  <create>
+    <node id="201001" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="10"/>
+    <node id="201002" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11"/>
+    <node id="201003" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="11"/>
+    <node id="201004" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="10"/>
+    <way id="201051" version="1" timestamp="2011-11-11T00:11:11Z">
+      <nd ref="201001"/>
+      <nd ref="201002"/>
+      <nd ref="201003"/>
+      <nd ref="201004"/>
+      <nd ref="201001"/>
+      <tag k="highway" v="residential"/>
+    </way>
+    <relation id="201091" version="1" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="201051" role="outer"/>
+      <tag k="type" v="multipolygon"/>
+      <tag k="landuse" v="park"/>
+    </relation>
+  </create>
+
+  <!-- test modification of one relation (201102) does not duplicate
+       relation (201101) with shared way (checks #65) -->
+  <modify>
+    <relation id="201192" version="1" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="201151" role="outer"/>
+      <tag k="type" v="multipolygon"/>
+      <tag k="landuse" v="forest"/>
+    </relation>
+  </modify>
+
+  <!-- test that relations with unsupported types are not inserted with updates -->
+  <create>
+    <relation id="201291" version="1" timestamp="2011-11-11T00:11:11Z">
+      <member type="way" ref="201251" role="platform"/>
+      <tag k="type" v="unmapped_relation_type"/>
+    </relation>
+  </create>
+
+
+  <!-- test that relations are updated after modified node -->
+  <modify>
+    <node id="52101" version="1" timestamp="2011-11-11T00:11:11Z" lat="61" lon="10"/>
+  </modify>
+
+  <!-- test duplicate 'create node' does not result in duplicate way -->
+  <create>
+    <node id="53101" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="10"/>
+  </create>
+
+</osmChange>

@@ -1,0 +1,1215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis SNAPSHOT-r25240">
+  <node id="10000" version="1" timestamp="2011-11-11T00:11:11Z" lat="40.0" lon="10.0">
+    <tag k="name" v="Foo"/>
+    <tag k="place" v="village"/>
+  </node>
+  <node id="1001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="13"/>
+  <node id="1002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="14.5"/>
+  <node id="1003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="16.5"/>
+  <node id="1004" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="17"/>
+  <node id="1005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="14.5"/>
+  <node id="1006" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="14"/>
+  <node id="1007" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.5" lon="14.5"/>
+  <node id="1008" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="15.5"/>
+  <node id="1009" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="15"/>
+  <node id="2001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="23"/>
+  <node id="2002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="24.5"/>
+  <node id="2003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="26.5"/>
+  <node id="2004" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="27"/>
+  <node id="2005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="24.5"/>
+  <node id="2006" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.25" lon="24.2"/>
+  <node id="2007" version="1" timestamp="2011-11-11T00:11:11Z" lat="49.25" lon="24.7"/>
+  <node id="2008" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.8" lon="25.7"/>
+  <node id="2009" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.7" lon="25.25"/>
+  <node id="2010" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="24.5"/>
+  <node id="2011" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="25"/>
+  <node id="2012" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="26"/>
+  <node id="2013" version="1" timestamp="2011-11-11T00:11:11Z" lat="46.5" lon="25.5"/>
+  <node id="3001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="33"/>
+  <node id="3002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="34.5"/>
+  <node id="3003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="36.5"/>
+  <node id="3004" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="37"/>
+  <node id="3005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="34.5"/>
+  <node id="3006" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="34"/>
+  <node id="3007" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.5" lon="34.5"/>
+  <node id="3008" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="35.5"/>
+  <node id="3009" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="35"/>
+  <node id="4001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="41"/>
+  <node id="4002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="42.5"/>
+  <node id="4003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="44.5"/>
+  <node id="4004" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="45"/>
+  <node id="4005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="42.5"/>
+  <node id="4006" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="45"/>
+  <node id="4007" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="46"/>
+  <node id="4008" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.5" lon="48"/>
+  <node id="4009" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="46.5"/>
+  <node id="4010" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="45.5"/>
+  <node id="5001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="51"/>
+  <node id="5002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="52.5"/>
+  <node id="5003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="54.5"/>
+  <node id="5004" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="55"/>
+  <node id="5005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="52.5"/>
+  <node id="5006" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="55"/>
+  <node id="5007" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="56"/>
+  <node id="5008" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.5" lon="58"/>
+  <node id="5009" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="56.5"/>
+  <node id="5010" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="55.5"/>
+  <node id="5011" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="52"/>
+  <node id="5012" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="53.5"/>
+  <node id="5013" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="54"/>
+  <node id="5014" version="1" timestamp="2011-11-11T00:11:11Z" lat="46.5" lon="53.5"/>
+  <node id="5015" version="1" timestamp="2011-11-11T00:11:11Z" lat="46.5" lon="52.5"/>
+  <node id="5016" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="55.5"/>
+  <node id="5017" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="56.5"/>
+  <node id="5018" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="57"/>
+  <node id="5019" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="56.5"/>
+  <node id="5020" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="55.7"/>
+  <node id="6001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="61.5"/>
+  <node id="6002" version="1" timestamp="2011-11-11T00:11:11Z" lat="50.5" lon="63.5"/>
+  <node id="6003" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="67"/>
+  <node id="6004" version="1" timestamp="2011-11-11T00:11:11Z" lat="46.5" lon="67.5"/>
+  <node id="6005" version="1" timestamp="2011-11-11T00:11:11Z" lat="45" lon="65"/>
+  <node id="6006" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="63"/>
+  <node id="6007" version="1" timestamp="2011-11-11T00:11:11Z" lat="49.8" lon="64.5"/>
+  <node id="6008" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.75" lon="66.6"/>
+  <node id="6009" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.75" lon="65.3"/>
+  <node id="6010" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.6" lon="63"/>
+  <node id="6011" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.2" lon="64.5"/>
+  <node id="6012" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.2" lon="65.5"/>
+  <node id="6013" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.2" lon="65"/>
+  <node id="7001" version="1" timestamp="2011-11-11T00:11:11Z" lat="45" lon="72"/>
+  <node id="7002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="72"/>
+  <node id="7003" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="74"/>
+  <node id="7004" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="74"/>
+  <node id="7005" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="73"/>
+  <node id="7006" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="75"/>
+  <node id="7007" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="76"/>
+  <node id="7008" version="1" timestamp="2011-11-11T00:11:11Z" lat="45" lon="76"/>
+  <way id="1001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="1001"/>
+    <nd ref="1002"/>
+    <nd ref="1003"/>
+    <nd ref="1004"/>
+    <nd ref="1005"/>
+    <nd ref="1001"/>
+    <tag k="name" v="way 1001"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+  <way id="1002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="1006"/>
+    <nd ref="1007"/>
+    <nd ref="1008"/>
+    <nd ref="1009"/>
+    <nd ref="1006"/>
+    <tag k="name" v="way 1002"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+  <way id="2001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="2001"/>
+    <nd ref="2002"/>
+    <nd ref="2003"/>
+    <nd ref="2004"/>
+    <nd ref="2005"/>
+    <nd ref="2001"/>
+    <tag k="name" v="way 2001"/>
+  </way>
+  <way id="2002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="2006"/>
+    <nd ref="2007"/>
+    <nd ref="2008"/>
+    <nd ref="2009"/>
+    <nd ref="2006"/>
+    <tag k="name" v="way 2002"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+  <way id="2003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="2010"/>
+    <nd ref="2011"/>
+    <nd ref="2012"/>
+    <nd ref="2013"/>
+    <nd ref="2010"/>
+    <tag k="name" v="way 2003"/>
+    <tag k="landuse" v="water"/>
+  </way>
+  <way id="3001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="3001"/>
+    <nd ref="3002"/>
+    <nd ref="3003"/>
+    <tag k="name" v="way 3001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="3002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="3003"/>
+    <nd ref="3004"/>
+    <nd ref="3005"/>
+    <nd ref="3001"/>
+    <tag k="name" v="way 3002"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="3003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="3006"/>
+    <nd ref="3007"/>
+    <nd ref="3008"/>
+    <nd ref="3009"/>
+    <nd ref="3006"/>
+    <tag k="name" v="way 3003"/>
+    <tag k="landuse" v="water"/>
+  </way>
+  <way id="4001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="4001"/>
+    <nd ref="4002"/>
+    <nd ref="4003"/>
+    <nd ref="4004"/>
+    <nd ref="4005"/>
+    <nd ref="4001"/>
+    <tag k="name" v="way 4001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="4002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="4006"/>
+    <nd ref="4007"/>
+    <nd ref="4008"/>
+    <nd ref="4009"/>
+    <nd ref="4010"/>
+    <nd ref="4006"/>
+    <tag k="name" v="way 4002"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="5001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="5001"/>
+    <nd ref="5005"/>
+    <nd ref="5004"/>
+    <nd ref="5003"/>
+    <nd ref="5002"/>
+    <nd ref="5001"/>
+    <tag k="name" v="way 5001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="5002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="5006"/>
+    <nd ref="5007"/>
+    <nd ref="5008"/>
+    <nd ref="5009"/>
+    <nd ref="5010"/>
+    <nd ref="5006"/>
+    <tag k="name" v="way 5002"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="5003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="5011"/>
+    <nd ref="5015"/>
+    <nd ref="5014"/>
+    <nd ref="5013"/>
+    <tag k="name" v="way 5003"/>
+    <tag k="landuse" v="water"/>
+  </way>
+  <way id="5004" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="5011"/>
+    <nd ref="5012"/>
+    <nd ref="5013"/>
+    <tag k="name" v="way 5004"/>
+    <tag k="landuse" v="water"/>
+  </way>
+  <way id="5005" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="5016"/>
+    <nd ref="5017"/>
+    <nd ref="5018"/>
+    <nd ref="5019"/>
+    <nd ref="5020"/>
+    <nd ref="5016"/>
+    <tag k="name" v="way 5005"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+  <way id="6001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="6001"/>
+    <nd ref="6002"/>
+    <nd ref="6003"/>
+    <nd ref="6004"/>
+    <nd ref="6005"/>
+    <nd ref="6001"/>
+    <tag k="name" v="way 6001"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+  <way id="6002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="6006"/>
+    <nd ref="6007"/>
+    <nd ref="6008"/>
+    <nd ref="6009"/>
+    <nd ref="6006"/>
+    <tag k="name" v="way 6002"/>
+    <tag k="landuse" v="river"/>
+  </way>
+  <way id="6003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="6010"/>
+    <nd ref="6011"/>
+    <nd ref="6012"/>
+    <nd ref="6013"/>
+    <nd ref="6010"/>
+    <tag k="name" v="way 6003"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="7001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7008"/>
+    <nd ref="7007"/>
+    <nd ref="7003"/>
+    <nd ref="7004"/>
+    <nd ref="7006"/>
+    <nd ref="7005"/>
+    <nd ref="7004"/>
+    <nd ref="7003"/>
+    <nd ref="7002"/>
+    <nd ref="7001"/>
+    <nd ref="7008"/>
+    <tag k="name" v="way 7001"/>
+    <tag k="landuse" v="none"/>
+  </way>
+  <relation id="1001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="1001" role="outer"/>
+    <member type="way" ref="1002" role="inner"/>
+    <tag k="landuse" v="wood"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="1011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="1001" role="outer"/>
+    <member type="way" ref="1002" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="1021" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="1001" role="outer"/>
+    <member type="way" ref="1002" role="inner"/>
+    <tag k="landuse" v="wood"/>
+  </relation>
+  <relation id="2001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="2001" role="outer"/>
+    <member type="way" ref="2002" role="inner"/>
+    <member type="way" ref="2003" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+  <relation id="3001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="3001" role="outer"/>
+    <member type="way" ref="3002" role="outer"/>
+    <member type="way" ref="3003" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="4001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="4001" role="outer"/>
+    <member type="way" ref="4002" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="5001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="5001" role="outer"/>
+    <member type="way" ref="5002" role="outer"/>
+    <member type="way" ref="5003" role="inner"/>
+    <member type="way" ref="5004" role="inner"/>
+    <member type="way" ref="5005" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="6001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="6001" role="outer"/>
+    <member type="way" ref="6002" role="inner"/>
+    <member type="way" ref="6003" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- test multiple name mappings -->
+  <node id="1101" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60"/>
+  <node id="1102" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60.1"/>
+  <way id="1101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="1101"/>
+    <nd ref="1102"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="name"/>
+    <tag k="name:de" v="name:de"/>
+    <tag k="name:en" v="name:en"/>
+  </way>
+
+  <!-- test invalid "banana-polygon" (inverted-shell) -->
+  <node id="7101" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60"/>
+  <node id="7102" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="62"/>
+  <node id="7103" version="1" timestamp="2011-11-11T00:11:11Z" lat="61" lon="61"/>
+  <node id="7104" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="62"/>
+  <node id="7105" version="1" timestamp="2011-11-11T00:11:11Z" lat="61" lon="63"/>
+  <node id="7106" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="62"/>
+  <node id="7107" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="64"/>
+  <node id="7108" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="64"/>
+  <node id="7109" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="60"/>
+  <way id="7101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7101"/>
+    <nd ref="7102"/>
+    <nd ref="7103"/>
+    <nd ref="7104"/>
+    <nd ref="7105"/>
+    <nd ref="7106"/>
+    <nd ref="7107"/>
+    <nd ref="7108"/>
+    <nd ref="7109"/>
+    <nd ref="7101"/>
+    <tag k="landuse" v="park"/>
+    <tag k="name" v="banana"/>
+  </way>
+
+  <!-- test self-intersecting ways -->
+  <node id="7201" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60"/>
+  <node id="7202" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="62"/>
+  <node id="7203" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="60"/>
+  <node id="7204" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="62"/>
+  <way id="7201" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7201"/>
+    <nd ref="7202"/>
+    <nd ref="7203"/>
+    <nd ref="7204"/>
+    <tag k="highway" v="motorway"/>
+    <tag k="name" v="self-intersecting"/>
+  </way>
+
+  <!-- relation/way with "gap" (ways overlap, but are only sharing one endpoint) -->
+  <node id="7301" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60"/>
+  <node id="7302" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="62"/>
+  <node id="7303" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="62"/>
+  <node id="7313" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="62.0000001"/>
+  <node id="7314" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="60"/>
+  <way id="7301" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7301"/>
+    <nd ref="7302"/>
+    <nd ref="7303"/>
+  </way>
+  <way id="7302" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7313"/> <!-- same coord as 7303 -->
+    <nd ref="7314"/>
+    <nd ref="7301"/>
+  </way>
+  <relation id="7301" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="7301" role="outer"/>
+    <member type="way" ref="7302" role="outer"/>
+    <tag k="name" v="rel 7301"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <way id="7311" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7313"/> <!-- same coord as 7303 -->
+    <nd ref="7314"/>
+    <nd ref="7301"/>
+    <nd ref="7302"/>
+    <nd ref="7303"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+  <!-- relation/way with "gap" (ways overlap, but are only sharing one endpoint) -->
+  <node id="7401" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="60"/>
+  <node id="7402" version="1" timestamp="2011-11-11T00:11:11Z" lat="60" lon="62"/>
+  <node id="7403" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="62"/>
+  <node id="7404" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="60"/>
+  <way id="7401" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="7401"/>
+    <nd ref="7402"/>
+    <nd ref="7403"/>
+    <nd ref="7404"/>
+    <nd ref="7401"/>
+  </way>
+  <way id="7402" version="1" timestamp="2011-11-11T00:11:11Z">
+    <!-- connected to other way, but not at start/end node and neither a ring on its own -->
+    <nd ref="7402"/>
+    <nd ref="7404"/>
+  </way>
+  <relation id="7401" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="7401" role="outer"/>
+    <member type="way" ref="7402" role="outer"/>
+    <tag k="name" v="rel 7401"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- test that single node ways or incomplete polygons are _not_ inserted -->
+  <node id="30001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="30002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="30003" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="81"/>
+  <node id="30004" version="1" timestamp="2011-11-11T00:11:11Z" lat="48" lon="80.5"/>
+  <!-- single node way -->
+  <way id="30001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <!-- duplicate node way -->
+  <way id="30002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30001"/>
+    <nd ref="30001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <!-- same coordinates way -->
+  <way id="30003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30001"/>
+    <nd ref="30002"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <!-- polygon not closed -->
+  <way id="30004" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30002"/>
+    <nd ref="30003"/>
+    <nd ref="30004"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <!-- polygon closed with duplicated -->
+  <way id="30005" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30002"/>
+    <nd ref="30002"/>
+    <nd ref="30003"/>
+    <nd ref="30004"/>
+    <nd ref="30004"/>
+    <nd ref="30002"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <!-- polygon non-closed with duplicate nodes -->
+  <way id="30006" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="30001"/>
+    <nd ref="30002"/>
+    <nd ref="30003"/>
+    <nd ref="30001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+
+  <!-- Old-style-mp: test multipolygon way is now inserted -->
+  <node id="9001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="9002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="82"/>
+  <node id="9003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="82"/>
+  <node id="9004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="80"/>
+  <way id="9009" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="9001"/>
+    <nd ref="9002"/>
+    <nd ref="9003"/>
+    <nd ref="9004"/>
+    <nd ref="9001"/>
+    <tag k="landuse" v="park"/>
+    <tag k="ref" v="42"/> <!-- unrelated tag -->
+    <tag k="name" v="way 9009"/>
+  </way>
+  <relation id="9001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="9009" role="outer"/>
+    <tag k="name" v="rel 9001"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- Old-style-mp: test multipolygon way is now inserted -->
+  <node id="9101" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="9102" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="82"/>
+  <node id="9103" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="82"/>
+  <node id="9104" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="80"/>
+  <node id="9111" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.1" lon="80.1"/>
+  <node id="9112" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.1" lon="80.9"/>
+  <node id="9113" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.9" lon="80.9"/>
+  <node id="9114" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.9" lon="80.1"/>
+  <way id="9109" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="9101"/>
+    <nd ref="9102"/>
+    <nd ref="9103"/>
+    <nd ref="9104"/>
+    <nd ref="9101"/>
+    <tag k="landuse" v="park"/>
+    <tag k="ref" v="42"/> <!-- unrelated tag -->
+    <tag k="name" v="way 9109"/>
+  </way>
+  <way id="9110" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="9111"/>
+    <nd ref="9112"/>
+    <nd ref="9113"/>
+    <nd ref="9114"/>
+    <nd ref="9111"/>
+    <tag k="natural" v="scrub"/>
+  </way>
+  <relation id="9101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="9109" role="outer"/>
+    <member type="way" ref="9110" role="outer"/>
+    <tag k="name" v="rel 9101"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- test multipolygon ways were inserted -->
+  <node id="9201" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="9202" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="82"/>
+  <node id="9203" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="82"/>
+  <node id="9204" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="80"/>
+  <way id="9209" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="9201"/>
+    <nd ref="9202"/>
+    <nd ref="9203"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="9209"/>
+  </way>
+  <way id="9210" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="9203"/>
+    <nd ref="9204"/>
+    <nd ref="9201"/>
+    <tag k="landuse" v="park"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="9210"/>
+  </way>
+  <relation id="9201" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="9209" role="outer"/>
+    <member type="way" ref="9210" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+
+  <!-- test multipolygon way was inserted -->
+  <node id="8001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="80"/>
+  <node id="8002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="82"/>
+  <node id="8003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="82"/>
+  <node id="8004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="80"/>
+  <way id="8009" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="8001"/>
+    <nd ref="8002"/>
+    <nd ref="8003"/>
+    <nd ref="8004"/>
+    <nd ref="8001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="8001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="8009" role="outer"/>
+    <tag k="name" v="rel 8001"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- test for changed tags in way -->
+  <node id="11001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="83"/>
+  <node id="11002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="84"/>
+  <node id="11003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="84"/>
+  <node id="11004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="83"/>
+  <way id="11001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="11001"/>
+    <nd ref="11002"/>
+    <nd ref="11003"/>
+    <nd ref="11004"/>
+    <nd ref="11001"/>
+    <tag k="name" v="way 11001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+  <!-- test for changed tags in relation -->
+  <node id="13001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="87"/>
+  <node id="13002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="88"/>
+  <node id="13003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="88"/>
+  <node id="13004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="87"/>
+  <way id="13001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="13001"/>
+    <nd ref="13002"/>
+    <nd ref="13003"/>
+    <nd ref="13004"/>
+    <nd ref="13001"/>
+    <tag k="name" v="way 13001"/>
+  </way>
+  <relation id="13001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="13001" role="outer"/>
+    <tag k="landuse" v="park"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+
+  <!-- test for changed tags from way to relation and added tag to contained way -->
+  <node id="14001" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="89"/>
+  <node id="14002" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="90"/>
+  <node id="14003" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="90"/>
+  <node id="14004" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="89"/>
+  <node id="14011" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.1" lon="89.1"/>
+  <node id="14012" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.1" lon="89.9"/>
+  <node id="14013" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.9" lon="89.9"/>
+  <node id="14014" version="1" timestamp="2011-11-11T00:11:11Z" lat="48.9" lon="89.1"/>
+  <way id="14001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="14001"/>
+    <nd ref="14002"/>
+    <nd ref="14003"/>
+    <nd ref="14004"/>
+    <nd ref="14001"/>
+    <tag k="name" v="way 14001"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="14011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="14011"/>
+    <nd ref="14012"/>
+    <nd ref="14013"/>
+    <nd ref="14014"/>
+    <nd ref="14011"/>
+    <tag k="name" v="way 14011"/>
+  </way>
+  <relation id="14001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <!-- old style relation not inserted -->
+    <member type="way" ref="14001" role="outer"/>
+    <member type="way" ref="14011" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+
+  <!-- test split relation way -->
+  <node id="15001" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="89"/>
+  <node id="15002" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="90"/>
+  <node id="15003" version="1" timestamp="2011-11-11T00:11:11Z" lat="46" lon="90"/>
+  <node id="15004" version="1" timestamp="2011-11-11T00:11:11Z" lat="46" lon="89"/>
+  <node id="15011" version="1" timestamp="2011-11-11T00:11:11Z" lat="44.1" lon="89.1"/>
+  <node id="15012" version="1" timestamp="2011-11-11T00:11:11Z" lat="44.1" lon="89.9"/>
+  <node id="15013" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.9" lon="89.9"/>
+  <node id="15014" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.9" lon="89.1"/>
+  <way id="15001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="15001"/>
+    <nd ref="15002"/>
+    <nd ref="15003"/>
+    <nd ref="15004"/>
+    <nd ref="15001"/>
+    <tag k="name" v="way 15001"/>
+  </way>
+  <way id="15011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="15011"/>
+    <nd ref="15012"/>
+    <nd ref="15013"/>
+    <nd ref="15014"/>
+    <nd ref="15011"/>
+    <tag k="name" v="way 15011"/>
+  </way>
+  <relation id="15001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="15001" role="outer"/>
+    <member type="way" ref="15011" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+
+  <!-- test merge relation way -->
+  <node id="16001" version="1" timestamp="2011-11-11T00:11:11Z" lat="41" lon="89"/>
+  <node id="16002" version="1" timestamp="2011-11-11T00:11:11Z" lat="41" lon="90"/>
+  <node id="16003" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="90"/>
+  <node id="16004" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="89"/>
+  <node id="16011" version="1" timestamp="2011-11-11T00:11:11Z" lat="41.1" lon="89.1"/>
+  <node id="16012" version="1" timestamp="2011-11-11T00:11:11Z" lat="41.1" lon="89.9"/>
+  <node id="16013" version="1" timestamp="2011-11-11T00:11:11Z" lat="43.9" lon="89.9"/>
+  <node id="16014" version="1" timestamp="2011-11-11T00:11:11Z" lat="43.9" lon="89.1"/>
+  <way id="16002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="16003"/>
+    <nd ref="16004"/>
+    <nd ref="16001"/>
+    <tag k="name" v="way 16002"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <way id="16001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="16001"/>
+    <nd ref="16002"/>
+    <nd ref="16003"/>
+    <tag k="name" v="way 16001"/>
+  </way>
+  <way id="16011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="16011"/>
+    <nd ref="16012"/>
+    <nd ref="16013"/>
+    <nd ref="16014"/>
+    <nd ref="16011"/>
+    <tag k="name" v="way 16011"/>
+  </way>
+  <relation id="16001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="16001" role="outer"/>
+    <member type="way" ref="16002" role="outer"/>
+    <member type="way" ref="16011" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+
+  <!-- test handling of incomplete/broken ways -->
+  <node id="17001" version="1" timestamp="2011-11-11T00:11:11Z" lat="41" lon="89"/>
+  <node id="17002" version="1" timestamp="2011-11-11T00:11:11Z" lat="41" lon="90"/>
+  <node id="17003" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="90"/>
+  <node id="17004" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="89"/>
+
+  <way id="17001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="17001"/>
+    <nd ref="17002"/>
+    <nd ref="17003"/>
+    <tag k="name" v="way 17001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <!-- way with single ref -->
+  <way id="17002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="17003"/>
+    <tag k="name" v="way 17002"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="17001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="17001" role="outer"/>
+    <member type="way" ref="17002" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+  <!-- way with invalid layer -->
+  <way id="17003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="17001"/>
+    <nd ref="17002"/>
+    <nd ref="17003"/>
+    <tag k="name" v="way 17003"/>
+    <tag k="layer" v="11111111111111111"/>
+    <tag k="highway" v="residential"/>
+  </way>
+
+  <way id="17101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="17001"/>
+    <nd ref="17002"/>
+    <nd ref="17003"/>
+    <tag k="name" v="way 17101"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <!-- way with no ref -->
+  <way id="17102" version="1" timestamp="2011-11-11T00:11:11Z">
+    <tag k="name" v="way 17102"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="17101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="17101" role="outer"/>
+    <member type="way" ref="17102" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+  <!-- test way with multiple mappings is inserted twice -->
+  <node id="18001" version="1" timestamp="2011-11-11T00:11:11Z" lat="11" lon="89"/>
+  <node id="18002" version="1" timestamp="2011-11-11T00:11:11Z" lat="11" lon="90"/>
+  <node id="18003" version="1" timestamp="2011-11-11T00:11:11Z" lat="14" lon="90"/>
+  <node id="18004" version="1" timestamp="2011-11-11T00:11:11Z" lat="14" lon="89"/>
+
+  <way id="18001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="18001"/>
+    <nd ref="18002"/>
+    <nd ref="18003"/>
+    <tag k="name" v="way 18001"/>
+    <tag k="highway" v="residential"/>
+    <tag k="railway" v="tram"/>
+  </way>
+
+  <!-- Old-style-mp: test outer/inner way are now inserted -->
+  <node id="19001" version="1" timestamp="2011-11-11T00:11:11Z" lat="21" lon="89"/>
+  <node id="19002" version="1" timestamp="2011-11-11T00:11:11Z" lat="21" lon="90"/>
+  <node id="19003" version="1" timestamp="2011-11-11T00:11:11Z" lat="24" lon="90"/>
+  <node id="19004" version="1" timestamp="2011-11-11T00:11:11Z" lat="24" lon="89"/>
+  <node id="19011" version="1" timestamp="2011-11-11T00:11:11Z" lat="21.8" lon="89.8"/>
+  <node id="19012" version="1" timestamp="2011-11-11T00:11:11Z" lat="21.8" lon="89.9"/>
+  <node id="19013" version="1" timestamp="2011-11-11T00:11:11Z" lat="23.9" lon="89.9"/>
+  <node id="19014" version="1" timestamp="2011-11-11T00:11:11Z" lat="23.9" lon="89.8"/>
+
+  <way id="19001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="19001"/>
+    <nd ref="19002"/>
+    <nd ref="19003"/>
+    <nd ref="19004"/>
+    <nd ref="19001"/>
+    <tag k="name" v="farm"/>
+    <tag k="landuse" v="farm"/>
+  </way>
+  <way id="19002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="19011"/>
+    <nd ref="19012"/>
+    <nd ref="19013"/>
+    <nd ref="19014"/>
+    <nd ref="19011"/>
+    <tag k="name" v="farmyard"/>
+    <tag k="landuse" v="farmyard"/>
+  </way>
+
+  <relation id="19001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="19001" role="outer"/>
+    <member type="way" ref="19002" role="inner"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="farmland"/>
+  </relation>
+
+  <!-- test outer way inserted (different tag and table) -->
+  <node id="19101" version="1" timestamp="2011-11-11T00:11:11Z" lat="31" lon="89"/>
+  <node id="19102" version="1" timestamp="2011-11-11T00:11:11Z" lat="31" lon="90"/>
+  <node id="19103" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="90"/>
+  <node id="19104" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="89"/>
+  <node id="19111" version="1" timestamp="2011-11-11T00:11:11Z" lat="31.8" lon="89.8"/>
+  <node id="19112" version="1" timestamp="2011-11-11T00:11:11Z" lat="31.8" lon="89.9"/>
+  <node id="19113" version="1" timestamp="2011-11-11T00:11:11Z" lat="33.9" lon="89.9"/>
+  <node id="19114" version="1" timestamp="2011-11-11T00:11:11Z" lat="33.9" lon="89.8"/>
+
+  <way id="19101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="19101"/>
+    <nd ref="19102"/>
+    <nd ref="19103"/>
+    <nd ref="19104"/>
+    <nd ref="19101"/>
+    <tag k="name" v="farm"/>
+    <tag k="landuse" v="farm"/>
+  </way>
+  <way id="19102" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="19111"/>
+    <nd ref="19112"/>
+    <nd ref="19113"/>
+    <nd ref="19114"/>
+    <nd ref="19111"/>
+    <tag k="name" v="farmyard"/>
+    <tag k="landuse" v="farmyard"/>
+  </way>
+
+  <relation id="19101" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="19101" role="outer"/>
+    <member type="way" ref="19102" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="boundary" v="administrative"/>
+  </relation>
+
+
+  <!-- test that node (n:20001) does not reference way (w:20001) after it was deleted -->
+  <node id="20001" version="1" timestamp="2011-11-11T00:11:11Z" lat="30" lon="10">
+    <tag k="name" v="way 14001"/>
+    <tag k="barrier" v="block"/>
+  </node>
+  <node id="20002" version="1" timestamp="2011-11-11T00:11:11Z" lat="30" lon="10.001"/>
+  <way id="20001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="20001"/>
+    <nd ref="20002"/>
+    <tag k="highway" v="residential"/>
+  </way>
+
+
+  <!-- test that way (w:21001) does not reference way (r:21001) after it was deleted -->
+  <node id="21001" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="10"/>
+  <node id="21002" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11"/>
+  <node id="21003" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="10"/>
+  <node id="21004" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="11"/>
+  <way id="21001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="21001"/>
+    <nd ref="21002"/>
+    <nd ref="21003"/>
+    <nd ref="21004"/>
+    <nd ref="21001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="21001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="21001" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+  <!-- test that way (w:40001) gets added to gen0/1 after tag changed -->
+  <node id="40001" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="10"/>
+  <node id="40002" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11"/>
+  <node id="40003" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11.000001"/>
+  <node id="40004" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="12"/>
+  <way id="40001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="40001"/>
+    <nd ref="40002"/>
+    <nd ref="40003"/>
+    <nd ref="40004"/>
+    <tag k="highway" v="residential"/>
+  </way>
+
+  <!-- test removing of relation (r:50021) -->
+  <node id="50001" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="10"/>
+  <node id="50002" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="11"/>
+  <node id="50003" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="10"/>
+  <node id="50004" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="11"/>
+  <way id="50011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="50001"/>
+    <nd ref="50002"/>
+    <nd ref="50003"/>
+    <nd ref="50004"/>
+    <nd ref="50001"/>
+    <tag k="building" v="yes"/>
+  </way>
+  <relation id="50021" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="50011" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+  <!-- test old-style relation does not affect way -->
+  <node id="50101" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="10"/>
+  <node id="50102" version="1" timestamp="2011-11-11T00:11:11Z" lat="42" lon="11"/>
+  <node id="50103" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="10"/>
+  <node id="50104" version="1" timestamp="2011-11-11T00:11:11Z" lat="44" lon="11"/>
+  <way id="50111" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="50101"/>
+    <nd ref="50102"/>
+    <nd ref="50103"/>
+    <nd ref="50104"/>
+    <nd ref="50101"/>
+    <tag k="building" v="yes"/>
+  </way>
+  <relation id="50121" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="50111" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+
+  <!-- test removal of duplicate IDs -->
+  <node id="51001" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="20"/>
+  <node id="51002" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="21"/>
+  <node id="51003" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="20"/>
+  <node id="51004" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="21"/>
+  <node id="51011" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="20.00001"/>
+  <node id="51012" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="21.00001"/>
+  <node id="51013" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="20.00001"/>
+  <node id="51014" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="21.00001"/>
+
+  <way id="51001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="51001"/>
+    <nd ref="51002"/>
+    <nd ref="51003"/>
+    <nd ref="51004"/>
+    <nd ref="51001"/>
+    <tag k="building" v="way"/>
+  </way>
+  <way id="51002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="51011"/>
+    <nd ref="51012"/>
+    <nd ref="51013"/>
+    <nd ref="51014"/>
+    <nd ref="51011"/>
+  </way>
+  <way id="51011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="51001"/>
+    <nd ref="51002"/>
+    <nd ref="51003"/>
+    <nd ref="51004"/>
+    <nd ref="51001"/>
+    <tag k="building" v="way"/>
+  </way>
+  <way id="51012" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="51011"/>
+    <nd ref="51012"/>
+    <nd ref="51013"/>
+    <nd ref="51014"/>
+    <nd ref="51011"/>
+  </way>
+
+  <relation id="51001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="51002" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="building" v="mp"/>
+  </relation>
+
+  <relation id="51011" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="51012" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="building" v="mp"/>
+  </relation>
+
+
+  <!-- test that relations are updated after modified node -->
+  <node id="52101" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="10"/>
+  <node id="52102" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="11"/>
+  <node id="52103" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="10"/>
+  <node id="52104" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="11"/>
+  <way id="52111" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="52101"/>
+    <nd ref="52102"/>
+    <nd ref="52103"/>
+    <nd ref="52104"/>
+    <nd ref="52101"/>
+  </way>
+  <relation id="52121" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="52111" role="outer"/>
+    <tag k="building" v="yes"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+
+  <!-- test duplicate 'create node' does not result in duplicate way -->
+  <node id="53101" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="10"/>
+  <node id="53102" version="1" timestamp="2011-11-11T00:11:11Z" lat="62" lon="11"/>
+  <node id="53103" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="10"/>
+  <node id="53104" version="1" timestamp="2011-11-11T00:11:11Z" lat="64" lon="11"/>
+  <way id="53111" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="53101"/>
+    <nd ref="53102"/>
+    <nd ref="53103"/>
+    <nd ref="53104"/>
+    <nd ref="53101"/>
+    <tag k="building" v="way"/>
+  </way>
+
+  <!-- zig-zag line with coords internaly cached in differend deltacoords bunches -->
+  <node id="60001" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.00"/>
+  <node id="60002" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.00" lon="20.01"/>
+  <node id="60003" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.02"/>
+  <node id="61004" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.00" lon="20.03"/>
+  <node id="62005" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.04"/>
+  <node id="63006" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.00" lon="20.05"/>
+  <node id="64007" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.06"/>
+  <node id="64008" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.00" lon="20.10"/>
+  <way id="60000" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="60001"/>
+    <nd ref="60002"/>
+    <nd ref="60003"/>
+    <nd ref="61004"/>
+    <nd ref="62005"/>
+    <nd ref="63006"/>
+    <nd ref="64007"/>
+    <nd ref="64008"/>
+    <tag k="highway" v="residential"/>
+  </way>
+
+  <!-- add remove tags from nodes/coords -->
+  <node id="70001" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.01" lon="20.00">
+      <tag k="amenity" v="police"/>
+  </node>
+  <node id="70002" version="1" timestamp="2011-11-11T00:11:11Z" lat="0.02" lon="20.00"/>
+
+  <node id="100001" version="1" timestamp="2011-11-11T00:11:11Z" lat="80.01" lon="-40.00"/>
+  <node id="100002" version="1" timestamp="2011-11-11T00:11:11Z" lat="80.00" lon="-40.01"/>
+  <node id="100003" version="1" timestamp="2011-11-11T00:11:11Z" lat="80.01" lon="-40.02"/>
+  <way id="100001" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="100001"/>
+    <nd ref="100002"/>
+    <nd ref="100003"/>
+    <nd ref="100001"/>
+    <tag k="name" v="way 100001"/>
+    <tag k="enum_test" v="park"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="100002" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="100001"/>
+    <nd ref="100002"/>
+    <nd ref="100003"/>
+    <nd ref="100001"/>
+    <tag k="name" v="way 100002"/>
+    <tag k="enum_test" v="unknown"/>
+    <tag k="landuse" v="park"/>
+  </way>
+  <way id="100003" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="100001"/>
+    <nd ref="100002"/>
+    <nd ref="100003"/>
+    <nd ref="100001"/>
+    <tag k="name" v="way 100003"/>
+    <tag k="enum_test" v="wood"/>
+    <tag k="landuse" v="wood"/>
+  </way>
+
+  <!-- test if additional create inserts duplicate elements (checks #66) -->
+  <node id="201001" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="10"/>
+  <node id="201002" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11"/>
+  <node id="201003" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="11"/>
+  <node id="201004" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="10"/>
+  <way id="201051" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="201001"/>
+    <nd ref="201002"/>
+    <nd ref="201003"/>
+    <nd ref="201004"/>
+    <nd ref="201001"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="201091" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="201051" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+
+  <!-- test modification of one relation (201102) does not duplicate
+       relation (201101) with shared way (checks #65) -->
+  <node id="201101" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="10"/>
+  <node id="201102" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="11"/>
+  <node id="201103" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="11"/>
+  <node id="201104" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="10"/>
+  <way id="201151" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="201101"/>
+    <nd ref="201102"/>
+    <nd ref="201103"/>
+    <nd ref="201104"/>
+    <nd ref="201101"/>
+    <tag k="highway" v="residential"/>
+  </way>
+  <relation id="201191" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="201151" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="park"/>
+  </relation>
+  <relation id="201192" version="1" timestamp="2011-11-11T00:11:11Z">
+    <member type="way" ref="201151" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="landuse" v="forest"/>
+  </relation>
+
+  <!-- test that relations with unsupported types are not inserted with updates -->
+  <node id="201201" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="20"/>
+  <node id="201202" version="1" timestamp="2011-11-11T00:11:11Z" lat="32" lon="21"/>
+  <node id="201203" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="21"/>
+  <node id="201204" version="1" timestamp="2011-11-11T00:11:11Z" lat="34" lon="20"/>
+  <way id="201251" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="201201"/>
+    <nd ref="201202"/>
+    <nd ref="201203"/>
+    <nd ref="201204"/>
+    <nd ref="201201"/>
+    <tag k="landuse" v="park"/>
+  </way>
+
+
+
+  <!-- test area mapping -->
+  <node id="301101" version="1" timestamp="2011-11-11T00:11:11Z" lat="-32" lon="10"/>
+  <node id="301102" version="1" timestamp="2011-11-11T00:11:11Z" lat="-32" lon="11"/>
+  <node id="301103" version="1" timestamp="2011-11-11T00:11:11Z" lat="-34" lon="11"/>
+  <node id="301104" version="1" timestamp="2011-11-11T00:11:11Z" lat="-34" lon="10"/>
+  <way id="301151" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="301101"/>
+    <nd ref="301102"/>
+    <nd ref="301103"/>
+    <nd ref="301104"/>
+    <nd ref="301101"/>
+    <tag k="highway" v="pedestrian"/>
+    <tag k="name" v="name"/>
+  </way>
+  <way id="301152" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="301101"/>
+    <nd ref="301102"/>
+    <nd ref="301103"/>
+    <nd ref="301104"/>
+    <nd ref="301101"/>
+    <tag k="highway" v="pedestrian"/>
+    <tag k="name" v="name"/>
+    <tag k="area" v="yes"/>
+  </way>
+
+  <way id="301153" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="301101"/>
+    <nd ref="301102"/>
+    <nd ref="301103"/>
+    <nd ref="301104"/>
+    <nd ref="301101"/>
+    <tag k="leisure" v="track"/>
+  </way>
+  <way id="301154" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="301101"/>
+    <nd ref="301102"/>
+    <nd ref="301103"/>
+    <nd ref="301104"/>
+    <nd ref="301101"/>
+    <tag k="leisure" v="track"/>
+    <tag k="area" v="no"/>
+  </way>
+
+
+  <!-- test hstore: check only included tags are inserted -->
+  <node id="401101" version="1" timestamp="2011-11-11T00:11:11Z" lat="47.5" lon="13"/>
+  <node id="401102" version="1" timestamp="2011-11-11T00:11:11Z" lat="50" lon="14.5"/>
+  <node id="401103" version="1" timestamp="2011-11-11T00:11:11Z" lat="49" lon="16.5"/>
+  <node id="401104" version="1" timestamp="2011-11-11T00:11:11Z" lat="47" lon="17"/>
+  <node id="401105" version="1" timestamp="2011-11-11T00:11:11Z" lat="45.5" lon="14.5"/>
+
+  <way id="401151" version="1" timestamp="2011-11-11T00:11:11Z">
+    <nd ref="401101"/>
+    <nd ref="401102"/>
+    <nd ref="401103"/>
+    <nd ref="401104"/>
+    <nd ref="401105"/>
+    <nd ref="401101"/>
+    <tag k="name" v="hstore test"/>
+    <tag k="building" v="yes"/>
+    <tag k="opening_hours" v="24/7"/>
+    <tag k="amenity" v="fuel"/>
+    <tag k="leisure" v="not added" />
+  </way>
+
+</osm>

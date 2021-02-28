@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+"""
+Extract dependencies from the SQL and yaml layer files,
+and create dot/png/svg files for documentation.
+
+Usage:
+  generate-etlgraph <tileset-or-layer-file> <output-path> [<compare-path>] [--keep]
+                    [--format <format>]...
+  generate-etlgraph --help
+  generate-etlgraph --version
+
+  <tileset-or-layer-file>   If tileset file is given, will create one dir per layer
+                            in the output directory.
+  <compare-path>            If set, compares generated graphs with graphs that already
+                            exist at this location, and exit with non-zero code
+                            if they are not the same.
+
+Options:
+  -k --keep             If set, do not delete generated .dot file
+  -f --format <format>  Specify which format(s) to output.  [default: png]
+  --help                Show this screen.
+  --version             Show version.
+"""
+
+from docopt import docopt
+
+import openmaptiles
+from openmaptiles.diagram import EtlGraph
+
+
+def main(args):
+    exit(EtlGraph(
+        args['<tileset-or-layer-file>'],
+        args['<output-path>'],
+        args['<compare-path>'],
+        not args['--keep'],
+        args['--format'],
+    ).run())
+
+
+if __name__ == '__main__':
+    main(docopt(__doc__, version=openmaptiles.__version__))

@@ -1,0 +1,105 @@
+#!/usr/bin/env python
+"""
+Evaluate tile generation performance against a PostgreSQL database.
+
+Usage:
+  test-perf <tileset> [--test=<set>]... [--layer=<layer>]... [--exclude-layers]
+              [--per-layer] [--summary] [--test-all] [--bbox=<bbox>]...
+              ([--zoom=<zoom>]... | [--minzoom=<min>] [--maxzoom=<max>])
+              [--record=<file>] [--compare=<file>] [--buckets=<count>]
+              [--key] [--gzip [<gzlevel>]] [--no-color] [--no-feature-ids]
+              [--test-geometry] [--verbose]
+              [--pghost=<host>] [--pgport=<port>] [--dbname=<db>]
+              [--user=<user>] [--password=<password>]
+
+  test-perf --help
+  test-perf --version
+
+  <tileset>             Tileset definition yaml file
+
+Options:
+  -t --test=<set>       Which predefined test to run, default is us-across unless --bbox
+                        or --test-all are set. Use invalid value to see a list.
+                        Use 'null' for PostGIS < v2.5
+  -a --test-all         Run all available tests except 'null'
+  -o --bbox=<bbox>      Provide one or more custom test areas in BBOX format:
+                          comma-separated geo coordinates - <left,bottom,right,top>
+  -p --per-layer        Test each layer individually, also show per-layer summary graph.
+  -s --summary          Run summary tests, without per-tile break-down.
+  -l --layer=<layers>   Limit testing to a specific layer (could be more than one)
+  -x --exclude-layers   If set, uses all layers except the ones listed with -l (-l is required)
+  -z --zoom=<zoom>      Limit testing to a specific zoom. If set, ignores min/max.
+  -m --minzoom=<min>    Test tiles in zooms more or equal to this value  [default: 14]
+  -n --maxzoom=<max>    Test tiles in zooms less or equal to this value  [default: 14]
+  -r --record=<file>    Record results into a json file for later use with --compare.
+  -c --compare=<file>   Compare performance run results with a previous run
+  -b --buckets=<count>  Show up to this many buckets in a graph  [default: 10]
+  --key                 Generate md5 keys for all tiles (resulting key is ignored)
+  --gzip                If set, compress MVT with gzip, with optional level=0..9.
+  --no-color            Disable ANSI colors
+  --no-feature-ids      Disable feature ID generation, e.g. from osm_id.
+                        Feature IDS are automatically disabled with PostGIS before v3.
+  -v --verbose          Print additional debugging information.
+  --help                Show this screen.
+  --version             Show version.
+
+PostgreSQL Options:
+  -h --pghost=<host>    Postgres hostname. By default uses PGHOST env or "localhost" if not set.
+  -P --pgport=<port>    Postgres port. By default uses PGPORT env or "5432" if not set.
+  -d --dbname=<db>      Postgres db name. By default uses PGDATABASE env or "openmaptiles" if not set.
+  -U --user=<user>      Postgres user. By default uses PGUSER env or "openmaptiles" if not set.
+  --password=<password> Postgres password. By default uses PGPASSWORD env or "openmaptiles" if not set.
+
+These legacy environment variables should not be used, but they are still supported:
+  POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
+"""
+import asyncio
+
+from docopt import docopt
+
+import openmaptiles
+from openmaptiles.performance import PerfTester
+from openmaptiles.perfutils import COLOR
+from openmaptiles.pgutils import parse_pg_args
+
+
+def main(args):
+    if args['--no-color']:
+        COLOR.enable(False)
+    zooms = [int(v) for v in args['--zoom']]
+    if not zooms:
+        zooms = list(range(int(args['--minzoom']), int(args['--maxzoom']) + 1))
+    pghost, pgport, dbname, user, password = parse_pg_args(args)
+
+    tests = args['--test']
+    if not tests and not args['--test-all'] and not args['--bbox']:
+        tests = ["us-across"]
+
+    perf = PerfTester(
+        tileset=args['<tileset>'],
+        tests=tests,
+        test_all=args['--test-all'],
+        bboxes=args['--bbox'],
+        summary=args['--summary'],
+        per_layer=args['--per-layer'],
+        layers=args['--layer'],
+        exclude_layers=args['--exclude-layers'],
+        buckets=int(args['--buckets']),
+        zooms=zooms,
+        pghost=pghost,
+        pgport=pgport,
+        dbname=dbname,
+        user=user,
+        password=password,
+        save_to=args['--record'],
+        compare_with=args['--compare'],
+        disable_feature_ids=args['--no-feature-ids'],
+        key_column=args['--key'],
+        gzip=args['--gzip'] and (args['<gzlevel>'] or True),
+        verbose=args.get('--verbose'),
+    )
+    asyncio.run(perf.run())
+
+
+if __name__ == '__main__':
+    main(docopt(__doc__, version=openmaptiles.__version__))

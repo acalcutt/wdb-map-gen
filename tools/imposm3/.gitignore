@@ -1,0 +1,9 @@
+.DS_Store
+imposm
+imposm3
+docs/_build
+mapping.json
+config.json
+test/build
+test/.lasttestrun*
+test/*.pyc

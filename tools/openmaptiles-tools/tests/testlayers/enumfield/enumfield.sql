@@ -1,0 +1,5 @@
+CREATE OR REPLACE FUNCTION map_landuse_class("natural" VARCHAR, landuse VARCHAR) RETURNS TEXT AS $$
+    SELECT CASE
+        %%FIELD_MAPPING: class %%
+END;
+$$ LANGUAGE SQL IMMUTABLE;
