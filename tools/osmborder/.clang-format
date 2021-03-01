@@ -1,9 +1,0 @@
----
-Language:        Cpp
-BasedOnStyle:  LLVM
-AccessModifierOffset: -4
-BreakBeforeBraces: Mozilla
-IndentWidth:     4
-ConstructorInitializerIndentWidth: 0
-ReflowComments: false
-AlwaysBreakTemplateDeclarations: true

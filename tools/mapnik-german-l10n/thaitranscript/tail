@@ -1,4 +1,0 @@
-
-if __name__ == "__main__":
-  if len(sys.argv) == 2:
-    print(osml10n_thai_transcript(sys.argv[1]))

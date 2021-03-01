@@ -1,4 +1,0 @@
-debian/files
-debian/*.debhelper.log
-debian/*.substvars
-debian/*kanjitranslit*
