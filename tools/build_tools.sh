@@ -222,3 +222,14 @@ then
 	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 fi
 
+#Install pgfutter
+read -p "Install pgfutter? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	mkdir pgfutter
+	cd pgfutter
+	wget -O pgfutter https://github.com/lukasmartinelli/pgfutter/releases/download/v1.1/pgfutter_linux_amd64
+	chmod +x pgfutter
+	cd ..
+fi
