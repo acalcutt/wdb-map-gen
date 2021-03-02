@@ -141,7 +141,6 @@ read -p "Install go? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	read -p "Press [Enter] to install go"
 	wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz
 	tar -xvf go1.15.2.linux-amd64.tar.gz
 	cp -r go /usr/local
@@ -159,6 +158,8 @@ then
 	scp out-static/lib* out-shared/lib* /usr/local/lib/
 	cd include/
 	scp -r leveldb /usr/local/include/
+	cd ..
+	cd ..
 fi
 
 #Imposm
@@ -171,7 +172,7 @@ then
 	cd imposm3
 	export GOPATH=`pwd`
 	../go/bin/go get github.com/omniscale/imposm3
-	../go/bin/go install github.com/omniscale/imposm3/cmd/imposm@latest
+	../go/bin/go install github.com/omniscale/imposm3/cmd/imposm
 	cd ..
 fi
 
@@ -193,7 +194,7 @@ then
 fi
 
 #Install osmborder
-read -p "Install libosmium? " -n 1 -r
+read -p "Install osmboarder? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -205,3 +206,19 @@ then
 	make
 	make install
 fi
+
+#Install tile-live
+read -p "Install nvm and tile-live? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	nvm install v8.15.0
+	nvm use v8.15.0
+	#tile-copy
+	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
+fi
+
