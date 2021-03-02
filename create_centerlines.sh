@@ -23,12 +23,12 @@ if [ ! -f $CENTERLINES_GEOJSON ]; then
 		PG_CONNECT="postgis://$POSTGRES_USER:$POSTGRES_PASS@$POSTGRES_HOST/$POSTGRES_DB"
 		DB_SCHEMA="public"
 
-		imposm3/bin/imposm import -connection "$PG_CONNECT" -mapping "$MAPPING_YAML" -overwritecache -cachedir "$IMPOSM3_CACHE_DIR" -read "$FULL_PBF" -dbschema-import="$DB_SCHEMA" -write
+		tools/imposm3/bin/imposm import -connection "$PG_CONNECT" -mapping "$MAPPING_YAML" -overwritecache -cachedir "$IMPOSM3_CACHE_DIR" -read "$FULL_PBF" -dbschema-import="$DB_SCHEMA" -write
 		
 		lake_shapefile="data/osm_lake_polygon.shp"
 		query="SELECT osm_id, ST_SimplifyPreserveTopology(geometry, 100) AS geometry FROM osm_lake_polygon WHERE area > 2 * 1000 * 1000 AND ST_GeometryType(geometry)='ST_Polygon' AND name <> '' ORDER BY area DESC"
 		pgsql2shp -f "$lake_shapefile" -h "$POSTGRES_HOST" -u "$POSTGRES_USER" -P "$POSTGRES_PASS" "$POSTGRES_DB" "$query"
 		
-		create_centerlines "data/osm_lake_polygon.shp" "data/osm_lake_centerline.geojson"
+		label_centerlines --output_driver GeoJSON "data/osm_lake_polygon.shp" "data/osm_lake_centerline.geojson"
 	fi
 fi
