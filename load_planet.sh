@@ -50,6 +50,6 @@ else
 	echo "Importing in normal mode"
 fi
 
-imposm3/bin/imposm import -config $IMPOSM3_CONFIG -overwritecache -read data/$PBF -deployproduction -write $diff_flag
+tools/imposm3/bin/imposm import -config $IMPOSM3_CONFIG -overwritecache -read data/$PBF -deployproduction -write $diff_flag
 
 echo "====> : End importing Planet OpenStreetMap data: data/$PBF -> imposm3[./config/mapping.yaml] -> PostgreSQL"
