@@ -10,7 +10,7 @@ echo "====> : Start importing water data from https://osmdata.openstreetmap.de/d
 [ ! -f data/water-polygons-split-4326.zip ] && wget https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip -P data
 unzip -o data/water-polygons-split-4326.zip -d data
 
-if [ -f data/water_polygons.shp ]; then
+if [ -f data/water-polygons-split-4326/water_polygons.shp ]; then
     ogr2ogr -progress -f Postgresql -s_srs EPSG:3857 -t_srs EPSG:3857 -lco OVERWRITE=YES -lco GEOMETRY_NAME=geometry -overwrite -nln "$WATER_TABLE_NAME" -nlt geometry --config PG_USE_COPY YES PG:"$PGCONN" data/water-polygons-split-4326/water_polygons.shp
 fi
 
@@ -21,13 +21,13 @@ echo "====> : Start importing OpenStreetMap Lakelines data "
 PG_CONNECT="postgis://$POSTGRES_USER:$POSTGRES_PASS@$POSTGRES_HOST/$POSTGRES_DB"
 DB_SCHEMA="public"
 
-imposm3 import -connection "$PG_CONNECT" -mapping "$MAPPING_YAML" -overwritecache -cachedir "$IMPOSM_CACHE_DIR" -read "$pbf_file" -dbschema-import="$DB_SCHEMA" -write
+tools/imposm3/bin/imposm import -connection "$PG_CONNECT" -mapping "$MAPPING_YAML" -overwritecache -cachedir "$IMPOSM_CACHE_DIR" -read "$pbf_file" -dbschema-import="$DB_SCHEMA" -write
 
-lake_shapefile="/data/osm_lake_polygon.shp"
-query="SELECT osm_id, ST_SimplifyPreserveTopology(geometry, 100) AS geometry FROM osm_lake_polygon WHERE area > 2 * 1000 * 1000 AND ST_GeometryType(geometry)='ST_Polygon' AND name <> '' ORDER BY area DESC"
-pgsql2shp -f "$lake_shapefile" -h "$POSTGRES_PORT_5432_TCP_ADDR" -u "$POSTGRES_ENV_POSTGRES_USER" -P "$POSTGRES_ENV_POSTGRES_PASSWORD" "$POSTGRES_DB" "$query"
+#lake_shapefile="/data/osm_lake_polygon.shp"
+#query="SELECT osm_id, ST_SimplifyPreserveTopology(geometry, 100) AS geometry FROM osm_lake_polygon WHERE area > 2 * 1000 * 1000 AND ST_GeometryType(geometry)='ST_Polygon' AND name <> '' ORDER BY area DESC"
+#pgsql2shp -f "$lake_shapefile" -h "$POSTGRES_PORT_5432_TCP_ADDR" -u "$POSTGRES_ENV_POSTGRES_USER" -P "$POSTGRES_ENV_POSTGRES_PASSWORD" "$POSTGRES_DB" "$query"
 
-create_centerlines --output_driver "GeoJSON" "/data/osm_lake_polygon.shp" "/data/osm_lake_centerline.geojson"
+#create_centerlines --output_driver "GeoJSON" "/data/osm_lake_polygon.shp" "/data/osm_lake_centerline.geojson"
 
 
 
