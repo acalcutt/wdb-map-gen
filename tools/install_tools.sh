@@ -136,44 +136,16 @@ then
 	cd ..
 fi
 
-#go
-read -p "Install go? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz
-	tar -xvf go1.15.2.linux-amd64.tar.gz
-	cp -r go /usr/local
-fi
-
-#Leveldb
-read -p "Install Leveldb? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	wget https://github.com/google/leveldb/archive/v1.19.tar.gz
-	tar -xvf v1.19.tar.gz
-	cd leveldb-1.19/
-	make
-	scp out-static/lib* out-shared/lib* /usr/local/lib/
-	cd include/
-	scp -r leveldb /usr/local/include/
-	cd ..
-	cd ..
-fi
-
-#Imposm
+#Install Imposm
 read -p "Install Imposm? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	rm -Rf imposm3
-	mkdir -p imposm3
-	cd imposm3
-	export GOPATH=`pwd`
-	../go/bin/go get github.com/omniscale/imposm3
-	../go/bin/go install github.com/omniscale/imposm3/cmd/imposm
-	cd ..
+	wget https://github.com/omniscale/imposm3/releases/download/v0.11.1/imposm-0.11.1-linux-x86-64.tar.gz
+	tar -xvf imposm-0.11.1-linux-x86-64.tar.gz
+	rm -Rf imposm3/
+	mkdir imposm3/
+	mv imposm-0.11.1-linux-x86-64/ imposm3/bin/
 fi
 
 #Install libosmium (needed by osmborder)
@@ -207,21 +179,6 @@ then
 	make install
 fi
 
-#Install tile-live
-read -p "Install nvm and tile-live? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-	nvm install v8.15.0
-	nvm use v8.15.0
-	#tile-copy
-	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
-fi
-
 #Install pgfutter
 read -p "Install pgfutter? " -n 1 -r
 echo
@@ -244,4 +201,19 @@ then
 	pip install -r requirements.txt
 	python3 setup.py install
 	cd ..
+fi
+
+#Install tile-live
+read -p "Install nvm and tile-live? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	nvm install v8.15.0
+	nvm use v8.15.0
+	#tile-copy
+	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 fi
