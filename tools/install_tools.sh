@@ -109,7 +109,7 @@ then
 	tar -xvf gdal-3.2.1.tar.gz
 	cd gdal-3.2.1
 	chmod +x configure
-	./configure --with-proj=/usr/local --with-spatialite
+	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3
 	make
 	make install
 	#Fix for (ogr2ogr: error while loading shared libraries: libgdal.so.27: cannot open shared object file: No such file or directory)
