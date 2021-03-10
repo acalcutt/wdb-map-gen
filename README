@@ -1,4 +1,4 @@
-This project is my method of creating a OpenMapTiles basemap for my WifiDB Projects (https://wifidb.net). It mostly a de-dockerized version of Open Map Tiles (https://github.com/openmaptiles/openmaptiles). It very closly keeps to the way the openmaptiles quickstart works, minus all the docker obfuscation
+This project is my method of creating a OpenMapTiles basemap for my WifiDB Project (https://wifidb.net). It mostly a de-dockerized version of Open Map Tiles (https://github.com/openmaptiles/openmaptiles). It very closly keeps to the way the openmaptiles quickstart works, minus all the docker obfuscation
 
 # Install/run on debian 11
 
