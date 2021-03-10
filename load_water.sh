@@ -31,7 +31,7 @@ tools/imposm3/bin/imposm import -connection "$PG_CONNECT" -mapping "$MAPPING_YAM
 
 
 
-[ ! -f data/lake_centerline.geojson ] && wget https://github.com/lukasmartinelli/osm-lakelines/releases/download/v0.9/lake_centerline.geojson -P data
+[ ! -f data/lake_centerline.geojson ] && wget https://github.com/acalcutt/osm-lakelines/releases/download/v9.1/osm_lake_centerline.geojson -P data
 
 if [ -f data/lake_centerline.geojson ]; then
 	PGCLIENTENCODING=UTF8 ogr2ogr -progress -f Postgresql -s_srs EPSG:4326 -t_srs EPSG:3857 "PG:$PGCONN" -lco OVERWRITE=YES -overwrite -nln "$LAKE_CENTERLINE_TABLE" data/lake_centerline.geojson
