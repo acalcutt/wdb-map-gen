@@ -8,6 +8,11 @@ IMPSOSM3_CACHE_DIR=$EXPORT_DIR/imposm3_cache
 
 #Create the postgres database to dump data into
 PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<EOSQL
+	SELECT pg_terminate_backend(pg_stat_activity.pid)
+	FROM pg_stat_activity
+	WHERE pg_stat_activity.datname = '$POSTGRES_DB'
+	  AND pid <> pg_backend_pid();
+	  
 	DROP DATABASE IF EXISTS $POSTGRES_DB;
     CREATE DATABASE $POSTGRES_DB;
 	\c $POSTGRES_DB;
