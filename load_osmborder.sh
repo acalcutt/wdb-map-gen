@@ -5,7 +5,7 @@ EXPORT_DIR=$(pwd)/data
 OSMB_CSV=$EXPORT_DIR/osmborder_lines.csv
 
 
-if [! -f $OSMB_CSV ]; then
+if [ ! -f $OSMB_CSV ]; then
 	# Download pre-compiled osmborder_lines.csv from 02/2021 planet pbf (see create_centerlines.sh to make a new one)
 	echo "# Download pre-compiled osmborder_lines.csv from 02/2021 planet pbf (see create_centerlines.sh to make a new one)"
 	[ ! -f $EXPORT_DIR/osmborder_lines.csv.gz ] && wget https://github.com/acalcutt/osmborder/releases/download/v0.1.0.1/osmborder_lines.csv.gz -P $EXPORT_DIR
