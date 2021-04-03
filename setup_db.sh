@@ -4,6 +4,7 @@ echo "====> : Start Creating DB $POSTGRES_DB"
 
 CONFIG_DIR=$(pwd)/config
 EXPORT_DIR=$(pwd)/data
+SQL_TOOLS_DIR=$CONFIG_DIR/sql
 IMPSOSM3_CACHE_DIR=$EXPORT_DIR/imposm3_cache
 
 #Create the postgres database to dump data into
@@ -26,6 +27,12 @@ PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST --username="$POSTGRES_USER" <<E
     CREATE EXTENSION IF NOT EXISTS gzip;
 
 EOSQL
+
+#Load Needed SQL Functions
+for i in `find $SQL_TOOLS_DIR -name "*.sql" -type f|sort -d`; do
+	echo "-- Importing: $i --"
+	PGPASSWORD=$POSTGRES_PASS psql -h $POSTGRES_HOST -d $POSTGRES_DB -U "$POSTGRES_USER" -f $i
+done	
 
 echo "====> : End Creating DB $POSTGRES_DB"
 
