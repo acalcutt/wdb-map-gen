@@ -329,18 +329,18 @@ FROM (
          FROM osm_highway_linestring
          WHERE NOT is_area
            AND (
-                     zoom_level = 12 AND (
+                     zoom_level = 10 AND (
                              highway_class(highway, public_transport, construction) NOT IN ('track', 'path', 'minor')
                          OR highway IN ('unclassified', 'residential')
                      ) AND man_made <> 'pier'
-                 OR zoom_level = 13
+                 OR zoom_level = 11
                          AND (
                                     highway_class(highway, public_transport, construction) NOT IN ('track', 'path') AND
                                     man_made <> 'pier'
                             OR
                                     man_made = 'pier' AND NOT ST_IsClosed(geometry)
                         )
-                 OR zoom_level >= 14
+                 OR zoom_level >= 12
                          AND (
                             man_made <> 'pier'
                             OR
