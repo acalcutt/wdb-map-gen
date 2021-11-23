@@ -26,8 +26,11 @@ cd [your wdb-map-gen directory]
 ./export_mbtiles.sh
 
 ------------- Alternative: Load with postile ---------------
-postile --cors  --tm2 openmaptiles.tm2source/data.yaml --pghost 127.0.0.1 --pguser [username] --pgpassword [password] --listen [ip] --pgdatabase osm --style style/style.json --fonts fonts/
-
+./postile.sh
+1.)Create a TM2 source with the OpenMapTiles yaml/layer files using generate-imposm3
+2.)Download the OpenMapTiles style ( https://github.com/openmaptiles/osm-bright-gl-style/releases ) and fonts
+3.)Serve with Postile
+postile --cors --tm2 openmaptiles.tm2source/data.yaml --pghost 127.0.0.1 --pguser [username] --pgpassword [password] --listen [ip] --pgdatabase osm --style style/style.json --fonts fonts/
 
 Links
 https://bravetheheat.medium.com/parallelizing-openmaptile-vector-map-tile-generation-16x-speedup-with-two-variables-120afa11d839
