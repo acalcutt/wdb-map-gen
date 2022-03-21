@@ -7,33 +7,8 @@ cd [your wdb-map-gen directory]/tools/
 chmod +x install_tools.sh
 install_tools.sh (answer y to install the components)
 
-------------- Import Map Data into Postgresql ------------- 
+------------- Create planet mbtiles ------------- 
 cd [your wdb-map-gen directory]
-#run all together
-./load_all.sh
-#run seperately
-./setup_db.sh
-./create_border_csv.sh
-./create_centerlines.sh
-./load_osmborder.sh
-./load_water.sh
-./load_naturalearth.sh
-./load_planet.sh
-./load_wikidata.sh
-./load_sql.sh
-
-------------- Export Map Data to MBtiles ------------- 
+./download_sources.sh
+./create_centerlines.sh (optional)
 ./export_mbtiles.sh
-
-------------- Alternative: Load with postile ---------------
-postile --cors  --tm2 openmaptiles.tm2source/data.yaml --pghost 127.0.0.1 --pguser [username] --pgpassword [password] --listen [ip] --pgdatabase osm --style style/style.json --fonts fonts/
-
-
-Links
-https://bravetheheat.medium.com/parallelizing-openmaptile-vector-map-tile-generation-16x-speedup-with-two-variables-120afa11d839
-
-Example Mbtiles
-https://drive.google.com/drive/folders/1Uo5xyFd8it7UH3pSmBiWP4lfZdM9OmhA
-
-Issues:
-I still can't get the low level water layer to work right. Right now, I am using the water later from my example file 'osm_basemap.mbtiles' to fix this deficiency.
