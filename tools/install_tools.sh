@@ -15,15 +15,40 @@ then
 	apt-get --assume-yes install zlib1g-dev libssl-dev libffi-dev python3 python3-pip python3-openssl
 fi
 
-# Posgresql 13
-read -p "Install Posgresql 13? " -n 1 -r
+#Install planetiler
+read -p "Install planetiler? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	rm -R planetiler
+	apt-get install openjdk-17-jdk
+	git clone https://github.com/acalcutt/planetiler.git
+	cd planetiler
+	./scripts/build.sh
+	cd ..
+fi
+
+#Install label_centerlines
+read -p "Install label_centerlines? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	git clone https://github.com/acalcutt/label_centerlines.git
+	cd label_centerlines
+	pip install -r requirements.txt
+	python3 setup.py install
+	cd ..
+fi
+
+# Posgresql 14
+read -p "Install Posgresql 14? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-	
-	apt-get --assume-yes install postgresql-13 postgresql-server-dev-13
+	apt-get update
+	apt-get --assume-yes install postgresql-14 postgresql-server-dev-14
 	systemctl enable postgresql
 	export PATH="/usr/lib/postgresql/13/bin:$PATH"
 fi
@@ -35,9 +60,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# openmaptiles-tools install
 	apt-get install graphviz sqlite3 aria2 osmctools
-	python3 -m pip install git+https://github.com/openmaptiles/openmaptiles-tools@v5.3.2
+	python3 -m pip install git+https://github.com/openmaptiles/openmaptiles-tools@v6.1.4
 	# openmaptiles
-	git clone --branch v3.12.1 https://github.com/openmaptiles/openmaptiles.git
+	git clone https://github.com/openmaptiles/openmaptiles.git
+	cd openmaptiles
+	git checkout tags/v3.13
+	cd ..
 fi
 
 # osml10n Postgres extension
@@ -71,14 +99,15 @@ read -p "Install GEOS? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	wget http://download.osgeo.org/geos/geos-3.9.1.tar.bz2
-	tar -xvf geos-3.9.1.tar.bz2
-	cd geos-3.9.1
+	wget http://download.osgeo.org/geos/geos-3.10.2.tar.bz2
+	tar -xvf geos-3.10.2.tar.bz2
+	cd geos-3.10.2
 	chmod +x configure
 	./configure
 	make -j
 	make install
 	cd ..
+	ldconfig
 fi
 
 #Install proj
@@ -87,15 +116,14 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes install sqlite3 libsqlite3-dev libtiff-dev libcurl4-openssl-dev pkg-config
-	wget https://download.osgeo.org/proj/proj-7.2.1.tar.gz
-	tar -xvf proj-7.2.1.tar.gz
-	cd proj-7.2.1
+	wget https://download.osgeo.org/proj/proj-8.2.1.tar.gz
+	tar -xvf proj-8.2.1.tar.gz
+	cd proj-8.2.1
 	chmod +x configure
 	./configure
 	make
 	make install
-	ln -s /usr/local/lib/libproj.so.19 /usr/lib/libproj.so.19
-	ln -s /usr/local/lib/libproj.so.19.1.1 /usr/lib/libproj.so.19.1.1
+	ldconfig
 	cd ..
 fi
 
@@ -106,18 +134,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -rf gdal-3.2.1
 	apt-get --assume-yes   install libsqlite3-dev libspatialite-dev
-	wget https://github.com/OSGeo/gdal/releases/download/v3.2.1/gdal-3.2.1.tar.gz
-	tar -xvf gdal-3.2.1.tar.gz
-	cd gdal-3.2.1
+	wget https://github.com/OSGeo/gdal/releases/download/v3.4.1/gdal-3.4.1.tar.gz
+	tar -xvf gdal-3.4.1.tar.gz
+	cd gdal-3.4.1
 	chmod +x configure
 	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3
 	make
 	make install
 	#Fix for (ogr2ogr: error while loading shared libraries: libgdal.so.27: cannot open shared object file: No such file or directory)
-	ln -s /usr/local/lib/libgdal.so.27.0.3 /usr/lib/libgdal.so.27.0.3
-	ln -s /usr/local/lib/libgdal.so /usr/lib/libgdal.so
-	ln -s /usr/local/lib/libgdal.so.27 /usr/lib/libgdal.so.27
-	ln -s /usr/local/lib/libgdal.so.28 /usr/lib/libgdal.so.28
+	ldconfig
 	cd ..
 fi
 
@@ -127,9 +152,9 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes install libxml2-dev libprotobuf-dev libprotobuf-c-dev protobuf-c-compiler
-	wget https://download.osgeo.org/postgis/source/postgis-3.1.1.tar.gz
-	tar -xvf postgis-3.1.1.tar.gz
-	cd postgis-3.1.1
+	wget https://download.osgeo.org/postgis/source/postgis-3.2.1.tar.gz
+	tar -xvf postgis-3.2.1.tar.gz
+	cd postgis-3.2.1
 	chmod +x configure
 	./configure
 	make
@@ -189,18 +214,6 @@ then
 	cd pgfutter
 	wget -O pgfutter https://github.com/lukasmartinelli/pgfutter/releases/download/v1.1/pgfutter_linux_amd64
 	chmod +x pgfutter
-	cd ..
-fi
-
-#Install label_centerlines
-read -p "Install label_centerlines? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	git clone https://github.com/ungarj/label_centerlines.git
-	cd label_centerlines
-	pip install -r requirements.txt
-	python3 setup.py install
 	cd ..
 fi
 
