@@ -133,7 +133,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -rf gdal-3.2.1
-	apt-get --assume-yes   install libsqlite3-dev libspatialite-dev
+	apt-get --assume-yes install libsqlite3-dev libspatialite-dev
 	wget https://github.com/OSGeo/gdal/releases/download/v3.4.1/gdal-3.4.1.tar.gz
 	tar -xvf gdal-3.4.1.tar.gz
 	cd gdal-3.4.1
@@ -151,12 +151,12 @@ read -p "Install postgis? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	apt-get --assume-yes install libxml2-dev libprotobuf-dev libprotobuf-c-dev protobuf-c-compiler
+	apt-get --assume-yes install libxml2-dev libprotobuf-dev libprotobuf-c-dev protobuf-c-compiler libsfcgal-dev
 	wget https://download.osgeo.org/postgis/source/postgis-3.2.1.tar.gz
 	tar -xvf postgis-3.2.1.tar.gz
 	cd postgis-3.2.1
 	chmod +x configure
-	./configure
+	./configure --with-sfcgal=/usr/bin/sfcgal-config
 	make
 	make install
 	cd ..
