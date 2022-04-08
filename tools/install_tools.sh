@@ -99,6 +99,7 @@ read -p "Install GEOS? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+	apt-get --assume-yes install cmake
 	wget http://download.osgeo.org/geos/geos-3.10.2.tar.bz2
 	tar -xvf geos-3.10.2.tar.bz2
 	cd geos-3.10.2
