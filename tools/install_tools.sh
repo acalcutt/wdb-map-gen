@@ -133,11 +133,11 @@ read -p "Install gdal? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	rm -rf gdal-3.2.1
+	rm -rf gdal-3.4.2
 	apt-get --assume-yes install libsqlite3-dev libspatialite-dev
-	wget https://github.com/OSGeo/gdal/releases/download/v3.4.1/gdal-3.4.1.tar.gz
-	tar -xvf gdal-3.4.1.tar.gz
-	cd gdal-3.4.1
+	wget https://github.com/OSGeo/gdal/releases/download/v3.4.2/gdal-3.4.2.tar.gz
+	tar -xvf gdal-3.4.2.tar.gz
+	cd gdal-3.4.2
 	chmod +x configure
 	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3
 	make
