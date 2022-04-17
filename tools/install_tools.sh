@@ -50,7 +50,7 @@ then
 	apt-get update
 	apt-get --assume-yes install postgresql-14 postgresql-server-dev-14
 	systemctl enable postgresql
-	export PATH="/usr/lib/postgresql/13/bin:$PATH"
+	export PATH="/usr/lib/postgresql/14/bin:$PATH"
 fi
 
 #openmaptiles + openmaptiles-tools
@@ -59,7 +59,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# openmaptiles-tools install
-	apt-get install graphviz sqlite3 aria2 osmctools
+	apt-get --assume-yes install graphviz sqlite3 aria2 osmctools
 	python3 -m pip install git+https://github.com/openmaptiles/openmaptiles-tools@v6.1.4
 	# openmaptiles
 	git clone https://github.com/openmaptiles/openmaptiles.git
@@ -87,7 +87,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	git clone https://github.com/pramsey/pgsql-gzip.git
-	apt-get --assume-yes   install build-essential zlib1g-dev postgresql-server-dev-all pkg-config fakeroot devscripts
+	apt-get --assume-yes install build-essential zlib1g-dev postgresql-server-dev-all pkg-config fakeroot devscripts
 	cd pgsql-gzip
 	make
 	make install
