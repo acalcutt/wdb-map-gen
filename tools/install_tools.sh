@@ -117,15 +117,14 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes install sqlite3 libsqlite3-dev libtiff-dev libcurl4-openssl-dev pkg-config
-	wget https://download.osgeo.org/proj/proj-9.0.0.tar.gz
-	tar -xvf proj-9.0.0.tar.gz
-	cd proj-9.0.0
-	mkdir build
-	cd build
-	cmake ..
-	cmake --build .
-	cmake --build . --target install
-	cd ..
+	wget https://download.osgeo.org/proj/proj-7.2.1.tar.gz
+	tar -xvf proj-7.2.1.tar.gz
+	cd proj-7.2.1
+	chmod +x configure
+	./configure
+	make
+	make install
+	ldconfig
 	cd ..
 fi
 
