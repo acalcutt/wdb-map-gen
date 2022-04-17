@@ -120,11 +120,12 @@ then
 	wget https://download.osgeo.org/proj/proj-9.0.0.tar.gz
 	tar -xvf proj-9.0.0.tar.gz
 	cd proj-9.0.0
-	chmod +x configure
-	./configure
-	make
-	make install
-	ldconfig
+	mkdir build
+	cd build
+	cmake ..
+	cmake --build .
+	cmake --build . --target install
+	cd ..
 	cd ..
 fi
 
