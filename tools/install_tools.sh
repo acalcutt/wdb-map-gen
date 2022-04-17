@@ -180,7 +180,7 @@ read -p "Install libosmium? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	apt-get --assume-yes install libbz2-dev libprotozero-dev libboost-tools-dev libboost-thread-dev cmake clang-tidy 
+	apt-get --assume-yes install libbz2-dev liblz4-dev libprotozero-dev libboost-tools-dev libboost-thread-dev cmake clang-tidy 
 	git clone https://github.com/osmcode/libosmium.git
 	cd libosmium
 	mkdir build
