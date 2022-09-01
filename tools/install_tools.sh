@@ -22,7 +22,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -R planetiler
 	apt-get install openjdk-17-jdk
-	git clone https://github.com/acalcutt/planetiler.git
+	git clone https://github.com/onthegomap/planetiler.git
 	cd planetiler
 	./scripts/build.sh
 	cd ..
@@ -232,3 +232,4 @@ then
 	#tile-copy
 	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 fi
+
