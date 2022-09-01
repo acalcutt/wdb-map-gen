@@ -1,19 +1,13 @@
 #!/bin/bash
-. config/env.config
 
-CONFIG_DIR=$(pwd)/config
 EXPORT_DIR=$(pwd)/data
-DEST_PROJECT_DIR=$EXPORT_DIR/openmaptiles.tm2source
-LAYER_FILE=$CONFIG_DIR/$EXPORT_LAYER_FILE
+TMP_DIR=$(pwd)/data/tmp
+if [ -d $TMP_DIR ]; then rm -Rf $TMP_DIR; fi
+if [ -f $EXPORT_DIR/output.mbtiles ]; then rm -Rf $EXPORT_DIR/output.mbtiles; fi
 
-if [ ! -d "$EXPORT_DIR" ]; then mkdir -p $EXPORT_DIR; fi
-if [ -d "$DEST_PROJECT_DIR" ]; then rm -Rf $DEST_PROJECT_DIR; fi
-if [ ! -d "$DEST_PROJECT_DIR" ]; then mkdir -p $DEST_PROJECT_DIR; fi
-
-#Create TM2 SOURCE DIR
-generate-tm2source $LAYER_FILE --host="$POSTGRES_HOST" --port=$POSTGRES_PORT --database="$POSTGRES_DB" --user="$POSTGRES_USER" --password="$POSTGRES_PASS" > $DEST_PROJECT_DIR/data.yml
-
-#Export to MBTILES tileset
-nvm use v8.15.0
-UV_THREADPOOL_SIZE=$UV_THREADPOOL_SIZE tilelive-copy --scheme="$RENDER_SCHEME" --bounds="$BBOX" --timeout="$TILE_TIMEOUT" --concurrency="$COPY_CONCURRENCY" --minzoom="$MIN_ZOOM" --maxzoom="$MAX_ZOOM" "tmsource:///$DEST_PROJECT_DIR" "mbtiles://$EXPORT_DIR/$MBTILES_NAME"
-#tl copy -r tilelive-tmsource,tilelive-tmstyle,tilelive-mapnik,tilejson,tilelive-vector --scheme="$RENDER_SCHEME" --minzoom="$MIN_ZOOM" --maxzoom="$MAX_ZOOM" --bounds="$BBOX" --quiet=false "tmsource://$EXPORT_DIR/openmaptiles.tm2source" "mbtiles://$EXPORT_DIR/test.mbtiles"
+java -Xmx45g \
+	-XX:OnOutOfMemoryError="kill -9 %p" \
+	-jar tools/planetiler/planetiler-dist/target/planetiler-dist-0.5-SNAPSHOT-with-deps.jar \
+	--area=planet \
+	--mbtiles=$EXPORT_DIR/output.mbtiles \
+	--nodemap-type=sparsearray --nodemap-storage=mmap --optimize_db=true
