@@ -1,4 +1,4 @@
-This project is my method of creating a OpenMapTiles basemap for my WifiDB Project (https://wifidb.net). I have recently switch to using Planetiler (https://github.com/onthegomap/planetiler), however the old OpenMapTiles based scripts are still available at (https://github.com/acalcutt/wdb-map-gen/tree/OpenMapTiles)
+This project is my method of creating a OpenMapTiles basemap for my WifiDB Project (https://wifidb.net). I have recently switched to using Planetiler (https://github.com/onthegomap/planetiler), however the old OpenMapTiles based scripts are still available at (https://github.com/acalcutt/wdb-map-gen/tree/OpenMapTiles)
 
 # Install/run on debian 11
 
