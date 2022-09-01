@@ -24,6 +24,7 @@ then
 	apt-get install openjdk-17-jdk
 	git clone https://github.com/onthegomap/planetiler.git
 	cd planetiler
+	git checkout tags/v0.5.0
 	./scripts/build.sh
 	cd ..
 fi
