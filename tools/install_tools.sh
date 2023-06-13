@@ -41,17 +41,17 @@ then
 	cd ..
 fi
 
-# Posgresql 14
-read -p "Install Posgresql 14? " -n 1 -r
+# Posgresql 15
+read -p "Install Posgresql 15? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 	apt-get update
-	apt-get --assume-yes install postgresql-14 postgresql-server-dev-14
+	apt-get --assume-yes install postgresql-15 postgresql-server-dev-15
 	systemctl enable postgresql
-	export PATH="/usr/lib/postgresql/14/bin:$PATH"
+	export PATH="/usr/lib/postgresql/15/bin:$PATH"
 fi
 
 #openmaptiles + openmaptiles-tools
