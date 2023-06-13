@@ -75,7 +75,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes install devscripts equivs libicu-dev postgresql-server-dev-all libkakasi2-dev libutf8proc-dev pandoc
-	git clone https://github.com/giggls/mapnik-german-l10n.git
+	git clone https://github.com/openmaptiles/mapnik-german-l10n.git
 	cd mapnik-german-l10n
 	make
 	make install
