@@ -22,9 +22,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -R planetiler
 	apt-get install openjdk-17-jdk
-	git clone https://github.com/onthegomap/planetiler.git
+	git clone --recurse-submodules https://github.com/onthegomap/planetiler.git
 	cd planetiler
-	git checkout tags/v0.5.0
+        git checkout 72f86c8b6361f1b6ae80337220525333f943d7e9
 	./scripts/build.sh
 	cd ..
 fi
@@ -135,12 +135,12 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -rf gdal-3.4.2
-	apt-get --assume-yes install libsqlite3-dev libspatialite-dev
+	apt-get --assume-yes install libsqlite3-dev libspatialite-dev libkml-dev
 	wget https://github.com/OSGeo/gdal/releases/download/v3.4.2/gdal-3.4.2.tar.gz
 	tar -xvf gdal-3.4.2.tar.gz
 	cd gdal-3.4.2
 	chmod +x configure
-	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3
+	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3 --with-libkml=yes
 	make
 	make install
 	#Fix for (ogr2ogr: error while loading shared libraries: libgdal.so.27: cannot open shared object file: No such file or directory)
@@ -233,4 +233,3 @@ then
 	#tile-copy
 	npm install --unsafe-perm -g  tl mapnik@^3.7.2 @mapbox/mbtiles @mapbox/tilelive @mapbox/tilelive-vector @mapbox/tilelive-bridge @mapbox/tilelive-mapnik git+https://github.com/acalcutt/tilelive-tmsource.git
 fi
-
