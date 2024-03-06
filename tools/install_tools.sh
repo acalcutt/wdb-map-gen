@@ -4,7 +4,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes update
-	apt-get --assume-yes install build-essential wget curl nano screen git sudo
+	apt-get --assume-yes install build-essential ca-certificates lsb-release wget curl nano screen git sudo
 fi
 
 # Python Python-3 with pip
@@ -21,10 +21,10 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	rm -R planetiler
-	apt-get install openjdk-17-jdk
+	apt-get install openjdk-21-jdk
 	git clone --recurse-submodules https://github.com/onthegomap/planetiler.git
 	cd planetiler
-        git checkout 72f86c8b6361f1b6ae80337220525333f943d7e9
+        git checkout d703b626ad8203fe44aaed0a8a0ad1298d349e56
 	./scripts/build.sh
 	cd ..
 fi
@@ -41,15 +41,15 @@ then
 	cd ..
 fi
 
-# Posgresql 15
-read -p "Install Posgresql 15? " -n 1 -r
+# Posgresql 16
+read -p "Install Posgresql 16? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 	apt-get update
-	apt-get --assume-yes install postgresql-15 postgresql-server-dev-15
+	apt-get --assume-yes install postgresql-16 postgresql-server-dev-16
 	systemctl enable postgresql
 	export PATH="/usr/lib/postgresql/15/bin:$PATH"
 fi
@@ -129,23 +129,46 @@ then
 	cd ..
 fi
 
+#Install Apache Arrow
+read -p "Install Apache Arrow? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+	apt install -y -V ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+	apt update
+	apt install -y -V libarrow-dev # For C++
+	apt install -y -V libarrow-glib-dev # For GLib (C)
+	apt install -y -V libarrow-dataset-dev # For Apache Arrow Dataset C++
+	apt install -y -V libarrow-dataset-glib-dev # For Apache Arrow Dataset GLib (C)
+	apt install -y -V libarrow-acero-dev # For Apache Arrow Acero
+	apt install -y -V libarrow-flight-dev # For Apache Arrow Flight C++
+	apt install -y -V libarrow-flight-glib-dev # For Apache Arrow Flight GLib (C)
+	apt install -y -V libgandiva-dev # For Gandiva C++
+	apt install -y -V libgandiva-glib-dev # For Gandiva GLib (C)
+	apt install -y -V libparquet-dev # For Apache Parquet C++
+	apt install -y -V libparquet-glib-dev # For Apache Parquet GLib (C)
+fi
+
 #Install gdal
 read -p "Install gdal? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	rm -rf gdal-3.4.2
-	apt-get --assume-yes install libsqlite3-dev libspatialite-dev libkml-dev
-	wget https://github.com/OSGeo/gdal/releases/download/v3.4.2/gdal-3.4.2.tar.gz
-	tar -xvf gdal-3.4.2.tar.gz
-	cd gdal-3.4.2
-	chmod +x configure
-	./configure --with-proj=/usr/local --with-spatialite --with-sqlite3 --with-libkml=yes
-	make
-	make install
+	rm -rf gdal-3.8.4
+	apt-get --assume-yes install libsqlite3-dev libspatialite-dev libkml-dev libgeotiff-dev
+	wget https://github.com/OSGeo/gdal/releases/download/v3.8.4/gdal-3.8.4.tar.gz
+	tar -xvf gdal-3.8.4.tar.gz
+	cd gdal-3.8.4
+	mkdir build
+	cd build
+	cmake ..
+	cmake --build .
+	cmake --build . --target install
+	cd ..
+	cd ..
 	#Fix for (ogr2ogr: error while loading shared libraries: libgdal.so.27: cannot open shared object file: No such file or directory)
 	ldconfig
-	cd ..
 fi
 
 # postgis
@@ -154,9 +177,9 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt-get --assume-yes install libxml2-dev libprotobuf-dev libprotobuf-c-dev protobuf-c-compiler libsfcgal-dev
-	wget https://download.osgeo.org/postgis/source/postgis-3.2.1.tar.gz
-	tar -xvf postgis-3.2.1.tar.gz
-	cd postgis-3.2.1
+	wget https://download.osgeo.org/postgis/source/postgis-3.4.2.tar.gz
+	tar -xvf postgis-3.4.2.tar.gz
+	cd postgis-3.4.2
 	chmod +x configure
 	./configure --with-sfcgal=/usr/bin/sfcgal-config
 	make
