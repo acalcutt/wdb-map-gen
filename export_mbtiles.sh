@@ -7,7 +7,7 @@ if [ -f $EXPORT_DIR/output.mbtiles ]; then rm -Rf $EXPORT_DIR/output.mbtiles; fi
 
 java -Xmx45g \
 	-XX:OnOutOfMemoryError="kill -9 %p" \
-	-jar tools/planetiler/planetiler-dist/target/planetiler-dist-0.5-SNAPSHOT-with-deps.jar \
+	-jar tools/planetiler/planetiler-dist/target/planetiler-dist-0.8-SNAPSHOT-with-deps.jar \
 	--area=planet \
 	--mbtiles=$EXPORT_DIR/output.mbtiles \
 	--nodemap-type=sparsearray --nodemap-storage=mmap --optimize_db=true

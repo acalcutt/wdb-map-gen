@@ -24,7 +24,7 @@ then
 	apt-get install openjdk-21-jdk
 	git clone --recurse-submodules https://github.com/onthegomap/planetiler.git
 	cd planetiler
-        git checkout d703b626ad8203fe44aaed0a8a0ad1298d349e56
+	git checkout a74f274c3162cd547c9b19a9a5e8705982a61755
 	./scripts/build.sh
 	cd ..
 fi
